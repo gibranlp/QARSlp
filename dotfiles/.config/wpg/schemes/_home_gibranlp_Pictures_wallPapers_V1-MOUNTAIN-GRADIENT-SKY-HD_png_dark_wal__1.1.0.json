@@ -1,0 +1,27 @@
+{
+    "wallpaper": "/home/gibranlp/Pictures/wallPapers/V1-MOUNTAIN-GRADIENT-SKY-HD.png",
+    "alpha": "100",
+    "special": {
+        "background": "#080305",
+        "foreground": "#98cfda",
+        "cursor": "#98cfda"
+    },
+    "colors": {
+        "color0": "#080305",
+        "color1": "#E4C261",
+        "color2": "#144496",
+        "color3": "#1D619E",
+        "color4": "#55669D",
+        "color5": "#8F768F",
+        "color6": "#0BA6DB",
+        "color7": "#98cfda",
+        "color8": "#6a9098",
+        "color9": "#E4C261",
+        "color10": "#144496",
+        "color11": "#1D619E",
+        "color12": "#55669D",
+        "color13": "#8F768F",
+        "color14": "#0BA6DB",
+        "color15": "#98cfda"
+    }
+}

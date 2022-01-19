@@ -1,0 +1,28 @@
+{
+    "wallpaper": "/home/gibranlp/.config/wpg/wallpapers/wallhaven-x87m9z.jpg",
+    "alpha": "100",
+
+    "special": {
+        "background": "#00001F",
+        "foreground": "#ceffff",
+        "cursor": "#ceffff"
+    },
+    "colors": {
+        "color0": "#00001F",
+        "color1": "#B859AC",
+        "color2": "#7220D4",
+        "color3": "#992AC6",
+        "color4": "#285DD1",
+        "color5": "#AB36BB",
+        "color6": "#5551C2",
+        "color7": "#9fc9ea",
+        "color8": "#010150",
+        "color9": "#ff61ec",
+        "color10": "#9219ff",
+        "color11": "#cd26ff",
+        "color12": "#2372ff",
+        "color13": "#ea36ff",
+        "color14": "#5d57ff",
+        "color15": "#ceffff"
+    }
+}

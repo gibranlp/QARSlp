@@ -1,0 +1,48 @@
+#!/usr/bin/env bash
+# _______  _______  ______  _______  __        
+#|       ||   _   ||   __ \|     __||  |.-----.
+#|   -  _||       ||      <|__     ||  ||  _  |
+#|_______||___|___||___|__||_______||__||   __|
+#                                       |__|   
+# QARSlp Qtile + Arch Ricing Script
+# by: gibranlp <thisdoesnotwork@gibranlp.dev>
+# MIT licence 
+# 
+current_theme=''
+copy_files(){
+    \cp ~/.config/qtile/themes/$current_theme/theme.py ~/.config/qtile/
+    \cp ~/.config/qtile/themes/$current_theme/rofi/* ~/.config/rofi/
+    /usr/local/bin/genwal
+}
+
+rofi_command="rofi -theme ~/.config/rofi/left_toolbar.rasi"
+
+## options
+theme1="Default"
+theme2="Top Bar"
+theme3="Bottom Bar"
+theme4="Minimal"
+
+
+options="<<-<< QARSLP >>->>\n$theme1\n$theme2\n$theme3\n$theme4"
+
+## Main
+chosen="$(echo -e "$options" | $rofi_command -p "  Select Theme" -dmenu -selected-row 0)"
+case $chosen in
+    $theme1)
+        current_theme='default'
+        copy_files
+        ;;
+    $theme2)
+        current_theme='top_bar'
+        copy_files
+        ;;
+    $theme3)
+        current_theme='bottom_bar'
+        copy_files
+        ;;
+    $theme4)
+        current_theme='minimal'
+        copy_files
+        ;;
+esac

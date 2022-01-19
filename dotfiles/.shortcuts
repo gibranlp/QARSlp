@@ -1,0 +1,64 @@
+
+ + h :: Shortcuts!
+
+<<----------<< QARSlp >>---------->>
+
+ + Return ::  Terminal 
+alt + r ::  Randomize Wallpaper 
+alt + Shift + r :: Color Scheme Select (same wallpaper)
+alt + w :: Theme Select
+ + Space ::  Cycle Layout
+ + Shift + r ::  Restart Qtile
+ + Shift + q ::  Logout 
+
+<<----------<< Widgets >>---------->>
+
+ + shift + Return ::  Apps Launcher
+ + alt + Return ::  Apps Launcher (as superuser)
+alt + Return ::  Search (Files and Folders)
+ + f ::  Search (WEB)
+ + x ::  Session Menu
+ + n ::  Network Menu
+ + c ::  Fan Control Menu
+ + shift + x ::  Screen Management
+prtnsc ::  Print Screen Menu
+
+<<----------<< Windows >>---------->>
+
+ + q :: Kill Window  (Close program)
+ + Escape ::  Kill Window (Mouse Click)
+alt + TAB :: <- Swap Left
+alt + Shift + TAB :: -> Swap Right
+alt + f :: Toggle Fullscreen
+alt + Shift + f :: Toggle Floating
+
+<<--<< Change Focus ->>->>
+
+ + TAB ::  Cycle Active Window
+ + Shift + TAB ::  Cycle Active Window (Reverse)
+ + Period :: Cycle Active Screen
+
+<<--<< Resize >>-->>
+
+ + Shift + up ::  Grow
+ + Shift + Down ::  Shrink
+ + Shift + Space ::  Flip
+
+<<----------<< Apps >>---------->>
+
+ + Shift + E ::  Nautilus / File Manager
+ + Shift + s ::  Spotif
+ + Shift + M ::  Thunderbird (Email Client)
+ + Shift + f ::  Firefox 
+ + Shift + g ::  Google Chrome
+ + Shift + s ::  Simplenote
+ + Shift + a ::  Anydesk
+ + Shift + t ::  Telegram
+ + Shift + w ::  Whatsapp
+ + Shift + d ::  Discord
+ + Shift + C ::  Visual Studio Code
+
+<<----------<< CLI Apps >>---------->>
+
+alt Shift + s :: Ncspot (CLI)
+alt + Shift + E :: Ranger (CLI File Explorer) 

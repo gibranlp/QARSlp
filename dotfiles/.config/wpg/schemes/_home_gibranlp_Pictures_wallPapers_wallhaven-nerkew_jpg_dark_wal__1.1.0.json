@@ -1,0 +1,27 @@
+{
+    "wallpaper": "/home/gibranlp/Pictures/wallPapers/wallhaven-nerkew.jpg",
+    "alpha": "100",
+    "special": {
+        "background": "#1c3238",
+        "foreground": "#deeef0",
+        "cursor": "#deeef0"
+    },
+    "colors": {
+        "color0": "#1c3238",
+        "color1": "#BEB1A9",
+        "color2": "#93CACF",
+        "color3": "#A8D7D9",
+        "color4": "#A7DBE6",
+        "color5": "#B8E4EA",
+        "color6": "#DEDAD4",
+        "color7": "#deeef0",
+        "color8": "#9ba6a8",
+        "color9": "#BEB1A9",
+        "color10": "#93CACF",
+        "color11": "#A8D7D9",
+        "color12": "#A7DBE6",
+        "color13": "#B8E4EA",
+        "color14": "#DEDAD4",
+        "color15": "#deeef0"
+    }
+}
