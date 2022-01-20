@@ -2,11 +2,9 @@
 by: gibranlp [thisdoesnotwork@gibranlp.dev](mailto:thisdoesnotwork@gibranlp.dev)
 MIT licence
 
-QARSlp is an integration of tools to create an autoricingand functional desktop based on the Wallpaper. It is made with Qtile, Rofi, Pywal, ZSH based on Arch and lots and lots of love.
+QARSlp is an integration of tools to create an autoricing and functional desktop based on the Wallpaper. It is made with Qtile, Rofi, Pywal, ZSH based on Arch and lots and lots of love.
 
-To start just ``` mod + h ``` to view all the things you can do.
-
-Fork / upgrade from [QAAS](https://github.com/gibranlp/QAAS), the  Autoricing feature depends entirely on the Wallpaper, it generates several palettes using pywal and wpgtk to adapt the colors of the entire system to the wallpaper
+To start just ``` mod + h ``` to view all the shortcuts to the things you can do.
 
 ## Installation
 
