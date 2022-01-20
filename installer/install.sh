@@ -25,7 +25,7 @@ function i_paru(){
 }
 
 function i_base () {
-  packets=('htop' 'alsa-utils' 'alsa-lib' 'bc' 'nextcloud-client' 'hugo' 'ntfs-3g' 'grub-customizer' 'libreoffice-fresh' 'alsa-firmware' 'ttf-fira-code' 'ttf-font-awesome' 'playerctl' 'kdeconnect' 'firefox' 'pulseaudio' 'pulseaudio-alsa' 'pavucontrol' 'volumeicon' 'picom' 'scrot' 'rofi' 'surfraw' 'python-pip' 'pkgfile' 'ranger' 'tumbler' 'feh' 'neofetch' 'lxappearance' 'lxsession' 'numlockx' 'unzip' 'bmon' 'dunst' 'lightdm' 'lm_sensors' 'obconf' 'viewnior' 'ntp' 'nm-connection-editor' 'network-manager-applet' 'arandr' 'cmatrix' 'xarchiver' 'python-pywal' 'python-psutil' 'python-xdg' 'python-iwlib' 'python-dateutil' 'ueberzug' 'xsettingsd' 'otf-ipafont' 'acpi' 'qtile' 'wget' 'cmake' 'lightdm-webkit2-greeter' 'tlp'
+  packets=('htop' 'alsa-utils' 'alsa-lib' 'bc''ntfs-3g' 'alsa-firmware' 'ttf-fira-code' 'ttf-font-awesome' 'playerctl' 'kdeconnect' 'firefox' 'pulseaudio' 'pulseaudio-alsa' 'pavucontrol' 'volumeicon' 'picom' 'scrot' 'rofi' 'surfraw' 'python-pip' 'pkgfile' 'ranger' 'tumbler' 'feh' 'neofetch' 'lxappearance' 'lxsession' 'numlockx' 'unzip' 'bmon' 'dunst' 'lightdm' 'lm_sensors' 'obconf' 'viewnior' 'ntp' 'nm-connection-editor' 'network-manager-applet' 'arandr' 'cmatrix' 'xarchiver' 'python-pywal' 'python-psutil' 'python-xdg' 'python-iwlib' 'python-dateutil' 'ueberzug' 'xsettingsd' 'otf-ipafont' 'acpi' 'qtile' 'wget' 'cmake' 'lightdm-webkit2-greeter' 'tlp'
 )
 
 for packet in "${packets[@]}"; do
@@ -55,7 +55,7 @@ function i_pip(){
 
 function i_aur () {
   packets=(
-    'visual-studio-code-bin' '7-zip' 'rxvt-unicode' 'wpgtk-git' 'nbfc' 'slack-desktop' 'ncspot' 'telegram-desktop' 'notion-app' 'qtile-extras-git' 'thunar-custom-actions' 'thunar-volman' 'thunar-archive-plugin-git' 'thunar-extended' 'thunar-shares-plugin-git'
+    'p7zip' 'unrar' 'rxvt-unicode' 'wpgtk-git' 'nbfc' 'ncspot' 'qtile-extras-git' 'visual-studio-code-bin' 'thunar-custom-actions' 'thunar-volman' 'thunar-archive-plugin-git' 'thunar-extended' 'thunar-shares-plugin-git'
 
 )
 
@@ -73,8 +73,6 @@ function i_settings(){
   pywalfox install &
   git clone https://github.com/zsh-users/zsh-autosuggestions.git ~/.oh-my-zsh/plugins/zsh-autosuggestions &
   git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/plugins/zsh-syntax-highlighting &
-  git config --global user.name "gibranlp" &
-  git config --global user.email gibranlp@gmail.com & 
   wpg-install.sh -g -d -i &
   /usr/local/bin/autostart &
   /usr/local/bin/alwaystart &
@@ -89,9 +87,6 @@ sudo \cp -r  ~/QARSlp/scripts/* /usr/local/bin
 sudo chmod +x /usr/local/bin/*
 sudo \cp -r ~/QARSlp/lightdm/* /etc/lightdm
 sudo \cp -r ~/QARSlp/lightdm-webkit /usr/share
-  
-fi
-
 }
 
 
