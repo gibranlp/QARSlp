@@ -1,0 +1,26 @@
+" _______  _______  ______  _______  __        
+"|       ||   _   ||   __ \|     __||  |.-----.
+"|   -  _||       ||      <|__     ||  ||  _  |
+"|_______||___|___||___|__||_______||__||   __|
+"                                       |__|   
+" QARSlp Qtile + Arch Ricing Script
+" By: gibranlp <thisdoesnotwork@gibranlp.dev>
+" MIT licence
+
+URxvt*background: Black
+URxvt*foreground: White
+URxvt*geometry: 80x30
+URxvt*scrollBar: false
+
+"URxvt.font: 9x15
+
+!-- Xft settings -- !
+Xft.dpi:        96
+Xft.antialias:  true
+Xft.rgba:       rgb
+Xft.hinting:    true
+Xft.hintstyle:  hintfull
+
+! -- Fonts -- !
+URxvt.font:xft:Fira Code Medium:size=13
+URxvt.boldfont:xft:Fira Code Medium:size=13

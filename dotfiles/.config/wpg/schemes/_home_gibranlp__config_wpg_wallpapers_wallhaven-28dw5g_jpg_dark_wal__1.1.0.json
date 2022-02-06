@@ -1,0 +1,28 @@
+{
+    "wallpaper": "/home/gibranlp/.config/wpg/wallpapers/wallhaven-28dw5g.jpg",
+    "alpha": "100",
+
+    "special": {
+        "background": "#06346C",
+        "foreground": "#8bafb8",
+        "cursor": "#8bafb8"
+    },
+    "colors": {
+        "color0": "#06346C",
+        "color1": "#D79E72",
+        "color2": "#F6B170",
+        "color3": "#FEC778",
+        "color4": "#015783",
+        "color5": "#036889",
+        "color6": "#3A6282",
+        "color7": "#8bafb8",
+        "color8": "#617a80",
+        "color9": "#D79E72",
+        "color10": "#F6B170",
+        "color11": "#FEC778",
+        "color12": "#015783",
+        "color13": "#036889",
+        "color14": "#3A6282",
+        "color15": "#8bafb8"
+    }
+}

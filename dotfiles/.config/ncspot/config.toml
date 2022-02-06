@@ -1,0 +1,17 @@
+# vim: ft=cfg
+# Basic options
+default_keybindings = true
+use_nerdfont = false
+notify = true
+gapless = true
+flip_status_indicators=true
+shuffle = true
+repeat = 'off'
+
+[keybindings]
+## unbinded: nN, c, eE, xX
+######################################
+# Sorting
+######################################
+"t" = "sort added d"
+"T" = "sort title a"

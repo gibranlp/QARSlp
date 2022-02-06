@@ -1,0 +1,23 @@
+" Special
+let wallpaper  = "/home/gibranlp/Pictures/wallPapers/wallhaven-2kdqjm.jpg"
+let background = "#051828"
+let foreground = "#d2dddc"
+let cursor     = "#d2dddc"
+
+" Colors
+let color0  = "#051828"
+let color1  = "#24605A"
+let color2  = "#28675C"
+let color3  = "#2E7162"
+let color4  = "#59906B"
+let color5  = "#678F8E"
+let color6  = "#98B4B4"
+let color7  = "#d2dddc"
+let color8  = "#939a9a"
+let color9  = "#24605A"
+let color10 = "#28675C"
+let color11 = "#2E7162"
+let color12 = "#59906B"
+let color13 = "#678F8E"
+let color14 = "#98B4B4"
+let color15 = "#d2dddc"

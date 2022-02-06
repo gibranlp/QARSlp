@@ -1,0 +1,27 @@
+rofi.modi:                           window,run,ssh
+rofi.width:                          50
+rofi.lines:                          15
+rofi.columns:                        1
+rofi.font:                           roboto mono 10
+rofi.color-normal:                   #1c1b32, #ccc9c5, #1c1b32, #806c60, #ccc9c5
+rofi.color-urgent:                   #1c1b32, #d6b48d, #22231D, #d6b48d, #ccc9c5
+rofi.color-active:                   #1c1b32, #938C8E, #1c1b32, #938C8E, #1c1b32
+rofi.color-window:                   #1c1b32, #806c60, #584a42
+rofi.bw:                             5
+rofi.location:                       0
+rofi.padding:                        5
+rofi.yoffset:                        0
+rofi.xoffset:                        0
+rofi.fixed-num-lines:                true
+rofi.terminal:                       rofi-sensible-terminal
+rofi.ssh-client:                     ssh
+rofi.ssh-command:                    {terminal} -e {ssh-client} {host}
+rofi.run-command:                    {cmd}
+rofi.parse-hosts:                    true
+rofi.matching:                       normal
+rofi.separator-style:                none
+rofi.scrollbar-width:                0
+rofi.kb-mode-next:                   Shift+Right,Control+Tab,Alt+l
+rofi.kb-mode-previous:               Shift+Left,Control+Shift+Tab,Alt+h
+rofi.kb-row-up:                      Up,Control+p,Shift+Tab,Shift+ISO_Left_Tab,Alt+k
+rofi.kb-row-down:                    Down,Control+n,Alt+j

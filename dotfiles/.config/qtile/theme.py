@@ -1,0 +1,1 @@
+/home/gibranlp/QARSlp/dotfiles/.config/qtile/themes/default/theme.py
