@@ -5,38 +5,8 @@
 #                                       |__|   
 # QARSlp Qtile + Arch Ricing Script
 # By: gibranlp <thisdoesnotwork@gibranlp.dev>
-# MIT licence 
-
-import os, re
-import socket, random, requests
-import subprocess, json
-from os.path import expanduser
-from subprocess import run
-from libqtile import qtile, hook, layout, bar, widget
-from libqtile.config import Screen, Key, Drag, Click, Group, Match
-from libqtile.command import lazy
-from rofi import Rofi
-from qtile_extras import widget
-
-#### Variables ####
-ver = ' QARSlp v1.1'
-mod = "mod4"
-alt = "mod1"                                   
-term = "gnome-terminal"
-home = os.path.expanduser('~')
-prompt = "{0}@{1}: ".format(os.environ["USER"], socket.gethostname())
-#### Internet Chekup ####
-internet = ' Yei Internet is working!'
-#### Themes ####
-theme=['default', 'top_bar', 'bottom_bar', 'minimal', 'alpha', 'simple']
-backend = ["Wal", "Colorz", "Colorthief","Haishoku"]
-rofi_l = Rofi(rofi_args=['-theme', '~/.config/rofi/left_toolbar.rasi'])
-rofi_r = Rofi(rofi_args=['-theme', '~/.config/rofi/right_toolbar.rasi'])
-widgets = ('widget.TextBox', 'widget.Battery')
-widgets_index = 0
-#### Weather ####
-w_appkey = "e45a0f07f0c675b273ef8636663941db"
-w_cityid = "3520914"
+# MIT licence
+from variables import *
 
 #### Hooks ####
 @hook.subscribe.startup
@@ -58,7 +28,6 @@ def floating(window):
 #### Functions ####
 
 #### Import Used Network Interface ####
-
 def get_net_dev():
     get_dev = "ip addr show | awk '/inet.*brd/{print $NF; exit}'"
     ps = subprocess.Popen(get_dev,shell=True,stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
@@ -73,7 +42,6 @@ else:
     wifi_icon=' '
 
 #### Gety IP addreses Private / Public
-
 def get_private_ip():
     ip = socket.gethostbyname(socket.gethostname())
     return ip
@@ -92,7 +60,7 @@ def get_public_ip():
 public_ip = get_public_ip()
 
 if public_ip.startswith('0'):
-    internet = "OMG You Have No Internet"
+    internet = "No internet connection"
 
 ###### Import Battery for Laptops
 def get_bat():
@@ -289,7 +257,7 @@ def cfilex():
 
 ##### Groups #####
 group_names = ["1","2","3","4","5","6","7","8","9"]
-group_labels=["","","","","","","","",""]
+group_labels=["","","","","","","","",""]
 group_layouts=["monadtall", "monadtall", "matrix","monadtall", "monadtall", "monadtall","monadtall", "monadtall", "monadtall"]
 group_matches=[
     [Match(wm_class=['gnome-disks','Gnome-disks','anydesk','Anydesk', 'notion-app-enhanced'])],
@@ -327,7 +295,7 @@ for i in range(len(group_names)):
 
 #### Layouts ####
 def init_layout_theme():
-    return {"font":"Fira Code Medium",
+    return {"font":main_font,
             "fontsize":14,
             "margin": 5,
             "border_width":3,

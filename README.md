@@ -16,3 +16,5 @@ $ chmod +x install.sh
 $ sudo ./install.sh
 ```
 That's it for now.
+
+# Redesign of the QARSlp auto ricing system
