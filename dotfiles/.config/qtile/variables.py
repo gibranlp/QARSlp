@@ -30,11 +30,12 @@ prompt = "{0}@{1}: ".format(os.environ["USER"], socket.gethostname())
 main_font = "Fira Code Medium" # Font in use for the entire system
 fontsz = 20
 iconsz = 19
+barsz = 27
 
 #### Music / Media ####
 scrollchar = 50
-scrollint = 0.1
-scrollwint = 4000
+scrollint = 0.3
+scrollwint = 40
 
 
 #### Internet Chekup ####
