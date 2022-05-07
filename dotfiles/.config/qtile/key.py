@@ -19,7 +19,7 @@ def init_keys():
             Key([alt], "Return", lazy.spawn('rofi  -theme "~/.config/rofi/left_toolbar.rasi" -show find -modi find:/usr/local/bin/finder')),
             Key([mod], "r", lazy.spawncmd()),
             Key([mod], "q",lazy.window.kill()), # Close Window 
-            Key([mod, "shift"], "r",lazy.restart()), # Restart Qtile
+            Key([mod, "shift"], "r",lazy.reload_config()), # Restart Qtile
             Key([mod, "shift"], "q",lazy.shutdown()), # Logout 
             Key([mod], "Escape", lazy.spawn('xkill')), # Click window to close
             

@@ -8,17 +8,8 @@
 # By: gibranlp <thisdoesnotwork@gibranlp.dev>
 # MIT licence 
 # 
-#setxkbmap -layout us -variant intl &
-#setxkbmap -layout latam &
 pywalfox update &
 killall dunst &
 picom --config ~/.config/picom/picom.conf &
-ps -C spotify >/dev/null && spicetify -l watch  || echo ""  &
-if [ -d "~/.config/dunst/" ];  then
-    cp ~/.cache/wal/dunstrc ~/.config/dunst/dunstrc &
-  else
-    mkdir -p ~/.config/dunst/ &
-    cp ~/.cache/wal/dunstrc ~/.config/dunst/dunstrc &
- fi
- killall spicetify &
- wal -R -q &
+cp ~/.cache/wal/dunstrc ~/.config/dunst/dunstrc &
+wal -R -q &

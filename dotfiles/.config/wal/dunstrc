@@ -1,17 +1,24 @@
 [global]
-alignment = left
+font = Fira Code 14
+
+width = (0, 750)
+height = 100
+origin = bottom-right
+offset = 0+10
+
+alignment = right
 allow_markup = yes
 bounce_freq = 0
 browser = /usr/bin/firefox -new-tab
 dmenu = /usr/bin/dmenu -p dunst
 follow = mouse
-font = Fira Code 11
+
 format = "%s\n%b"
 geometry = "550x10-10+35"
 horizontal_padding = 8
 icon_folders = /usr/share/icons/Notifications
 icon_position = left
-min_icon_size = 0
+min_icon_size = 60
 max_icon_size = 60
 idle_threshold = 120
 ignore_newline = no

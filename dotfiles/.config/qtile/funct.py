@@ -12,7 +12,6 @@ from variables import *
 @hook.subscribe.startup
 def start():
     subprocess.call('/usr/local/bin/alwaystart')
-    wraith_colors()
     
 @hook.subscribe.startup_once
 def start_once():
@@ -87,9 +86,6 @@ def init_colors():
 
 color = init_colors()
 
-def wraith_colors():
-    subprocess.Popen(['sudo cm-rgb-cli set logo --mode=static --brightness=5 --color=%s fan --mode=static --brightness=5 --color=%s ring --mode=swirl --speed=2 --brightness=5 --color=%s' %(color[1], color[2], color[6])], shell = True)
-
 #### Send app to group ####
 @lazy.function
 def window_to_prev_group(qtile):
@@ -122,7 +118,7 @@ def set_rand_wallpaper(qtile):
     subprocess.run(["wpg", "-s" + rand_wallpaper])
     subprocess.run(["sudo", "cp", "%s" % rand_wallpaper,  "/usr/share/backgrounds/background.png"])
     subprocess.run(["wal", "-R"])
-    qtile.cmd_restart()
+    qtile.cmd_reload_config()
 
 #### Functions for Widgets ####
 #### Display Shortcuts widget
@@ -153,13 +149,13 @@ def screenshot(qtile):
         rofi.close()
     else:
         if index ==0:
-            subprocess.run("scrot -d 1 'Sc_%Y-%m-%S_$wx$h.png' -e 'mv $f $$(xdg-user-dir PICTURES) #; viewnior $$(xdg-user-dir PICTURES)/$f' && dunstify ' Screenshot Taken!'",shell=True)
+            subprocess.run("scrot -d 1 'Screenshot_%S-%m-%y.png' -e 'mv $f $$(xdg-user-dir PICTURES) #; viewnior $$(xdg-user-dir PICTURES)/$f' && dunstify ' Taken!'",shell=True)
         elif index==1:
-            subprocess.run("scrot -u 'Sc_%Y-%m-%S_$wx$h.png' -e 'mv $f $$(xdg-user-dir PICTURES) #; viewnior $$(xdg-user-dir PICTURES)/$f' && dunstify ' Screenshot Taken!'",shell=True)
+            subprocess.run("scrot -u 'Screenshot_%S-%m-%y.png' -e 'mv $f $$(xdg-user-dir PICTURES) #; viewnior $$(xdg-user-dir PICTURES)/$f' && dunstify ' Taken!'",shell=True)
         elif index==2:
-            subprocess.run("scrot -s 'Sc_%Y-%m-%S_$wx$h.png' -e 'mv $f $$(xdg-user-dir PICTURES)  #; viewnior $$(xdg-user-dir PICTURES)/$f'&& dunstify ' Screenshot Taken!'",shell=True)
+            subprocess.run("scrot -s 'Screenshot_%S-%m-%y.png' -e 'mv $f $$(xdg-user-dir PICTURES)  #; viewnior $$(xdg-user-dir PICTURES)/$f'&& dunstify ' Taken!'",shell=True)
         else:
-            subprocess.run("scrot -d 5 -c 'Sc_%Y-%m-%S_$wx$h.png' -e 'mv $f $$(xdg-user-dir PICTURES) #; viewnior $$(xdg-user-dir PICTURES)/$f' && dunstify ' Screenshot Taken!'",shell=True)
+            subprocess.run("scrot -d 5 -c 'Screenshot_%S-%m-%y.png' -e 'mv $f $$(xdg-user-dir PICTURES) #; viewnior $$(xdg-user-dir PICTURES)/$f' && dunstify ' Taken!'",shell=True)
 
 #### Network Widget
 def network_widget(qtile):
@@ -199,7 +195,7 @@ def change_theme(qtile):
     elif key == 0 and index < 6:
         subprocess.run('\cp ~/.config/qtile/themes/%s/theme.py ~/.config/qtile/'% theme[index], shell=True)
         subprocess.run('\cp ~/.config/qtile/themes/%s/rofi/* ~/.config/rofi/' % theme[index],shell=True)
-        qtile.cmd_restart()
+        qtile.cmd_reload_config()
 
 #### Change Color scheme widget ####
 def change_color_scheme(qtile):
@@ -209,10 +205,10 @@ def change_color_scheme(qtile):
         rofi_r.close()
     elif key == 0 and index < 4:
         subprocess.run('wpg -s ' + wallpaper + ' --backend ' + backend[index].lower(), shell=True)
-        qtile.cmd_restart()
+        qtile.cmd_reload_config()
     elif key == 0 and index > 4:
         subprocess.run('wpg -s ' + wallpaper + ' -L --backend ' + backend[index-5].lower(), shell=True)
-        qtile.cmd_restart()
+        qtile.cmd_reload_config()
 
 #### Multimedia #### 
 def play_pause(qtile):
@@ -257,7 +253,7 @@ def cfilex():
 
 ##### Groups #####
 group_names = ["1","2","3","4","5","6","7","8","9"]
-group_labels=["","","","","","","","",""]
+group_labels=["","","","","","","","",""]
 group_layouts=["monadtall", "monadtall", "matrix","monadtall", "monadtall", "monadtall","monadtall", "monadtall", "monadtall"]
 group_matches=[
     [Match(wm_class=['gnome-disks','Gnome-disks','anydesk','Anydesk', 'notion-app-enhanced'])],
@@ -296,11 +292,11 @@ for i in range(len(group_names)):
 #### Layouts ####
 def init_layout_theme():
     return {"font":main_font,
-            "fontsize":14,
-            "margin": 5,
-            "border_width":3,
+            "fontsize":lfontsz,
+            "margin": lmargin,
+            "border_width":lborderwd ,
             "border_normal":color[0],
-            "border_focus":color[1],
+            "border_focus":color[2],
             "single_margin":0,
             "single_border_width":0,
            }
@@ -309,14 +305,20 @@ layout_theme = init_layout_theme()
 
 def init_layouts():
     return [
-        layout.Matrix(
-            **layout_theme),
-        layout.MonadTall(
-            max_ratio=0.90,
-            ratio=0.70,
-            **layout_theme),
+        layout.MonadTall(max_ratio=0.90,ratio=0.70,**layout_theme),
+        layout.Matrix(**layout_theme),
+        #layout.Spiral(**layout_theme),
+        #layout.Bsp(**layout_theme),
+        #layout.Columns(**layout_theme),
+        layout.MonadThreeCol(**layout_theme),
+        #layout.RatioTile(**layout_theme),
+        #layout.Slice(**layout_theme),
+        #layout.Stack(**layout_theme),
+        #layout.Tile(**layout_theme),
+        #layout.VerticalTile(**layout_theme),
+        #layout.Zoomy(**layout_theme),
         layout.TreeTab(
-            sections = ["Worskpace"],
+            sections = ["Tabs"],
             section_fontsize=15,
             bg_color=color[0],
             active_bg=color[8],
@@ -332,8 +334,7 @@ def init_layouts():
             vspace = 3,
             panel_width = 250,
             **layout_theme),
-        layout.Floating(
-            **layout_theme)
+        #layout.Floating(**layout_theme)
             ]
 
 floating_layout = layout.Floating(auto_float_rules=[

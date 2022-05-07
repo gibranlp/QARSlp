@@ -19,27 +19,31 @@ from rofi import Rofi
 from qtile_extras import widget
 
 ### Variables ####
-ver = ' QARSlp v2.0.1' # Current version
+ver = ' QARSlp v2.0.21' # Current version
 mod = "mod4" # Command / Windows key
 alt = "mod1" # Alt key                  
 term = "urxvt" # Terminal in use
 home = os.path.expanduser('~')
 prompt = "{0}@{1}: ".format(os.environ["USER"], socket.gethostname())
 
-#### Resolution ####
+#### Resolution fix ####
 main_font = "Fira Code Medium" # Font in use for the entire system
-fontsz = 20
-iconsz = 19
-barsz = 27
+fontsz = 20 #Font size for bars
+iconsz = 19 #Icon size for bars
+barsz = 27 # bar size
+bordwidth = [3,3,3,3] # bar borders
+lfontsz = 17 # Layout font size
+lmargin = 5 # Layout margins
+lborderwd = 5 # Layout border width
 
 #### Music / Media ####
 scrollchar = 50
 scrollint = 0.3
-scrollwint = 40
-
+scrollwint = 4000
 
 #### Internet Chekup ####
 internet = ' Internet is working'
+
 
 #### Themes ####
 theme=['default', 'top_bar', 'bottom_bar', 'minimal', 'alpha', 'simple']
@@ -48,8 +52,6 @@ rofi_l = Rofi(rofi_args=['-theme', '~/.config/rofi/left_toolbar.rasi'])
 rofi_r = Rofi(rofi_args=['-theme', '~/.config/rofi/right_toolbar.rasi'])
 
 #### Resolution ####
-
-
 
 #### Weather ####
 w_appkey = "e45a0f07f0c675b273ef8636663941db" # 

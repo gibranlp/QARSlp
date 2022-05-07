@@ -515,29 +515,16 @@ def init_screens():
                 widgets=init_widgets_screen_top(),  
                 size=barsz,
                 border_color=color[1],
-                border_width=[2,2,2,2],
+                border_width=bordwidth
                 ),
             bottom=bar.Bar(
                 widgets=init_widgets_screen_bot(),
                 size=barsz,
                 border_color=color[1],
-                border_width=[2,2,2,2]
+                border_width=bordwidth
                 )
         ),
-        Screen(
-            top=bar.Bar(
-                widgets=init_widgets_screen_top(),  
-                size=barsz,
-                border_color=color[1],
-                border_width=[2,2,2,2]
-                ),
-            bottom=bar.Bar(
-                widgets=init_widgets_screen_bot(),
-                size=barsz,
-                border_color=color[1],
-                border_width=[2,2,2,2],
-                )
-        )
+        Screen()
         ]
 
 #### End Screens ####

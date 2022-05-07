@@ -10,14 +10,12 @@
 #
 
 picom --config ~/.config/picom/picom.conf &
-#setxkbmap -layout us -variant intl &
-#setxkbmap -layout latam &
 pywalfox update &
 killall dunst &
 numlockx on &
-nextcloud &
+owncloud &
+caffeine &
 kdeconnect-indicator &
-blueman-applet&
-nbfc config --apply "Asus Transformer 3 Pro"
+blueman-applet &
 wal -R -q &
 
