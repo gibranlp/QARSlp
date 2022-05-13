@@ -25,17 +25,17 @@ then
     fi
   elif [[ "$@" == \!\!* ]]
   then
-    echo "Search files / folders"
+    echo " Search Files & Folders"
   elif [[ "$@" == \?* ]]
   then
-    echo "--> Search again??"
+    echo "Another search?"
     while read -r line; do
       echo "$line" \?\?
-    done <<< $(find ~ -type d -path '*/\.*' -prune -o -not -name '.*' -type f -iname *"${QUERY#\?}"* -print)
+    done <<< $( Find ~ -type d -path '*/\.*' -prune -o -not -name '.*' -type f -iname *"${QUERY#\?}"* -print)
   else
-    echo "--> Search again??"
+    echo " Another search??"
     find ~ -type d -path '*/\.*' -prune -o -not -name '.*' -type f -iname *"${QUERY#!}"* -print
   fi
 else
-  echo "Search files / folders"
+  echo " Search Files & Folders"
 fi

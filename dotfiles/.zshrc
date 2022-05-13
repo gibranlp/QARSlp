@@ -101,7 +101,8 @@ source $ZSH/oh-my-zsh.sh
 #
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
-export PATH=~/usr/local/bin:$PATH
+#export PATH=~/usr/local/bin:$PATH
+export PATH=~/home/$USER/.local/bin:$PATH
 export PATH=~/.emacs.d/bin:$PATH
 export PATH=~/.local/bin:$PATH
 export PATH=$PATH:/opt/ade

@@ -16,7 +16,7 @@ def init_keys():
             Key([mod], "Return", lazy.spawn(term)), # Open Terminal
             Key([mod, "shift"], "Return", lazy.spawn('rofi -theme "~/.config/rofi/launcher.rasi" -show drun')),
             Key([mod, "mod1"], "Return", lazy.spawn('sudo rofi -theme "~/.config/rofi/launcher.rasi" -show drun')),
-            Key([alt], "Return", lazy.spawn('rofi  -theme "~/.config/rofi/left_toolbar.rasi" -show find -modi find:/usr/local/bin/finder')),
+            Key([alt], "Return", lazy.spawn('rofi  -theme "~/.config/rofi/left_toolbar.rasi" -show find -modi find:~/.local/bin/finder')),
             Key([mod], "r", lazy.spawncmd()),
             Key([mod], "q",lazy.window.kill()), # Close Window 
             Key([mod, "shift"], "r",lazy.reload_config()), # Restart Qtile
@@ -24,14 +24,13 @@ def init_keys():
             Key([mod], "Escape", lazy.spawn('xkill')), # Click window to close
             
             #### Widgets ####
-            Key([mod],"h",lazy.function(shortcuts)), # Sortcurts widget
-            Key([mod],"f",lazy.spawn('/usr/local/bin/wsearch')), # WEB Search
+            Key([mod],"h",lazy.function(shortcuts)), # Sohomertcurts widget
+            Key([mod],"f",lazy.spawn(home + '/.local/bin/wsearch')), # WEB Search
             Key([mod],"x",lazy.function(session_widget)), # Log out
             Key([mod],"n",lazy.function(network_widget)), # Network Settings
             Key([alt, "shift"],"r",lazy.function(change_color_scheme)), # Change Color Scheme
-            Key([mod],"c",lazy.spawn('/usr/local/bin/fans')), # Fans
             Key([alt],"w",lazy.function(change_theme)), # Change Theme
-            Key([mod, "shift"],"x",lazy.spawn('/usr/local/bin/change_display')),
+            Key([mod, "shift"],"x",lazy.spawn(home + '/.local/bin/change_display')),
 
             #### Theming ####
             Key([alt], "r",lazy.function(set_rand_wallpaper)), # Set randwom wallpaper / colors to entire system

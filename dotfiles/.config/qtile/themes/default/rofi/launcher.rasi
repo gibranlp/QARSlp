@@ -10,46 +10,51 @@
  */
 
 configuration {
-	font:							"Fira Code Medium 12";
+	font:							"Fira Code Medium 13";
     show-icons:                     true;
 	icon-theme: 					"Buuf";
-    display-drun: 					" Apps: ";
+    display-drun: 					"";
     drun-display-format:            "{name}";
     disable-history:                false;
 	hide-scrollbar: 				true;
-	sidebar-mode: 					true;
+	sidebar-mode: 					false;
 }
 
 @import "~/.cache/wal/colors-rofi-dark.rasi"
 
 window {
     margin:                         25px 0% 25px 0%;
-    background-color:               @background;
-    text-color:                     @background;
-	height:							100%;
-	width:							35%;
-    location:                       west;
+    background-color:               transparent;
+    text-color:                     @foreground;
+	height:							350px;
+	width:							772px;
+    location:                       center;
     x-offset:                       0;
     y-offset:                       0;
+    border:                         3px;
+    border-color:                   transparent;
+    border-radius:                  3px;
 }
 
 prompt {
     enabled: 						true;
-	padding: 						0.30% 1% 0% -0.5%;
-	background-color: 				@selected-urgent-background;
+	padding: 						0.20% 1% 0% -0.5%;
+	background-color: 				transparent;
 	text-color: 					@background;
-	font:							"Fira Code Medium 12";
+	font:							"Fira Code Medium 13";
+
 }
 
 entry {
-    background-color:               @selected-urgent-background;
+    background-color:               transparent;
     text-color:                     @background;
     placeholder-color:              @background;
     expand:                         true;
     horizontal-align:               0;
-    placeholder:                    "";
-    padding:                        0.10% 0% 0% 0%;
+    placeholder:                    "Software Launcher";
+    padding:                        0.30% 0% 0% 0%;
     blink:                          true;
+    
 }
 
 inputbar {
@@ -59,37 +64,42 @@ inputbar {
     expand:                         false;
     margin:                         0% 0% 0% 0%;
     padding:                        1.5%;
+    border:                         2px;
+    border-color:                   @selected-active-background;
+    border-radius:                  3px;
 }
 
 listview {
-    background-color:               @background;
+    background-color:               transparent;
     padding:                        10px 10px 0px 10px;
-    columns:                        3;
+    columns:                        7;
     spacing:                        0%;
     cycle:                          true;
     dynamic:                        true;
-    layout:                         vertical;
+    layout:                         horizontal;
 }
 
 mainbox {
-    background-color:               @background;
+    background-color:               transparent;
     children:                       [ inputbar, listview ];
+    
 
 }
 
 element {
-    background-color:               @selected-active-background;
+    background-color:               transparent;
     text-color:                     @foreground;
     orientation:                    vertical;
-    padding:                        2% 0% 2% 0%;
+    padding:                        1% 0% 1% 0%;
+    border-radius:                  3px;
+   
 }
 
 element-icon {
     background-color: 				inherit;
     horizontal-align:               0.5;
-    vertical-align:                 0.5;
+    vertical-align:                 0.1;
     size:                           48px;
-    border:                         0px;
 }
 
 element-text {

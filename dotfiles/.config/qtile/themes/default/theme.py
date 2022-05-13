@@ -57,7 +57,7 @@ def init_widgets_top():
                 widget.WindowName(
                     foreground=color[7],
                     padding=5,
-                    format=' {name}',
+                    format=ver + '  {name}',
                     empty_group_string=ver,
                     ),
                 #### Spotify ####
@@ -271,7 +271,7 @@ def init_widgets_bott():
                     font='Font Awesome 5 Free Solid',
                     foreground=color[1],
                     text="",
-                    mouse_callbacks={'Button1':lambda: qtile.cmd_spawn('rofi  -theme "~/.config/rofi/left_toolbar.rasi" -show find -modi find:/usr/local/bin/finder')}
+                    mouse_callbacks={'Button1':lambda: qtile.cmd_spawn('rofi  -theme "~/.config/rofi/left_toolbar.rasi" -show find -modi find:~/.local/bin/finder')}
                     ),        
                 widget.TextBox(
                     font='Font Awesome 5 Free Solid',
@@ -447,7 +447,7 @@ def init_widgets_bott():
                     tag_sensor="Tctl",
                     background=color[4],
                     foreground=color[0],
-                    mouse_callbacks={'Button1': lambda: qtile.cmd_spawn('/usr/local/bin/fans')},
+                    mouse_callbacks={'Button1': lambda: qtile.cmd_spawn('~/.local/bin/fans')},
                     ),
                 #### Keyboard Layout ####
                 widget.TextBox(

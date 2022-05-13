@@ -19,7 +19,7 @@ from rofi import Rofi
 from qtile_extras import widget
 
 ### Variables ####
-ver = ' QARSlp v2.0.21' # Current version
+ver = ' QARSlp v2.0.25-Beta' # Current version
 mod = "mod4" # Command / Windows key
 alt = "mod1" # Alt key                  
 term = "urxvt" # Terminal in use
@@ -31,15 +31,18 @@ main_font = "Fira Code Medium" # Font in use for the entire system
 fontsz = 20 #Font size for bars
 iconsz = 19 #Icon size for bars
 barsz = 27 # bar size
-bordwidth = [3,3,3,3] # bar borders
+bordwidth = [0,0,0,0] # bar borders
 lfontsz = 17 # Layout font size
-lmargin = 5 # Layout margins
+lmargin = 10 # Layout margins
 lborderwd = 5 # Layout border width
 
 #### Music / Media ####
 scrollchar = 50
-scrollint = 0.3
-scrollwint = 4000
+scrollint = 1
+scrollwint = 200
+
+### Gaps
+
 
 #### Internet Chekup ####
 internet = ' Internet is working'

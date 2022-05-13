@@ -11,11 +11,11 @@ from variables import *
 #### Hooks ####
 @hook.subscribe.startup
 def start():
-    subprocess.call('/usr/local/bin/alwaystart')
+    subprocess.call(home + '/.local/bin/alwaystart')
     
 @hook.subscribe.startup_once
 def start_once():
-    subprocess.call('/usr/local/bin/autostart')
+    subprocess.call(home + '/.local/bin/autostart')
 
 @hook.subscribe.client_new
 def floating(window):
@@ -23,6 +23,7 @@ def floating(window):
     transient = window.window.get_wm_transient_for()
     if window.window.get_wm_type() in floating_types or transient:
         window.floating = True
+
 
 #### Functions ####
 
@@ -123,7 +124,7 @@ def set_rand_wallpaper(qtile):
 #### Functions for Widgets ####
 #### Display Shortcuts widget
 def shortcuts(qtile):
-    subprocess.run("cat ~/.shortcuts | rofi -theme '~/.config/rofi/left_toolbar.rasi' -i -dmenu -p ' Shortcuts:'",shell=True)
+    subprocess.run("cat ~/.shortcuts | rofi -theme '~/.config/rofi/left_toolbar.rasi' -i -dmenu -p ' Shortcuts:'",shell=True)
 
 #### Logout widget
 def session_widget(qtile):
@@ -171,7 +172,7 @@ def network_widget(qtile):
     else:
         connected = ' Turn Wifi On'
         active= "on"
-    options = [connected,' Bandwith Monitor (CLI)', ' Network Manager (CLI)', ' Network Manager (GUI)']
+    options = [connected,' Bandwith Monitor (CLI)', ' Network Manager (CLI)']
     index, key = rofi_r.select(wifi_icon + internet, options)
     if key == -1:
         rofi_r.close()
@@ -180,10 +181,9 @@ def network_widget(qtile):
             subprocess.run("nmcli radio wifi " + active, shell=True)
         elif index==1:
             qtile.cmd_spawn(term + ' -e bmon')
-        elif index==2:
-            qtile.cmd_spawn(term + ' -e nmtui')
         else:
-            qtile.cmd_spawn('nm-connection-editor')
+            qtile.cmd_spawn(term + ' -e nmtui')
+
                  
 
 #### Change Theme widget ####
@@ -241,7 +241,7 @@ def ranger(qtile):
 
 #### Internet Search ####
 def wsearx():
-    run('/usr/local/bin/wsearch')
+    run(home + '/.local/bin/wsearch')
 
 #### Files/Folders Search ####
 def cfilex():
@@ -276,6 +276,15 @@ def follow_window(client):
             targetgroup = qtile.groups_map[group.name]
             targetgroup.cmd_toscreen(toggle=False)
             break
+
+# @hook.subscribe.client_name_updated
+# def follow_window_name(client):
+#    for group in groups:
+#        match = next((m for m in group.matches if m.compare(client)), None)
+#        if match:
+#            targetgroup = qtile.groups_map[group.name]
+#            targetgroup.cmd_toscreen(toggle=False)
+#            break
 
 for i in range(len(group_names)):
     groups.append(
