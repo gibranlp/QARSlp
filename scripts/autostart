@@ -11,7 +11,7 @@
 
 picom --config ~/.config/picom/picom.conf &
 pywalfox update &
-killall dunst &
+#killall dunst &
 numlockx on &
 owncloud &
 caffeine &

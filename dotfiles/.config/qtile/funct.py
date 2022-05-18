@@ -37,9 +37,9 @@ def get_net_dev():
 wifi = get_net_dev()
 
 if wifi.startswith('w'):
-    wifi_icon=' '
+    wifi_icon='  '
 else:
-    wifi_icon=' '
+    wifi_icon='  '
 
 #### Gety IP addreses Private / Public
 def get_private_ip():
@@ -128,24 +128,24 @@ def shortcuts(qtile):
 
 #### Logout widget
 def session_widget(qtile):
-    options = [' Lock',' Log Out', ' Reboot', ' Poweroff']
-    index, key = rofi_r.select('  Session', options)
+    options = [' Poweroff',' Log Out', ' Reboot',' Lock']
+    index, key = rofi_session.select('  Session', options)
     if key == -1:
-        rofi_r.close()
+        rofi_session.close()
     else:
         if index == 0:
-            os.system('dm-tool switch-to-greeter')
+            os.system('systemctl poweroff')
         elif index == 1:
             qtile.cmd_shutdown()
         elif index == 2:
             os.system('systemctl reboot') 
         else:
-            os.system('systemctl poweroff') 
+            os.system('dm-tool switch-to-greeter')
 
 #### Screenshot widget
 def screenshot(qtile):
     options = [' Screen', ' Window', ' Area', ' 5s Screen']
-    index, key = rofi_r.select('  Screenshot mode', options)
+    index, key = rofi_session.select('  Screenshot', options)
     if key == -1:
         rofi.close()
     else:
@@ -173,9 +173,9 @@ def network_widget(qtile):
         connected = ' Turn Wifi On'
         active= "on"
     options = [connected,' Bandwith Monitor (CLI)', ' Network Manager (CLI)']
-    index, key = rofi_r.select(wifi_icon + internet, options)
+    index, key = rofi_network.select(wifi_icon + internet, options)
     if key == -1:
-        rofi_r.close()
+        rofi_network.close()
     else:
         if index ==0:
             subprocess.run("nmcli radio wifi " + active, shell=True)
@@ -189,9 +189,9 @@ def network_widget(qtile):
 #### Change Theme widget ####
 def change_theme(qtile):
     options = [theme[0],theme[1],theme[2],theme[3],theme[4],theme[5]]
-    index, key = rofi_l.select('  Color Scheme', options)
+    index, key = rofi_backend.select('  Color Scheme', options)
     if key == -1 or index >= 6:
-        rofi_r.close()
+        rofi_backend.close()
     elif key == 0 and index < 6:
         subprocess.run('\cp ~/.config/qtile/themes/%s/theme.py ~/.config/qtile/'% theme[index], shell=True)
         subprocess.run('\cp ~/.config/qtile/themes/%s/rofi/* ~/.config/rofi/' % theme[index],shell=True)
@@ -200,9 +200,9 @@ def change_theme(qtile):
 #### Change Color scheme widget ####
 def change_color_scheme(qtile):
     options = [backend[0],backend[1],backend[2],backend[3], '<<-<< Light Themes >>-->>', backend[0],backend[1],backend[2],backend[3]]
-    index, key = rofi_l.select('  Color Scheme', options)
+    index, key = rofi_backend.select('  Color Scheme', options)
     if key == -1 or index == 4:
-        rofi_r.close()
+        rofi_backend.close()
     elif key == 0 and index < 4:
         subprocess.run('wpg -s ' + wallpaper + ' --backend ' + backend[index].lower(), shell=True)
         qtile.cmd_reload_config()
@@ -253,7 +253,7 @@ def cfilex():
 
 ##### Groups #####
 group_names = ["1","2","3","4","5","6","7","8","9"]
-group_labels=["","","","","","","","",""]
+group_labels=["","","","","","","","",""]
 group_layouts=["monadtall", "monadtall", "matrix","monadtall", "monadtall", "monadtall","monadtall", "monadtall", "monadtall"]
 group_matches=[
     [Match(wm_class=['gnome-disks','Gnome-disks','anydesk','Anydesk', 'notion-app-enhanced'])],

@@ -11,33 +11,37 @@
 
 configuration {
 	font:							"Fira Code Medium 13";
+    show-icons:                     false;
+	icon-theme: 					"Buuf";
+    display-drun: 					"";
     drun-display-format:            "{name}";
     disable-history:                false;
-    fullscreen:                     false;
-	hide-scrollbar: 				true;
+	sidebar-mode: 					false;
 }
 
 @import "~/.cache/wal/colors-rofi-light.rasi"
 
 window {
     margin:                         1px 0% 1px 0%;
-    background-color:               transparent;
+    background-color:               rgba(0,0,0,0.1);
     text-color:                     @background;
-	height:							220px;
-	width:							650px;
+	height:							480px;
+	width:							700px;
     location:                       center;
     x-offset:                       0;
     y-offset:                       0;
-    border:                         3px;
-    border-color:                   transparent;
-    border-radius:                  3px;
+    border:                         5px;
+    border-color:                   rgba(0,0,0,0.3);
+    border-radius:                  5px;
 }
+
 prompt {
     enabled: 						true;
-	padding: 						0.20% 1% 0% 0%;
+	padding: 						0.20% 1% 0% -0.5%;
 	background-color: 				transparent;
 	text-color: 					@background;
 	font:							"Fira Code Medium 13";
+
 }
 
 entry {
@@ -46,9 +50,10 @@ entry {
     placeholder-color:              @background;
     expand:                         true;
     horizontal-align:               0;
-    placeholder:                    "";
-    padding:                        0.30% 0% 0% 0%;
+    placeholder:                    "        ";
+    padding:                        0.20% 0% 0% 0%;
     blink:                          true;
+    
 }
 
 inputbar {
@@ -65,21 +70,24 @@ inputbar {
 
 listview {
     background-color:               transparent;
-    columns:                        2;
+    columns:                        3;
+    spacing:                        5px;
     cycle:                          true;
     dynamic:                        true;
-    layout:                         horizontal;
+    layout:                         vertical;
+    scrollbar:                      false;
 }
 
 mainbox {
     background-color:               transparent;
     children:                       [ inputbar, listview ];
+    
+
 }
 
-
 element {
-    background-color:               transparent;
-    orientation:                    horizontal;
+    background-color:               @active-background;
+    orientation:                    vertical;
     margin:                         0px 0px 0px 0px;
     padding:                        0% 0% 1% 0%;
     text-color:                     @background;
@@ -89,17 +97,16 @@ element {
     
 }
 #element.normal.normal {
-    background-color: transparent;
+    background-color: @active-background;
     text-color: @foreground;
 }
 
 #element.normal.active {
-    background-color: transparent;
-    text-color: @foreground;
+    background-color: @active-background;
+    text-color: @active-background;
 }
-
 #element.alternate.normal {
-    background-color: transparent;
+    background-color: @active-background;
     text-color: @foreground;
 }
 
@@ -113,35 +120,8 @@ element-text {
 }
 
 #element.selected.normal {
-    background-color: transparent;
+    background-color: @urgent-background;
     text-color: @background;
+    border: 3px;
     border-color: @selected-active-background;
-}
-element-icon {
-    background-color: 				transparent;
-    horizontal-align:               0.5;
-    vertical-align:                 0.1;
-    size:                           48px;
-}
-#element.alternate.normal {
-    background-color: transparent;
-    text-color: @foreground;
-}
-
-element-text {
-    background-color: 				transparent;
-    text-color:       				inherit;
-    expand:                         true;
-    horizontal-align:               0.5;
-    vertical-align:                 0.5;
-    margin:                         0.5% 0.5% -0.5% 0.5%;
-}
-
-element-text {
-    background-color: 				inherit;
-    text-color: 				    inherit;
-    expand:                         true;
-    horizontal-align:               0.5;
-    vertical-align:                 0.5;
-    margin:                         0.5% 0.5% -0.5% 0.5%;
 }

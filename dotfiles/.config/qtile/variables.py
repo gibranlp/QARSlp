@@ -19,7 +19,7 @@ from rofi import Rofi
 from qtile_extras import widget
 
 ### Variables ####
-ver = ' QARSlp v2.0.25-Beta' # Current version
+ver = ' QARSlp v2.0Beta' # Current version
 mod = "mod4" # Command / Windows key
 alt = "mod1" # Alt key                  
 term = "urxvt" # Terminal in use
@@ -28,32 +28,36 @@ prompt = "{0}@{1}: ".format(os.environ["USER"], socket.gethostname())
 
 #### Resolution fix ####
 main_font = "Fira Code Medium" # Font in use for the entire system
-fontsz = 20 #Font size for bars
-iconsz = 19 #Icon size for bars
-barsz = 27 # bar size
-bordwidth = [0,0,0,0] # bar borders
+fontsz = 22
+ #Font size for bars
+iconsz = 20 #Icon size for bars
 lfontsz = 17 # Layout font size
 lmargin = 10 # Layout margins
-lborderwd = 5 # Layout border width
+lborderwd = 4 # Layout border width
+
+#### Bars ####
+barsz = 32 # bar size
+bar_top_width = [0,0,0,0] # bar borders top
+bar_bot_width = [0,0,0,0] # bar borders top
+bar_opa = 1      
 
 #### Music / Media ####
 scrollchar = 50
 scrollint = 1
-scrollwint = 200
-
+scrollwint = 500
 ### Gaps
-
-
 #### Internet Chekup ####
 internet = ' Internet is working'
-
-
 #### Themes ####
 theme=['default', 'top_bar', 'bottom_bar', 'minimal', 'alpha', 'simple']
 backend = ["Wal", "Colorz", "Colorthief","Haishoku"]
 rofi_l = Rofi(rofi_args=['-theme', '~/.config/rofi/left_toolbar.rasi'])
 rofi_r = Rofi(rofi_args=['-theme', '~/.config/rofi/right_toolbar.rasi'])
-
+rofi_session = Rofi(rofi_args=['-theme', '~/.config/rofi/logout.rasi'])
+rofi_display = Rofi(rofi_args=['-theme', '~/.config/rofi/display.rasi'])
+rofi_network= Rofi(rofi_args=['-theme', '~/.config/rofi/network.rasi'])
+rofi_backend= Rofi(rofi_args=['-theme', '~/.config/rofi/backend.rasi'])
+rofi_websearch= Rofi(rofi_args=['-theme', '~/.config/rofi/websearch.rasi'])
 #### Resolution ####
 
 #### Weather ####

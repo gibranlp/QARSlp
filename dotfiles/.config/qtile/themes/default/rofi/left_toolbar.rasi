@@ -17,13 +17,13 @@ configuration {
 	hide-scrollbar: 				true;
 }
 
-@import "~/.cache/wal/colors-rofi-dark.rasi"
+@import "~/.cache/wal/colors-rofi-light.rasi"
 
 window {
-    margin:                         25px 0% 25px 0%;
+    margin:                         1px 0% 1px 0%;
     background-color:               transparent;
     text-color:                     @background;
-	height:							350px;
+	height:							250px;
 	width:							850px;
     location:                       center;
     x-offset:                       0;
@@ -53,12 +53,12 @@ entry {
 
 inputbar {
 	children: 						[ prompt, entry ];
-    background-color:               @selected-urgent-background;
+    background-color:               transparent;
     text-color:                     @background;
     expand:                         false;
     margin:                         0% 0% 0% 0%;
     padding:                        1.5%;
-    border:                         2px;
+    border:                         3px;
     border-color:                   @selected-active-background;
     border-radius:                  3px;
 }
@@ -83,11 +83,60 @@ element {
     margin:                         0px 0px 0px 0px;
     padding:                        0% 0% 1% 0%;
     text-color:                     @background;
-    border:                         5px;
+    border:                         3px;
     border-color:                   transparent;
     border-radius:                  3px;
     
 }
+#element.normal.normal {
+    background-color: transparent;
+    text-color: @foreground;
+}
+
+#element.normal.active {
+    background-color: transparent;
+    text-color: @foreground;
+}
+
+#element.alternate.normal {
+    background-color: transparent;
+    text-color: @foreground;
+}
+
+element-text {
+    background-color: 				transparent;
+    text-color:       				@foreground;
+    expand:                         true;
+    horizontal-align:               0.5;
+    vertical-align:                 0.5;
+    margin:                         0.5% 0.5% -0.5% 0.5%;
+}
+
+#element.selected.normal {
+    background-color: transparent;
+    text-color: @background;
+    border-color: @selected-active-background;
+}
+element-icon {
+    background-color: 				transparent;
+    horizontal-align:               0.5;
+    vertical-align:                 0.1;
+    size:                           48px;
+}
+#element.alternate.normal {
+    background-color: transparent;
+    text-color: @foreground;
+}
+
+element-text {
+    background-color: 				transparent;
+    text-color:       				inherit;
+    expand:                         true;
+    horizontal-align:               0.5;
+    vertical-align:                 0.5;
+    margin:                         0.5% 0.5% -0.5% 0.5%;
+}
+
 element-text {
     background-color: 				inherit;
     text-color: 				    inherit;
@@ -95,8 +144,4 @@ element-text {
     horizontal-align:               0.5;
     vertical-align:                 0.5;
     margin:                         0.5% 0.5% -0.5% 0.5%;
-}
-
-element-text selected {
-    text-color: @background;
 }

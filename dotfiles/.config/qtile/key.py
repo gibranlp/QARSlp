@@ -94,8 +94,8 @@ def init_keys():
             Key([mod], "space", lazy.next_layout()),
 
             #### Resize windows ####
-            Key([mod, "shift"], "Up", lazy.layout.grow()),
-            Key([mod, "shift"], "Down", lazy.layout.shrink()),
+            Key([mod, alt], "Up", lazy.layout.grow()),
+            Key([mod, alt], "Down", lazy.layout.shrink()),
             Key([mod, "shift"], "space", lazy.layout.flip()),
 
             ##### Change focus ####

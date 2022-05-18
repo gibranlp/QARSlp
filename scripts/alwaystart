@@ -9,7 +9,7 @@
 # MIT licence 
 # 
 pywalfox update &
-killall dunst &
+#killall dunst &
 picom --config ~/.config/picom/picom.conf &
 cp ~/.cache/wal/dunstrc ~/.config/dunst/dunstrc &
 wal -R -q &

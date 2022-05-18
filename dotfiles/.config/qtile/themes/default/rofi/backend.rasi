@@ -11,8 +11,8 @@
 
 configuration {
 	font:							"Fira Code Medium 13";
-    drun-display-format:            "{name}";
-    disable-history:                false;
+    drun-display-format:            "";
+    disable-history:                true;
     fullscreen:                     false;
 	hide-scrollbar: 				true;
 }
@@ -21,16 +21,16 @@ configuration {
 
 window {
     margin:                         1px 0% 1px 0%;
-    background-color:               transparent;
+    background-color:               rgba(0,0,0,0.1);
     text-color:                     @background;
-	height:							220px;
-	width:							650px;
+	height:							640px;
+	width:							430px;
     location:                       center;
     x-offset:                       0;
     y-offset:                       0;
-    border:                         3px;
-    border-color:                   transparent;
-    border-radius:                  3px;
+    border:                         5px;
+    border-color:                   rgba(0,0,0,0.3);
+    border-radius:                  5px;
 }
 prompt {
     enabled: 						true;
@@ -46,13 +46,13 @@ entry {
     placeholder-color:              @background;
     expand:                         true;
     horizontal-align:               0;
-    placeholder:                    "";
+    placeholder:                    "  Session";
     padding:                        0.30% 0% 0% 0%;
     blink:                          true;
 }
 
 inputbar {
-	children: 						[ prompt, entry ];
+	children: 						[ prompt];
     background-color:               transparent;
     text-color:                     @background;
     expand:                         false;
@@ -65,10 +65,11 @@ inputbar {
 
 listview {
     background-color:               transparent;
-    columns:                        2;
+    columns:                        1;
     cycle:                          true;
     dynamic:                        true;
-    layout:                         horizontal;
+    layout:                         vertical;
+    scrollbar:       				false;
 }
 
 mainbox {
@@ -78,8 +79,8 @@ mainbox {
 
 
 element {
-    background-color:               transparent;
-    orientation:                    horizontal;
+    background-color:               @active-background;
+    orientation:                    vertical;
     margin:                         0px 0px 0px 0px;
     padding:                        0% 0% 1% 0%;
     text-color:                     @background;
@@ -89,17 +90,17 @@ element {
     
 }
 #element.normal.normal {
-    background-color: transparent;
+    background-color: @active-background;
     text-color: @foreground;
 }
 
 #element.normal.active {
-    background-color: transparent;
+    background-color: @active-background;
     text-color: @foreground;
 }
 
 #element.alternate.normal {
-    background-color: transparent;
+    background-color: @active-background;
     text-color: @foreground;
 }
 
@@ -113,19 +114,9 @@ element-text {
 }
 
 #element.selected.normal {
-    background-color: transparent;
+    background-color: @urgent-background;
     text-color: @background;
     border-color: @selected-active-background;
-}
-element-icon {
-    background-color: 				transparent;
-    horizontal-align:               0.5;
-    vertical-align:                 0.1;
-    size:                           48px;
-}
-#element.alternate.normal {
-    background-color: transparent;
-    text-color: @foreground;
 }
 
 element-text {
