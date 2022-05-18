@@ -17,7 +17,7 @@ def init_widgets_top():
     widgets_top = [
                 #### Groups ####
                 widget.GroupBox(
-                    font='Font Awesome 5 Free Solid',
+                    font=awesome_font,
                     disable_drag=True,
                     hide_unused=False,
                     padding_x=6,
@@ -42,17 +42,26 @@ def init_widgets_top():
                        padding=10,
                        foreground=color[3],
                        ),
-                widget.TextBox(
-                    foreground=color[6],
+                 widget.Notify(
+                    fmt='  ',
+                    foreground=color[1],
                     fontshadow=color[0],
-                    padding=5,
-                    text=ver,
-                    ),
-                widget.WindowName(
-                    foreground=color[4],
+                    default_timeout=15,
+                    max_chars=5,
+                    action=False,
+                    foreground_low=color[1],
+                ),
+                widget.Notify(
+                    foreground=color[3],
                     fontshadow=color[0],
-                    padding=5,
-                    format='  {name}',
+                    default_timeout=15,
+                    max_chars=200,
+                    action=False,
+                    foreground_low=color[4],
+                ),
+                widget.Spacer(
+                    length=bar.STRETCH,
+                    foreground=color[0]
                     ),
                 widget.Sep(
                     foreground=color[1],
@@ -88,7 +97,7 @@ def init_widgets_top():
                 ),
                 #### Spotify ####
                 widget.TextBox(
-                    font='Font Awesome 5 Free Solid',
+                    font=awesome_font,
                     text=" ",
                     padding=5,
                     foreground=color[4],
@@ -99,7 +108,7 @@ def init_widgets_top():
                     name='ncspot',
                     objname='org.mpris.MediaPlayer2.ncspot',
                     scroll_chars=scrollchar,
-                    foreground=color[4],
+                    foreground=color[3],
                     fontshadow=color[0],
                     stop_pause_text='  ',
                     display_metadata=['xesam:title', 'xesam:artist'],
@@ -110,8 +119,8 @@ def init_widgets_top():
                     name='Spotify',
                     objname='org.mpris.MediaPlayer2.spotify',
                     scroll_chars=scrollchar,
-                    foreground=color[2],
-                    fontshadow=color[1],
+                    foreground=color[3],
+                    fontshadow=color[0],
                     stop_pause_text='  ',
                     display_metadata=['xesam:title', 'xesam:artist'],
                     scroll_interval=scrollint,
@@ -121,8 +130,8 @@ def init_widgets_top():
                     name='vlc',
                     objname='org.mpris.MediaPlayer2.vlc',
                     scroll_chars=scrollchar,
-                    foreground=color[6],
-                    fontshadow=color[4],
+                    foreground=color[3],
+                    fontshadow=color[0],
                     stop_pause_text='  ',
                     display_metadata=['xesam:title', 'xesam:artist'],
                     scroll_interval=scrollint,
@@ -180,7 +189,7 @@ def init_widgets_top():
                 ),
                 #### Updates ####\
                 widget.TextBox(
-                    font='Font Awesome 5 Free Solid',
+                    font=awesome_font,
                     foreground=color[3],
                     fontshadow=color[0],
                     text="  ",
@@ -209,7 +218,7 @@ def init_widgets_top():
                     fontshadow=[0]
                 ),
                 widget.TextBox(
-                    font='Font Awesome 5 Free Solid',
+                    font=awesome_font,
                     text="  ",
                     foreground=color[5],
                     fontshadow=color[0],
@@ -236,7 +245,7 @@ def init_widgets_top():
                     ),
                 #### Lock, Logout, Poweroff ####
                 widget.TextBox(
-                    font='Font Awesome 5 Free Solid',
+                    font=awesome_font,
                     foreground=color[4],
                     fontshadow=color[0],
                     text=" ",
@@ -250,7 +259,7 @@ def init_widgets_bott():
     widgets_bott = [
                 #### Shortcuts ####
                 widget.TextBox(
-                    font='Font Awesome 5 Free Solid',
+                    font=awesome_font,
                     text="  ",
                     padding=5,
                     mouse_callbacks={'Button1': lambda: qtile.cmd_spawn('rofi -theme "~/.config/rofi/launcher.rasi" -show drun')},
@@ -258,54 +267,52 @@ def init_widgets_bott():
                     fontsize=25
                     ),
                 widget.TextBox(
-                    font='Font Awesome 5 Free Solid',
+                    font=awesome_font,
                     foreground=color[4],
                     text=" ",
                     mouse_callbacks={'Button1':lambda: qtile.cmd_spawn('rofi  -theme "~/.config/rofi/filesfolders.rasi" -show find -modi find:~/.local/bin/finder')}
                     ),        
                 widget.TextBox(
-                    font='Font Awesome 5 Free Solid',
+                    font=awesome_font,
                     foreground=color[6],
                     text=" ",
                     mouse_callbacks={'Button1': lambda: qtile.cmd_spawn(term)}
                     ),
                 widget.TextBox(
-                    font='Font Awesome 5 Free Solid',
+                    font=awesome_font,
                     foreground=color[1],
                     text=" ",
                     mouse_callbacks={'Button1': lambda: qtile.cmd_spawn("thunar")}
                     ),
                 widget.TextBox(
-                    font='Font Awesome 5 Free Solid',
+                    font=awesome_font,
                     foreground=color[3],
                     text=" ",
                     mouse_callbacks={'Button1':lambda: qtile.cmd_function(set_rand_wallpaper)},
                 ),
                 widget.TextBox(
-                    font='Font Awesome 5 Free Solid',
+                    font=awesome_font,
                     foreground=color[8],
                     text=" ",
                     mouse_callbacks={'Button1':lambda: qtile.cmd_function(change_color_scheme)},
                 ),
                 widget.TextBox(
-                    font='Font Awesome 5 Free Solid',
+                    font=awesome_font,
                     foreground=color[6],
                     text=" ",
                     mouse_callbacks={'Button1': lambda: qtile.cmd_function(shortcuts)}
                     ),
-                #### Spacer ####
-                widget.Notify(
-                    foreground=color[3],
-                    fontshadow=color[0],
-                    default_timeout=15,
-                    max_chars=200,
-                    action=True,
-                    foreground_low=color[3],
+                 widget.Sep(
+                    foreground=color[4],
+                    linewidth=3,
                 ),
-                #### Spacer ####
-                widget.Spacer(
-                    length=bar.STRETCH,
-                    foreground=color[0]
+                widget.WindowName(
+                    foreground=color[4],
+                    fontshadow=color[0],
+                    padding=5,
+                    empty_group_string=ver,
+                    max_chars=120,
+                    format='  {name}',
                     ),
                 widget.Sep(
                     foreground=color[1],
@@ -334,12 +341,13 @@ def init_widgets_bott():
                  #   interface=wifi,
                  #   format=' {essid} {percent:2.0%} ',
                  #   disconnected_message='Unplugged',
-                 #   foreground=color[4],
+                 #   foreground=color[1],
+                 #   fontshadow=color[0],
                  #   mouse_callbacks={'Button1':lambda: qtile.cmd_function(network_widget)}
                 #    ),
                 widget.Net(
                     interface=wifi,
-                    format=' {down} ',
+                    format=' {down} ',
                     foreground=color[1],
                     fontshadow=color[0],
                     use_bits=True,
@@ -350,17 +358,21 @@ def init_widgets_bott():
                     linewidth=3,
                 ),
                 #### Weather ####
-                widget.TextBox(
-                    text='  ',
-                    foreground=color[2],
-                    fontshadow=color[0],
-                ),
                 widget.OpenWeather(
+                    app_key=w_appkey,
+                    cityid=w_cityid,
+                    foreground=color[5],
+                    fontshadow=color[0],
+                    format=' {icon} ',
+                    metric=True,
+                    update_interval=600
+                    ),
+               widget.OpenWeather(
                     app_key=w_appkey,
                     cityid=w_cityid,
                     foreground=color[2],
                     fontshadow=color[0],
-                    format='{location_city}: {main_temp}°{units_temperature} {humidity}% ',
+                    format='{location_city} {main_temp}°{units_temperature} {clouds_all}',
                     metric=True,
                     update_interval=600
                     ),
@@ -370,7 +382,7 @@ def init_widgets_bott():
                 ),
                 #### RAM ####
                 widget.TextBox(
-                    font='Font Awesome 5 Free Solid',
+                    font=awesome_font,
                     foreground=color[3],
                     fontshadow=color[0],
                     text="  "
@@ -387,7 +399,7 @@ def init_widgets_bott():
                 ),
                 #### CPU ####
                 widget.TextBox(
-                    font='Font Awesome 5 Free Solid',
+                    font=awesome_font,
                     foreground=color[4],
                     fontshadow=color[0],
                     text="  "
@@ -404,7 +416,7 @@ def init_widgets_bott():
                 ),
                 #### Disk Space ####
                 widget.TextBox(
-                    font='Font Awesome 5 Free Solid',
+                    font=awesome_font,
                     foreground=color[5],
                     fontshadow=color[0],
                     text="  "
@@ -427,7 +439,7 @@ def init_widgets_bott():
                 ),
                 #### Thermal Sensors ####
                 widget.TextBox(
-                    font='Font Awesome 5 Free Solid',
+                    font=awesome_font,
                     text="  ",
                     foreground=color[6],
                     fontshadow=color[0],
@@ -444,7 +456,7 @@ def init_widgets_bott():
                 ),
                 #### Keyboard Layout ####
                 widget.TextBox(
-                    font='Font Awesome 5 Free Solid',
+                    font=awesome_font,
                     text="  ",
                     foreground=color[7],
                     fontshadow=color[0],
@@ -488,17 +500,17 @@ def init_screens():
     return [
         Screen(
             top=bar.Bar(
-                background=color[0] + "90",
+                background=color[0] + transparency,
                 widgets=init_widgets_screen_top(),  
                 size=barsz,
-                border_color=color[5],
+                border_color=color[5]+ transparency,
                 border_width=bar_top_width,
                 opacity=bar_opa,
                 ),
             bottom=bar.Bar(
                 widgets=init_widgets_screen_bot(),
                 size=barsz,
-                border_color=color[5],
+                border_color=color[5]+ "90",
                 border_width=bar_bot_width,
                 opacity=bar_opa,
                 background=color[0] + "90",

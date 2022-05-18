@@ -2,7 +2,6 @@
 
 This is a Major version update.
 
-
 ### How to create a AUR package
 
 This is not close to be releasable software yet.

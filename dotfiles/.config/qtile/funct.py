@@ -306,8 +306,8 @@ def init_layout_theme():
             "border_width":lborderwd ,
             "border_normal":color[0],
             "border_focus":color[2],
-            "single_margin":0,
-            "single_border_width":0,
+            "single_margin":10,
+            "single_border_width":3,
            }
 
 layout_theme = init_layout_theme()
@@ -316,35 +316,19 @@ def init_layouts():
     return [
         layout.MonadTall(max_ratio=0.90,ratio=0.70,**layout_theme),
         layout.Matrix(**layout_theme),
-        #layout.Spiral(**layout_theme),
         #layout.Bsp(**layout_theme),
         #layout.Columns(**layout_theme),
         layout.MonadThreeCol(**layout_theme),
+        layout.Spiral(**layout_theme),
         #layout.RatioTile(**layout_theme),
         #layout.Slice(**layout_theme),
         #layout.Stack(**layout_theme),
         #layout.Tile(**layout_theme),
         #layout.VerticalTile(**layout_theme),
         #layout.Zoomy(**layout_theme),
-        layout.TreeTab(
-            sections = ["Tabs"],
-            section_fontsize=15,
-            bg_color=color[0],
-            active_bg=color[8],
-            active_fg=color[0],
-            inactive_bg=color[0],
-            inactive_fg=color[7],
-            padding_left = 0,
-            padding_x = 0,
-            padding_y = 5,
-            section_top = 10,
-            section_bottom = 20,
-            level_shift = 8,
-            vspace = 3,
-            panel_width = 250,
-            **layout_theme),
-        #layout.Floating(**layout_theme)
-            ]
+        #layout.TreeTab(sections = ["Tabs"],section_fontsize=lfontsz,bg_color=color[0] + transparency,active_bg=color[8],active_fg=color[0],inactive_bg=color[0],inactive_fg=color[7],padding_left=0,padding_x=0,padding_y=5,section_top=10,section_bottom=20,level_shift=8,vspace=3,panel_width=250,**layout_theme),
+        #layout.Floating(**layout_theme)            
+        ]
 
 floating_layout = layout.Floating(auto_float_rules=[
     Match(title='Confirmation'),  # tastyworks exit box
@@ -356,7 +340,6 @@ floating_layout = layout.Floating(auto_float_rules=[
     Match(wm_class='branchdialog'),
     Match(wm_class='pinentry'),
     Match(wm_class='ssh-askpass'),
-    Match(wm_class='Obconf')
-])
+    Match(wm_class='Obconf')])
 layouts = init_layouts()
 #### End layouts ####

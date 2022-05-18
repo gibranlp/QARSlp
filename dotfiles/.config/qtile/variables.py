@@ -28,18 +28,21 @@ prompt = "{0}@{1}: ".format(os.environ["USER"], socket.gethostname())
 
 #### Resolution fix ####
 main_font = "Fira Code Medium" # Font in use for the entire system
+awesome_font = "Font Awesome 6 Free Solid"
 fontsz = 22
  #Font size for bars
 iconsz = 20 #Icon size for bars
 lfontsz = 17 # Layout font size
 lmargin = 10 # Layout margins
-lborderwd = 4 # Layout border width
+lborderwd = 3 # Layout border width
 
 #### Bars ####
 barsz = 32 # bar size
-bar_top_width = [0,0,0,0] # bar borders top
-bar_bot_width = [0,0,0,0] # bar borders top
-bar_opa = 1      
+bar_top_width = [0,0,3,0] # bar borders top
+bar_bot_width = [3,0,0,0] # bar borders top
+bar_opa = 0.95  
+
+transparency = "95" #Overall Transparency
 
 #### Music / Media ####
 scrollchar = 50
