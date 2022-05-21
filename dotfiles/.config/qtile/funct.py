@@ -19,7 +19,7 @@ def start_once():
 
 @hook.subscribe.client_new
 def floating(window):
-    floating_types = ['notification', 'toolbar', 'splash', 'dialog','Nextcloud','Gcr-prompter','lxappearance','Pavucontrol','pavucontrol','_NET_WM_WINDOW_TYPE_NORMAL']
+    floating_types = ['notification', 'toolbar', 'splash', 'dialog','Nextcloud','Gcr-prompter','lxappearance','_NET_WM_WINDOW_TYPE_NORMAL']
     transient = window.window.get_wm_transient_for()
     if window.window.get_wm_type() in floating_types or transient:
         window.floating = True
@@ -255,17 +255,7 @@ def cfilex():
 group_names = ["1","2","3","4","5","6","7","8","9"]
 group_labels=["","","","","","","","",""]
 group_layouts=["monadtall", "monadtall", "matrix","monadtall", "monadtall", "monadtall","monadtall", "monadtall", "monadtall"]
-group_matches=[
-    [Match(wm_class=['gnome-disks','Gnome-disks','anydesk','Anydesk', 'notion-app-enhanced'])],
-    [Match(wm_class=['Zoom','zoom', 'Thunderbird', 'thunderbird','transmission-gtk','Transmission-gtk', 'Simplenote', 'filezilla', 'Filezilla', 'QOwnNotes'])],
-    [Match(wm_class=['whatsdesk','telegram-desktop-bin', 'TelegramDesktop', 'Discord', 'discord', 'slack', 'ferdi', 'Slack', 'Ferdi'])],
-    [Match(wm_class=['firefox', 'google-chrome', 'Google-chrome'])],
-    [Match(wm_class=['Code', 'code'])],
-    [Match(wm_class=['Gimp-2.10','Inkscape','Evince', 'libreoffice','Com.github.phase1geo.minder', 'libreoffice-writer', 'libreoffice-calc', 'libreoffice-impress', 'libreoffice-draw', 'libreoffice-calc'])],
-    [Match(wm_class=['Spotify', 'spotify'])],
-    [Match(wm_class=['VirtualBox Manager', 'VirtualBox Machine', 'Steam', 'steam'])],
-    [Match(wm_class=['steam_app_275850'])],
-]
+group_matches=[[Match(wm_class=[])],[Match(wm_class=[])],[Match(wm_class=[])],[Match(wm_class=[])],[Match(wm_class=[])],[Match(wm_class=[])],[Match(wm_class=[])],[Match(wm_class=[])],[Match(wm_class=[])],]
 groups = []
 
 @hook.subscribe.client_new
@@ -277,14 +267,14 @@ def follow_window(client):
             targetgroup.cmd_toscreen(toggle=False)
             break
 
-# @hook.subscribe.client_name_updated
-# def follow_window_name(client):
-#    for group in groups:
-#        match = next((m for m in group.matches if m.compare(client)), None)
-#        if match:
-#            targetgroup = qtile.groups_map[group.name]
-#            targetgroup.cmd_toscreen(toggle=False)
-#            break
+@hook.subscribe.client_name_updated
+def follow_window_name(client):
+    for group in groups:
+        match = next((m for m in group.matches if m.compare(client)), None)
+        if match:
+            targetgroup = qtile.groups_map[group.name]
+            targetgroup.cmd_toscreen(toggle=False)
+            break
 
 for i in range(len(group_names)):
     groups.append(

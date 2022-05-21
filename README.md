@@ -11,4 +11,8 @@ This is not close to be releasable software yet.
 
 - Making a Variables file for simpler configuration
 - Changed Rofi widgets
-- 
+
+
+- **Picom** now restarts with qtile everytime
+
+- Wallpaper and colors are changed in every **Login**

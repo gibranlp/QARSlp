@@ -227,7 +227,7 @@ def init_widgets_top():
                     ),
                 widget.ALSAWidget(
                     device='Master',
-                    bar_colour_high="#FFA500",
+                    bar_colour_high=color[6],
                     bar_colour_loud="#FF0000",
                     bar_colour_normal=color[4],
                     bar_colour_mute=color[1],
@@ -503,17 +503,17 @@ def init_screens():
                 background=color[0] + transparency,
                 widgets=init_widgets_screen_top(),  
                 size=barsz,
-                border_color=color[5]+ transparency,
+                border_color=color[1]+ transparency,
                 border_width=bar_top_width,
                 opacity=bar_opa,
                 ),
             bottom=bar.Bar(
                 widgets=init_widgets_screen_bot(),
                 size=barsz,
-                border_color=color[5]+ "90",
+                border_color=color[1]+ transparency,
                 border_width=bar_bot_width,
                 opacity=bar_opa,
-                background=color[0] + "90",
+                background=color[0] + transparency,
                 )
         ),
         Screen()

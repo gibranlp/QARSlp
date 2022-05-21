@@ -10,6 +10,6 @@
 # 
 pywalfox update &
 #killall dunst &
-picom --config ~/.config/picom/picom.conf &
-cp ~/.cache/wal/dunstrc ~/.config/dunst/dunstrc &
+#cp ~/.cache/wal/dunstrc ~/.config/dunst/dunstrc &
+picom &
 wal -R -q &

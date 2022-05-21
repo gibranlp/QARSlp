@@ -9,7 +9,7 @@
 # MIT licence 
 #
 
-picom --config ~/.config/picom/picom.conf &
+killall picom &
 pywalfox update &
 #killall dunst &
 numlockx on &
@@ -17,5 +17,6 @@ owncloud &
 caffeine &
 kdeconnect-indicator &
 blueman-applet &
-wal -R -q &
+picom --config ~/.config/picom/picom.conf &
+~/.local/bin/genwal
 
