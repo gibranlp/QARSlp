@@ -16,3 +16,5 @@ This is not close to be releasable software yet.
 - **Picom** now restarts with qtile everytime
 
 - Wallpaper and colors are changed in every **Login**
+- Added Deepin Screenshot for advanced screeshots
+- 

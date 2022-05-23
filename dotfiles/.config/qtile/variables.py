@@ -61,6 +61,7 @@ rofi_display = Rofi(rofi_args=['-theme', '~/.config/rofi/display.rasi'])
 rofi_network= Rofi(rofi_args=['-theme', '~/.config/rofi/network.rasi'])
 rofi_backend= Rofi(rofi_args=['-theme', '~/.config/rofi/backend.rasi'])
 rofi_websearch= Rofi(rofi_args=['-theme', '~/.config/rofi/websearch.rasi'])
+rofi_screenshot= Rofi(rofi_args=['-theme', '~/.config/rofi/screenshot.rasi'])
 #### Resolution ####
 
 #### Weather ####

@@ -54,7 +54,7 @@ function i_pip(){
 
 function i_aur () {
   packets=(
-    'p7zip' 'unrar' 'rxvt-unicode' 'wpgtk-git' 'nbfc' 'ncspot' 'qtile-extras-git' 'visual-studio-code-bin' 'thunar-custom-actions' 'thunar-volman' 'thunar-archive-plugin-git' 'thunar-extended' 'thunar-shares-plugin-git' 'picom-ibhagwan-gitxxxx'
+    'p7zip' 'unrar' 'rxvt-unicode' 'wpgtk-git' 'nbfc' 'ncspot' 'qtile-extras-git' 'visual-studio-code-bin' 'thunar-custom-actions' 'thunar-volman' 'thunar-archive-plugin-git' 'thunar-extended' 'thunar-shares-plugin-git' 'picom-ibhagwan-gitxxxx' 'deepin-screenshot'
 
 )
 
