@@ -124,7 +124,7 @@ def set_rand_wallpaper(qtile):
 #### Functions for Widgets ####
 #### Display Shortcuts widget
 def shortcuts(qtile):
-    subprocess.run("cat ~/.shortcuts | rofi -theme '~/.config/rofi/left_toolbar.rasi' -i -dmenu -p ' Shortcuts:'",shell=True)
+    subprocess.run("cat ~/.shortcuts | rofi -theme '~/.config/rofi/shortcuts.rasi' -i -dmenu -p ' Shortcuts:'",shell=True)
 
 #### Logout widget
 def session_widget(qtile):

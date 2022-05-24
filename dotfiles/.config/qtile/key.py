@@ -24,7 +24,7 @@ def init_keys():
             Key([mod], "Escape", lazy.spawn('xkill')), # Click window to close
             
             #### Widgets ####
-            Key([mod],"h",lazy.function(shortcuts)), # Sohomertcurts widget
+            Key([mod],"h",lazy.function(shortcuts)), # Shortcuts widget
             Key([mod],"f",lazy.spawn(home + '/.local/bin/wsearch')), # WEB Search
             Key([mod],"x",lazy.function(session_widget)), # Log out
             Key([mod],"n",lazy.function(network_widget)), # Network Settings

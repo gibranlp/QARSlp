@@ -17,33 +17,33 @@ configuration {
 	hide-scrollbar: 				true;
 }
 
-@import "~/.cache/wal/colors-rofi-light.rasi"
+@import "~/.cache/wal/colors-rofi-dark.rasi"
 
 window {
     margin:                         1px 0% 1px 0%;
-    background-color:               rgba(0,0,0,0.1);
+    background-color:               rgba(0,0,0,0.3);
     text-color:                     @background;
 	height:							380px;
 	width:							320px;
     location:                       center;
     x-offset:                       0;
     y-offset:                       0;
-    border:                         5px;
-    border-color:                   rgba(0,0,0,0.3);
+    border:                         3px;
+    border-color:                   rgba(0,0,0,0.5);
     border-radius:                  5px;
 }
 prompt {
     enabled: 						true;
 	padding: 						0.20% 1% 0% 0%;
 	background-color: 				transparent;
-	text-color: 					@background;
+	text-color: 					@foreground;
 	font:							"Fira Code Medium 13";
 }
 
 entry {
     background-color:               transparent;
-    text-color:                     @background;
-    placeholder-color:              @background;
+    text-color:                     @foreground;
+    placeholder-color:              @active-background;
     expand:                         true;
     horizontal-align:               0;
     placeholder:                    "  Session";
@@ -89,18 +89,18 @@ element {
     border-radius:                  3px;
     
 }
-#element.normal.normal {
+element.normal.normal {
+    background-color: transparent;
+    text-color: @foreground;
+}
+
+element.normal.active {
     background-color: @active-background;
     text-color: @foreground;
 }
 
-#element.normal.active {
-    background-color: @active-background;
-    text-color: @foreground;
-}
-
-#element.alternate.normal {
-    background-color: @active-background;
+element.alternate.normal {
+    background-color: transparent;
     text-color: @foreground;
 }
 
@@ -113,10 +113,9 @@ element-text {
     margin:                         0.5% 0.5% -0.5% 0.5%;
 }
 
-#element.selected.normal {
-    background-color: @urgent-background;
+element.selected.normal {
+    background-color: @active-background;
     text-color: @background;
-    border-color: @selected-active-background;
 }
 
 element-text {
@@ -128,11 +127,3 @@ element-text {
     margin:                         0.5% 0.5% -0.5% 0.5%;
 }
 
-element-text {
-    background-color: 				inherit;
-    text-color: 				    inherit;
-    expand:                         true;
-    horizontal-align:               0.5;
-    vertical-align:                 0.5;
-    margin:                         0.5% 0.5% -0.5% 0.5%;
-}

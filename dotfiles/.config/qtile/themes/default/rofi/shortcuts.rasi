@@ -11,7 +11,7 @@
 
 configuration {
 	font:							"Fira Code Medium 13";
-    show-icons:                     true;
+    show-icons:                     false;
 	icon-theme: 					"Buuf";
     display-drun: 					"";
     drun-display-format:            "{name}";
@@ -25,8 +25,8 @@ window {
     margin:                         1px 0% 1px 0%;
     background-color:               rgba(0,0,0,0.3);
     text-color:                     @background;
-	height:							480px;
-	width:							700px;
+	height:							800px;
+	width:							800px;
     location:                       center;
     x-offset:                       0;
     y-offset:                       0;
@@ -46,12 +46,12 @@ prompt {
 
 entry {
     background-color:               transparent;
-    text-color:                     @foreground;
-    placeholder-color:              @selected-urgent-background;
+    text-color:                     @forebackground;
+    placeholder-color:              @active-background;
     expand:                         true;
     horizontal-align:               0;
-    placeholder:                    "Software Launcher";
-    padding:                        0.30% 0% 0% 0%;
+    placeholder:                    "Search";
+    padding:                        0.20% 0% 0% 0%;
     blink:                          true;
     
 }
@@ -59,7 +59,7 @@ entry {
 inputbar {
 	children: 						[ prompt, entry ];
     background-color:               transparent;
-    text-color:                     @foreground;
+    text-color:                     @active-background;
     expand:                         false;
     margin:                         0% 0% 0% 0%;
     padding:                        1.5%;
@@ -70,7 +70,7 @@ inputbar {
 
 listview {
     background-color:               transparent;
-    columns:                        3;
+    columns:                        1;
     spacing:                        5px;
     cycle:                          true;
     dynamic:                        true;
@@ -110,26 +110,16 @@ element.alternate.normal {
     text-color: @foreground;
 }
 
-element-icon {
-    background-color: 				transparent;
-    horizontal-align:               0.5;
-    vertical-align:                 0.1;
-    size:                           48px;
-}
 element-text {
     background-color: 				transparent;
+    text-color:       				@foreground;
     expand:                         true;
     horizontal-align:               0.5;
     vertical-align:                 0.5;
     margin:                         0.5% 0.5% -0.5% 0.5%;
-    text-color:                     @foreground;
 }
 
 element.selected.normal {
-    background-color: @active-background;
-    text-color: @background;
-}
-element.selected.active {
-    background-color: @active-background;
+    background-color: @urgent-background;
     text-color: @background;
 }
