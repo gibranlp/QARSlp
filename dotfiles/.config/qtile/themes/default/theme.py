@@ -43,7 +43,7 @@ def init_widgets_top():
                        foreground=color[3],
                        ),
                  widget.Notify(
-                    fmt='  ',
+                    fmt=' ℹ ',
                     foreground=color[1],
                     fontshadow=color[0],
                     default_timeout=15,
@@ -98,7 +98,7 @@ def init_widgets_top():
                 #### Spotify ####
                 widget.TextBox(
                     font=awesome_font,
-                    text=" ",
+                    text="  ",
                     padding=5,
                     foreground=color[4],
                     fontshadow=color[1],
@@ -138,21 +138,21 @@ def init_widgets_top():
                     scroll_wait_intervals=scrollwint,
                     ),
                 widget.TextBox(
-                    foreground=color[1],
+                    foreground=color[3],
                     fontshadow=color[4],
-                    text=" ",
+                    text=" ⏪",
                     mouse_callbacks={'Button1':lambda: qtile.cmd_function(prev)},
                     ),
                 widget.TextBox(
                     foreground=color[4],
                     fontshadow=color[1],
-                    text="",
+                    text="⏸",
                     mouse_callbacks={'Button1':lambda: qtile.cmd_function(play_pause)},
                     ),
                 widget.TextBox(
-                    foreground=color[1],
+                    foreground=color[3],
                     fontshadow=color[4],
-                    text=" ",
+                    text="⏩ ",
                     mouse_callbacks={'Button1':lambda: qtile.cmd_function(nexts)},
                     ),           
                 #### Layouts ####
@@ -167,8 +167,8 @@ def init_widgets_top():
                     ),
                 #### Pomodoro ####
                 widget.WidgetBox(
-                    text_closed='  ',
-                    text_open='  ',
+                    text_closed='  ',
+                    text_open='  ',
                     foreground=color[6],
                     fontshadow=color[0],
                     widgets=[widget.Pomodoro(
@@ -248,7 +248,7 @@ def init_widgets_top():
                     font=awesome_font,
                     foreground=color[4],
                     fontshadow=color[0],
-                    text=" ",
+                    text=" ",
                     mouse_callbacks={'Button1': lambda: qtile.cmd_function(session_widget)}
                     ),
     ]
@@ -260,7 +260,7 @@ def init_widgets_bott():
                 #### Shortcuts ####
                 widget.TextBox(
                     font=awesome_font,
-                    text="  ",
+                    text="  ",
                     padding=5,
                     mouse_callbacks={'Button1': lambda: qtile.cmd_spawn('rofi -theme "~/.config/rofi/launcher.rasi" -show drun')},
                     foreground=color[7],
@@ -269,13 +269,13 @@ def init_widgets_bott():
                 widget.TextBox(
                     font=awesome_font,
                     foreground=color[4],
-                    text=" ",
+                    text="⚲ ",
                     mouse_callbacks={'Button1':lambda: qtile.cmd_spawn('rofi  -theme "~/.config/rofi/filesfolders.rasi" -show find -modi find:~/.local/bin/finder')}
                     ),        
                 widget.TextBox(
                     font=awesome_font,
                     foreground=color[6],
-                    text=" ",
+                    text=" ",
                     mouse_callbacks={'Button1': lambda: qtile.cmd_spawn(term)}
                     ),
                 widget.TextBox(
@@ -299,7 +299,7 @@ def init_widgets_bott():
                 widget.TextBox(
                     font=awesome_font,
                     foreground=color[6],
-                    text=" ",
+                    text="ℹ ",
                     mouse_callbacks={'Button1': lambda: qtile.cmd_function(shortcuts)}
                     ),
                  widget.Sep(
@@ -347,7 +347,7 @@ def init_widgets_bott():
                 #    ),
                 widget.Net(
                     interface=wifi,
-                    format=' {down} ',
+                    format=' {down} ',
                     foreground=color[1],
                     fontshadow=color[0],
                     use_bits=True,
@@ -402,7 +402,7 @@ def init_widgets_bott():
                     font=awesome_font,
                     foreground=color[4],
                     fontshadow=color[0],
-                    text="  "
+                    text="  "
                     ),
                 widget.CPU(
                     format='{load_percent}% ',
@@ -419,7 +419,7 @@ def init_widgets_bott():
                     font=awesome_font,
                     foreground=color[5],
                     fontshadow=color[0],
-                    text="  "
+                    text=" 🖪 "
                     ),
                 widget.DF(
                     format='{p} ({uf}{m}|{r:.0f}%)',
@@ -440,7 +440,7 @@ def init_widgets_bott():
                 #### Thermal Sensors ####
                 widget.TextBox(
                     font=awesome_font,
-                    text="  ",
+                    text="  ",
                     foreground=color[6],
                     fontshadow=color[0],
                     ),

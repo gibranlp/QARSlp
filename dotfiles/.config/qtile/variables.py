@@ -28,7 +28,7 @@ prompt = "{0}@{1}: ".format(os.environ["USER"], socket.gethostname())
 
 #### Resolution fix ####
 main_font = "Fira Code Medium" # Font in use for the entire system
-awesome_font = "Font Awesome 6 Free Solid"
+awesome_font = "Font Awesome 6 Pro Solid"
 fontsz = 22
  #Font size for bars
 iconsz = 20 #Icon size for bars

@@ -129,7 +129,7 @@ def shortcuts(qtile):
 #### Logout widget
 def session_widget(qtile):
     options = [' Poweroff',' Log Out', ' Reboot',' Lock']
-    index, key = rofi_session.select('  Session', options)
+    index, key = rofi_session.select('  Session', options)
     if key == -1:
         rofi_session.close()
     else:
@@ -255,7 +255,7 @@ def cfilex():
 
 ##### Groups #####
 group_names = ["1","2","3","4","5","6","7","8","9"]
-group_labels=["","","","","","","","",""]
+group_labels=["","✉","","","","","","",""]
 group_layouts=["monadtall", "monadtall", "matrix","monadtall", "monadtall", "monadtall","monadtall", "monadtall", "monadtall"]
 group_matches=[[Match(wm_class=[])],[Match(wm_class=[])],[Match(wm_class=[])],[Match(wm_class=[])],[Match(wm_class=[])],[Match(wm_class=[])],[Match(wm_class=[])],[Match(wm_class=[])],[Match(wm_class=[])],]
 groups = []
