@@ -140,7 +140,7 @@ def init_widgets_top():
                 widget.TextBox(
                     foreground=color[3],
                     fontshadow=color[4],
-                    text=" ⏪",
+                    text=" ",
                     mouse_callbacks={'Button1':lambda: qtile.cmd_function(prev)},
                     ),
                 widget.TextBox(
@@ -152,7 +152,7 @@ def init_widgets_top():
                 widget.TextBox(
                     foreground=color[3],
                     fontshadow=color[4],
-                    text="⏩ ",
+                    text=" ",
                     mouse_callbacks={'Button1':lambda: qtile.cmd_function(nexts)},
                     ),           
                 #### Layouts ####
@@ -167,7 +167,7 @@ def init_widgets_top():
                     ),
                 #### Pomodoro ####
                 widget.WidgetBox(
-                    text_closed='  ',
+                    text_closed='  ',
                     text_open='  ',
                     foreground=color[6],
                     fontshadow=color[0],
@@ -260,7 +260,7 @@ def init_widgets_bott():
                 #### Shortcuts ####
                 widget.TextBox(
                     font=awesome_font,
-                    text="  ",
+                    text="  ",
                     padding=5,
                     mouse_callbacks={'Button1': lambda: qtile.cmd_spawn('rofi -theme "~/.config/rofi/launcher.rasi" -show drun')},
                     foreground=color[7],
@@ -320,31 +320,31 @@ def init_widgets_bott():
                 ),
                 #### Network ####
                 widget.WidgetBox(
-                    text_closed=wifi_icon,
+                    text_closed=" " + wifi_icon,
                     text_open='  ',
                     foreground=color[1],
                     fontshadow=color[0],
                     widgets=[widget.TextBox(
-                        text='  '+private_ip,
+                        text='  '+private_ip,
                         foreground=color[8],
                         fontshadow=color[0],
                         mouse_callbacks={'Button1':lambda: qtile.cmd_function(network_widget)}
                         ),
                         widget.TextBox(
-                        text='  '+public_ip,
+                        text='  '+public_ip + wifi_icon,
                         foreground=color[1],
                         fontshadow=color[0],
                         mouse_callbacks={'Button1':lambda: qtile.cmd_function(network_widget)}
                         ),]
                 ),
-                #widget.Wlan(
-                 #   interface=wifi,
-                 #   format=' {essid} {percent:2.0%} ',
-                 #   disconnected_message='Unplugged',
-                 #   foreground=color[1],
-                 #   fontshadow=color[0],
-                 #   mouse_callbacks={'Button1':lambda: qtile.cmd_function(network_widget)}
-                #    ),
+                widget.Wlan(
+                    interface=wifi,
+                    format=' {essid} {percent:2.0%} ',
+                    disconnected_message='Unplugged',
+                    foreground=color[1],
+                    fontshadow=color[0],
+                    mouse_callbacks={'Button1':lambda: qtile.cmd_function(network_widget)}
+                    ),
                 widget.Net(
                     interface=wifi,
                     format=' {down} ',
@@ -361,8 +361,29 @@ def init_widgets_bott():
                 widget.OpenWeather(
                     app_key=w_appkey,
                     cityid=w_cityid,
-                    foreground=color[5],
-                    fontshadow=color[0],
+                    weather_symbols = {
+                        "Unknown": "✨",
+                        "01d": "☀",
+                        "01n": "🌕",
+                        "02d": "⛅",
+                        "02n": "☁",
+                        "03d": "🌥️",
+                        "03n": "☁️",
+                        "04d": "☁️",
+                        "04n": "☁️",
+                        "09d": "⛆",
+                        "09n": "⛆",
+                        "10d": "⛈",
+                        "10n": "⛈",
+                        "11d": "🌩",
+                        "11n": "🌩",
+                        "13d": "❄",
+                        "13n": "❄",
+                        "50d": "🌫",
+                        "50n": "🌫",
+                    },
+                    foreground=color[1],
+                    fontshadow=color[7],
                     format=' {icon} ',
                     metric=True,
                     update_interval=600
@@ -372,7 +393,7 @@ def init_widgets_bott():
                     cityid=w_cityid,
                     foreground=color[2],
                     fontshadow=color[0],
-                    format='{location_city} {main_temp}°{units_temperature} {clouds_all}',
+                    format='{main_temp}°{units_temperature},  {location_city}',
                     metric=True,
                     update_interval=600
                     ),
@@ -419,7 +440,7 @@ def init_widgets_bott():
                     font=awesome_font,
                     foreground=color[5],
                     fontshadow=color[0],
-                    text=" 🖪 "
+                    text="  "
                     ),
                 widget.DF(
                     format='{p} ({uf}{m}|{r:.0f}%)',

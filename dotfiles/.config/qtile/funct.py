@@ -24,9 +24,6 @@ def floating(window):
     if window.window.get_wm_type() in floating_types or transient:
         window.floating = True
 
-
-#### Functions ####
-
 #### Import Used Network Interface ####
 def get_net_dev():
     get_dev = "ip addr show | awk '/inet.*brd/{print $NF; exit}'"
@@ -60,7 +57,7 @@ def get_public_ip():
 public_ip = get_public_ip()
 
 if public_ip.startswith('0'):
-    internet = "No internet connection"
+    internet = "∅ No internet connection"
 
 ###### Import Battery for Laptops
 def get_bat():
@@ -255,7 +252,7 @@ def cfilex():
 
 ##### Groups #####
 group_names = ["1","2","3","4","5","6","7","8","9"]
-group_labels=["","✉","","","","","","",""]
+group_labels=["","✉","","","","","","",""]
 group_layouts=["monadtall", "monadtall", "matrix","monadtall", "monadtall", "monadtall","monadtall", "monadtall", "monadtall"]
 group_matches=[[Match(wm_class=[])],[Match(wm_class=[])],[Match(wm_class=[])],[Match(wm_class=[])],[Match(wm_class=[])],[Match(wm_class=[])],[Match(wm_class=[])],[Match(wm_class=[])],[Match(wm_class=[])],]
 groups = []

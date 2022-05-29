@@ -19,12 +19,12 @@ from rofi import Rofi
 from qtile_extras import widget
 
 ### Variables ####
-ver = ' QARSlp v2.0Beta' # Current version
+ver = ' QARSlp v2.1.34Beta' # Current version
 mod = "mod4" # Command / Windows key
 alt = "mod1" # Alt key                  
 term = "urxvt" # Terminal in use
 home = os.path.expanduser('~')
-prompt = "{0}@{1}: ".format(os.environ["USER"], socket.gethostname())
+prompt = ":".format(os.environ["USER"], socket.gethostname())
 
 #### Resolution fix ####
 main_font = "Fira Code Medium" # Font in use for the entire system
@@ -34,13 +34,13 @@ fontsz = 22
 iconsz = 20 #Icon size for bars
 lfontsz = 17 # Layout font size
 lmargin = 7 # Layout margins
-lborderwd = 0 # Layout border width
+lborderwd = 3 # Layout border width
 
 #### Bars ####
 barsz = 32 # bar size
 bar_top_width = [0,0,0,0] # bar borders top
 bar_bot_width = [0,0,0,0] # bar borders top
-bar_opa = 0.90
+bar_opa = 0.99
 
 transparency = "95" #Overall Transparency
 
