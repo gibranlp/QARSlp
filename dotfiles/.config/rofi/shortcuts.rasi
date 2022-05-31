@@ -24,7 +24,7 @@ configuration {
 window {
     margin:                         1px 0% 1px 0%;
     background-color:               rgba(0,0,0,0.2);
-    text-color:                     @background;
+    text-color:                     @foreground;
 	height:							800px;
 	width:							800px;
     location:                       center;
@@ -46,7 +46,7 @@ prompt {
 
 entry {
     background-color:               transparent;
-    text-color:                     @forebackground;
+    text-color:                     @foreground;
     placeholder-color:              @active-background;
     expand:                         true;
     horizontal-align:               0;

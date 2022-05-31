@@ -16,6 +16,7 @@ configuration {
     fullscreen:                     false;
 	hide-scrollbar: 				true;
     text-color:                     @foreground;
+    
 }
 
 @import "~/.cache/wal/colors-rofi-dark.rasi"
@@ -44,7 +45,7 @@ prompt {
     enabled: 						true;
 	padding: 						0.20% 1% 0% 0%;
 	background-color: 				transparent;
-	text-color: 					@foregroud;
+	text-color: 					@foreground;
 	font:							"Fira Code Medium 13";
 }
 
@@ -57,6 +58,7 @@ entry {
     placeholder:                    "  Session";
     padding:                        0.30% 0% 0% 0%;
     blink:                          true;
+   
 }
 
 inputbar {

@@ -27,12 +27,12 @@ function main() {
 
   while ! all_outputs_configured && (( $iteration <= $max_iteration )); do
     if (( iteration++ )); then
-      select_output ' Next Screen' 'unconfigured' | read output
+      select_output ' Next Screen' 'unconfigured' | read output
       select_position "${output}" | read position
       [[ "${position}" != '--off' ]] && select_mode "${output}" | read mode
       OUTPUT_CONFIGURED[${output}]='true'
     else
-      select_output '  Main Screen' 'all' | read output
+      select_output '  Main Screen' 'all' | read output
       select_mode "${output}" | read mode
       OUTPUT_CONFIGURED[${output}]='true'
       position='--primary'

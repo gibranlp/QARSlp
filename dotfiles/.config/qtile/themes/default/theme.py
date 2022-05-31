@@ -45,7 +45,7 @@ def init_widgets_top():
                        foreground=color[3],
                        ),
                  widget.Notify(
-                    fmt=' ℹ ',
+                    fmt='  ',
                     foreground=color[1],
                     fontshadow=color[0],
                     default_timeout=15,
@@ -212,9 +212,9 @@ def init_widgets_top():
                   widget.UPowerWidget(
                     border_charge_colour=color[4],
                     border_colour=color[4],
-                    border_critical_colour='cc0000',
-                    fill_critical='cc0000',
-                    fill_low='aa00aa',
+                    border_critical_colour='#cc0000',
+                    fill_critical='#cc0000',
+                    fill_low='#FF5511',
                     fill_normal=color[4],
                     font_colour=color[4],
                     fontshadow=[0]
@@ -263,7 +263,7 @@ def init_widgets_bott():
                 #### Shortcuts ####
                 widget.TextBox(
                     font=awesome_font,
-                    text="  ",
+                    text="  ",
                     padding=5,
                     mouse_callbacks={'Button1': lambda: qtile.cmd_spawn('rofi -theme "~/.config/rofi/launcher.rasi" -show drun')},
                     foreground=color[7],
@@ -310,12 +310,12 @@ def init_widgets_bott():
                     linewidth=3,
                 ),
                 widget.WindowName(
-                    foreground=color[4],
+                    foreground=color[3],
                     fontshadow=color[0],
                     padding=5,
                     empty_group_string=ver,
                     max_chars=120,
-                    format='  {name}',
+                    format='  {name}',
                     ),
                 widget.Sep(
                     foreground=color[1],
