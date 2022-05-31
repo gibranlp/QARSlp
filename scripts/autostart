@@ -11,12 +11,10 @@
 
 killall picom &
 pywalfox update &
-#killall dunst &
 numlockx on &
 owncloud &
 caffeine &
 kdeconnect-indicator &
 blueman-applet &
-picom --config ~/.config/picom/picom.conf &
-~/.local/bin/genwal
+picom &
 

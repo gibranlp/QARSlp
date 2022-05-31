@@ -11,22 +11,20 @@
 
 configuration {
 	font:							"Fira Code Medium 13";
-    show-icons:                     false;
-	icon-theme: 					"Buuf";
-    display-drun: 					"";
-    drun-display-format:            "{name}";
-    disable-history:                false;
-	sidebar-mode: 					false;
+    drun-display-format:            "";
+    disable-history:                true;
+    fullscreen:                     false;
+	hide-scrollbar: 				true;
 }
 
 @import "~/.cache/wal/colors-rofi-dark.rasi"
 
 window {
     margin:                         1px 0% 1px 0%;
-    background-color:               rgba(0,0,0,0.3);
+    background-color:               rgba(0,0,0,0.2);
     text-color:                     @background;
-	height:							680px;
-	width:							800px;
+	height:							480px;
+	width:							430px;
     location:                       center;
     x-offset:                       0;
     y-offset:                       0;
@@ -34,30 +32,27 @@ window {
     border-color:                   rgba(0,0,0,0.5);
     border-radius:                  5px;
 }
-
 prompt {
     enabled: 						true;
-	padding: 						0.20% 1% 0% -0.5%;
+	padding: 						0.20% 1% 0% 0%;
 	background-color: 				transparent;
 	text-color: 					@foreground;
 	font:							"Fira Code Medium 13";
-
 }
 
 entry {
     background-color:               transparent;
-    text-color:                     @forebackground;
+    text-color:                     @foreground;
     placeholder-color:              @active-background;
     expand:                         true;
     horizontal-align:               0;
-    placeholder:                    "Files & Folders";
-    padding:                        0.20% 0% 0% 0%;
+    placeholder:                    "  Session";
+    padding:                        0.30% 0% 0% 0%;
     blink:                          true;
-    
 }
 
 inputbar {
-	children: 						[ prompt, entry ];
+	children: 						[ prompt];
     background-color:               transparent;
     text-color:                     @background;
     expand:                         false;
@@ -71,19 +66,17 @@ inputbar {
 listview {
     background-color:               transparent;
     columns:                        1;
-    spacing:                        5px;
     cycle:                          true;
     dynamic:                        true;
     layout:                         vertical;
-    scrollbar:                      false;
+    scrollbar:       				false;
 }
 
 mainbox {
     background-color:               transparent;
     children:                       [ inputbar, listview ];
-    
-
 }
+
 
 element {
     background-color:               @active-background;
@@ -103,8 +96,9 @@ element.normal.normal {
 
 element.normal.active {
     background-color: @active-background;
-    text-color: @active-background;
+    text-color: @foreground;
 }
+
 element.alternate.normal {
     background-color: transparent;
     text-color: @foreground;
@@ -120,6 +114,17 @@ element-text {
 }
 
 element.selected.normal {
-    background-color: @urgent-background;
+    background-color: @active-background;
     text-color: @background;
 }
+
+element-text {
+    background-color: 				transparent;
+    text-color:       				inherit;
+    expand:                         true;
+    horizontal-align:               0.5;
+    vertical-align:                 0.5;
+    margin:                         0.5% 0.5% -0.5% 0.5%;
+}
+
+

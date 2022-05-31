@@ -16,39 +16,38 @@ configuration {
     display-drun: 					"";
     drun-display-format:            "{name}";
     disable-history:                false;
-	hide-scrollbar: 				true;
 	sidebar-mode: 					false;
 }
 
-@import "~/.cache/wal/colors-rofi-light.rasi"
+@import "~/.cache/wal/colors-rofi-dark.rasi"
 
 window {
     margin:                         1px 0% 1px 0%;
-    background-color:               transparent;
+    background-color:               rgba(0,0,0,0.2);
     text-color:                     @background;
-	height:							300px;
-	width:							772px;
+	height:							480px;
+	width:							700px;
     location:                       center;
     x-offset:                       0;
     y-offset:                       0;
-    border:                         2px;
-    border-color:                   transparent;
-    border-radius:                  4px;
+    border:                         5px;
+    border-color:                   rgba(0,0,0,0.5);
+    border-radius:                  5px;
 }
 
 prompt {
     enabled: 						true;
 	padding: 						0.20% 1% 0% -0.5%;
 	background-color: 				transparent;
-	text-color: 					@background;
+	text-color: 					@foreground;
 	font:							"Fira Code Medium 13";
 
 }
 
 entry {
     background-color:               transparent;
-    text-color:                     @background;
-    placeholder-color:              @background;
+    text-color:                     @foreground;
+    placeholder-color:              @selected-urgent-background;
     expand:                         true;
     horizontal-align:               0;
     placeholder:                    "Software Launcher";
@@ -60,7 +59,7 @@ entry {
 inputbar {
 	children: 						[ prompt, entry ];
     background-color:               transparent;
-    text-color:                     @background;
+    text-color:                     @foreground;
     expand:                         false;
     margin:                         0% 0% 0% 0%;
     padding:                        1.5%;
@@ -71,11 +70,12 @@ inputbar {
 
 listview {
     background-color:               transparent;
-    columns:                        5;
-    spacing:                        1px;
+    columns:                        3;
+    spacing:                        5px;
     cycle:                          true;
     dynamic:                        true;
-    layout:                         horizontal;
+    layout:                         vertical;
+    scrollbar:                      false;
 }
 
 mainbox {
@@ -86,23 +86,28 @@ mainbox {
 }
 
 element {
-    background-color:               transparent;
-    text-color:                     @foreground;
+    background-color:               @active-background;
     orientation:                    vertical;
-    padding:                        1% 0% 1% 0%;
+    margin:                         0px 0px 0px 0px;
+    padding:                        0% 0% 1% 0%;
+    text-color:                     @background;
+    border:                         3px;
+    border-color:                   transparent;
     border-radius:                  3px;
-   
+    
 }
-#element.normal.normal {
+element.normal.normal {
     background-color: transparent;
     text-color: @foreground;
-    border: 3px;
-    border-color: transparent;
 }
 
-#element.normal.active {
-    background-color: transparent;
+element.normal.active {
+    background-color: @active-background;
     text-color: @active-background;
+}
+element.alternate.normal {
+    background-color: transparent;
+    text-color: @foreground;
 }
 
 element-icon {
@@ -111,23 +116,20 @@ element-icon {
     vertical-align:                 0.1;
     size:                           48px;
 }
-#element.alternate.normal {
-    background-color: transparent;
-    text-color: @foreground;
-}
-
 element-text {
     background-color: 				transparent;
-    text-color:       				inherit;
     expand:                         true;
     horizontal-align:               0.5;
     vertical-align:                 0.5;
     margin:                         0.5% 0.5% -0.5% 0.5%;
+    text-color:                     @foreground;
 }
 
-#element.selected.normal {
-    background-color: transparent;
+element.selected.normal {
+    background-color: @active-background;
     text-color: @background;
-    border: 3px;
-    border-color: @selected-active-background;
+}
+element.selected.active {
+    background-color: @active-background;
+    text-color: @background;
 }

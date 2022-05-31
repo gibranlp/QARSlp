@@ -11,21 +11,22 @@
 
 configuration {
 	font:							"Fira Code Medium 13";
-    drun-display-format:            "";
-    disable-history:                true;
-    fullscreen:                     false;
-	hide-scrollbar: 				true;
-    text-color:                     @foreground;
+    show-icons:                     false;
+	icon-theme: 					"Buuf";
+    display-drun: 					"";
+    drun-display-format:            "{name}";
+    disable-history:                false;
+	sidebar-mode: 					false;
 }
 
 @import "~/.cache/wal/colors-rofi-dark.rasi"
 
 window {
     margin:                         1px 0% 1px 0%;
-    background-color:               rgba(0,0,0,0.3);
-    text-color:                     @foreground;
-	height:							500px;
-	width:							400px;
+    background-color:               rgba(0,0,0,0.2);
+    text-color:                     @background;
+	height:							680px;
+	width:							800px;
     location:                       center;
     x-offset:                       0;
     y-offset:                       0;
@@ -33,36 +34,32 @@ window {
     border-color:                   rgba(0,0,0,0.5);
     border-radius:                  5px;
 }
-message {
-    enabled: 						true;
-	padding: 						0.20% 1% 0% 0%;
-	background-color: 				transparent;
-	text-color: 					@foregroud;
-	font:							"Fira Code Medium 13";
-}
+
 prompt {
     enabled: 						true;
-	padding: 						0.20% 1% 0% 0%;
+	padding: 						0.20% 1% 0% -0.5%;
 	background-color: 				transparent;
-	text-color: 					@foregroud;
+	text-color: 					@foreground;
 	font:							"Fira Code Medium 13";
+
 }
 
 entry {
     background-color:               transparent;
-    text-color:                     @foreground;
+    text-color:                     @forebackground;
     placeholder-color:              @active-background;
     expand:                         true;
     horizontal-align:               0;
-    placeholder:                    "  Session";
-    padding:                        0.30% 0% 0% 0%;
+    placeholder:                    "Files & Folders";
+    padding:                        0.20% 0% 0% 0%;
     blink:                          true;
+    
 }
 
 inputbar {
-	children: 						[prompt];
+	children: 						[ prompt, entry ];
     background-color:               transparent;
-    text-color:                     @foreground;
+    text-color:                     @background;
     expand:                         false;
     margin:                         0% 0% 0% 0%;
     padding:                        1.5%;
@@ -74,24 +71,26 @@ inputbar {
 listview {
     background-color:               transparent;
     columns:                        1;
+    spacing:                        5px;
     cycle:                          true;
     dynamic:                        true;
     layout:                         vertical;
-    scrollbar:       				false;
+    scrollbar:                      false;
 }
 
 mainbox {
     background-color:               transparent;
     children:                       [ inputbar, listview ];
-}
+    
 
+}
 
 element {
     background-color:               @active-background;
     orientation:                    vertical;
     margin:                         0px 0px 0px 0px;
     padding:                        0% 0% 1% 0%;
-    text-color:                     @foreground;
+    text-color:                     @background;
     border:                         3px;
     border-color:                   transparent;
     border-radius:                  3px;
@@ -104,9 +103,8 @@ element.normal.normal {
 
 element.normal.active {
     background-color: @active-background;
-    text-color: @foreground;
+    text-color: @active-background;
 }
-
 element.alternate.normal {
     background-color: transparent;
     text-color: @foreground;
@@ -122,24 +120,6 @@ element-text {
 }
 
 element.selected.normal {
-    background-color: @active-background;
+    background-color: @urgent-background;
     text-color: @background;
-}
-
-element-text {
-    background-color: 				transparent;
-    text-color:       				inherit;
-    expand:                         true;
-    horizontal-align:               0.5;
-    vertical-align:                 0.5;
-    margin:                         0.5% 0.5% -0.5% 0.5%;
-}
-
-element-text {
-    background-color: 				inherit;
-    text-color: 				    inherit;
-    expand:                         true;
-    horizontal-align:               0.5;
-    vertical-align:                 0.5;
-    margin:                         0.5% 0.5% -0.5% 0.5%;
 }

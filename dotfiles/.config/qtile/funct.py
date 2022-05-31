@@ -193,7 +193,7 @@ def change_theme(qtile):
         rofi_backend.close()
     elif key == 0 and index < 6:
         subprocess.run('\cp ~/.config/qtile/themes/%s/theme.py ~/.config/qtile/'% theme[index], shell=True)
-        subprocess.run('\cp ~/.config/qtile/themes/%s/rofi/* ~/.config/rofi/' % theme[index],shell=True)
+        #subprocess.run('\cp ~/.config/qtile/themes/%s/rofi/* ~/.config/rofi/' % theme[index],shell=True)
         qtile.cmd_reload_config()
 
 #### Change Color scheme widget ####
@@ -295,7 +295,7 @@ def init_layout_theme():
             "border_width":lborderwd ,
             "border_normal":color[0],
             "border_focus":color[2],
-            "single_margin":10,
+            "single_margin":slmargin,
             "single_border_width":3,
            }
 

@@ -1,3 +1,5 @@
+
+
 # _______  _______  ______  _______  __        
 #|       ||   _   ||   __ \|     __||  |.-----.
 #|   -  _||       ||      <|__     ||  ||  _  |
@@ -236,6 +238,7 @@ def init_widgets_top():
                     bar_width=100,
                     mode='bar',
                     fontshadow=color[0],
+                    foreground=color[7],
                 ),
                 widget.Clock(
                     foreground=color[6],
