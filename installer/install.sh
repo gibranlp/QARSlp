@@ -24,7 +24,7 @@ function i_paru(){
 }
 
 function i_base () {
-  packets=('base-devel' 'htop' 'alsa-utils' 'alsa-lib' 'bc' 'ntfs-3g' 'alsa-firmware' 'playerctl' 'kdeconnect' 'firefox' 'pulseaudio' 'pulseaudio-alsa' 'pavucontrol' 'volumeicon' 'scrot' 'rofi' 'surfraw' 'python-pip' 'pkgfile' 'ranger' 'tumbler' 'feh' 'neofetch' 'lxappearance' 'lxsession' 'numlockx' 'unzip' 'bmon' 'dunst' 'lightdm' 'lm_sensors' 'obconf' 'viewnior' 'ntp' 'nm-connection-editor' 'network-manager-applet' 'arandr' 'cmatrix' 'xarchiver' 'python-pywal' 'python-psutil' 'python-xdg' 'python-iwlib' 'python-dateutil' 'ueberzug' 'xsettingsd' 'otf-ipafont' 'acpi' 'qtile' 'wget' 'cmake' 'lightdm-webkit2-greeter' 'tlp' 'zsh' 'texlive-full' 'nvidia-dkms'
+  packets=('base-devel' 'gnome-disk-utility' 'htop' 'alsa-utils' 'alsa-lib' 'bc' 'ntfs-3g' 'alsa-firmware' 'playerctl' 'kdeconnect' 'firefox' 'pulseaudio' 'pulseaudio-alsa' 'pavucontrol' 'volumeicon' 'scrot' 'rofi' 'surfraw' 'python-pip' 'pkgfile' 'ranger' 'tumbler' 'feh' 'neofetch' 'lxappearance' 'lxsession' 'numlockx' 'unzip' 'bmon' 'lightdm' 'lm_sensors' 'obconf' 'viewnior' 'ntp' 'nm-connection-editor' 'network-manager-applet' 'arandr' 'cmatrix' 'xarchiver' 'python-pywal' 'python-psutil' 'python-xdg' 'python-iwlib' 'python-dateutil' 'ueberzug' 'xsettingsd' 'otf-ipafont' 'acpi' 'qtile' 'wget' 'cmake' 'lightdm-webkit2-greeter' 'tlp' 'zsh' 'texlive-full' 'nvidia-dkms'
 )
 
 for packet in "${packets[@]}"; do
@@ -74,6 +74,7 @@ function i_settings(){
   wpg-install.sh -g -d -i &
   ~/.local/bin/autostart &
   ~/.local/bin/alwaystart &
+  sudo chsh /bin/zsh &
   
 }
 
