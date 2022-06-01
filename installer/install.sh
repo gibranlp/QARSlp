@@ -66,15 +66,14 @@ done
 }
 
 function i_settings(){
-  /usr/local/bin/genwal &
   sudo timedatectl set-timezone America/Mexico_City &
   sudo timedatectl set-ntp true &
   pywalfox install &
   git clone https://github.com/zsh-users/zsh-autosuggestions.git ~/.oh-my-zsh/plugins/zsh-autosuggestions &
   git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/plugins/zsh-syntax-highlighting &
   wpg-install.sh -g -d -i &
-  /usr/local/bin/autostart &
-  /usr/local/bin/alwaystart &
+  ~/.local/bin/autostart &
+  ~/.local/bin/alwaystart &
   
 }
 
@@ -83,16 +82,18 @@ function i_files(){
 sudo \cp -r ~/QARSlp/dotfiles/.[^.]* /root 
 \cp -r ~/QARSlp/dotfiles/.config/qtile/themes/default/wallPapers ~/Pictures 
 sudo \cp -r  ~/QARSlp/scripts/* /usr/local/bin 
-sudo chmod +x /usr/local/bin/*
+sudo chmod +x ~/.local/bin/*
 sudo \cp -r ~/QARSlp/lightdm/* /etc/lightdm
 sudo \cp -r ~/QARSlp/lightdm-webkit /usr/share
+mkdir ~/.local/bin
 }
 
 i_base
 i_paru
+i_aur
 i_zsh
 i_pip
-i_aur
-i_files
 i_settings
+i_files
+
 
