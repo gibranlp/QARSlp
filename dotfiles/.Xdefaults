@@ -20,6 +20,15 @@ Xft.antialias:  true
 Xft.rgba:       rgb
 Xft.hinting:    true
 Xft.hintstyle:  hintfull
+URxvt*scrollTtyOutput: false
+URxvt.letterSpace: -1
+URxvt.perl-ext-common: default,matcher
+URxvt.url-launcher: /usr/bin/xdg-open
+URxvt.matcher.button: 1
+URxvt.perl-ext-common: ...,tabbed,...
+URxvt.perl-ext-common:  ...,resize-font,...
+
+
 
 ! -- Fonts -- !
 URxvt.font:xft:Fira Code Medium:size=13
