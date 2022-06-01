@@ -88,9 +88,9 @@ sudo \cp -r ~/QARSlp/lightdm/* /etc/lightdm
 sudo \cp -r ~/QARSlp/lightdm-webkit /usr/share
 }
 
-i-base
-i_zsh
+i_base
 i_paru
+i_zsh
 i_pip
 i_aur
 i_files
