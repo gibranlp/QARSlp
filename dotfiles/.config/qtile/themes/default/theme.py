@@ -45,7 +45,7 @@ def init_widgets_top():
                        foreground=color[3],
                        ),
                  widget.Notify(
-                    fmt='  ',
+                    fmt='  ',
                     foreground=color[1],
                     fontshadow=color[0],
                     default_timeout=15,
@@ -104,7 +104,6 @@ def init_widgets_top():
                     padding=5,
                     foreground=color[4],
                     fontshadow=color[1],
-                    mouse_callbacks={'Button1':lambda: qtile.cmd_spawn(term + ' -e vis')},
                     ),
                 widget.Mpris2(
                     name='ncspot',
@@ -141,8 +140,8 @@ def init_widgets_top():
                     ),
                 widget.TextBox(
                     foreground=color[3],
-                    fontshadow=color[4],
-                    text=" ",
+                    fontshadow=color[1],
+                    text=" ",
                     mouse_callbacks={'Button1':lambda: qtile.cmd_function(prev)},
                     ),
                 widget.TextBox(
@@ -153,8 +152,8 @@ def init_widgets_top():
                     ),
                 widget.TextBox(
                     foreground=color[3],
-                    fontshadow=color[4],
-                    text=" ",
+                    fontshadow=color[1],
+                    text=" ",
                     mouse_callbacks={'Button1':lambda: qtile.cmd_function(nexts)},
                     ),           
                 #### Layouts ####
@@ -263,10 +262,10 @@ def init_widgets_bott():
                 #### Shortcuts ####
                 widget.TextBox(
                     font=awesome_font,
-                    text="  ",
+                    text="  ",
                     padding=5,
                     mouse_callbacks={'Button1': lambda: qtile.cmd_spawn('rofi -theme "~/.config/rofi/launcher.rasi" -show drun')},
-                    foreground=color[7],
+                    foreground=color[1],
                     fontsize=25
                     ),
                 widget.TextBox(
@@ -296,7 +295,7 @@ def init_widgets_bott():
                 widget.TextBox(
                     font=awesome_font,
                     foreground=color[8],
-                    text=" ",
+                    text=" ",
                     mouse_callbacks={'Button1':lambda: qtile.cmd_function(change_color_scheme)},
                 ),
                 widget.TextBox(
@@ -315,7 +314,7 @@ def init_widgets_bott():
                     padding=5,
                     empty_group_string=ver,
                     max_chars=120,
-                    format='  {name}',
+                    format='  {name}',
                     ),
                 widget.Sep(
                     foreground=color[1],
@@ -366,7 +365,7 @@ def init_widgets_bott():
                     cityid=w_cityid,
                     weather_symbols = {
                         "Unknown": "",
-                        "01d": "☀",
+                        "01d": "",
                         "01n": "🌕",
                         "02d": "",
                         "02n": "",
@@ -376,8 +375,8 @@ def init_widgets_bott():
                         "04n": "",
                         "09d": "⛆",
                         "09n": "⛆",
-                        "10d": "⛆",
-                        "10n": "⛆",
+                        "10d": "",
+                        "10n": "",
                         "11d": "🌩",
                         "11n": "🌩",
                         "13d": "❄",

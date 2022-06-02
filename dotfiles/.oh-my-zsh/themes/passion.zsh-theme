@@ -22,6 +22,31 @@ function real_time() {
     echo "${color}${time}${color_reset}";
 }
 
+# login_info
+function login_info() {
+    local color="%{$fg_no_bold[cyan]%}";                    # color in PROMPT need format in %{XXX%} which is not same with echo
+    local ip
+    if [[ "$OSTYPE" == "linux-gnu" ]]; then
+        # Linux
+        ip="$(ifconfig | grep ^eth1 -A 1 | grep -o '[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}' | head -1)";
+    elif [[ "$OSTYPE" == "darwin"* ]]; then
+        # macOS
+        ip="$(ifconfig | grep ^en1 -A 4 | grep -o '[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}' | head -1)";
+    elif [[ "$OSTYPE" == "cygwin" ]]; then
+        # POSIX compatibility layer and Linux environment emulation for Windows
+    elif [[ "$OSTYPE" == "msys" ]]; then
+        # Lightweight shell and GNU utilities compiled for Windows (part of MinGW)
+    elif [[ "$OSTYPE" == "win32" ]]; then
+        # I'm not sure this can happen.
+    elif [[ "$OSTYPE" == "freebsd"* ]]; then
+        # ...
+    else
+        # Unknown.
+    fi
+    local color_reset="%{$reset_color%}";
+    echo "${color}[%n@${ip}]${color_reset}";
+}
+
 
 # directory
 function directory() {
@@ -29,15 +54,15 @@ function directory() {
     # REF: https://stackoverflow.com/questions/25944006/bash-current-working-directory-with-replacing-path-to-home-folder
     local directory="${PWD/#$HOME/~}";
     local color_reset="%{$reset_color%}";
-    echo "${color}${directory}${color_reset}";
+    echo "${color}[${directory}]${color_reset}";
 }
 
 
 # git
 ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg_no_bold[blue]%}git(%{$fg_no_bold[red]%}";
 ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%} ";
-ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg_no_bold[blue]%})";
-ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg_no_bold[blue]%})";
+ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg_no_bold[cyan]%}) 🔥";
+ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg_no_bold[green]%}) ";
 
 function update_git_status() {
     GIT_STATUS=$(git_prompt_info);
@@ -53,11 +78,13 @@ function update_command_status() {
     local arrow="";
     local color_reset="%{$reset_color%}";
     local reset_font="%{$fg_no_bold[white]%}";
-    if $1;
+    COMMAND_RESULT=$1;
+    export COMMAND_RESULT=$COMMAND_RESULT
+    if $COMMAND_RESULT;
     then
-        arrow="%{$fg_bold[red]%}❱%{$fg_bold[yellow]%}❱%{$fg_bold[green]%}❱";
+        arrow="%{$fg_bold[red]%}W%{$fg_bold[cyan]%}h%{$fg_bold[white]%}a%{$fg_bold[green]%}a%{$fg_bold[red]%}a%{$fg_bold[cyan]%}t%{$fg_bold[green]%}?";
     else
-        arrow="%{$fg_bold[red]%}❱❱❱";
+        arrow="%{$fg_bold[red]%}W%{$fg_bold[cyan]%}r%{$fg_bold[white]%}o%{$fg_bold[green]%}n%{$fg_bold[red]%}g%{$fg_bold[cyan]%}!";
     fi
     COMMAND_STATUS="${arrow}${reset_font}${color_reset}";
 }
@@ -89,7 +116,7 @@ output_command_execute_after() {
 
     # time
     local time="[$(date +%H:%M:%S)]"
-    local color_time="$fg_no_bold[cyan]";
+    local color_time="$fg_no_bold[red]";
     time="${color_time}${time}${color_reset}";
 
     # cost
@@ -102,9 +129,10 @@ output_command_execute_after() {
         cost="0${cost}"
     fi
     cost="[cost ${cost}s]"
-    local color_cost="$fg_no_bold[cyan]";
+    local color_cost="$fg_no_bold[green]";
     cost="${color_cost}${cost}${color_reset}";
 
+    echo -e "${time} ${cost} ${cmd}";
     echo -e "";
 }
 
@@ -181,4 +209,5 @@ TRAPALRM() {
 
 
 # prompt
-PROMPT='$(directory) $(git_status)$(command_status)';
+# PROMPT='$(real_time) $(login_info) $(directory) $(git_status)$(command_status) ';
+PROMPT='$(real_time) $(directory) $(git_status)$(command_status) ';
