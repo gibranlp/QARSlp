@@ -11,6 +11,13 @@ URxvt*background: Black
 URxvt*foreground: White
 URxvt*geometry: 80x30
 URxvt*scrollBar: false
+URxvt.cursorBlink:true
+URxvt.perl-ext-commoni:default,tabbed
+URxvt.cursorUnderline: false
+URxvt*scrollTtyKeypress: true
+URxvt.perl-ext-common: default,matcher
+URxvt.url-launcher: /usr/bin/xdg-open
+URxvt.matcher.button: 1
 
 "URxvt.font: 9x15
 
@@ -31,5 +38,6 @@ URxvt.perl-ext-common:  ...,resize-font,...
 
 
 ! -- Fonts -- !
+URxvt.font:xft:Font Awesome 6 Pro Solid:size=13
 URxvt.font:xft:Fira Code Medium:size=13
-URxvt.boldfont:xft:Fira Code Medium:size=13
+URxvt.boldfont:xft:Fira Code Bold:size=13
