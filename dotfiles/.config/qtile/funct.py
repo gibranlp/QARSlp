@@ -1,4 +1,4 @@
-# _______  _______  ______  _______  __        
+# _______  _______  ______  _______  __      
 #|       ||   _   ||   __ \|     __||  |.-----.
 #|   -  _||       ||      <|__     ||  ||  _  |
 #|_______||___|___||___|__||_______||__||   __|
@@ -6,7 +6,7 @@
 # QARSlp Qtile + Arch Ricing Script
 # By: gibranlp <thisdoesnotwork@gibranlp.dev>
 # MIT licence
-from variables import *
+from variableslap import *
 
 #### Hooks ####
 @hook.subscribe.startup
