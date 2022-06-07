@@ -6,7 +6,7 @@
 # QARSlp Qtile + Arch Ricing Script
 # By: gibranlp <thisdoesnotwork@gibranlp.dev>
 # MIT licence
-from variablespc import *
+from variableslap import *
 
 #### Hooks ####
 @hook.subscribe.startup

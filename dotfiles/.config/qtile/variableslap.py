@@ -29,10 +29,10 @@ prompt = ":".format(os.environ["USER"], socket.gethostname())
 #### Resolution fix ####
 main_font = "Fira Code Medium" # Font in use for the entire system
 awesome_font = "Font Awesome 6 Pro Solid"
-fontsz = 16
+fontsz = 18
  #Font size for bars
 iconsz = 15 #Icon size for bars
-lfontsz = 16 # Layout font size
+lfontsz = 18 # Layout font size
 lmargin = 5 # Layout margins
 slmargin = 5 # Single window margin 
 lborderwd = 3 # Layout border width
