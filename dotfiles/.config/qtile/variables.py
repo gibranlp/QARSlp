@@ -22,7 +22,7 @@ from qtile_extras import widget
 ver = ' QARSlp v2.1.35Beta' # Current version
 mod = "mod4" # Command / Windows key
 alt = "mod1" # Alt key                  
-term = "kitty" # Terminal in use
+term = "urxvt" # Terminal in use
 home = os.path.expanduser('~')
 prompt = ":".format(os.environ["USER"], socket.gethostname())
 
