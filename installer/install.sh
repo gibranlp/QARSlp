@@ -88,9 +88,9 @@ sudo chmod +x ~/.local/bin/*
 
 i_base
 i_paru
-i_aur
-i_zsh
 i_pip
+i_zsh
+i_aur
 i_settings
 
 
