@@ -28,16 +28,13 @@ Xft.rgba:       rgb
 Xft.hinting:    true
 Xft.hintstyle:  hintfull
 URxvt*scrollTtyOutput: false
-URxvt.letterSpace: -1
+URxvt.letterSpace: 0
 URxvt.perl-ext-common: default,matcher
 URxvt.url-launcher: /usr/bin/xdg-open
 URxvt.matcher.button: 1
-URxvt.perl-ext-common: ...,tabbed,...
 URxvt.perl-ext-common:  ...,resize-font,...
 
-
-
 ! -- Fonts -- !
-URxvt.font:xft:Font Awesome 6 Pro Solid:size=13
-URxvt.font:xft:Fira Code Medium:size=13
+URxvt.font:xft:Fira Code Medium:size=13, xft:Font Awesome 6 Pro Solid:size=13
 URxvt.boldfont:xft:Fira Code Bold:size=13
+
