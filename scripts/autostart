@@ -13,8 +13,8 @@ killall picom &
 pywalfox update &
 numlockx on &
 owncloud &
-caffeine &
+caffeine &|
 kdeconnect-indicator &
 blueman-applet &
-picom &
+picom --backend glx &
 

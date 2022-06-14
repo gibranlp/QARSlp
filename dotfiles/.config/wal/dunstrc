@@ -1,11 +1,9 @@
 [global]
-font = Fira Code 14
-
 width = (0, 750)
 height = 100
 origin = bottom-right
 offset = 0+10
-
+font = Fira Code Medium 20
 alignment = right
 allow_markup = yes
 bounce_freq = 0
@@ -33,8 +31,10 @@ show_indicators = yes
 sort = yes
 startup_notification = true
 sticky_history = no
-transparency = 10
+transparency = 40
 word_wrap = yes
+
+
 
 frame_color = "{color2}"
 frame_width = 2
@@ -46,19 +46,19 @@ context = ctrl+shift+period
 history = ctrl+grave
 
 [urgency_critical]
-frame_color = "{color7}"
+frame_color = "{color3}"
 background = "{foreground}"
 foreground = "{background}"
 timeout = 15
 
 [urgency_low]
-frame_color = "{color0}"
+frame_color = "{color2}"
 background = "{background}"
 foreground = "{foreground}"
 timeout = 10
 
 [urgency_normal]
-frame_color = "{color1}"
+frame_color = "{color2}"
 background = "{background}"
 foreground = "{foreground}"
 timeout = 10

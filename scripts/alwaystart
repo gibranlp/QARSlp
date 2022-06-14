@@ -8,6 +8,8 @@
 # By: gibranlp <thisdoesnotwork@gibranlp.dev>
 # MIT licence 
 # 
+pkill dunst &
 pywalfox update &
-picom &
+picom --backend glx &
+dunst &
 wal -R 
