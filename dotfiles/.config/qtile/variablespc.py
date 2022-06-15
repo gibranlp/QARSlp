@@ -35,7 +35,7 @@ iconsz = 20 #Icon size for bars
 lfontsz = 22 # Layout font size
 lmargin = 5 # Layout margins
 slmargin = 5 # Single window margin 
-lborderwd = 3 # Layout border width
+lborderwd = 5 # Layout border width
 
 #### Bars ####
 barsz = 30 # bar size

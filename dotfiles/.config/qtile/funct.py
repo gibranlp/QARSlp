@@ -194,7 +194,6 @@ def change_theme(qtile):
         rofi_backend.close()
     elif key == 0 and index < 6:
         subprocess.run('\cp ~/.config/qtile/themes/%s/theme.py ~/.config/qtile/'% theme[index], shell=True)
-        #subprocess.run('\cp ~/.config/qtile/themes/%s/rofi/* ~/.config/rofi/' % theme[index],shell=True)
         qtile.cmd_reload_config()
 
 #### Change Color scheme widget ####
@@ -205,9 +204,11 @@ def change_color_scheme(qtile):
         rofi_backend.close()
     elif key == 0 and index < 4:
         subprocess.run('wpg -s ' + wallpaper + ' --backend ' + backend[index].lower(), shell=True)
+        subprocess.run(["cp", "~/.cache/wal/dunstrc"  "~/.config/dunst/dunstrc"])
         qtile.cmd_reload_config()
     elif key == 0 and index > 4:
         subprocess.run('wpg -s ' + wallpaper + ' -L --backend ' + backend[index-5].lower(), shell=True)
+        subprocess.run(["cp", "~/.cache/wal/dunstrc"  "~/.config/dunst/dunstrc"])
         qtile.cmd_reload_config()
 
 #### Multimedia #### 

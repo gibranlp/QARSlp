@@ -103,9 +103,15 @@ def init_keys():
             Key([mod], "Down", lazy.layout.down()),
             Key([mod], "Left", lazy.layout.left()),
             Key([mod], "Right", lazy.layout.right()),
+            
+            ####  Dunst Shortuts ####
+            Key(["control"], "space",  lazy.spawn("dunstctl close")),
+            Key(["control", "shift"], "space",  lazy.spawn("dunstctl close-all")),
+            Key(["control"], "h",  lazy.spawn("dunstctl  history-pop")),
 
             ### Screenshots ####
             Key([], "Print", lazy.function(screenshot)),]
+
 
 
     for i in groups:
