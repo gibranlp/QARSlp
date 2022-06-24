@@ -16,6 +16,20 @@ from funct import *
 def init_screens():
     return [
         Screen(
+            top=bar.Bar(
+                background=color[0] + transparency,  
+                size=barsz,
+                border_color=color[1]+ transparency,
+                border_width=bar_top_width,
+                opacity=bar_opa,
+                ),
+            bottom=bar.Bar(
+                size=barsz,
+                border_color=color[1]+ transparency,
+                border_width=bar_bot_width,
+                opacity=bar_opa,
+                background=color[0] + transparency,
+                )
         ),
         Screen()
         ]

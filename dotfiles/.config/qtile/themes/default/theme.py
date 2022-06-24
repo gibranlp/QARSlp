@@ -106,6 +106,17 @@ def init_widgets_top():
                     fontshadow=color[1],
                     ),
                 widget.Mpris2(
+                    name='cmus',
+                    objname='org.mpris.MediaPlayer2.cmus',
+                    scroll_chars=scrollchar,
+                    foreground=color[3],
+                    fontshadow=color[0],
+                    stop_pause_text='  ',
+                    display_metadata=['xesam:title', 'xesam:artist'],
+                    scroll_interval=scrollint,
+                    scroll_wait_intervals=scrollwint,
+                    ),
+                widget.Mpris2(
                     name='ncspot',
                     objname='org.mpris.MediaPlayer2.ncspot',
                     scroll_chars=scrollchar,

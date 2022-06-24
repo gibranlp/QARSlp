@@ -188,11 +188,12 @@ def network_widget(qtile):
 
 #### Change Theme widget ####
 def change_theme(qtile):
-    options = [theme[0],theme[1],theme[2],theme[3],theme[4],theme[5]]
+    options = [theme[0],theme[1]]
     index, key = rofi_backend.select('  Color Scheme', options)
     if key == -1 or index >= 6:
         rofi_backend.close()
     elif key == 0 and index < 6:
+        subprocess.run('rm -rf ~/.config/qtile/theme.py', shell=True)
         subprocess.run('\cp ~/.config/qtile/themes/%s/theme.py ~/.config/qtile/'% theme[index], shell=True)
         qtile.cmd_reload_config()
 
@@ -216,21 +217,25 @@ def play_pause(qtile):
     qtile.cmd_spawn("playerctl -p spotify play-pause")
     qtile.cmd_spawn("playerctl -p ncspot play-pause")
     qtile.cmd_spawn("playerctl -p vlc play-pause")
+    qtile.cmd_spawn("playerctl -p cmus play-pause")
 
 def nexts(qtile):
     qtile.cmd_spawn("playerctl -p spotify next")
     qtile.cmd_spawn("playerctl -p ncspot next")
     qtile.cmd_spawn("playerctl -p vlc next")
+    qtile.cmd_spawn("playerctl -p cmus next")
 
 def prev(qtile):
     qtile.cmd_spawn("playerctl -p spotify previous")
     qtile.cmd_spawn("playerctl -p ncspot previous")
     qtile.cmd_spawn("playerctl -p vlc previous")
+    qtile.cmd_spawn("playerctl -p cmus previous")
 
 def stop(qtile):
     qtile.cmd_spawn("playerctl -p spotify stop")
     qtile.cmd_spawn("playerctl -p ncspot stop")
     qtile.cmd_spawn("playerctl -p vlc stop")
+    qtile.cmd_spawn("playerctl -p cmus stop")
 
 def ncsp(qtile):
     qtile.groups_map["7"].cmd_toscreen(toggle=False)
@@ -298,7 +303,7 @@ def init_layout_theme():
             "border_normal":color[0],
             "border_focus":color[2],
             "single_margin":slmargin,
-            "single_border_width":3,
+            "single_border_width":sborderwidth,
            }
 
 layout_theme = init_layout_theme()

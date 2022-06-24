@@ -19,7 +19,7 @@ from rofi import Rofi
 from qtile_extras import widget
 
 ### Variables ####
-ver = ' QARSlp v2.1.35Beta' # Current version
+ver = ' QARSlp v2.1.55Beta' # Current version
 mod = "mod4" # Command / Windows key
 alt = "mod1" # Alt key                  
 term = "urxvt" # Terminal in use
@@ -33,12 +33,13 @@ fontsz = 22
  #Font size for bars
 iconsz = 20 #Icon size for bars
 lfontsz = 22 # Layout font size
-lmargin = 5 # Layout margins
-slmargin = 5 # Single window margin 
+lmargin = 10 # Layout margins
+slmargin = 10 # Single window margin 
 lborderwd = 5 # Layout border width
+sborderwidth = 5 # Single border width
 
 #### Bars ####
-barsz = 30 # bar size
+barsz =30 # bar size
 bar_top_width = [0,0,0,0] # bar borders top
 bar_bot_width = [0,0,0,0] # bar borders top
 bar_opa = 0.99
@@ -53,10 +54,8 @@ scrollwint = 500
 #### Internet Chekup ####
 internet = ' Internet is working'
 #### Themes ####
-theme=['default', 'top_bar', 'bottom_bar', 'minimal', 'alpha', 'simple']
+theme=['default', 'no_bars']
 backend = ["Wal", "Colorz", "Colorthief","Haishoku"]
-rofi_l = Rofi(rofi_args=['-theme', '~/.config/rofi/left_toolbar.rasi'])
-rofi_r = Rofi(rofi_args=['-theme', '~/.config/rofi/right_toolbar.rasi'])
 rofi_session = Rofi(rofi_args=['-theme', '~/.config/rofi/logout.rasi'])
 rofi_display = Rofi(rofi_args=['-theme', '~/.config/rofi/display.rasi'])
 rofi_network= Rofi(rofi_args=['-theme', '~/.config/rofi/network.rasi'])
