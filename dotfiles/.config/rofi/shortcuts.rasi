@@ -25,12 +25,12 @@ window {
     margin:                         1px 0% 1px 0%;
     background-color:               rgba(0,0,0,0.5);
     text-color:                     @foreground;
-	height:							800px;
+	height:							900px;
 	width:							800px;
     location:                       center;
     x-offset:                       0;
     y-offset:                       0;
-    border:                         5px;
+    border:                         0px;
     border-color:                   rgba(0,0,0,0.8);
     border-radius:                  5px;
 }

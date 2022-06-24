@@ -215,7 +215,7 @@ def init_widgets_top():
                     fill_critical='#cc0000',
                     fill_low='#FF5511',
                     fill_normal=color[4],
-                    font_colour=color[4],
+                    foregound=color[4],
                     fontshadow=[0]
                 ),
                 widget.TextBox(

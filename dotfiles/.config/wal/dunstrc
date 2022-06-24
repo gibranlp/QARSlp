@@ -22,7 +22,7 @@
     # dynamic width from 0 to 300
     # width = (0, 300)
     # constant width of 300
-    width = 300
+    width =500
 
     # The maximum height of a single notification, excluding the frame.
     height = 150
@@ -447,6 +447,10 @@
 #    set_stack_tag = "volume"
 #
 # vim: ft=cfg
+[Slack]
+appname = Slack
+format = "Slack\n%s\n%b"
+new_icon = Slack
 
 [Discord]
 appname = Discord Canary

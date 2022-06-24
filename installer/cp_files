@@ -16,6 +16,8 @@ sudo chmod +x ~/.local/bin/*
 #sudo \cp ~/QARSlp/installer/etc/X11/xorg.conf.d/30-touchpad.conf /etc/X11/xorg.conf.d/30-touchpad.conf
 sudo cp ~/QARSlp/fonts/otf/* /usr/share/fonts/OTF/
 sudo cp ~/QARSlp/fonts/ttf/* /usr/share/fonts/TTF/
+sudo \cp -r ~/QARSlp/lightdm/* /etc/lightdm
+sudo \cp -r ~/QARSlp/lightdm-webkit /usr/share
 cp ~/QARSlp/dotfiles/.config/wal/dunstrc ~/.config/wal/templates/
 }
 
