@@ -26,6 +26,9 @@ term = "urxvt" # Terminal in use
 home = os.path.expanduser('~')
 prompt = ":".format(os.environ["USER"], socket.gethostname())
 
+### Separators
+lwidth = 5
+
 #### Resolution fix ####
 main_font = "Fira Code Medium" # Font in use for the entire system
 awesome_font = "Font Awesome 6 Pro Solid"
@@ -44,7 +47,7 @@ bar_top_width = [0,0,0,0] # bar borders top
 bar_bot_width = [0,0,0,0] # bar borders top
 bar_opa = 0.99
 
-transparency = "95" #Overall Transparency
+transparency = "30" #Overall Transparency
 
 #### Music / Media ####
 scrollchar = 50

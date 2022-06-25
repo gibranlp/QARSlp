@@ -70,7 +70,7 @@ def init_keys():
             Key([alt], "Tab", lazy.layout.swap_left()),
             Key([alt, "shift"], "Tab", lazy.layout.swap_right()),
             Key([alt], "space", lazy.widget["keyboardlayout"].next_keyboard()),
-            Key([mod], 'period', lazy.next_screen(),),
+            Key([mod], 'period', lazy.next_screen()),
 
             #### Brightness ####
             Key([], "XF86MonBrightnessUp", lazy.spawn("xbacklight -inc 5")),

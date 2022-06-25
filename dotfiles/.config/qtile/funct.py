@@ -239,7 +239,7 @@ def stop(qtile):
 
 def ncsp(qtile):
     qtile.groups_map["7"].cmd_toscreen(toggle=False)
-    qtile.cmd_spawn(term + ' -e ncspot')
+    qtile.cmd_spawn(term + ' -e cmus')
 
 def ranger(qtile):
     qtile.groups_map["1"].cmd_toscreen(toggle=False)
@@ -311,11 +311,12 @@ layout_theme = init_layout_theme()
 def init_layouts():
     return [
         layout.MonadTall(max_ratio=0.90,ratio=0.70,**layout_theme),
+        layout.MonadWide(max_ratio=0.90,ratio=0.70,**layout_theme),
         layout.Matrix(**layout_theme),
         #layout.Bsp(**layout_theme),
         #layout.Columns(**layout_theme),
         layout.MonadThreeCol(**layout_theme),
-        layout.Spiral(**layout_theme),
+        #´1     .Spiral(**layout_theme),
         #layout.RatioTile(**layout_theme),
         #layout.Slice(**layout_theme),
         #layout.Stack(**layout_theme),

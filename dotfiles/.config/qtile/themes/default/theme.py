@@ -44,67 +44,47 @@ def init_widgets_top():
                        padding=10,
                        foreground=color[3],
                        ),
-                #widget.Notify(
-                #    fmt='  ',
-                #    foreground=color[1],
-                #    fontshadow=color[0],
-                #    default_timeout=15,
-                #    max_chars=5,
-                #    action=False,
-                #    foreground_low=color[1],
-                #),
-                #widget.Notify(
-                #    foreground=color[3],
-                #    fontshadow=color[0],
-                #    default_timeout=15,
-                #    max_chars=200,
-                #    action=False,
-                #    foreground_low=color[4],
-                #),
                 widget.Spacer(
                     length=bar.STRETCH,
                     foreground=color[0]
                     ),
                 widget.Sep(
                     foreground=color[1],
-                    linewidth=5,
+                    linewidth=lwidth,
                 ),
                  widget.Sep(
                     foreground=color[2],
-                    linewidth=5,
+                    linewidth=lwidth,
                 ),
                  widget.Sep(
                     foreground=color[3],
-                    linewidth=5,
+                    linewidth=lwidth,
                 ),
                 widget.Sep(
                     foreground=color[4],
-                    linewidth=5,
+                    linewidth=lwidth,
                 ),
                  widget.Sep(
                     foreground=color[5],
-                    linewidth=5,
+                    linewidth=lwidth,
                 ),
                  widget.Sep(
                     foreground=color[6],
-                    linewidth=5,
+                    linewidth=lwidth,
                 ),
                  widget.Sep(
                     foreground=color[7],
-                    linewidth=5,
+                    linewidth=lwidth,
                 ),
                  widget.Sep(
                     foreground=color[8],
-                    linewidth=5,
+                    linewidth=lwidth,
                 ),
-                #### Spotify ####
-                widget.TextBox(
-                    font=awesome_font,
-                    text="  ",
-                    padding=5,
-                    foreground=color[4],
-                    fontshadow=color[1],
+                widget.Spacer(
+                    length=bar.STRETCH,
+                    foreground=color[0]
                     ),
+                #### Spotify ####
                 widget.Mpris2(
                     name='cmus',
                     objname='org.mpris.MediaPlayer2.cmus',
@@ -152,19 +132,19 @@ def init_widgets_top():
                 widget.TextBox(
                     foreground=color[3],
                     fontshadow=color[1],
-                    text=" ",
+                    text=" ",
                     mouse_callbacks={'Button1':lambda: qtile.cmd_function(prev)},
                     ),
                 widget.TextBox(
                     foreground=color[4],
                     fontshadow=color[1],
-                    text="⏸",
+                    text="",
                     mouse_callbacks={'Button1':lambda: qtile.cmd_function(play_pause)},
                     ),
                 widget.TextBox(
                     foreground=color[3],
                     fontshadow=color[1],
-                    text=" ",
+                    text=" ",
                     mouse_callbacks={'Button1':lambda: qtile.cmd_function(nexts)},
                     ),           
                 #### Layouts ####
@@ -491,7 +471,6 @@ def init_widgets_bott():
                     tag_sensor="Tctl",
                     fontshadow=color[0],
                     foreground=color[6],
-                    mouse_callbacks={'Button1': lambda: qtile.cmd_spawn('~/.local/bin/fans')},
                     ),
                  widget.Sep(
                     foreground=color[7],
@@ -514,12 +493,6 @@ def init_widgets_bott():
                     foreground=color[3],
                     linewidth=3,
                 ),
-                #### Caps lock Num Lock Indicator ####
-                widget.CapsNumLockIndicator(
-                    foreground=color[3],
-                    fontshadow=color[0],
-                    padding=5
-                    ),
                 #### System Tray ####
                 #### Systray ####
                 widget.Systray(
@@ -543,7 +516,7 @@ def init_screens():
     return [
         Screen(
             top=bar.Bar(
-                background=color[0] + transparency,
+                background=[color[0] + transparency,color[2] + transparency,],
                 widgets=init_widgets_screen_top(),  
                 size=barsz,
                 border_color=color[1]+ transparency,
@@ -556,7 +529,7 @@ def init_screens():
                 border_color=color[1]+ transparency,
                 border_width=bar_bot_width,
                 opacity=bar_opa,
-                background=color[0] + transparency,
+                background=[color[0] + transparency,color[2] + transparency,]
                 )
         ),
         Screen()
