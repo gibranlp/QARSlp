@@ -310,8 +310,8 @@ layout_theme = init_layout_theme()
 
 def init_layouts():
     return [
-        layout.MonadTall(max_ratio=0.90,ratio=0.70,**layout_theme),
-        layout.MonadWide(max_ratio=0.90,ratio=0.70,**layout_theme),
+        layout.MonadTall(max_ratio=0.90,ratio=0.80,**layout_theme),
+        layout.MonadWide(max_ratio=0.90,ratio=0.90,**layout_theme),
         layout.Matrix(**layout_theme),
         #layout.Bsp(**layout_theme),
         #layout.Columns(**layout_theme),
