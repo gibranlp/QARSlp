@@ -386,7 +386,7 @@ def init_widgets_bott():
                     cityid=w_cityid,
                     foreground=color[2],
                     fontshadow=color[0],
-                    format='{main_temp}°{units_temperature}',
+                    format='{main_temp}°{units_temperature} ',
                     metric=True,
                     update_interval=600
                     ),
