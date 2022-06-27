@@ -516,7 +516,7 @@ def init_screens():
     return [
         Screen(
             top=bar.Bar(
-                background=[color[0] + transparency,color[2] + transparency,],
+                background=[color[0] + transparency],
                 widgets=init_widgets_screen_top(),  
                 size=barsz,
                 border_color=color[1]+ transparency,
@@ -529,7 +529,7 @@ def init_screens():
                 border_color=color[1]+ transparency,
                 border_width=bar_bot_width,
                 opacity=bar_opa,
-                background=[color[0] + transparency,color[2] + transparency,]
+                background=[color[0] + transparency]
                 )
         ),
         Screen()
