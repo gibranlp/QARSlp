@@ -25,7 +25,7 @@ def init_widgets_top():
                     padding_x=6,
                     padding_y=5,
                     borderwidth=0,
-                    active=color[3],
+                    active=color[4],
                     fontshadow=color[0],
                     inactive=color[0],
                     rounded=False,        
@@ -33,10 +33,11 @@ def init_widgets_top():
                     highlight_method="text",
                     this_current_screen_border=color[7],
                     this_screen_border=color[3],
-                    other_current_screen_border=color[4],
+                    center_aligned = True,
+                    other_current_screen_border=color[3],
                     other_screen_border=color[5],
-                    block_highlight_text_color=color[2],
-                    foreground=color[1],
+                    block_highlight_text_color=color[6],
+                    foreground=color[2],    
                     urgent_border=color[4]
                     ),
                 widget.Prompt(
@@ -64,6 +65,30 @@ def init_widgets_top():
                     foreground=color[4],
                     linewidth=lwidth,
                 ),
+                widget.Clock(
+                    foreground=color[2],
+                    fontshadow=color[0],
+                    format=" %b ",
+                    update_interval=1
+                    ),
+                widget.Clock(
+                    foreground=color[4],
+                    fontshadow=color[0],
+                    format="%a",
+                    update_interval=1
+                    ),
+                widget.Clock(
+                    foreground=color[6],
+                    fontshadow=color[0],
+                    format=" %d ",
+                    update_interval=1
+                    ),
+                widget.Clock(
+                    foreground=color[3],
+                    fontshadow=color[0],
+                    format="%H:%M ",
+                    update_interval=1
+                    ),
                  widget.Sep(
                     foreground=color[5],
                     linewidth=lwidth,
@@ -85,6 +110,24 @@ def init_widgets_top():
                     foreground=color[0]
                     ),
                 #### Spotify ####
+                 widget.TextBox(
+                    foreground=color[3],
+                    fontshadow=color[1],
+                    text=" ",
+                    mouse_callbacks={'Button1':lambda: qtile.cmd_function(prev)},
+                    ),
+                widget.TextBox(
+                    foreground=color[4],
+                    fontshadow=color[1],
+                    text="",
+                    mouse_callbacks={'Button1':lambda: qtile.cmd_function(play_pause)},
+                    ),
+                widget.TextBox(
+                    foreground=color[3],
+                    fontshadow=color[1],
+                    text=" ",
+                    mouse_callbacks={'Button1':lambda: qtile.cmd_function(nexts)},
+                    ),
                 widget.Mpris2(
                     name='cmus',
                     objname='org.mpris.MediaPlayer2.cmus',
@@ -128,24 +171,6 @@ def init_widgets_top():
                     display_metadata=['xesam:title', 'xesam:artist'],
                     scroll_interval=scrollint,
                     scroll_wait_intervals=scrollwint,
-                    ),
-                widget.TextBox(
-                    foreground=color[3],
-                    fontshadow=color[1],
-                    text=" ",
-                    mouse_callbacks={'Button1':lambda: qtile.cmd_function(prev)},
-                    ),
-                widget.TextBox(
-                    foreground=color[4],
-                    fontshadow=color[1],
-                    text="",
-                    mouse_callbacks={'Button1':lambda: qtile.cmd_function(play_pause)},
-                    ),
-                widget.TextBox(
-                    foreground=color[3],
-                    fontshadow=color[1],
-                    text=" ",
-                    mouse_callbacks={'Button1':lambda: qtile.cmd_function(nexts)},
                     ),           
                 #### Layouts ####
                 widget.TextBox(
@@ -230,12 +255,6 @@ def init_widgets_top():
                     fontshadow=color[0],
                     foreground=color[7],
                 ),
-                widget.Clock(
-                    foreground=color[6],
-                    fontshadow=color[0],
-                    format="%b %a %d %H:%M",
-                    update_interval=1
-                    ),
                 #### Lock, Logout, Poweroff ####
                 widget.TextBox(
                     font=awesome_font,
@@ -330,14 +349,14 @@ def init_widgets_bott():
                         mouse_callbacks={'Button1':lambda: qtile.cmd_function(network_widget)}
                         ),]
                 ),
-                widget.Wlan(
-                    interface=wifi,
-                    format=' {essid} {percent:2.0%} ',
-                    disconnected_message='Unplugged',
-                    foreground=color[1],
-                    fontshadow=color[0],
-                    mouse_callbacks={'Button1':lambda: qtile.cmd_function(network_widget)}
-                    ),
+                #widget.Wlan(
+                #    interface=wifi,
+                #    format=' {essid} {percent:2.0%} ',
+                #    disconnected_message='Unplugged',
+                #    foreground=color[1],
+                #    fontshadow=color[0],
+                #    mouse_callbacks={'Button1':lambda: qtile.cmd_function(network_widget)}
+                #    ),
                 widget.Net(
                     interface=wifi,
                     format=' {down} ',

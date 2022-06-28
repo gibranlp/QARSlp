@@ -47,18 +47,19 @@ bar_top_width = [0,0,0,0] # bar borders top
 bar_bot_width = [0,0,0,0] # bar borders top
 bar_opa = 0.99
 
-transparency = "30" #Overall Transparency
+transparency = "aa" #Overall Transparency
 
 #### Music / Media ####
-scrollchar = 50
-scrollint = 1
-scrollwint = 500
+scrollchar = 100
+scrollint = 0.5
+scrollwint = 5000
 ### Gaps
 #### Internet Chekup ####
 internet = ' Internet is working'
 #### Themes ####
 theme=['default', 'no_bars']
 backend = ["Wal", "Colorz", "Colorthief","Haishoku"]
+defaultBackend= "Wal"
 rofi_session = Rofi(rofi_args=['-theme', '~/.config/rofi/logout.rasi'])
 rofi_display = Rofi(rofi_args=['-theme', '~/.config/rofi/display.rasi'])
 rofi_network= Rofi(rofi_args=['-theme', '~/.config/rofi/network.rasi'])

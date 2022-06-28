@@ -19,7 +19,7 @@ def start_once():
 
 @hook.subscribe.client_new
 def floating(window):
-    floating_types = ['notification', 'toolbar', 'splash', 'dialog','Nextcloud','Gcr-prompter','lxappearance','_NET_WM_WINDOW_TYPE_NORMAL']
+    floating_types = ['notification', 'toolbar', 'splash', 'dialog','Gcr-prompter','lxappearance']
     transient = window.window.get_wm_transient_for()
     if window.window.get_wm_type() in floating_types or transient:
         window.floating = True
@@ -113,11 +113,12 @@ def set_rand_wallpaper(qtile):
     dir = home + '/Pictures/wallPapers'
     selection = random.choice(os.listdir(dir))
     rand_wallpaper = os.path.join(dir, selection)
-    subprocess.run(["wpg", "-s" + rand_wallpaper])
+    subprocess.run(["wpg", "-s", "%s" % rand_wallpaper, "--backend", "%s" %defaultBackend.lower()])
     subprocess.run(["sudo", "cp", "%s" % rand_wallpaper,  "/usr/share/backgrounds/background.png"])
     subprocess.run(["cp", "~/.cache/wal/dunstrc"  "~/.config/dunst/dunstrc"])
     subprocess.run(["wal", "-R"])
     qtile.cmd_reload_config()
+
 
 #### Functions for Widgets ####
 #### Display Shortcuts widget
@@ -183,8 +184,6 @@ def network_widget(qtile):
             qtile.cmd_spawn(term + ' -e bmon')
         else:
             qtile.cmd_spawn(term + ' -e nmtui')
-
-                 
 
 #### Change Theme widget ####
 def change_theme(qtile):
@@ -260,7 +259,7 @@ def cfilex():
 ##### Groups #####
 group_names = ["1","2","3","4","5","6","7","8","9"]
 group_labels=["","","","","","","","",""]
-group_layouts=["monadthreecol", "monadwide", "matrix","monadtall", "monadwide", "monadwide","monadwide", "monadtall", "monadtall"]
+group_layouts=["monadthreecol", "monadwide", "matrix","monadtall", "monadtall", "monadwide","monadwide", "monadtall", "monadtall"]
 group_matches=[[Match(wm_class=[''])],[Match(wm_class=[])],[Match(wm_class=[])],[Match(wm_class=[])],[Match(wm_class=[])],[Match(wm_class=[])],[Match(wm_class=[])],[Match(wm_class=['Steam', 'steam'])],[Match(wm_class=[])],]
 groups = []
 
@@ -337,6 +336,8 @@ floating_layout = layout.Floating(auto_float_rules=[
     Match(wm_class='branchdialog'),
     Match(wm_class='pinentry'),
     Match(wm_class='ssh-askpass'),
+    Match(wm_class='Slack'),
+    Match(wm_class='slack'),
     Match(wm_class='Obconf')])
 layouts = init_layouts()
 #### End layouts ####
