@@ -48,7 +48,7 @@ def init_keys():
             Key([mod, "shift"],"f",lazy.function(app_or_group('3', 't'))),
 
             ## Group 4 (WEB: Firefox)(Admin: Mail, notes, social)
-            Key([mod, "shift"],"f",lazy.function(app_or_group('4', 'firefox'))),
+            Key([mod, "shift"],"f",lazy.function(app_or_group('4', 'librewolf'))),
             Key([mod, "shift"],"g",lazy.function(app_or_group('4', 'google-chrome-stable'))),
             
             ## Group 5 (Code/Write/Office: visual studio, typora, onlyofice)

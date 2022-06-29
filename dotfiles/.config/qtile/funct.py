@@ -259,7 +259,7 @@ def cfilex():
 ##### Groups #####
 group_names = ["1","2","3","4","5","6","7","8","9"]
 group_labels=["","","","","","","","",""]
-group_layouts=["monadthreecol", "monadwide", "matrix","monadtall", "monadtall", "monadwide","monadwide", "monadtall", "monadtall"]
+group_layouts=["monadthreecol", "monadthreecol", "matrix","monadtall", "monadtall", "monadthreecol","monadthreecol", "monadtall", "monadtall"]
 group_matches=[[Match(wm_class=[''])],[Match(wm_class=[])],[Match(wm_class=[])],[Match(wm_class=[])],[Match(wm_class=[])],[Match(wm_class=[])],[Match(wm_class=[])],[Match(wm_class=['Steam', 'steam'])],[Match(wm_class=[])],]
 groups = []
 
@@ -310,7 +310,7 @@ layout_theme = init_layout_theme()
 def init_layouts():
     return [
         layout.MonadTall(max_ratio=0.90,ratio=0.80,**layout_theme),
-        layout.MonadWide(max_ratio=0.90,ratio=0.90,**layout_theme),
+        layout.MonadWide(max_ratio=0.90,ratio=0.60,**layout_theme),
         layout.Matrix(**layout_theme),
         #layout.Bsp(**layout_theme),
         #layout.Columns(**layout_theme),
