@@ -272,7 +272,7 @@ def init_screens():
     return [
         Screen(
             top=bar.Bar(
-                margin=[5, 10, 5, 10],
+                margin=[5, 10, 0, 10],
                 background=[color[0] + barTransparency],
                 widgets=init_widgets_screen_top(),  
                 size=barsz,
