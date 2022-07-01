@@ -23,7 +23,6 @@ def init_widgets_top():
                     disable_drag=True,
                     hide_unused=False,
                     padding_x=6,
-                    padding_y=5,
                     borderwidth=0,
                     active=color[4],
                     fontshadow=color[0],
@@ -535,20 +534,18 @@ def init_screens():
     return [
         Screen(
             top=bar.Bar(
-                background=[color[0] + transparency],
+                background=[color[0] + barTransparency],
                 widgets=init_widgets_screen_top(),  
                 size=barsz,
-                border_color=color[1]+ transparency,
-                border_width=bar_top_width,
-                opacity=bar_opa,
+                border_color=color[1]+ barTransparency,
+                border_width=barBorderWidth,
                 ),
             bottom=bar.Bar(
+                background=[color[0] + barTransparency],
                 widgets=init_widgets_screen_bot(),
                 size=barsz,
-                border_color=color[1]+ transparency,
-                border_width=bar_bot_width,
-                opacity=bar_opa,
-                background=[color[0] + transparency]
+                border_color=color[1]+ barTransparency,
+                border_width=barBorderWidth,              
                 )
         ),
         Screen()

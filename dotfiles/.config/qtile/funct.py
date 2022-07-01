@@ -238,7 +238,7 @@ def stop(qtile):
 
 def ncsp(qtile):
     qtile.groups_map["7"].cmd_toscreen(toggle=False)
-    qtile.cmd_spawn(term + ' -e cmus')
+    qtile.cmd_spawn(term + ' -e cmus ')
 
 def ranger(qtile):
     qtile.groups_map["1"].cmd_toscreen(toggle=False)
@@ -257,10 +257,6 @@ def cfilex():
 
 
 ##### Groups #####
-group_names = ["1","2","3","4","5","6","7","8","9"]
-group_labels=["","","","","","","","",""]
-group_layouts=["monadthreecol", "monadthreecol", "matrix","monadtall", "monadtall", "monadthreecol","monadthreecol", "monadtall", "monadtall"]
-group_matches=[[Match(wm_class=[''])],[Match(wm_class=[])],[Match(wm_class=[])],[Match(wm_class=[])],[Match(wm_class=[])],[Match(wm_class=[])],[Match(wm_class=[])],[Match(wm_class=['Steam', 'steam'])],[Match(wm_class=[])],]
 groups = []
 
 @hook.subscribe.client_new

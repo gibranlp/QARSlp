@@ -39,7 +39,7 @@ def init_keys():
             Key([mod, "shift"],"e",lazy.function(app_or_group("1", "thunar"))), #File manager
             Key([alt, "shift"],"e",lazy.function(ranger)), # CLI file manager
             Key([mod, "shift"],"a",lazy.function(app_or_group("1", "anydesk"))),
-            Key([mod, "shift"],"s",lazy.function(app_or_group('2', 'simplenote'))),
+            Key([mod, "shift"],"s",lazy.function(app_or_group('2', ''))),
 
             ## Group 2 (Organization: Mail)
             Key([mod, "shift"],"m",lazy.function(app_or_group('2', 'thunderbird'))),

@@ -22,7 +22,7 @@ from qtile_extras import widget
 ver = ' QARSlp v2.1.55Beta' # Current version
 mod = "mod4" # Command / Windows key
 alt = "mod1" # Alt key                  
-term = "urxvt" # Terminal in use
+term = "alacritty" # Terminal in use
 home = os.path.expanduser('~')
 prompt = ":".format(os.environ["USER"], socket.gethostname())
 
@@ -41,23 +41,26 @@ slmargin = 10 # Single window margin
 lborderwd = 5 # Layout border width
 sborderwidth = 5 # Single border width
 
+#### Groups ####
+group_names = ["1","2","3","4","5","6","7","8","9"]
+group_labels=["","","","","","","","",""]
+group_layouts=["monadthreecol", "monadthreecol", "matrix","monadtall", "monadtall", "monadthreecol","monadthreecol", "monadtall", "monadtall"]
+group_matches=[[Match(wm_class=[''])],[Match(wm_class=[])],[Match(wm_class=[])],[Match(wm_class=[])],[Match(wm_class=[])],[Match(wm_class=[])],[Match(wm_class=[])],[Match(wm_class=['Steam', 'steam'])],[Match(wm_class=[])],]
+
 #### Bars ####
 barsz =30 # bar size
-bar_top_width = [0,0,0,0] # bar borders top
-bar_bot_width = [0,0,0,0] # bar borders top
-bar_opa = 0.99
-
-transparency = "aa" #Overall Transparency
+barBorderWidth = [0,0,0,0] # bar borders top
+barTransparency = "55" #Bar & borders Transparency
 
 #### Music / Media ####
-scrollchar = 100
-scrollint = 0.5
-scrollwint = 5000
+scrollchar = 20
+scrollint = 1
+scrollwint = 500
 ### Gaps
 #### Internet Chekup ####
 internet = ' Internet is working'
 #### Themes ####
-theme=['default', 'no_bars']
+theme=['default', 'top_bar']
 backend = ["Wal", "Colorz", "Colorthief","Haishoku"]
 defaultBackend= "Wal"
 rofi_session = Rofi(rofi_args=['-theme', '~/.config/rofi/logout.rasi'])
