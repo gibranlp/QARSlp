@@ -49,7 +49,7 @@ def init_widgets_top():
                     fontshadow=color[0],
                     padding=5,
                     empty_group_string=ver,
-                    max_chars=30,
+                    max_chars=40,
                     format='  {name}',
                     ),
                 widget.Spacer(
@@ -325,14 +325,14 @@ def init_widgets_bott():
                     foreground=color[4],
                     linewidth=3,
                 ),
-                widget.Sep(
-                    foreground=color[1],
-                    linewidth=3,
-                ),
                 widget.Spacer(
                     length=bar.STRETCH,
                     foreground=color[0]
                     ),
+                widget.Sep(
+                    foreground=color[1],
+                    linewidth=3,
+                ),
                 #### Network ####
                 widget.WidgetBox(
                     text_closed=" " + wifi_icon,

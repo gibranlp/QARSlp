@@ -32,7 +32,7 @@ lwidth = 5
 #### Resolution fix ####
 main_font = "Fira Code Medium" # Font in use for the entire system
 awesome_font = "Font Awesome 6 Pro Solid"
-fontsz = 22
+fontsz = 16
  #Font size for bars
 iconsz = 20 #Icon size for bars
 lfontsz = 22 # Layout font size
