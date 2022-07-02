@@ -329,6 +329,10 @@ def init_widgets_bott():
                     foreground=color[1],
                     linewidth=3,
                 ),
+                widget.Spacer(
+                    length=bar.STRETCH,
+                    foreground=color[0]
+                    ),
                 #### Network ####
                 widget.WidgetBox(
                     text_closed=" " + wifi_icon,
