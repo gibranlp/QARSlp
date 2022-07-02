@@ -44,6 +44,14 @@ def init_widgets_top():
                        padding=10,
                        foreground=color[3],
                        ),
+                widget.WindowName(
+                    foreground=color[3],
+                    fontshadow=color[0],
+                    padding=5,
+                    empty_group_string=ver,
+                    max_chars=30,
+                    format='  {name}',
+                    ),
                 widget.Spacer(
                     length=bar.STRETCH,
                     foreground=color[0]
@@ -208,7 +216,7 @@ def init_widgets_top():
                     font=awesome_font,
                     foreground=color[3],
                     fontshadow=color[0],
-                    text="  ",
+                    text=" ",
                     ),
                 widget.CheckUpdates(
                     update_interval=1800,
@@ -220,11 +228,11 @@ def init_widgets_top():
                     colour_have_updates=color[3],
                     colour_no_updates=color[3],
                     no_update_string=" ",
-                    restart_indicator=" ",
+                    restart_indicator="",
                     fontshadow=color[0],
                     ),
                   widget.UPowerWidget(
-                    border_charge_colour=color[4],
+                    border_charge_colour=color[6],
                     border_colour=color[4],
                     border_critical_colour='#cc0000',
                     fill_critical='#cc0000',
@@ -317,14 +325,6 @@ def init_widgets_bott():
                     foreground=color[4],
                     linewidth=3,
                 ),
-                widget.WindowName(
-                    foreground=color[3],
-                    fontshadow=color[0],
-                    padding=5,
-                    empty_group_string=ver,
-                    max_chars=120,
-                    format='  {name}',
-                    ),
                 widget.Sep(
                     foreground=color[1],
                     linewidth=3,
@@ -348,14 +348,14 @@ def init_widgets_bott():
                         mouse_callbacks={'Button1':lambda: qtile.cmd_function(network_widget)}
                         ),]
                 ),
-                #widget.Wlan(
-                #    interface=wifi,
-                #    format=' {essid} {percent:2.0%} ',
-                #    disconnected_message='Unplugged',
-                #    foreground=color[1],
-                #    fontshadow=color[0],
-                #    mouse_callbacks={'Button1':lambda: qtile.cmd_function(network_widget)}
-                #    ),
+                widget.Wlan(
+                    interface=wifi,
+                    format=' {essid} {percent:2.0%} ',
+                    disconnected_message='Unplugged',
+                    foreground=color[1],
+                    fontshadow=color[0],
+                    mouse_callbacks={'Button1':lambda: qtile.cmd_function(network_widget)}
+                    ),
                 widget.Net(
                     interface=wifi,
                     format=' {down} ',
