@@ -279,7 +279,7 @@ def init_widgets_bott():
                 #### Shortcuts ####
                 widget.TextBox(
                     font=awesome_font,
-                    text="  ",
+                    text="  ",
                     padding=5,
                     mouse_callbacks={'Button1': lambda: qtile.cmd_spawn('rofi -theme "~/.config/rofi/launcher.rasi" -show drun')},
                     foreground=color[1],

@@ -151,13 +151,13 @@ def screenshot(qtile):
         if index ==0:
             subprocess.run("deepin-screenshot -s" + home + "/Pictures",shell=True)
         if index ==1:
-            subprocess.run("scrot -d 1 'Screenshot_%S-%m-%y.png' -e 'mv $f $$(xdg-user-dir PICTURES) #; viewnior $$(xdg-user-dir PICTURES)/$f' && dunstify ' Taken!'",shell=True)
+            subprocess.run("scrot -d 1 'Screenshot_%S-%m-%y.png' -e 'mv $f $$(xdg-user-dir Pictures) #; viewnior $$(xdg-user-dir Pictures)/$f' && dunstify ' Taken!'",shell=True)
         elif index==2:
-            subprocess.run("scrot -u 'Screenshot_%S-%m-%y.png' -e 'mv $f $$(xdg-user-dir PICTURES) #; viewnior $$(xdg-user-dir PICTURES)/$f' && dunstify ' Taken!'",shell=True)
+            subprocess.run("scrot -u 'Screenshot_%S-%m-%y.png' -e 'mv $f $$(xdg-user-dir Pictures) #; viewnior $$(xdg-user-dir Pictures)/$f' && dunstify ' Taken!'",shell=True)
         elif index==3:
-            subprocess.run("scrot -s 'Screenshot_%S-%m-%y.png' -e 'mv $f $$(xdg-user-dir PICTURES)  #; viewnior $$(xdg-user-dir PICTURES)/$f'&& dunstify ' Taken!'",shell=True)
+            subprocess.run("scrot -s 'Screenshot_%S-%m-%y.png' -e 'mv $f $$(xdg-user-dir Pictures)  #; viewnior $$(xdg-user-dir Pictures)/$f'&& dunstify ' Taken!'",shell=True)
         else:
-            subprocess.run("scrot -d 5 -c 'Screenshot_%S-%m-%y.png' -e 'mv $f C #; viewnior $$(xdg-user-dir PICTURES)/$f' && dunstify ' Taken!'",shell=True)
+            subprocess.run("scrot -d 5 -c 'Screenshot_%S-%m-%y.png' -e 'mv $f C #; viewnior $$(xdg-user-dir Pictures)/$f' && dunstify ' Taken!'",shell=True)
 
 #### Network Widget
 def network_widget(qtile):
