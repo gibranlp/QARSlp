@@ -22,16 +22,16 @@
     # dynamic width from 0 to 300
     # width = (0, 300)
     # constant width of 300
-    width =500
+    width =(0, 400)
 
     # The maximum height of a single notification, excluding the frame.
-    height = 150
+    height = 130
 
     # Position the notification in the top right corner
-    origin = top-center
+    origin = top-right
 
     # Offset from the origin
-    offset = 0x35
+    offset = 10x31
 
     # Scale factor. It is auto-detected if value is 0.
     scale = 0
@@ -116,7 +116,7 @@
 
     ### Text ###
 
-    font = Fira Code Medium 11
+    font = Fira Code Medium 10
 
     # The spacing between lines.  If the height is smaller than the
     # font height, it will get raised to the font height.
@@ -198,7 +198,7 @@
     min_icon_size = 32
 
     # Scale larger icons down to this size, set to 0 to disable
-    max_icon_size = 64
+    max_icon_size = 128
 
     # Paths to default icons.
     icon_path = /usr/share/icons/gnome/16x16/status/:/usr/share/icons/gnome/16x16/devices/

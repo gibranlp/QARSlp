@@ -25,6 +25,7 @@ def init_keys():
             
             #### Widgets ####
             Key([mod],"h",lazy.function(shortcuts)), # Shortcuts widget
+            Key([mod],"p",lazy.function(fargewidget)),
             Key([mod],"f",lazy.spawn(home + '/.local/bin/wsearch')), # WEB Search
             Key([mod],"x",lazy.function(session_widget)), # Log out
             Key([mod],"n",lazy.function(network_widget)), # Network Settings

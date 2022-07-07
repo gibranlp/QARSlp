@@ -19,50 +19,75 @@ from rofi import Rofi
 from qtile_extras import widget
 
 ### Variables ####
-ver = ' QARSlp v2.1.35Beta' # Current version
+resolution = "4k" # 4k 3460 x 2560 or Fullhd 1920 x 1080
+ver = ' QARSlp v2.1.6 ' # Current version
 mod = "mod4" # Command / Windows key
 alt = "mod1" # Alt key                  
 term = "urxvt" # Terminal in use
 home = os.path.expanduser('~')
 prompt = ":".format(os.environ["USER"], socket.gethostname())
 
+### Separators
+lwidth = 5
+
 #### Resolution fix ####
+
+if resolution == "4k":
+  fontsz = 22 # Bars Font size
+  iconsz = 22 # Treay Icon size
+  barsz = 30 # Bar size
+  lmargin = 10 # Layout margins
+  slmargin = 10 # Single window margin 
+  lborderwd = 5 # Layout border width
+  sborderwidth = 5 # Single border width
+else:
+  fontsz = 16 # Bars Font size
+  iconsz = 18 # Treay Icon size
+  barsz = 25 # Bar size
+  lmargin = 5 # Layout margins
+  slmargin = 5 # Single window margin 
+  lborderwd = 3 # Layout border width
+  sborderwidth = 3 # Single border width
+
+
+  
+
 main_font = "Fira Code Medium" # Font in use for the entire system
 awesome_font = "Font Awesome 6 Pro Solid"
-fontsz = 22
+
  #Font size for bars
-iconsz = 20 #Icon size for bars
-lfontsz = 22 # Layout font size
-lmargin = 5 # Layout margins
-slmargin = 5 # Single window margin 
-lborderwd = 3 # Layout border width
+ #Icon size for bars
+
+
+#### Groups ####
+group_names = ["1","2","3","4","5","6","7","8","9"]
+group_labels=["","","","","","","","",""]
+group_layouts=["monadtall", "monadthreecol", "matrix","monadtall", "monadtall", "monadthreecol","monadthreecol", "monadtall", "monadtall"]
+group_matches=[[Match(wm_class=[''])],[Match(wm_class=[])],[Match(wm_class=[])],[Match(wm_class=[])],[Match(wm_class=[])],[Match(wm_class=[])],[Match(wm_class=[])],[Match(wm_class=['Steam', 'steam'])],[Match(wm_class=[])],]
 
 #### Bars ####
-barsz = 30 # bar size
-bar_top_width = [0,0,0,0] # bar borders top
-bar_bot_width = [0,0,0,0] # bar borders top
-bar_opa = 0.99
 
-transparency = "95" #Overall Transparency
+barBorderWidth = [0,0,0,0] # bar borders top
+barTransparency = "33" #Bar & borders Transparency
 
 #### Music / Media ####
-scrollchar = 50
+scrollchar = 40
 scrollint = 1
 scrollwint = 500
 ### Gaps
 #### Internet Chekup ####
 internet = ' Internet is working'
 #### Themes ####
-theme=['default', 'top_bar', 'bottom_bar', 'minimal', 'alpha', 'simple']
+theme=['default', 'top_bar']
 backend = ["Wal", "Colorz", "Colorthief","Haishoku"]
-rofi_l = Rofi(rofi_args=['-theme', '~/.config/rofi/left_toolbar.rasi'])
-rofi_r = Rofi(rofi_args=['-theme', '~/.config/rofi/right_toolbar.rasi'])
+defaultBackend= "Wal"
 rofi_session = Rofi(rofi_args=['-theme', '~/.config/rofi/logout.rasi'])
 rofi_display = Rofi(rofi_args=['-theme', '~/.config/rofi/display.rasi'])
 rofi_network= Rofi(rofi_args=['-theme', '~/.config/rofi/network.rasi'])
 rofi_backend= Rofi(rofi_args=['-theme', '~/.config/rofi/backend.rasi'])
 rofi_websearch= Rofi(rofi_args=['-theme', '~/.config/rofi/websearch.rasi'])
 rofi_screenshot= Rofi(rofi_args=['-theme', '~/.config/rofi/screenshot.rasi'])
+rofi_fargewidget= Rofi(rofi_args=['-theme', '~/.config/rofi/fargewidget.rasi'])
 #### Resolution ####
 
 #### Weather ####

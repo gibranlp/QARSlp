@@ -6,7 +6,7 @@
 # QARSlp Qtile + Arch Ricing Script
 # By: gibranlp <thisdoesnotwork@gibranlp.dev>
 # MIT licence
-from variablespc import *
+from variables import *
 
 #### Hooks ####
 @hook.subscribe.startup
@@ -146,18 +146,30 @@ def screenshot(qtile):
     options = [' Advanced',' Screen', ' Window', ' Area', ' 5s Screen']
     index, key = rofi_screenshot.select('  Screenshot', options)
     if key == -1:
-        rofi.close()
+        rofi_screenshot.close()
     else:
         if index ==0:
             subprocess.run("deepin-screenshot -s" + home + "/Pictures",shell=True)
         if index ==1:
-            subprocess.run("scrot -d 1 'Screenshot_%S-%m-%y.png' -e 'mv $f $$(xdg-user-dir Pictures) #; viewnior $$(xdg-user-dir Pictures)/$f' && dunstify ' Taken!'",shell=True)
+            subprocess.run("scrot -d 1 'Screenshot_%S-%m-%y.png' -e 'mv $f ~/Pictures/ #; feh -F ~/Pictures/$f' && dunstify ' Taken!'",shell=True)
         elif index==2:
-            subprocess.run("scrot -u 'Screenshot_%S-%m-%y.png' -e 'mv $f $$(xdg-user-dir Pictures) #; viewnior $$(xdg-user-dir Pictures)/$f' && dunstify ' Taken!'",shell=True)
+            subprocess.run("scrot -u 'Screenshot_%S-%m-%y.png' -e 'mv $f ~/Pictures/ #; feh -F ~/Pictures/$f' && dunstify ' Taken!'",shell=True)
         elif index==3:
-            subprocess.run("scrot -s 'Screenshot_%S-%m-%y.png' -e 'mv $f $$(xdg-user-dir Pictures)  #; viewnior $$(xdg-user-dir Pictures)/$f'&& dunstify ' Taken!'",shell=True)
+            subprocess.run("scrot -s 'Screenshot_%S-%m-%y.png' -e 'mv $f ~/Pictures/ #; feh -F ~/Pictures/$f' && dunstify ' Taken!'",shell=True)
         else:
-            subprocess.run("scrot -d 5 -c 'Screenshot_%S-%m-%y.png' -e 'mv $f C #; viewnior $$(xdg-user-dir Pictures)/$f' && dunstify ' Taken!'",shell=True)
+            subprocess.run("scrot -d 5 -c 'Screenshot_%S-%m-%y.png' -e 'mv $f ~/Pictures/ #; feh -F ~/Pictures/$f' && dunstify ' Taken!'",shell=True)
+
+#### Farge Widget
+def fargewidget(qtile):
+    options = [' Hex',' RGB']
+    index, key = rofi_fargewidget.select('  Color Picker', options)
+    if key == -1:
+        rofi_fargewidget.close()
+    else:
+        if index ==0:
+            subprocess.run("farge --notify --expire-time 10000",shell=True)
+        else:
+            subprocess.run("farge --notify --rgb --expire-time 10000",shell=True)
 
 #### Network Widget
 def network_widget(qtile):
@@ -188,7 +200,7 @@ def network_widget(qtile):
 #### Change Theme widget ####
 def change_theme(qtile):
     options = [theme[0],theme[1]]
-    index, key = rofi_backend.select('  Color Scheme', options)
+    index, key = rofi_backend.select('  Select Theme', options)
     if key == -1 or index >= 6:
         rofi_backend.close()
     elif key == 0 and index < 6:
@@ -292,7 +304,7 @@ for i in range(len(group_names)):
 #### Layouts ####
 def init_layout_theme():
     return {"font":main_font,
-            "fontsize":lfontsz,
+            "fontsize":fontsz,
             "margin": lmargin,
             "border_width":lborderwd ,
             "border_normal":color[0],
@@ -305,7 +317,7 @@ layout_theme = init_layout_theme()
 
 def init_layouts():
     return [
-        layout.MonadTall(max_ratio=0.90,ratio=0.80,**layout_theme),
+        layout.MonadTall(max_ratio=0.90,ratio=0.60,**layout_theme),
         layout.MonadWide(max_ratio=0.90,ratio=0.60,**layout_theme),
         layout.Matrix(**layout_theme),
         #layout.Bsp(**layout_theme),
@@ -334,6 +346,7 @@ floating_layout = layout.Floating(auto_float_rules=[
     Match(wm_class='ssh-askpass'),
     Match(wm_class='Slack'),
     Match(wm_class='slack'),
+    Match(wm_class='feh'),
     Match(wm_class='Obconf')])
 layouts = init_layouts()
 #### End layouts ####

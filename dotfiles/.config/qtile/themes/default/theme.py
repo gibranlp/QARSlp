@@ -1,5 +1,3 @@
-
-
 # _______  _______  ______  _______  __        
 #|       ||   _   ||   __ \|     __||  |.-----.
 #|   -  _||       ||      <|__     ||  ||  _  |
@@ -49,7 +47,7 @@ def init_widgets_top():
                     fontshadow=color[0],
                     padding=5,
                     empty_group_string=ver,
-                    max_chars=40,
+                    max_chars=50,
                     format='  {name}',
                     ),
                 widget.Spacer(
@@ -180,14 +178,11 @@ def init_widgets_top():
                     scroll_wait_intervals=scrollwint,
                     ),           
                 #### Layouts ####
-                widget.TextBox(
-                    text='  ',
+            widget.CurrentLayoutIcon(
                     foreground=color[5],
                     fontshadow=color[0],
-                ),
-                widget.CurrentLayout(
-                    foreground=color[5],
-                    fontshadow=color[0],
+                    scale=0.7,
+                    use_mask=True,
                     ),
                 #### Pomodoro ####
                 widget.WidgetBox(
@@ -267,7 +262,7 @@ def init_widgets_top():
                     font=awesome_font,
                     foreground=color[4],
                     fontshadow=color[0],
-                    text=" ",
+                    text=" ",
                     mouse_callbacks={'Button1': lambda: qtile.cmd_function(session_widget)}
                     ),
     ]
@@ -283,7 +278,7 @@ def init_widgets_bott():
                     padding=5,
                     mouse_callbacks={'Button1': lambda: qtile.cmd_spawn('rofi -theme "~/.config/rofi/launcher.rasi" -show drun')},
                     foreground=color[1],
-                    fontsize=25
+                    fontsize=fontsz
                     ),
                 widget.TextBox(
                     font=awesome_font,
@@ -295,7 +290,7 @@ def init_widgets_bott():
                     font=awesome_font,
                     foreground=color[6],
                     text=" ",
-                    mouse_callbacks={'Button1': lambda: qtile.cmd_spawn(term)}
+                    mouse_callbacks={'Button1': lambda: qtile.cmd_spawn(term + '-e rager')}
                     ),
                 widget.TextBox(
                     font=awesome_font,
@@ -352,14 +347,14 @@ def init_widgets_bott():
                         mouse_callbacks={'Button1':lambda: qtile.cmd_function(network_widget)}
                         ),]
                 ),
-                widget.Wlan(
-                    interface=wifi,
-                    format=' {essid} {percent:2.0%} ',
-                    disconnected_message='Unplugged',
-                    foreground=color[1],
-                    fontshadow=color[0],
-                    mouse_callbacks={'Button1':lambda: qtile.cmd_function(network_widget)}
-                    ),
+                #widget.Wlan(
+                #    interface=wifi,
+                #    format=' {essid} {percent:2.0%} ',
+                #    disconnected_message='Unplugged',
+                #    foreground=color[1],
+                #    fontshadow=color[0],
+                #    mouse_callbacks={'Button1':lambda: qtile.cmd_function(network_widget)}
+                #    ),
                 widget.Net(
                     interface=wifi,
                     format=' {down} ',

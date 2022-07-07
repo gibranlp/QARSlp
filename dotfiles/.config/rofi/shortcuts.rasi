@@ -10,7 +10,7 @@
  */
 
 configuration {
-	font:							"Fira Code Medium 13";
+	font:							"Fira Code Medium 14";
     show-icons:                     false;
 	icon-theme: 					"Buuf";
     display-drun: 					"";
