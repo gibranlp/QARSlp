@@ -23,7 +23,7 @@ resolution = "4k" # 4k 3460 x 2560 or Fullhd 1920 x 1080
 ver = ' QARSlp v2.1.6 ' # Current version
 mod = "mod4" # Command / Windows key
 alt = "mod1" # Alt key                  
-term = "urxvt" # Terminal in use
+term = "alacritty" # Terminal in use
 home = os.path.expanduser('~')
 prompt = ":".format(os.environ["USER"], socket.gethostname())
 
