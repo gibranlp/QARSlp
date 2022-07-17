@@ -115,7 +115,6 @@ def set_rand_wallpaper(qtile):
     rand_wallpaper = os.path.join(dir, selection)
     subprocess.run(["wpg", "-s", "%s" % rand_wallpaper, "--backend", "%s" %defaultBackend.lower()])
     subprocess.run(["sudo", "cp", "%s" % rand_wallpaper,  "/usr/share/backgrounds/background.png"])
-    subprocess.run(["cp", "~/.cache/wal/dunstrc"  "~/.config/dunst/dunstrc"])
     subprocess.run(["wal", "-R"])
     qtile.cmd_reload_config()
 
@@ -127,17 +126,18 @@ def shortcuts(qtile):
 
 #### Logout widget
 def session_widget(qtile):
-    options = [' Poweroff',' Log Out', ' Reboot',' Lock']
+    options = [' Log Out', ' Reboot',' Poweroff',' Lock']
     index, key = rofi_session.select('  Session', options)
     if key == -1:
         rofi_session.close()
     else:
         if index == 0:
-            os.system('systemctl poweroff')
-        elif index == 1:
             qtile.cmd_shutdown()
+        elif index == 1:
+            os.system('systemctl reboot')
         elif index == 2:
-            os.system('systemctl reboot') 
+            os.system('systemctl poweroff')
+             
         else:
             os.system('dm-tool switch-to-greeter')
 
@@ -151,13 +151,13 @@ def screenshot(qtile):
         if index ==0:
             subprocess.run("deepin-screenshot -s" + home + "/Pictures",shell=True)
         if index ==1:
-            subprocess.run("scrot -d 1 'Screenshot_%S-%m-%y.png' -e 'mv $f ~/Pictures/ #; feh -F ~/Pictures/$f' && dunstify ' Taken!'",shell=True)
+            subprocess.run("scrot -d 1 'Screenshot_%S-%m-%y.png' -e 'mv $f ~/Pictures/ #; feh -F ~/Pictures/$f' && dunstify ' Screenshot Taken!'",shell=True)
         elif index==2:
-            subprocess.run("scrot -u 'Screenshot_%S-%m-%y.png' -e 'mv $f ~/Pictures/ #; feh -F ~/Pictures/$f' && dunstify ' Taken!'",shell=True)
+            subprocess.run("scrot -u 'Screenshot_%S-%m-%y.png' -e 'mv $f ~/Pictures/ #; feh -F ~/Pictures/$f' && dunstify ' Screenshot Taken!'",shell=True)
         elif index==3:
-            subprocess.run("scrot -s 'Screenshot_%S-%m-%y.png' -e 'mv $f ~/Pictures/ #; feh -F ~/Pictures/$f' && dunstify ' Taken!'",shell=True)
+            subprocess.run("scrot -s 'Screenshot_%S-%m-%y.png' -e 'mv $f ~/Pictures/ #; feh -F ~/Pictures/$f' && dunstify ' Screenshot Taken!'",shell=True)
         else:
-            subprocess.run("scrot -d 5 -c 'Screenshot_%S-%m-%y.png' -e 'mv $f ~/Pictures/ #; feh -F ~/Pictures/$f' && dunstify ' Taken!'",shell=True)
+            subprocess.run("scrot -d 5 -c 'Screenshot_%S-%m-%y.png' -e 'mv $f ~/Pictures/ #; feh -F ~/Pictures/$f' && dunstify ' Screenshot Taken!'",shell=True)
 
 #### Farge Widget
 def fargewidget(qtile):
@@ -216,11 +216,9 @@ def change_color_scheme(qtile):
         rofi_backend.close()
     elif key == 0 and index < 4:
         subprocess.run('wpg -s ' + wallpaper + ' --backend ' + backend[index].lower(), shell=True)
-        subprocess.run(["cp", "~/.cache/wal/dunstrc"  "~/.config/dunst/dunstrc"])
         qtile.cmd_reload_config()
     elif key == 0 and index > 4:
         subprocess.run('wpg -s ' + wallpaper + ' -L --backend ' + backend[index-5].lower(), shell=True)
-        subprocess.run(["cp", "~/.cache/wal/dunstrc"  "~/.config/dunst/dunstrc"])
         qtile.cmd_reload_config()
 
 #### Multimedia #### 
