@@ -66,7 +66,7 @@ font:
     #   - (Linux) monospace
     #   - (Windows) Consolas
     #family: mononoki Nerd Font Mono
-    family: Fira Code
+    family: Fira Code Medium
 
     # The `style` can be specified to pick a specific face.
     style: Medium
@@ -78,7 +78,7 @@ font:
     # If the bold family is not specified, it will fall back to the
     # value specified for the normal font.
     #family: mononoki Nerd Font Mono
-    family: Fira Code
+    family: Fira Code Medium
 
     # The `style` can be specified to pick a specific face.
     style: Bold
@@ -90,13 +90,13 @@ font:
     # If the italic family is not specified, it will fall back to the
     # value specified for the normal font.
     #family: mononoki Nerd Font Mono
-    family: Fira Code
+    family: Fira Code Medium
 
     # The `style` can be specified to pick a specific face.
     style: Italic
 
   # Point size
-  size: 11
+  size: 12
 
   # Offset is the extra space around each character. `offset.y` can be thought of
   # as modifying the line spacing, and `offset.x` as modifying the letter spacing.

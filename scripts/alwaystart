@@ -13,5 +13,5 @@ pywalfox update &
 picom --backend glx &
 cp ~/.cache/wal/dunstrc ~/.config/dunst/dunstrc &
 dunst &
-
+wal-telegram --palette '~/.cache/wal/colors.sh' &
 wal -R 

@@ -26,9 +26,10 @@ alt = "mod1" # Alt key
 term = "alacritty" # Terminal in use
 home = os.path.expanduser('~')
 prompt = ":".format(os.environ["USER"], socket.gethostname())
+Window = ""
 
 ### Separators
-lwidth = 5
+lwidth = 4
 
 #### Resolution fix ####
 
@@ -49,26 +50,28 @@ else:
   lborderwd = 3 # Layout border width
   sborderwidth = 3 # Single border width
 
-
-  
-
-main_font = "Fira Code Medium" # Font in use for the entire system
+main_font = "Fira Code" # Font in use for the entire system
 awesome_font = "Font Awesome 6 Pro Solid"
-
- #Font size for bars
- #Icon size for bars
-
 
 #### Groups ####
 group_names = ["1","2","3","4","5","6","7","8","9"]
 group_labels=["","","","","","","","",""]
 group_layouts=["monadtall", "monadthreecol", "matrix","monadtall", "monadtall", "monadthreecol","monadthreecol", "monadtall", "monadtall"]
-group_matches=[[Match(wm_class=[''])],[Match(wm_class=[])],[Match(wm_class=[])],[Match(wm_class=[])],[Match(wm_class=[])],[Match(wm_class=[])],[Match(wm_class=[])],[Match(wm_class=['Steam', 'steam'])],[Match(wm_class=[])],]
+group_matches=[
+  [Match(wm_class=[])],
+  [Match(wm_class=[])],
+  [Match(wm_class=[])],
+  [Match(wm_class=[])],
+  [Match(wm_class=[])],
+  [Match(wm_class=[])],
+  [Match(wm_class=[])],
+  [Match(wm_class=[])],
+  [Match(wm_class=[])],]
 
 #### Bars ####
 
 barBorderWidth = [0,0,0,0] # bar borders top
-barTransparency = "33" #Bar & borders Transparency
+barTransparency = "44" #Bar & borders Transparency
 
 #### Music / Media ####
 scrollchar = 40
@@ -78,7 +81,7 @@ scrollwint = 500
 #### Internet Chekup ####
 internet = ' Internet is working'
 #### Themes ####
-theme=['default', 'top_bar']
+theme=['colorful','default', 'top_bar']
 backend = ["Wal", "Colorz", "Colorthief","Haishoku"]
 defaultBackend= "Wal"
 rofi_session = Rofi(rofi_args=['-theme', '~/.config/rofi/logout.rasi'])

@@ -36,5 +36,5 @@ URxvt.perl-ext-common:  ...,resize-font,...
 
 ! -- Fonts -- !
 URxvt.font:xft:Fira Code Medium:size=13, xft:Font Awesome 6 Pro Solid:size=16
-URxvt.boldfont:xft:Fira Code Bold:size=13
+URxvt.boldfont:xft:Fira Code Medium:size=13
 

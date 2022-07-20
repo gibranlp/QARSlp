@@ -93,21 +93,8 @@ element {
     text-color:                     @background;
     border:                         3px;
     border-color:                   transparent;
-    border-radius:                  3px;
+    border-radius:                  5px;
     
-}
-element.normal.normal {
-    background-color: transparent;
-    text-color: @foreground;
-}
-
-element.normal.active {
-    background-color: @active-background;
-    text-color: @active-background;
-}
-element.alternate.normal {
-    background-color: transparent;
-    text-color: @foreground;
 }
 
 element-icon {
@@ -116,20 +103,45 @@ element-icon {
     vertical-align:                 0.1;
     size:                           48px;
 }
+
+element.normal.normal {
+    background-color: transparent;
+    text-color: @foreground;
+}
+
+element.normal.active {
+    background-color: @active-background;
+    text-color: @foreground;
+}
+
+element.alternate.normal {
+    background-color: transparent;
+    text-color: @foreground;
+}
+
 element-text {
     background-color: 				transparent;
+    text-color:       				@foreground;
     expand:                         true;
     horizontal-align:               0.5;
     vertical-align:                 0.5;
     margin:                         0.5% 0.5% -0.5% 0.5%;
-    text-color:                     @foreground;
 }
 
 element.selected.normal {
     background-color: @active-background;
     text-color: @background;
 }
-element.selected.active {
-    background-color: @active-background;
-    text-color: @background;
+
+element-text {
+    background-color: 				transparent;
+    text-color:       				inherit;
+    expand:                         true;
+    horizontal-align:               0.5;
+    vertical-align:                 0.5;
+    margin:                         0.5% 0.5% -0.5% 0.5%;
 }
+
+
+
+

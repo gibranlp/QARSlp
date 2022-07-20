@@ -24,6 +24,18 @@ def floating(window):
     if window.window.get_wm_type() in floating_types or transient:
         window.floating = True
 
+@hook.subscribe.client_name_updated
+def push_spotify(client: Window) -> None:
+    """Push Spotify to correct group since it's wm_class setting is slow"""
+    if client.cmd_info().get("name") == "Spotify" and not client.get_wm_class():
+        client.cmd_togroup("7")
+
+@hook.subscribe.client_name_updated
+def push_libreoffice(client: Window) -> None:
+    """Push Libreoffice to correct group since it's wm_class setting is slow"""
+    if client.cmd_info().get("class") == "libreoffice" and not client.get_wm_class():
+        client.cmd_togroup("6")
+
 #### Import Used Network Interface ####
 def get_net_dev():
     get_dev = "ip addr show | awk '/inet.*brd/{print $NF; exit}'"
@@ -34,9 +46,9 @@ def get_net_dev():
 wifi = get_net_dev()
 
 if wifi.startswith('w'):
-    wifi_icon='  '
+    wifi_icon=''
 else:
-    wifi_icon='  '
+    wifi_icon=''
 
 #### Gety IP addreses Private / Public
 def get_private_ip():
@@ -113,10 +125,13 @@ def set_rand_wallpaper(qtile):
     dir = home + '/Pictures/wallPapers'
     selection = random.choice(os.listdir(dir))
     rand_wallpaper = os.path.join(dir, selection)
-    subprocess.run(["wpg", "-s", "%s" % rand_wallpaper, "--backend", "%s" %defaultBackend.lower()])
-    subprocess.run(["sudo", "cp", "%s" % rand_wallpaper,  "/usr/share/backgrounds/background.png"])
-    subprocess.run(["wal", "-R"])
-    qtile.cmd_reload_config()
+    if rand_wallpaper != wallpaper:
+        subprocess.run(["wpg", "-s", "%s" % rand_wallpaper, "--backend", "%s" %defaultBackend.lower()])
+        subprocess.run(["sudo", "cp", "%s" % rand_wallpaper,  "/usr/share/backgrounds/background.png"])
+        subprocess.run(["wal", "-R"])
+        qtile.cmd_reload_config()
+    else:
+        selection = random.choice(os.listdir(dir))
 
 
 #### Functions for Widgets ####
@@ -199,7 +214,7 @@ def network_widget(qtile):
 
 #### Change Theme widget ####
 def change_theme(qtile):
-    options = [theme[0],theme[1]]
+    options = theme
     index, key = rofi_backend.select('  Select Theme', options)
     if key == -1 or index >= 6:
         rofi_backend.close()
@@ -315,21 +330,10 @@ layout_theme = init_layout_theme()
 
 def init_layouts():
     return [
-        layout.MonadTall(max_ratio=0.90,ratio=0.60,**layout_theme),
-        layout.MonadWide(max_ratio=0.90,ratio=0.60,**layout_theme),
+        layout.MonadTall(max_ratio=0.90,ratio=0.80,**layout_theme),
+        layout.MonadWide(max_ratio=0.90,ratio=0.80,**layout_theme),
         layout.Matrix(**layout_theme),
-        #layout.Bsp(**layout_theme),
-        #layout.Columns(**layout_theme),
-        layout.MonadThreeCol(**layout_theme),
-        #´1     .Spiral(**layout_theme),
-        #layout.RatioTile(**layout_theme),
-        #layout.Slice(**layout_theme),
-        #layout.Stack(**layout_theme),
-        #layout.Tile(**layout_theme),
-        #layout.VerticalTile(**layout_theme),
-        #layout.Zoomy(**layout_theme),
-        #layout.TreeTab(sections = ["Tabs"],section_fontsize=lfontsz,bg_color=color[0] + transparency,active_bg=color[8],active_fg=color[0],inactive_bg=color[0],inactive_fg=color[7],padding_left=0,padding_x=0,padding_y=5,section_top=10,section_bottom=20,level_shift=8,vspace=3,panel_width=250,**layout_theme),
-        #layout.Floating(**layout_theme)            
+        layout.MonadThreeCol(**layout_theme),        
         ]
 
 floating_layout = layout.Floating(auto_float_rules=[

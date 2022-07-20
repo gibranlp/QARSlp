@@ -249,6 +249,12 @@ def init_widgets_top():
                     fontshadow=color[0],
                     foreground=color[7],
                 ),
+                widget.Bluetooth(
+                    foreground=color[1],
+                    fontshadow=color[0],
+                    hci='/dev_28_EC_9A_9B_64_72',
+                    mouse_callbacks={'Button1': lambda: qtile.cmd_spawn('blueman-manager')}
+                ),
                 #### Lock, Logout, Poweroff ####
                 widget.TextBox(
                     font=awesome_font,
@@ -273,7 +279,7 @@ def init_screens():
         Screen(
             top=bar.Bar(
                 margin=[5, 10, 0, 10],
-                background=[color[0] + barTransparency],
+                background="ffffff00",
                 widgets=init_widgets_screen_top(),  
                 size=barsz,
                 border_color=color[1]+ barTransparency,

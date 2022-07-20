@@ -71,7 +71,8 @@ function i_settings(){
   git clone https://github.com/zsh-users/zsh-autosuggestions.git ~/.oh-my-zsh/plugins/zsh-autosuggestions &
   git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/plugins/zsh-syntax-highlighting &
   wpg-install.sh -g -d -i &
-  mkdr ~/.config/dunst
+  mkdr ~/.config/dunst &
+  xdg-settings set default-web-browser librewolf.desktop &
   
 }
 

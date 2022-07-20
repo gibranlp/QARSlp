@@ -257,6 +257,12 @@ def init_widgets_top():
                     fontshadow=color[0],
                     foreground=color[7],
                 ),
+                widget.Bluetooth(
+                    foreground=color[1],
+                    fontshadow=color[0],
+                    hci='/dev_28_EC_9A_9B_64_72',
+                    mouse_callbacks={'Button1': lambda: qtile.cmd_spawn('blueman-manager')}
+                ),
                 #### Lock, Logout, Poweroff ####
                 widget.TextBox(
                     font=awesome_font,
@@ -330,6 +336,7 @@ def init_widgets_bott():
                 ),
                 #### Network ####
                 widget.WidgetBox(
+                    font=awesome_font,
                     text_closed=" " + wifi_icon,
                     text_open='  ',
                     foreground=color[1],
@@ -369,6 +376,7 @@ def init_widgets_bott():
                 ),
                 #### Weather ####
                 widget.OpenWeather(
+                    font=awesome_font,
                     app_key=w_appkey,
                     cityid=w_cityid,
                     weather_symbols = {
@@ -404,15 +412,6 @@ def init_widgets_bott():
                     foreground=color[2],
                     fontshadow=color[0],
                     format='{main_temp}°{units_temperature} ',
-                    metric=True,
-                    update_interval=600
-                    ),
-                widget.OpenWeather(
-                    app_key=w_appkey,
-                    cityid=w_cityid,
-                    foreground=color[6],
-                    fontshadow=color[0],
-                    format='  {location_city}',
                     metric=True,
                     update_interval=600
                     ),
