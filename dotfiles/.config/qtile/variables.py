@@ -35,7 +35,7 @@ lwidth = 4
 
 if resolution == "4k":
   fontsz = 22 # Bars Font size
-  iconsz = 22 # Treay Icon size
+  iconsz = 20 # Treay Icon size
   barsz = 30 # Bar size
   lmargin = 10 # Layout margins
   slmargin = 10 # Single window margin 
@@ -55,7 +55,7 @@ awesome_font = "Font Awesome 6 Pro Solid"
 
 #### Groups ####
 group_names = ["1","2","3","4","5","6","7","8","9"]
-group_labels=["","","","","","","","",""]
+group_labels=["","","","","","","","",""]
 group_layouts=["monadtall", "monadthreecol", "matrix","monadtall", "monadtall", "monadthreecol","monadthreecol", "monadtall", "monadtall"]
 group_matches=[
   [Match(wm_class=[])],

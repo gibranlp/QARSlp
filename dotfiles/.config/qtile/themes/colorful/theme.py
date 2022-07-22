@@ -7,6 +7,7 @@
 # By: gibranlp <thisdoesnotwork@gibranlp.dev>
 # MIT licence 
 from numpy import size
+from pyparsing import cpp_style_comment
 from funct import *
 
 #### Widgets ####
@@ -18,7 +19,7 @@ def init_widgets_top():
                 widget.TextBox(
                     background=color[1],
                     font=awesome_font,
-                    text="  ",
+                    text="  ",
                     padding=5,
                     mouse_callbacks={'Button1': lambda: qtile.cmd_spawn('rofi -theme "~/.config/rofi/launcher.rasi" -show drun')},
                     foreground=color[0],
@@ -79,7 +80,7 @@ def init_widgets_top():
                     use_mask=True,
                     ),
                 widget.TextBox(
-                    background=color[8],
+                    background=color[3],
                     foreground=color[5],
                     text="",
                     padding=0,
@@ -88,7 +89,7 @@ def init_widgets_top():
                 #### Weather ####
                 widget.OpenWeather(
                     font=awesome_font,
-                    background=color[8],
+                    background=color[3],
                     app_key=w_appkey,
                     cityid=w_cityid,
                     weather_symbols={
@@ -118,7 +119,7 @@ def init_widgets_top():
                     update_interval=600
                     ),
                widget.OpenWeather(
-                    background=color[8],
+                    background=color[3],
                     app_key=w_appkey,
                     cityid=w_cityid,
                     foreground=color[0],
@@ -128,16 +129,16 @@ def init_widgets_top():
                     ),
                 widget.TextBox(
                     background=color[0],
-                    foreground=color[8],
+                    foreground=color[3],
                     text="",
                     padding=0,
                     fontsize=30,
                 ),
                 widget.WindowName(
                     background=color[0],
-                    foreground=color[7],
+                    foreground=color[1],
                     empty_group_string=ver,
-                    format='{state}{name}'
+                    format='  {name}',
                 ),
                 widget.Spacer(
                     length=bar.STRETCH,
@@ -153,7 +154,7 @@ def init_widgets_top():
                 widget.Clock(
                     background=color[6],
                     foreground=color[0],
-                    format="%H:%M",
+                    format="%a %d %H:%M",
                     update_interval=1
                     ),
                 widget.TextBox(
@@ -166,6 +167,11 @@ def init_widgets_top():
                 widget.Spacer(
                     length=bar.STRETCH,
                     background=color[7]
+                    ),
+                widget.Systray(
+                    padding=5,
+                    icon_size=iconsz,
+                    background=color[7],
                     ),
                 #### Spotify ####
                  widget.TextBox(
@@ -226,33 +232,32 @@ def init_widgets_top():
                     ),
                 widget.TextBox(
                     background=color[7],
-                    foreground=color[8],
+                    foreground=color[3],
                     text="",
                     padding=0,
                     fontsize=30,
                 ),
                 #### Network ####
                 widget.WidgetBox(
-                    font=awesome_font,
-                    background=color[8],
+                    background=color[3],
                     text_closed="" + wifi_icon,
-                    text_open='',
+                    text_open=' ',
                     foreground=color[0],
                     widgets=[widget.TextBox(
-                        background=color[8],
-                        text=''+private_ip,
+                        background=color[3],
+                        text='  '+private_ip,
                         foreground=color[0],
                         mouse_callbacks={'Button1':lambda: qtile.cmd_function(network_widget)}
                         ),
                         widget.TextBox(
-                            background=color[8],
-                        text=''+public_ip + wifi_icon,
+                        background=color[3],
+                        text='  '+public_ip + " " + wifi_icon,
                         foreground=color[0],
                         mouse_callbacks={'Button1':lambda: qtile.cmd_function(network_widget)}
                         ),]
                 ),
                 #widget.Wlan(
-                #   background=color[8],
+                #   background=color[3],
                 #    interface=wifi,
                 #    format=' {essid} {percent:2.0%} ',
                 #    disconnected_message='Unplugged',
@@ -260,15 +265,15 @@ def init_widgets_top():
                 #    mouse_callbacks={'Button1':lambda: qtile.cmd_function(network_widget)}
                 #    ),
                 widget.Net(
-                    background=color[8],
+                    background=color[3],
                     interface=wifi,
-                    format='{down}',
+                    format='{down}',
                     foreground=color[0],
                     use_bits=True,
                     mouse_callbacks={'Button1':lambda: qtile.cmd_function(network_widget)}
                     ),
                 widget.TextBox(
-                    background=color[8],
+                    background=color[3],
                     foreground=color[5],
                     text="",
                     padding=0,
@@ -321,6 +326,11 @@ def init_widgets_top():
                     padding=0,
                     fontsize=30,
                 ),
+                widget.TextBox(
+                    background=color[0],
+                    foreground=color[1],
+                    text="",
+                ),
                 widget.Bluetooth(
                     background=color[0],
                     foreground=color[1],
@@ -357,19 +367,19 @@ def init_screens():
     return [
         Screen(
             top=bar.Bar(
-                background="ffffff00",
+                background=color[7],
                 widgets=init_widgets_screen_top(),  
                 size=barsz,
                 border_width=barBorderWidth,
-                margin=[10,10,10,10]
+                margin=[10,10,0,10]
                 )),
         Screen(
             top=bar.Bar(
-                background="ffffff00",
+                background=color[7],
                 widgets=init_widgets_screen_top(),  
                 size=barsz,
                 border_width=barBorderWidth,
-                margin=[10,10,10,10]
+                margin=[10,10,0,10]
                 )
         )
         ]
