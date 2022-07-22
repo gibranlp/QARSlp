@@ -17,13 +17,6 @@ def start():
 def start_once():
     subprocess.call(home + '/.local/bin/autostart')
 
-@hook.subscribe.client_new
-def floating(window):
-    floating_types = ['notification', 'toolbar', 'splash', 'dialog','Gcr-prompter','lxappearance']
-    transient = window.window.get_wm_transient_for()
-    if window.window.get_wm_type() in floating_types or transient:
-        window.floating = True
-
 @hook.subscribe.client_name_updated
 def push_spotify(client: Window) -> None:
     """Push Spotify to correct group since it's wm_class setting is slow"""
@@ -335,20 +328,5 @@ def init_layouts():
         layout.Matrix(**layout_theme),
         layout.MonadThreeCol(**layout_theme),        
         ]
-
-floating_layout = layout.Floating(auto_float_rules=[
-    Match(title='Confirmation'),  # tastyworks exit box
-    Match(title='Qalculate!'),  # qalculate-gtk
-    Match(wm_class='pinentry-gtk-2'),  # GPG key password entry
-    Match(wm_class='confirmreset'),
-    Match(wm_class='makebranch'),
-    Match(wm_class='maketag'),
-    Match(wm_class='branchdialog'),
-    Match(wm_class='pinentry'),
-    Match(wm_class='ssh-askpass'),
-    Match(wm_class='Slack'),
-    Match(wm_class='slack'),
-    Match(wm_class='feh'),
-    Match(wm_class='Obconf')])
 layouts = init_layouts()
 #### End layouts ####

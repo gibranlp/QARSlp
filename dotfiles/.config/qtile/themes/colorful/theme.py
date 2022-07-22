@@ -12,15 +12,14 @@ from funct import *
 
 #### Widgets ####
 def init_widgets_defaults():
-    return dict(font=main_font,fontsize=fontsz,padding=2)
+    return dict(font=main_font,fontsize=fontsz)
 
 def init_widgets_top():
     widgets_top = [
                 widget.TextBox(
                     background=color[1],
                     font=awesome_font,
-                    text="  ",
-                    padding=5,
+                    text="",
                     mouse_callbacks={'Button1': lambda: qtile.cmd_spawn('rofi -theme "~/.config/rofi/launcher.rasi" -show drun')},
                     foreground=color[0],
                     fontsize=fontsz
@@ -38,16 +37,16 @@ def init_widgets_top():
                     font=awesome_font,
                     disable_drag=True,
                     hide_unused=False,
-                    padding_x=6,
+                    padding_x=3,
                     borderwidth=0,
-                    active=color[4], #Program opened in that group
+                    active=color[3], #Program opened in that group
                     inactive=color[8], # Empty Group
                     rounded=False,
                     highlight_method="text",
-                    this_current_screen_border=color[1],
+                    this_current_screen_border=color[5],
                     center_aligned = True,
                     other_current_screen_border=color[1],
-                    block_highlight_text_color=color[1],    
+                    block_highlight_text_color=color[2],    
                     urgent_border=color[5]
                     ),
                 widget.TextBox(
@@ -60,7 +59,6 @@ def init_widgets_top():
                 widget.Prompt(
                     background=color[2],
                        prompt=prompt,
-                       padding=10,
                        foreground=color[0],
                        cursor_color=color[0],
                        visual_bell_color=[0],
@@ -76,8 +74,6 @@ def init_widgets_top():
                 widget.CurrentLayout(
                     background=color[5],
                     foreground=color[0],
-                    scale=0.7,
-                    use_mask=True,
                     ),
                 widget.TextBox(
                     background=color[3],
@@ -123,7 +119,7 @@ def init_widgets_top():
                     app_key=w_appkey,
                     cityid=w_cityid,
                     foreground=color[0],
-                    format='{main_temp}°{units_temperature}',
+                    format='{temp}°{units_temperature} {humidity}%',
                     metric=True,
                     update_interval=600
                     ),
@@ -169,7 +165,6 @@ def init_widgets_top():
                     background=color[7]
                     ),
                 widget.Systray(
-                    padding=5,
                     icon_size=iconsz,
                     background=color[7],
                     ),
@@ -282,14 +277,13 @@ def init_widgets_top():
                 widget.TextBox(
                     background=color[5],
                     font=awesome_font,
-                    text="  ",
+                    text="",
                     foreground=color[0],
                     ),
                 widget.KeyboardLayout(
                     background=color[5],
                     configured_keyboards=['us intl', 'latam'],
                     foreground=color[0],
-                    padding=5
                     ),
                 widget.TextBox(
                     background=color[5],
@@ -301,7 +295,7 @@ def init_widgets_top():
                 widget.TextBox(
                     background=color[2],
                     font=awesome_font,
-                    text="  ",
+                    text=" ",
                     foreground=color[0],
                     padding=0,
                     mouse_callbacks={'Button1': lambda: qtile.cmd_spawn('pavucontrol')}
@@ -349,7 +343,7 @@ def init_widgets_top():
                     background=color[1],
                     font=awesome_font,
                     foreground=color[0],
-                    text="  ",
+                    text="",
                     mouse_callbacks={'Button1': lambda: qtile.cmd_function(session_widget)}
                     ),
     ]

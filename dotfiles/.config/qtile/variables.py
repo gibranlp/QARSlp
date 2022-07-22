@@ -20,7 +20,7 @@ from qtile_extras import widget
 
 ### Variables ####
 resolution = "4k" # 4k 3460 x 2560 or Fullhd 1920 x 1080
-ver = ' QARSlp v2.1.6 ' # Current version
+ver = 'QARSlp v2.1.7' # Current version
 mod = "mod4" # Command / Windows key
 alt = "mod1" # Alt key                  
 term = "alacritty" # Terminal in use
@@ -34,13 +34,13 @@ lwidth = 4
 #### Resolution fix ####
 
 if resolution == "4k":
-  fontsz = 22 # Bars Font size
-  iconsz = 20 # Treay Icon size
+  fontsz = 20 # Bars Font size
+  iconsz = 21 # Treay Icon size
   barsz = 30 # Bar size
   lmargin = 10 # Layout margins
   slmargin = 10 # Single window margin 
-  lborderwd = 5 # Layout border width
-  sborderwidth = 5 # Single border width
+  lborderwd = 4 # Layout border width
+  sborderwidth = 4 # Single border width
 else:
   fontsz = 16 # Bars Font size
   iconsz = 18 # Treay Icon size
@@ -50,7 +50,7 @@ else:
   lborderwd = 3 # Layout border width
   sborderwidth = 3 # Single border width
 
-main_font = "Fira Code" # Font in use for the entire system
+main_font = "Fira Code Medium" # Font in use for the entire system
 awesome_font = "Font Awesome 6 Pro Solid"
 
 #### Groups ####
@@ -95,5 +95,5 @@ rofi_fargewidget= Rofi(rofi_args=['-theme', '~/.config/rofi/fargewidget.rasi'])
 
 #### Weather ####
 w_appkey = "e45a0f07f0c675b273ef8636663941db" # 
-w_cityid = "3995402" #City id find it here
-
+w_cityid ="3995402" #"3995402" Morelia, "3521342" Playa del Carmen, "3520914" Querétaro, "3514783" Veracruz
+# https://openweathermap.org/city/
