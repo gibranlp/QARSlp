@@ -120,11 +120,11 @@ def set_rand_wallpaper(qtile):
     rand_wallpaper = os.path.join(dir, selection)
     if rand_wallpaper != wallpaper:
         subprocess.run(["wpg", "-s", "%s" % rand_wallpaper, "--backend", "%s" %defaultBackend.lower()])
-        subprocess.run(["sudo", "cp", "%s" % rand_wallpaper,  "/usr/share/backgrounds/background.png"])
+        subprocess.run(["sudo", "cp", "%s" % rand_wallpaper,  "/usr/share/lightdm-webkit/themes/lightdm-webkit-theme-aether/src/img/wallpapers/background.jpg"])
         subprocess.run(["wal", "-R"])
         qtile.cmd_reload_config()
     else:
-        selection = random.choice(os.listdir(dir))
+        breaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 
 
 #### Functions for Widgets ####
@@ -326,7 +326,8 @@ def init_layouts():
         layout.MonadTall(max_ratio=0.90,ratio=0.80,**layout_theme),
         layout.MonadWide(max_ratio=0.90,ratio=0.80,**layout_theme),
         layout.Matrix(**layout_theme),
-        layout.MonadThreeCol(**layout_theme),        
+        layout.MonadThreeCol(**layout_theme),  
+        layout.Floating(**layout_theme),      
         ]
 layouts = init_layouts()
 #### End layouts ####

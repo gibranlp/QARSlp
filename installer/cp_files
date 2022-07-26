@@ -18,7 +18,7 @@ sudo cp ~/QARSlp/fonts/otf/* /usr/share/fonts/OTF/
 sudo cp ~/QARSlp/fonts/ttf/* /usr/share/fonts/TTF/
 sudo \cp -r ~/QARSlp/lightdm/* /etc/lightdm
 sudo \cp -r ~/QARSlp/lightdm-webkit /usr/share
-cp ~/QARSlp/dotfiles/.config/wal/dunstrc ~/.config/wal/templates/
+cp ~/QARSlp/dotfiles/.config/wal/* ~/.config/wal/templates/
 }
 
 i_files

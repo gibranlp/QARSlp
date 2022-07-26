@@ -155,29 +155,29 @@ def init_widgets_top():
                     ),
                 widget.TextBox(
                     background=color[6],
-                    foreground=color[7],
+                    foreground=color[0],
                     text="",
                     padding=0,
                     fontsize=30,
                 ),
                 widget.Spacer(
                     length=bar.STRETCH,
-                    background=color[7]
+                    background=color[0]
                     ),
                 widget.Systray(
                     icon_size=iconsz,
-                    background=color[7],
+                    background=color[0],
                     ),
                 #### Spotify ####
                  widget.TextBox(
-                    background=color[7],
-                    foreground=color[0],
+                    background=color[0],
+                    foreground=color[2],
                     text=" ",
                     mouse_callbacks={'Button1':lambda: qtile.cmd_function(prev)},
                     ),
                 widget.Mpris2(
-                    background=color[7],
-                    foreground=color[0],
+                    background=color[0],
+                    foreground=color[2],
                     name='cmus',
                     objname='org.mpris.MediaPlayer2.cmus',
                     scroll_chars=scrollchar,
@@ -187,8 +187,8 @@ def init_widgets_top():
                     scroll_wait_intervals=scrollwint,
                     ),
                 widget.Mpris2(
-                    background=color[7],
-                    foreground=color[0],
+                    background=color[0],
+                    foreground=color[2],
                     name='ncspot',
                     objname='org.mpris.MediaPlayer2.ncspot',
                     scroll_chars=scrollchar,
@@ -198,8 +198,8 @@ def init_widgets_top():
                     scroll_wait_intervals=scrollwint,
                     ),
                 widget.Mpris2(
-                    background=color[7],
-                    foreground=color[0],
+                    background=color[0],
+                    foreground=color[2],
                     name='Spotify',
                     objname='org.mpris.MediaPlayer2.spotify',
                     scroll_chars=scrollchar,
@@ -209,8 +209,8 @@ def init_widgets_top():
                     scroll_wait_intervals=scrollwint,
                     ),
                 widget.Mpris2(
-                    background=color[7],
-                    foreground=color[0],
+                    background=color[0],
+                    foreground=color[2],
                     name='vlc',
                     objname='org.mpris.MediaPlayer2.vlc',
                     scroll_chars=scrollchar,
@@ -220,13 +220,13 @@ def init_widgets_top():
                     scroll_wait_intervals=scrollwint,
                     ),
                 widget.TextBox(
-                    background=color[7],
-                    foreground=color[0],
+                    background=color[0],
+                    foreground=color[2],
                     text=" ",
                     mouse_callbacks={'Button1':lambda: qtile.cmd_function(nexts)},
                     ),
                 widget.TextBox(
-                    background=color[7],
+                    background=color[0],
                     foreground=color[3],
                     text="",
                     padding=0,

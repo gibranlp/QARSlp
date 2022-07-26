@@ -74,9 +74,9 @@ barBorderWidth = [0,0,0,0] # bar borders top
 barTransparency = "44" #Bar & borders Transparency
 
 #### Music / Media ####
-scrollchar = 40
-scrollint = 1
-scrollwint = 500
+scrollchar = 50
+scrollint = 10
+scrollwint = 10
 ### Gaps
 #### Internet Chekup ####
 internet = ' Internet is working'
