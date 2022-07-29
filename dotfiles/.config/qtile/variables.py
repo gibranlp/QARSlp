@@ -20,13 +20,13 @@ from qtile_extras import widget
 
 ### Variables ####
 resolution = "4k" # 4k 3460 x 2560 or Fullhd 1920 x 1080
-ver = 'QARSlp v2.1.7' # Current version
+ver = 'QARSlp  v2.1.7' # Current version
 mod = "mod4" # Command / Windows key
 alt = "mod1" # Alt key                  
 term = "alacritty" # Terminal in use
-home = os.path.expanduser('~')
-prompt = ":".format(os.environ["USER"], socket.gethostname())
-Window = ""
+home = os.path.expanduser('~') # Path for use in folders
+prompt = ":".format(os.environ["USER"], socket.gethostname()) # FOrmat of the prompt
+
 
 ### Separators
 lwidth = 4
@@ -35,7 +35,7 @@ lwidth = 4
 
 if resolution == "4k":
   fontsz = 20 # Bars Font size
-  iconsz = 21 # Treay Icon size
+  iconsz = 20 # Treay Icon size
   barsz = 30 # Bar size
   lmargin = 10 # Layout margins
   slmargin = 10 # Single window margin 
@@ -76,7 +76,7 @@ barTransparency = "44" #Bar & borders Transparency
 #### Music / Media ####
 scrollchar = 50
 scrollint = 10
-scrollwint = 10
+scrollwint = 1
 ### Gaps
 #### Internet Chekup ####
 internet = ' Internet is working'

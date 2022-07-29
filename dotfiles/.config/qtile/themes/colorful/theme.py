@@ -171,13 +171,13 @@ def init_widgets_top():
                 #### Spotify ####
                  widget.TextBox(
                     background=color[0],
-                    foreground=color[2],
+                    foreground=color[1],
                     text=" ",
                     mouse_callbacks={'Button1':lambda: qtile.cmd_function(prev)},
                     ),
                 widget.Mpris2(
                     background=color[0],
-                    foreground=color[2],
+                    foreground=color[1],
                     name='cmus',
                     objname='org.mpris.MediaPlayer2.cmus',
                     scroll_chars=scrollchar,
@@ -188,7 +188,7 @@ def init_widgets_top():
                     ),
                 widget.Mpris2(
                     background=color[0],
-                    foreground=color[2],
+                    foreground=color[1],
                     name='ncspot',
                     objname='org.mpris.MediaPlayer2.ncspot',
                     scroll_chars=scrollchar,
@@ -199,7 +199,7 @@ def init_widgets_top():
                     ),
                 widget.Mpris2(
                     background=color[0],
-                    foreground=color[2],
+                    foreground=color[1],
                     name='Spotify',
                     objname='org.mpris.MediaPlayer2.spotify',
                     scroll_chars=scrollchar,
@@ -210,7 +210,7 @@ def init_widgets_top():
                     ),
                 widget.Mpris2(
                     background=color[0],
-                    foreground=color[2],
+                    foreground=color[1],
                     name='vlc',
                     objname='org.mpris.MediaPlayer2.vlc',
                     scroll_chars=scrollchar,
@@ -221,7 +221,7 @@ def init_widgets_top():
                     ),
                 widget.TextBox(
                     background=color[0],
-                    foreground=color[2],
+                    foreground=color[1],
                     text=" ",
                     mouse_callbacks={'Button1':lambda: qtile.cmd_function(nexts)},
                     ),

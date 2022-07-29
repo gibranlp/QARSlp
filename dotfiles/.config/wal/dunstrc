@@ -31,7 +31,7 @@
     origin = top-right
 
     # Offset from the origin
-    offset = 10x31
+    offset = 10x50
 
     # Scale factor. It is auto-detected if value is 0.
     scale = 0
@@ -88,7 +88,7 @@
     frame_width = 3
 
     # Defines color of the frame around the notification window.
-    frame_color = {color3}
+    frame_color = {color1}
 
     # Size of gap to display between notifications - requires a compositor.
     # If value is greater than 0, separator_height will be ignored and a border
@@ -102,7 +102,7 @@
     #  * foreground: use the same color as the foreground;
     #  * frame: use the same color as the frame;
     #  * anything else will be interpreted as a X color.
-    separator_color = {color5}
+    separator_color = {color1}
 
     # Sort messages by urgency.
     sort = yes
@@ -298,7 +298,7 @@
     # IMPORTANT: colors have to be defined in quotation marks.
     # Otherwise the "#" and following would be interpreted as a comment.
     background = "{background}"
-    foreground = "{color1}"
+    foreground = "{color3}"
     frame_color = "{color1}"
     timeout = 10
     format = " <b>%s</b>\n%b"
@@ -308,7 +308,7 @@
 [urgency_normal]
     background = "{background}"
     foreground = "{color3}"
-    frame_color = "{color3}"
+    frame_color = "{color1}"
     timeout = 10
     format = "🕭 <b>%s</b>\n%b"
     # Icon for notifications with normal urgency, uncomment to enable

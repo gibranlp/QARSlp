@@ -17,18 +17,6 @@ def start():
 def start_once():
     subprocess.call(home + '/.local/bin/autostart')
 
-@hook.subscribe.client_name_updated
-def push_spotify(client: Window) -> None:
-    """Push Spotify to correct group since it's wm_class setting is slow"""
-    if client.cmd_info().get("name") == "Spotify" and not client.get_wm_class():
-        client.cmd_togroup("7")
-
-@hook.subscribe.client_name_updated
-def push_libreoffice(client: Window) -> None:
-    """Push Libreoffice to correct group since it's wm_class setting is slow"""
-    if client.cmd_info().get("class") == "libreoffice" and not client.get_wm_class():
-        client.cmd_togroup("6")
-
 #### Import Used Network Interface ####
 def get_net_dev():
     get_dev = "ip addr show | awk '/inet.*brd/{print $NF; exit}'"
@@ -78,7 +66,6 @@ batt = get_bat()
 with open(home + '/.cache/wal/colors.json') as wal_import:
     data = json.load(wal_import)
     wallpaper = data['wallpaper']
-    alpha = data['alpha']
     colors = data['colors']
     val_colors = list(colors.values())
     def getList(val_colors):
@@ -124,8 +111,20 @@ def set_rand_wallpaper(qtile):
         subprocess.run(["wal", "-R"])
         qtile.cmd_reload_config()
     else:
-        breaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+        qtile.cmd_reload_config()
 
+#### Change Color scheme widget ####
+def change_color_scheme(qtile):
+    options = [backend[0],backend[1],backend[2],backend[3], '<<-<< Light Themes >>-->>', backend[0],backend[1],backend[2],backend[3]]
+    index, key = rofi_backend.select('  Color Scheme', options)
+    if key == -1 or index == 4:
+        rofi_backend.close()
+    elif key == 0 and index < 4:
+        subprocess.run('wpg -s ' + wallpaper + ' --backend ' + backend[index].lower(), shell=True)
+        qtile.cmd_reload_config()
+    elif key == 0 and index > 4:
+        subprocess.run('wpg -s ' + wallpaper + ' -L --backend ' + backend[index-5].lower(), shell=True)
+        qtile.cmd_reload_config()
 
 #### Functions for Widgets ####
 #### Display Shortcuts widget
@@ -214,19 +213,6 @@ def change_theme(qtile):
     elif key == 0 and index < 6:
         subprocess.run('rm -rf ~/.config/qtile/theme.py', shell=True)
         subprocess.run('\cp ~/.config/qtile/themes/%s/theme.py ~/.config/qtile/'% theme[index], shell=True)
-        qtile.cmd_reload_config()
-
-#### Change Color scheme widget ####
-def change_color_scheme(qtile):
-    options = [backend[0],backend[1],backend[2],backend[3], '<<-<< Light Themes >>-->>', backend[0],backend[1],backend[2],backend[3]]
-    index, key = rofi_backend.select('  Color Scheme', options)
-    if key == -1 or index == 4:
-        rofi_backend.close()
-    elif key == 0 and index < 4:
-        subprocess.run('wpg -s ' + wallpaper + ' --backend ' + backend[index].lower(), shell=True)
-        qtile.cmd_reload_config()
-    elif key == 0 and index > 4:
-        subprocess.run('wpg -s ' + wallpaper + ' -L --backend ' + backend[index-5].lower(), shell=True)
         qtile.cmd_reload_config()
 
 #### Multimedia #### 
