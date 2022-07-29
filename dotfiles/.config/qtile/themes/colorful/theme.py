@@ -132,7 +132,7 @@ def init_widgets_top():
                 ),
                 widget.WindowName(
                     background=color[0],
-                    foreground=color[1],
+                    foreground=color[4],
                     empty_group_string=ver,
                     format='  {name}',
                 ),
@@ -171,7 +171,7 @@ def init_widgets_top():
                 #### Spotify ####
                  widget.TextBox(
                     background=color[0],
-                    foreground=color[1],
+                    foreground=color[4],
                     text=" ",
                     mouse_callbacks={'Button1':lambda: qtile.cmd_function(prev)},
                     ),
@@ -221,7 +221,7 @@ def init_widgets_top():
                     ),
                 widget.TextBox(
                     background=color[0],
-                    foreground=color[1],
+                    foreground=color[4],
                     text=" ",
                     mouse_callbacks={'Button1':lambda: qtile.cmd_function(nexts)},
                     ),
@@ -322,12 +322,12 @@ def init_widgets_top():
                 ),
                 widget.TextBox(
                     background=color[0],
-                    foreground=color[1],
+                    foreground=color[4],
                     text="",
                 ),
                 widget.Bluetooth(
                     background=color[0],
-                    foreground=color[1],
+                    foreground=color[4],
                     hci='/dev_28_EC_9A_9B_64_72',
                     mouse_callbacks={'Button1': lambda: qtile.cmd_spawn('blueman-manager')}
                 ),

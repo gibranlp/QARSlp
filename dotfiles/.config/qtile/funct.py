@@ -213,6 +213,7 @@ def change_theme(qtile):
     elif key == 0 and index < 6:
         subprocess.run('rm -rf ~/.config/qtile/theme.py', shell=True)
         subprocess.run('\cp ~/.config/qtile/themes/%s/theme.py ~/.config/qtile/'% theme[index], shell=True)
+        subprocess.run('\cp ~/.config/qtile/themes/%s/rofi/* ~/.config/rofi/'% theme[index], shell=True)
         qtile.cmd_reload_config()
 
 #### Multimedia #### 

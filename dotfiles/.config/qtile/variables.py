@@ -75,8 +75,8 @@ barTransparency = "44" #Bar & borders Transparency
 
 #### Music / Media ####
 scrollchar = 50
-scrollint = 10
-scrollwint = 1
+scrollint = 1
+scrollwint = 200
 ### Gaps
 #### Internet Chekup ####
 internet = ' Internet is working'
