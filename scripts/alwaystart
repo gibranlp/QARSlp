@@ -12,6 +12,7 @@ pkill dunst &
 pywalfox update &
 picom --backend glx &
 cp ~/.cache/wal/dunstrc ~/.config/dunst/dunstrc &
+cp ~/.cache/wal/colors.Xresources ~/.Xresources &
+oomox-cli -o oomox-wal ~/.cache/wal/colors-oomox &
 dunst &
-wal-telegram --palette '~/.cache/wal/colors.sh' &
 wal -R 

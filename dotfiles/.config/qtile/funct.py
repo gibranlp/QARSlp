@@ -108,7 +108,7 @@ def set_rand_wallpaper(qtile):
     if rand_wallpaper != wallpaper:
         subprocess.run(["wpg", "-s", "%s" % rand_wallpaper, "--backend", "%s" %defaultBackend.lower()])
         subprocess.run(["sudo", "cp", "%s" % rand_wallpaper,  "/usr/share/lightdm-webkit/themes/lightdm-webkit-theme-aether/src/img/wallpapers/background.jpg"])
-        subprocess.run(["wal", "-R"])
+        #subprocess.run(["oomox-cli", "-o oomox-wal", home + "/.cache/wal/colors-oomox"])
         qtile.cmd_reload_config()
     else:
         qtile.cmd_reload_config()

@@ -67,25 +67,31 @@ done
 
 function i_settings(){
   sudo timedatectl set-ntp true &
-  pywalfox install --browser librewolf &
+  pywalfox install &
   git clone https://github.com/zsh-users/zsh-autosuggestions.git ~/.oh-my-zsh/plugins/zsh-autosuggestions &
   git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/plugins/zsh-syntax-highlighting &
   wpg-install.sh -g -d -i &
   mkdr ~/.config/dunst &
   xdg-settings set default-web-browser librewolf.desktop &
+  mkdir ~/.config/dunst &
+  mkdir ~/.config/rofi &
+  mkdir ~/Pictures/wallPapers &
+  mkdir ~/.local/bin &
+  cp ~/QARSlp/walls/wal.png ~/Pictures/wallPapers
   
 }
 
 function i_files(){
 \cp -r ~/QARSlp/dotfiles/.[^.]* ~/ 
-sudo \cp -r ~/QARSlp/dotfiles/.[^.]* /root
-mkdir ~/Pictures/wallPapers
-\cp -r ~/QARSlp/dotfiles/.config/qtile/themes/default/wallPapers ~/Pictures/wallPapers
-mkdir ~/.local/bin
-sudo \cp -r  ~/QARSlp/scripts/* ~/.local/bin
+#sudo \cp -r ~/QARSlp/dotfiles/.[^.]* /root 
+sudo \cp -r  ~/QARSlp/scripts/* ~/.local/bin/
 sudo chmod +x ~/.local/bin/*
-~/.local/bin/./autostart &
-~/.local/bin/./alwaystart &
+#sudo \cp ~/QARSlp/installer/etc/X11/xorg.conf.d/30-touchpad.conf /etc/X11/xorg.conf.d/30-touchpad.conf
+sudo cp ~/QARSlp/fonts/otf/* /usr/share/fonts/OTF/
+sudo cp ~/QARSlp/fonts/ttf/* /usr/share/fonts/TTF/
+sudo \cp -r ~/QARSlp/lightdm/* /etc/lightdm
+sudo \cp -r ~/QARSlp/lightdm-webkit /usr/share
+cp ~/QARSlp/dotfiles/.config/wal/* ~/.config/wal/templates/
 }
 
 i_base
@@ -94,5 +100,6 @@ i_pip
 i_zsh
 i_aur
 i_settings
+i_files
 
 
