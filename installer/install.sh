@@ -54,10 +54,9 @@ function i_pip(){
 
 function i_aur () {
   packets=(
-    'p7zip' 'unrar' 'thunderbird-bin' 'openssh' 'farge' 'wpgtk-git' 'nbfc' 'ncspot' 'qtile-extras-git' 'visual-studio-code-bin' 'thunar-custom-actions' 'thunar-volman' 'thunar-archive-plugin-git' 'thunar-extended' 'thunar-shares-plugin-git' 'picom-ibhagwan-git' 'deepin-screenshot' 'google-chrome' 'slack-desktop' 'hugo' 'whatsdesk-bin' 'telegram-desktop' 'owncloud-client' 'font-manager' 'thunar-extended' 'jmtpfs' 'lightdm-webkit-theme-aether'
+    'p7zip' 'unrar' 'thunderbird-bin' 'openssh' 'farge' 'wpgtk-git' 'nbfc' 'qtile-extras-git' 'visual-studio-code-bin' 'thunar-custom-actions' 'thunar-volman' 'thunar-archive-plugin-git' 'thunar-extended' 'thunar-shares-plugin-git' 'picom-ibhagwan-git' 'deepin-screenshot' 'google-chrome' 'slack-desktop' 'hugo' 'whatsdesk-bin' 'telegram-desktop' 'owncloud-client' 'font-manager' 'thunar-extended' 'jmtpfs' 'lightdm-webkit-theme-aether' 'themix-gui-git'
 
 )
-
 
 for packet in "${packets[@]}"; do
     echo "Instalando --> ${packet}"
