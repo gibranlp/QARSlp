@@ -8,16 +8,16 @@
 # by: gibranlp <thisdoesnotwork@gibranlp.dev>
 # MIT licence 
 # 
-browser="firefox"
+browser="librewolf"
 
 engine=$(echo "${@:1}")
 search=$(echo "${@:2}")
 
 if [[ -z "$engine" ]]; then
 	surf=$(sr -elvi | awk -F'-' '{print $1}' | sed '/:/d' | awk '{$1=$1};1' |
-	        rofi -theme '~/.config/rofi/left_toolbar.rasi' -dmenu -p " Search the Web?")
+	        rofi -theme '~/.config/rofi/websearch.rasi' -dmenu -p " Search the Web!")
 elif [[ -z "$search" ]]; then
-	surf=$(echo "" | rofi -theme '~/.config/rofi/left_toolbar.rasi' -dmenu -p "$engine: ")
+	surf=$(echo "" | rofi -theme '~/.config/rofi/websearch.rasi' -dmenu -p "$engine: ")
 else
     surfraw -browser=$browser $engine &
     

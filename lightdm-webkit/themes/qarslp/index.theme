@@ -3,7 +3,7 @@ name=qarslp
 description=The lightdm greeter for QARSlp
 engine=lightdm-webkit-greeter
 url=index.html
-session=qtile
+session=default
 
 [Desktop Entry]
 Type=Application

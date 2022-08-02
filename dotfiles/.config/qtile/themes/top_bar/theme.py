@@ -1,3 +1,5 @@
+
+
 # _______  _______  ______  _______  __        
 #|       ||   _   ||   __ \|     __||  |.-----.
 #|   -  _||       ||      <|__     ||  ||  _  |
@@ -6,291 +8,261 @@
 # QARSlp Qtile + Arch Ricing Script
 # By: gibranlp <thisdoesnotwork@gibranlp.dev>
 # MIT licence 
+from numpy import size
 from funct import *
 
 #### Widgets ####
 def init_widgets_defaults():
-    return dict(font="Fira Code Medium",fontsize=15,padding=2,background=color[0])
+    return dict(font=main_font,fontsize=fontsz,padding=2)
 
-def init_widgets_top():    
+def init_widgets_top():
     widgets_top = [
-                #### Shortcuts ####
-                widget.TextBox(
-                    font='Font Awesome 5 Free Solid',
-                    fontsize=16,
-                    text="",
-                    mouse_callbacks={'Button1': lambda: qtile.cmd_spawn('rofi -theme "~/.config/rofi/launcher.rasi" -show drun')},
-                    background=color[4],
-                    foreground=color[0],
-                    padding=5
-                    ),
-                widget.TextBox(
-                    font='Font Awesome 5 Free Solid',
-                    fontsize=15,
-                    foreground=color[7],
-                    text="",
-                    mouse_callbacks={'Button1':lambda: qtile.cmd_spawn('rofi  -theme "~/.config/rofi/left_toolbar.rasi" -show find -modi "find:~/.config/rofi/finder.sh"')}
-                    ),        
-                widget.TextBox(
-                    font='Font Awesome 5 Free Solid',
-                    fontsize=15,
-                    foreground=color[7],
-                    text="",
-                    mouse_callbacks={'Button1': lambda: qtile.cmd_spawn(term)}
-                    ),
-                widget.TextBox(
-                    font='Font Awesome 5 Free Solid',
-                    fontsize=15,
-                    foreground=color[7],
-                    text="",
-                    mouse_callbacks={'Button1': lambda: qtile.cmd_spawn("thunar")}
-                    ),
-                widget.TextBox(
-                    font='Font Awesome 5 Free Solid',
-                    fontsize=15,
-                    foreground=color[7],
-                    text="",
-                    mouse_callbacks={'Button1':lambda: qtile.cmd_function(set_rand_wallpaper)},
+                widget.Sep(
+                    foreground=color[1],
+                    linewidth=lwidth,
                 ),
-                widget.TextBox(
-                    font='Font Awesome 5 Free Solid',
-                    fontsize=15,
-                    foreground=color[7],
-                    text="",
-                    mouse_callbacks={'Button1':lambda: qtile.cmd_function(change_color_scheme)},
+                widget.Sep(
+                    foreground=color[2],
+                    linewidth=lwidth,
                 ),
-                widget.TextBox(
-                    font='Font Awesome 5 Free Solid',
-                    fontsize=15,
+                widget.Sep(
+                    foreground=color[3],
+                    linewidth=lwidth,
+                ),
+                widget.Sep(
+                    foreground=color[4],
+                    linewidth=lwidth,
+                ),
+                widget.Sep(
+                    foreground=color[5],
+                    linewidth=lwidth,
+                ),
+                 widget.Sep(
+                    foreground=color[6],
+                    linewidth=lwidth,
+                ),
+                 widget.Sep(
                     foreground=color[7],
-                    text="",
-                    mouse_callbacks={'Button1': lambda: qtile.cmd_function(shortcuts)}
-                    ),
-                widget.TextBox(
-                    font='Font Awesome 5 Free Solid',
-                    fontsize=15,
-                    foreground=color[7],
-                    text="",
-                    mouse_callbacks={'Button1': lambda: qtile.current_window.kill()},
-                    desc="Close Window"
+                    linewidth=lwidth,
+                ),
+                 widget.Sep(
+                    foreground=color[8],
+                    linewidth=lwidth,
+                ),
+                #### Groups ####
+                widget.GroupBox(
+                    font=awesome_font,
+                    disable_drag=True,
+                    hide_unused=False,
+                    padding_x=6,
+                    borderwidth=0,
+                    active=color[4],
+                    fontshadow=color[0],
+                    inactive=color[0],
+                    rounded=False,        
+                    highlight_color=color[3],
+                    highlight_method="text",
+                    this_current_screen_border=color[7],
+                    this_screen_border=color[3],
+                    center_aligned = True,
+                    other_current_screen_border=color[3],
+                    other_screen_border=color[5],
+                    block_highlight_text_color=color[6],
+                    foreground=color[2],    
+                    urgent_border=color[4]
                     ),
                 widget.Prompt(
                        prompt=prompt,
                        padding=10,
-                       foreground=color[0],
-                       background=color[3]
+                       foreground=color[3],
                        ),
+                widget.Spacer(
+                    length=bar.STRETCH,
+                    foreground=color[0]
+                    ),
+                widget.Clock(
+                    foreground=color[2],
+                    fontshadow=color[0],
+                    format=" %b ",
+                    update_interval=1
+                    ),
+                widget.Clock(
+                    foreground=color[4],
+                    fontshadow=color[0],
+                    format="%a",
+                    update_interval=1
+                    ),
+                widget.Clock(
+                    foreground=color[6],
+                    fontshadow=color[0],
+                    format=" %d ",
+                    update_interval=1
+                    ),
+                widget.Clock(
+                    foreground=color[3],
+                    fontshadow=color[0],
+                    format="%H:%M ",
+                    update_interval=1
+                    ),
+                widget.Spacer(
+                    length=bar.STRETCH,
+                    foreground=color[0]
+                    ),
+                #### Spotify ####
+                 widget.TextBox(
+                    foreground=color[3],
+                    fontshadow=color[1],
+                    text=" ",
+                    mouse_callbacks={'Button1':lambda: qtile.cmd_function(prev)},
+                    ),
                 widget.TextBox(
-                    font='Font Awesome 5 Free Solid',
-                    fontsize=15,text="",
-                    padding=5,
-                    foreground=color[0],
-                    background=color[4],
+                    foreground=color[4],
+                    fontshadow=color[1],
+                    text="",
+                    mouse_callbacks={'Button1':lambda: qtile.cmd_function(play_pause)},
+                    ),
+                widget.TextBox(
+                    foreground=color[3],
+                    fontshadow=color[1],
+                    text=" ",
+                    mouse_callbacks={'Button1':lambda: qtile.cmd_function(nexts)},
+                    ),
+                widget.Mpris2(
+                    name='cmus',
+                    objname='org.mpris.MediaPlayer2.cmus',
+                    scroll_chars=scrollchar,
+                    foreground=color[3],
+                    fontshadow=color[0],
+                    stop_pause_text='  ',
+                    display_metadata=['xesam:title', 'xesam:artist'],
+                    scroll_interval=scrollint,
+                    scroll_wait_intervals=scrollwint,
                     ),
                 widget.Mpris2(
                     name='ncspot',
                     objname='org.mpris.MediaPlayer2.ncspot',
-                    scroll_chars=30,
-                    background=color[4],
-                    foreground=color[0],
-                    stop_pause_text='',
-                    display_metadata=['xesam:title', 'xesam:artist', 'xesam:album'],
+                    scroll_chars=scrollchar,
+                    foreground=color[3],
+                    fontshadow=color[0],
+                    stop_pause_text='  ',
+                    display_metadata=['xesam:title', 'xesam:artist'],
+                    scroll_interval=scrollint,
+                    scroll_wait_intervals=scrollwint,
                     ),
                 widget.Mpris2(
                     name='Spotify',
                     objname='org.mpris.MediaPlayer2.spotify',
-                    scroll_chars=30,
-                    background=color[4],
-                    foreground=color[0],
-                    stop_pause_text='',
-                    display_metadata=['xesam:title', 'xesam:artist', 'xesam:album'],
+                    scroll_chars=scrollchar,
+                    foreground=color[3],
+                    fontshadow=color[0],
+                    stop_pause_text='  ',
+                    display_metadata=['xesam:title', 'xesam:artist'],
+                    scroll_interval=scrollint,
+                    scroll_wait_intervals=scrollwint,
                     ),
-                widget.TextBox(
-                    background=color[4],
-                    foreground=color[0],
-                    text="",
-                    mouse_callbacks={'Button1':lambda: qtile.cmd_function(prev)},
+                widget.Mpris2(
+                    name='vlc',
+                    objname='org.mpris.MediaPlayer2.vlc',
+                    scroll_chars=scrollchar,
+                    foreground=color[3],
+                    fontshadow=color[0],
+                    stop_pause_text='  ',
+                    display_metadata=['xesam:title', 'xesam:artist'],
+                    scroll_interval=scrollint,
+                    scroll_wait_intervals=scrollwint,
+                    ),           
+                #### Layouts ####WW
+                widget.CurrentLayoutIcon(
+                    foreground=color[2],
+                    scale=0.8,
                     ),
-                widget.TextBox(
-                    background=color[4],
-                    foreground=color[0],
-                    text="",
-                    mouse_callbacks={'Button1':lambda: qtile.cmd_function(play_pause)},
-                    ),
-                widget.TextBox(
-                    background=color[4],
-                    foreground=color[0],
-                    text="",
-                    mouse_callbacks={'Button1':lambda: qtile.cmd_function(nexts)},
-                    ),
-                widget.Spacer(
-                    length=bar.STRETCH,
-                    background=color[0],
-                    foreground=color[0]
-                    ), 
-                #### Groups ####
-                widget.GroupBox(
-                    font='Font Awesome 5 Free Solid',
-                    fontsize=15,
-                    disable_drag=True,
-                    center_aligned=True,
-                    padding=5,
-                    active=color[0],
-                    inactive=color[7],
-                    rounded=False,
-                    this_current_screen_border=color[2],
-                    this_screen_border=color[2],
-                    other_current_screen_border=color[2],
-                    other_screen_border=color[2],
-                    block_highlight_text_color= color[0],
-                    highlight_method="block",
-                    foreground=color[8],
-                    background=color[4]
-                    ),
-                widget.Spacer(
-                    length=bar.STRETCH,
-                    background=color[0],
-                    foreground=color[0]
-                    ),
-                widget.Net(
-                    font='Font Awesome 5 Free Solid',
-                    fontsize=15,
-                    interface=wifi,
-                    format=wifi_icon,
-                    foreground=color[0],
-                    background=color[4],
-                    mouse_callbacks={'Button1': lambda: qtile.cmd_function(network_widget)}
-                    ),
-                widget.Wlan(
-                    interface=wifi,
-                    format=' {essid} {percent:2.0%} ',
-                    disconnected_message='Unplugged',
-                    foreground=color[0],
-                    background=color[4],
-                    mouse_callbacks={'Button1':lambda: qtile.cmd_function(network_widget)}
-                    ),
-                widget.Net(
-                    interface=wifi,
-                    format=' {down}',
-                    foreground=color[0],
-                    background=color[4],
-                    use_bits=True,
-                    mouse_callbacks={'Button1':lambda: qtile.cmd_function(network_widget)}
-                    ),
-                widget.Sep(
-                    width=10,
-                    foreground=color[0],
-                    background=color[0]
-                ),
+                #### Pomodoro ####
                 widget.WidgetBox(
-                    text_closed='  ',
-                    text_open='',
-                    background=color[6],
-                    foreground=color[0],
-                    widgets=[widget.OpenWeather(
-                        app_key=w_appkey,
-                        cityid=w_cityid,
-                        background=color[6],
-                        foreground=color[0],
-                        format=' {main_temp}°{units_temperature} {weather_details}',
-                        metric=True,
-                        update_interval=600
-                        ),
-                    widget.Sep(
-                    width=10
-                    ),
-                ]),
-                widget.Sep(
-                    width=10,
-                    foreground=color[0],
-                    background=color[0]
+                    text_closed='  ',
+                    text_open='  ',
+                    foreground=color[6],
+                    fontshadow=color[0],
+                    widgets=[widget.Pomodoro(
+                        foreground=color[6],
+                        fontshadow=color[0],
+                        color_active=color[4],
+                        color_break=color[3],
+                        color_inactive=color[4],
+                        length_pomodori=50,
+                        length_short_break=5,
+                        length_long_break=15,
+                        num_pomodori=3,
+                        prefix_break=' Break',
+                        prefix_inactive=' Pomodoro',
+                        prefix_long_break=' Long Break',
+                        prefix_paused=' '
+                    )],
                 ),
+                #### Updates ####\
                 widget.TextBox(
-                    font='Font Awesome 5 Free Solid',
-                    fontsize=15,
-                    text=" ",
-                    background=color[2],
-                    foreground=color[0]
+                    font=awesome_font,
+                    foreground=color[3],
+                    fontshadow=color[0],
+                    text="  ",
                     ),
-                widget.ThermalSensor(
-                    background = color[2],
-                    foreground=color[0],
-                    mouse_callbacks={'Button1': lambda: qtile.cmd_spawn('/usr/local/bin/fans')},
-                    ),
-                widget.Sep(
-                    width=10,
-                    foreground=color[0],
-                    background=color[0]
-                ),
                 widget.CheckUpdates(
-                    update_interval=300,
+                    update_interval=1800,
                     distro='Arch_paru',
                     foreground=color[0],
-                    mouse_callbacks={'Button1': lambda: qtile.cmd_spawn(term + ' -e paru -Syyu')},
+                    mouse_callbacks={'Button1': lambda: qtile.cmd_spawn(term + ' -e sudo paru -Syu')},
                     display_format="{updates} up",
-                    background=color[8],
-                    colour_have_updates=color[0],
-                    colour_no_updates=color[0],
-                    no_update_string="",
-                    restart_indicator=""
+                    FOREGROUND=color[3],
+                    colour_have_updates=color[3],
+                    colour_no_updates=color[3],
+                    no_update_string=" ",
+                    restart_indicator=" ",
+                    fontshadow=color[0],
                     ),
-                widget.Sep(
-                    width=10,
-                    foreground=color[0],
-                    background=color[0]
+                  widget.UPowerWidget(
+                    border_charge_colour=color[4],
+                    border_colour=color[4],
+                    border_critical_colour='#cc0000',
+                    fill_critical='#cc0000',
+                    fill_low='#FF5511',
+                    fill_normal=color[4],
+                    foregound=color[4],
+                    fontshadow=[0]
                 ),
                 widget.TextBox(
-                    font='Font Awesome 5 Free Solid',
-                    text=" ",
-                    foreground=color[0],
-                    background=color[3],
+                    font=awesome_font,
+                    text="  ",
+                    foreground=color[5],
+                    fontshadow=color[0],
                     padding=0,
-                    fontsize=15,
                     mouse_callbacks={'Button1': lambda: qtile.cmd_spawn('pavucontrol')}
                     ),
                 widget.ALSAWidget(
-                    background=color[0],
                     device='Master',
-                    bar_colour_high=color[3],
-                    bar_colour_loud=color[3],
-                    bar_colour_normal=color[3],
-                    bar_colour_mute=color[3],
+                    bar_colour_high=color[6],
+                    bar_colour_loud="#FF0000",
+                    bar_colour_normal=color[4],
+                    bar_colour_mute=color[1],
                     hide_interval=3,
                     update_interval=0.1,
+                    bar_width=100,
+                    mode='bar',
+                    fontshadow=color[0],
+                    foreground=color[7],
                 ),
-                widget.Sep(
-                    width=10,
-                    foreground=color[0],
-                    background=color[0]
+                widget.Bluetooth(
+                    foreground=color[1],
+                    fontshadow=color[0],
+                    hci='/dev_28_EC_9A_9B_64_72',
+                    mouse_callbacks={'Button1': lambda: qtile.cmd_spawn('blueman-manager')}
                 ),
-                widget.Clock(
-                    foreground=color[0],
-                    background=color[6],
-                    format="%b %a %d %H:%M",
-                    update_interval=1,
-                    padding=5,
-                    padding_y=15
-                    ),
-                widget.Sep(
-                    width=10,
-                    foreground=color[0],
-                    background=color[0]
-                ),
-                widget.Systray(
-                    icon_size=18,
-                    background=color[0],
-                    foreground=color[7]
-                    ),
+                #### Lock, Logout, Poweroff ####
                 widget.TextBox(
-                    font='Font Awesome 5 Free Solid',
-                    fontsize=16,
-                    text="",
-                    mouse_callbacks={'Button1': lambda: qtile.cmd_function(session_widget)},
-                    background=color[4],
-                    foreground=color[0],
-                    padding=5
+                    font=awesome_font,
+                    foreground=color[4],
+                    fontshadow=color[0],
+                    text=" ",
+                    mouse_callbacks={'Button1': lambda: qtile.cmd_function(session_widget)}
                     ),
-
     ]
     return widgets_top
 
@@ -306,16 +278,14 @@ def init_screens():
     return [
         Screen(
             top=bar.Bar(
+                margin=[5, 10, 0, 10],
+                background="ffffff00",
                 widgets=init_widgets_screen_top(),  
-                size=25,
-                background=color[0],
+                size=barsz,
+                border_color=color[1]+ barTransparency,
+                border_width=barBorderWidth,
                 )),
-        Screen(
-            top=bar.Bar(
-                widgets=init_widgets_screen_top(),  
-                size=25,
-                background=color[0],
-                ))
+        Screen()
         ]
 
 #### End Screens ####
@@ -324,3 +294,6 @@ widget_defaults = init_widgets_defaults()
 widgets_top = init_widgets_top()
 widgets_screen_top = init_widgets_screen_top()
 screens = init_screens()
+widgets_screen_top = init_widgets_screen_top()
+
+ 

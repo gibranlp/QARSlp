@@ -1,18 +1,20 @@
-# QARSlp V1.1
+# QARSlp V2.0 Beta
 
-## To install
+This is a Major version update.
 
-1. First install dependencies.
+### How to create a AUR package
 
-```bash
-$ sudo pacman -S base-devel git
-``` 
+This is not close to be releasable software yet.
 
-2. Clone this repository
-```bash
-$ git clone git@github.com:gibranlp/QARSlp.git
-$ cd installer
-$ chmod +x install.sh
-$ sudo ./install.sh
-```
-That's it for now.
+
+### Changes
+
+- Making a Variables file for simpler configuration
+- Changed Rofi widgets
+
+
+- **Picom** now restarts with qtile everytime
+
+- Wallpaper and colors are changed in every **Login**
+- Added Deepin Screenshot for advanced screeshots
+- 

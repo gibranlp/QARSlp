@@ -16,22 +16,22 @@ def init_keys():
             Key([mod], "Return", lazy.spawn(term)), # Open Terminal
             Key([mod, "shift"], "Return", lazy.spawn('rofi -theme "~/.config/rofi/launcher.rasi" -show drun')),
             Key([mod, "mod1"], "Return", lazy.spawn('sudo rofi -theme "~/.config/rofi/launcher.rasi" -show drun')),
-            Key([alt], "Return", lazy.spawn('rofi  -theme "~/.config/rofi/left_toolbar.rasi" -show find -modi find:/usr/local/bin/finder')),
+            Key([alt], "Return", lazy.spawn('rofi  -theme "~/.config/rofi/left_toolbar.rasi" -show find -modi find:~/.local/bin/finder')),
             Key([mod], "r", lazy.spawncmd()),
             Key([mod], "q",lazy.window.kill()), # Close Window 
-            Key([mod, "shift"], "r",lazy.restart()), # Restart Qtile
+            Key([mod, "shift"], "r",lazy.reload_config()), # Restart Qtile
             Key([mod, "shift"], "q",lazy.shutdown()), # Logout 
             Key([mod], "Escape", lazy.spawn('xkill')), # Click window to close
             
             #### Widgets ####
-            Key([mod],"h",lazy.function(shortcuts)), # Sortcurts widget
-            Key([mod],"f",lazy.spawn('/usr/local/bin/wsearch')), # WEB Search
+            Key([mod],"h",lazy.function(shortcuts)), # Shortcuts widget
+            Key([mod],"p",lazy.function(fargewidget)),
+            Key([mod],"f",lazy.spawn(home + '/.local/bin/wsearch')), # WEB Search
             Key([mod],"x",lazy.function(session_widget)), # Log out
             Key([mod],"n",lazy.function(network_widget)), # Network Settings
             Key([alt, "shift"],"r",lazy.function(change_color_scheme)), # Change Color Scheme
-            Key([mod],"c",lazy.spawn('/usr/local/bin/fans')), # Fans
             Key([alt],"w",lazy.function(change_theme)), # Change Theme
-            Key([mod, "shift"],"x",lazy.spawn('/usr/local/bin/change_display')),
+            Key([mod, "shift"],"x",lazy.spawn(home + '/.local/bin/change_display')),
 
             #### Theming ####
             Key([alt], "r",lazy.function(set_rand_wallpaper)), # Set randwom wallpaper / colors to entire system
@@ -40,7 +40,7 @@ def init_keys():
             Key([mod, "shift"],"e",lazy.function(app_or_group("1", "thunar"))), #File manager
             Key([alt, "shift"],"e",lazy.function(ranger)), # CLI file manager
             Key([mod, "shift"],"a",lazy.function(app_or_group("1", "anydesk"))),
-            Key([mod, "shift"],"s",lazy.function(app_or_group('2', 'simplenote'))),
+            Key([mod, "shift"],"s",lazy.function(app_or_group('2', ''))),
 
             ## Group 2 (Organization: Mail)
             Key([mod, "shift"],"m",lazy.function(app_or_group('2', 'thunderbird'))),
@@ -71,7 +71,7 @@ def init_keys():
             Key([alt], "Tab", lazy.layout.swap_left()),
             Key([alt, "shift"], "Tab", lazy.layout.swap_right()),
             Key([alt], "space", lazy.widget["keyboardlayout"].next_keyboard()),
-            Key([mod], 'period', lazy.next_screen(),),
+            Key([mod], 'period', lazy.next_screen()),
 
             #### Brightness ####
             Key([], "XF86MonBrightnessUp", lazy.spawn("xbacklight -inc 5")),
@@ -95,8 +95,8 @@ def init_keys():
             Key([mod], "space", lazy.next_layout()),
 
             #### Resize windows ####
-            Key([mod, "shift"], "Up", lazy.layout.grow()),
-            Key([mod, "shift"], "Down", lazy.layout.shrink()),
+            Key([mod, alt], "w", lazy.layout.grow()),
+            Key([mod, alt], "s", lazy.layout.shrink()),
             Key([mod, "shift"], "space", lazy.layout.flip()),
 
             ##### Change focus ####
@@ -104,9 +104,15 @@ def init_keys():
             Key([mod], "Down", lazy.layout.down()),
             Key([mod], "Left", lazy.layout.left()),
             Key([mod], "Right", lazy.layout.right()),
+            
+            ####  Dunst Shortuts ####
+            Key(["control"], "space",  lazy.spawn("dunstctl close")),
+            Key(["control", "shift"], "space",  lazy.spawn("dunstctl close-all")),
+            Key(["control", "shift"], "n",  lazy.spawn("dunstctl  history-pop")),
 
             ### Screenshots ####
             Key([], "Print", lazy.function(screenshot)),]
+
 
 
     for i in groups:

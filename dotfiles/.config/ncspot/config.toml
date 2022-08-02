@@ -10,8 +10,8 @@ repeat = 'off'
 
 [keybindings]
 ## unbinded: nN, c, eE, xX
-######################################
+################
 # Sorting
-######################################
+################
 "t" = "sort added d"
 "T" = "sort title a"

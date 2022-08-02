@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+# _______  _______  ______  _______  __        
+#|       ||   _   ||   __ \|     __||  |.-----.
+#|   -  _||       ||      <|__     ||  ||  _  |
+#|_______||___|___||___|__||_______||__||   __|
+#                                       |__|   
+# QARSlp Qtile + Arch Ricing Script
+# by: gibranlp <thisdoesnotwork@gibranlp.dev>
+# MIT licence 
+# 
+
+function i_base(){
+  packets=('package')
+
+  for packet in "${packets[@]}"; do
+      echo "Instalando --> ${packet}"
+      sudo pacman -S "${packet}" --noconfirm --needed
+  done
+
+}
