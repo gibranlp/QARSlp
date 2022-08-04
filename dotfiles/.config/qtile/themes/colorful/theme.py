@@ -72,9 +72,8 @@ def init_widgets_top():
                     fontsize=30,
                 ),
                 widget.CurrentLayout(
-                    use_mask=True,
-                    background=color[5],
                     foreground=color[0],
+                    background=color[5]
                     ),
                 widget.TextBox(
                     background=color[3],
@@ -83,47 +82,14 @@ def init_widgets_top():
                     padding=0,
                     fontsize=30,
                 ),
-                #### Weather ####
-                widget.OpenWeather(
-                    font=awesome_font,
+                widget.ThermalSensor(
                     background=color[3],
-                    app_key=w_appkey,
-                    cityid=w_cityid,
-                    weather_symbols={
-                        "Unknown": "",
-                        "01d": "",
-                        "01n": "🌕",
-                        "02d": "",
-                        "02n": "",
-                        "03d": "",
-                        "03n": "",
-                        "04d": "",
-                        "04n": "",
-                        "09d": "⛆",
-                        "09n": "⛆",
-                        "10d": "",
-                        "10n": "",
-                        "11d": "🌩",
-                        "11n": "🌩",
-                        "13d": "❄",
-                        "13n": "❄",
-                        "50d": "🌫",
-                        "50n": "🌫",
-                    },
-                    format='{icon}',
                     foreground=color[0],
+                    foreground_alert='ff0000',
                     metric=True,
-                    update_interval=600
-                    ),
-               widget.OpenWeather(
-                    background=color[3],
-                    app_key=w_appkey,
-                    cityid=w_cityid,
-                    foreground=color[0],
-                    format='{temp}°{units_temperature} {humidity}%',
-                    metric=True,
-                    update_interval=600
-                    ),
+                    update_interval=1,
+                    tag_sensor='Tctl'
+                ),
                 widget.TextBox(
                     background=color[0],
                     foreground=color[3],
@@ -316,6 +282,16 @@ def init_widgets_top():
                     fontsize=30,
                 ),
                 #### Lock, Logout, Poweroff ####
+                widget.UPowerWidget(
+                    border_charge_colour=color[7],
+                    border_colour=color[0],
+                    border_critical_colour='#cc0000',
+                    fill_critical='#cc0000',
+                    fill_low='#FF5511',
+                    fill_normal=color[0],
+                    foregound=color[0],
+                    fontshadow=[0]
+                ),
                 widget.TextBox(
                     background=color[1],
                     font=awesome_font,
@@ -473,7 +449,7 @@ def init_screens():
                         text="",
                         mouse_callbacks={'Button1': lambda: qtile.cmd_spawn('firefox https://www.overleaf.com/project/62e54f5e87cdaea37af17202')},
                         foreground=color[0],
-                        fontsize=fontsz
+                        fontsize=fontsz 
                     ),
                 widget.TextBox(
                         background=color[4],
@@ -486,16 +462,46 @@ def init_screens():
                     length=bar.STRETCH,
                     foreground=color[0]
                     ),
-                widget.UPowerWidget(
-                    border_charge_colour=color[6],
-                    border_colour=color[4],
-                    border_critical_colour='#cc0000',
-                    fill_critical='#cc0000',
-                    fill_low='#FF5511',
-                    fill_normal=color[4],
-                    foregound=color[4],
-                    fontshadow=[0]
-                ),
+               widget.OpenWeather(
+                    background=color[3],
+                    app_key=w_appkey,
+                    cityid=w_cityid,
+                    foreground=color[0],
+                    format='{temp}°{units_temperature} {humidity}%',
+                    metric=True,
+                    update_interval=600
+                    ),
+                widget.OpenWeather(
+                    font=awesome_font,
+                    background=color[3],
+                    app_key=w_appkey,
+                    cityid=w_cityid,
+                    weather_symbols={
+                        "Unknown": "",
+                        "01d": "",
+                        "01n": "🌕",
+                        "02d": "",
+                        "02n": "",
+                        "03d": "",
+                        "03n": "",
+                        "04d": "",
+                        "04n": "",
+                        "09d": "⛆",
+                        "09n": "⛆",
+                        "10d": "",
+                        "10n": "",
+                        "11d": "🌩",
+                        "11n": "🌩",
+                        "13d": "❄",
+                        "13n": "❄",
+                        "50d": "🌫",
+                        "50n": "🌫",
+                    },
+                    format='{icon}',
+                    foreground=color[0],
+                    metric=True,
+                    update_interval=600
+                    ),
                 widget.Clock(
                     background=color[6],
                     foreground=color[0],
