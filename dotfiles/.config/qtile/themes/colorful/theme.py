@@ -290,7 +290,7 @@ def init_widgets_top():
                     fill_low='#FF5511',
                     fill_normal=color[0],
                     foregound=color[0],
-                    fontshadow=[0]
+                    background=color[1],
                 ),
                 widget.TextBox(
                     background=color[1],
