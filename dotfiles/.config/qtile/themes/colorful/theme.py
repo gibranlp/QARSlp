@@ -318,7 +318,7 @@ def init_screens():
                 widgets=init_widgets_screen_top(),  
                 size=barsz,
                 border_width=barBorderWidth,
-                margin=[10,10,0,10]
+                margin=[5,5,0,5]
                 ),
             left=bar.Bar(
                 background="ffffff00",
@@ -511,7 +511,7 @@ def init_screens():
                 ],  
                 size=barsz,
                 border_width=barBorderWidth,
-                margin=[10,0,10,10]
+                margin=[5,0,5,5]
                 )),
         Screen(
             top=bar.Bar(
@@ -519,7 +519,7 @@ def init_screens():
                 widgets=init_widgets_screen_top(),  
                 size=barsz,
                 border_width=barBorderWidth,
-                margin=[10,10,0,10]
+                margin=[5,5,0,5]
                 )
         )
         ]
