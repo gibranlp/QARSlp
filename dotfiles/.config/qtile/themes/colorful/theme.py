@@ -72,6 +72,7 @@ def init_widgets_top():
                     fontsize=30,
                 ),
                 widget.CurrentLayout(
+                    use_mask=True,
                     background=color[5],
                     foreground=color[0],
                     ),
@@ -366,6 +367,171 @@ def init_screens():
                 size=barsz,
                 border_width=barBorderWidth,
                 margin=[10,10,0,10]
+                ),
+            left=bar.Bar(
+                background="ffffff00",
+                widgets=[
+                    widget.TextBox(
+                        background=color[0],
+                        text="Apps",
+                        foreground=color[2],
+                        fontsize=fontsz
+                    ),
+                    widget.TextBox(
+                        background=color[2],
+                        text="",
+                        mouse_callbacks={'Button1': lambda: qtile.cmd_spawn(term)},
+                        foreground=color[0],
+                        fontsize=fontsz
+                    ),
+                    widget.TextBox(
+                        background=color[2],
+                        text="",
+                        mouse_callbacks={'Button1': lambda: qtile.cmd_spawn('google-chrome-stable')},
+                        foreground=color[0],
+                        fontsize=fontsz
+                    ),
+                    widget.TextBox(
+                        background=color[2],
+                        foreground=color[0],
+                        text="",
+                        mouse_callbacks={'Button1': lambda: qtile.cmd_spawn('firefox')},
+                        fontsize=fontsz
+                    ),
+                widget.TextBox(
+                        background=color[2],
+                        foreground=color[0],
+                        text="",
+                        mouse_callbacks={'Button1': lambda: qtile.cmd_spawn('slack')},
+                        fontsize=fontsz
+                    ),
+                widget.TextBox(
+                        background=color[2],
+                        foreground=color[0],
+                        text="",
+                        mouse_callbacks={'Button1': lambda: qtile.cmd_spawn('whatsdesk')},
+                        fontsize=fontsz
+                    ),
+                widget.TextBox(
+                        background=color[2],
+                        foreground=color[0],
+                        text="",
+                        mouse_callbacks={'Button1': lambda: qtile.cmd_spawn('telegram-desktop')},
+                        fontsize=fontsz
+                    ),
+                widget.TextBox(
+                        background=color[2],
+                        foreground=color[0],
+                        text="",
+                        mouse_callbacks={'Button1': lambda: qtile.cmd_spawn('calibre')},
+                        fontsize=fontsz
+                    ),
+                widget.TextBox(
+                        background=color[2],
+                        foreground=color[0],
+                        text="",
+                        mouse_callbacks={'Button1': lambda: qtile.cmd_spawn('teams-for-linux')},
+                        fontsize=fontsz
+                    ),
+                widget.Spacer(
+                        length=bar.STRETCH,
+                        foreground=color[0]
+                    ),
+                widget.TextBox(
+                        background=color[0],
+                        text="Bookmarks",
+                        foreground=color[4],
+                        fontsize=fontsz
+                    ),
+                widget.TextBox(
+                        background=color[4],
+                        text="",
+                        mouse_callbacks={'Button1': lambda: qtile.cmd_spawn('firefox https://github.com/')},
+                        foreground=color[0],
+                        fontsize=fontsz
+                    ),
+                widget.TextBox(
+                        background=color[4],
+                        text="",
+                        mouse_callbacks={'Button1': lambda: qtile.cmd_spawn('firefox https://google.com')},
+                        foreground=color[0],
+                        fontsize=fontsz
+                    ),
+                widget.TextBox(
+                        background=color[4],
+                        text="",
+                        mouse_callbacks={'Button1': lambda: qtile.cmd_spawn('google-chrome-stable https://drive.google.com/drive/shared-drives')},
+                        foreground=color[0],
+                        fontsize=fontsz
+                    ),
+                widget.TextBox(
+                        background=color[4],
+                        text="",
+                        mouse_callbacks={'Button1': lambda: qtile.cmd_spawn('google-chrome-stable https://calendar.google.com/calendar/u/0/r?pli=1')},
+                        foreground=color[0],
+                        fontsize=fontsz
+                    ),
+                widget.TextBox(
+                        background=color[4],
+                        text="",
+                        mouse_callbacks={'Button1': lambda: qtile.cmd_spawn('google-chrome-stable https://admin.google.com/?pli=1&rapt=AEjHL4PQj2rQOcB9_fUNCE7YtA6tUqUyToZvh8QlaK4BjEHCZ8pu5ncP7VRc3otG_0BOrMAjQva3nO8jWj2nIDTL6BKbAt357A')},
+                        foreground=color[0],
+                        fontsize=fontsz
+                    ),
+                widget.TextBox(
+                        background=color[4],
+                        text="",
+                        mouse_callbacks={'Button1': lambda: qtile.cmd_spawn('google-chrome-stable https://meet.google.com/fsx-xuuu-prw?authuser=0')},
+                        foreground=color[0],
+                        fontsize=fontsz
+                    ),
+                widget.TextBox(
+                        background=color[4],
+                        text="",
+                        mouse_callbacks={'Button1': lambda: qtile.cmd_spawn('google-chrome-stable https://meet.google.com/fjv-ozps-svg?pli=1')},
+                        foreground=color[0],
+                        fontsize=fontsz
+                    ),
+                widget.TextBox(
+                        background=color[4],
+                        text="",
+                        mouse_callbacks={'Button1': lambda: qtile.cmd_spawn('firefox https://www.overleaf.com/project/62e54f5e87cdaea37af17202')},
+                        foreground=color[0],
+                        fontsize=fontsz
+                    ),
+                widget.TextBox(
+                        background=color[4],
+                        text="",
+                        mouse_callbacks={'Button1': lambda: qtile.cmd_spawn('firefox https://www.reddit.com/')},
+                        foreground=color[0],
+                        fontsize=fontsz
+                    ),
+                widget.Spacer(
+                    length=bar.STRETCH,
+                    foreground=color[0]
+                    ),
+                widget.TextBox(
+                        background=color[0],
+                        text="Widgets",
+                        foreground=color[5],
+                        fontsize=fontsz
+                    ),
+                widget.TextBox(
+                    background=color[5],
+                    foreground=color[0],
+                    text="",
+                    mouse_callbacks={'Button1':lambda: qtile.cmd_spawn('rofi  -theme "~/.config/rofi/filesfolders.rasi" -show find -modi find:~/.local/bin/finder')}
+                    ),
+                widget.TextBox(
+                    background=color[5],
+                    foreground=color[0],
+                    text=" ",
+                    mouse_callbacks={'Button1':lambda: qtile.cmd_function(set_rand_wallpaper)},
+                ),
+                ],  
+                size=barsz,
+                border_width=barBorderWidth,
+                margin=[10,0,10,10]
                 )),
         Screen(
             top=bar.Bar(
