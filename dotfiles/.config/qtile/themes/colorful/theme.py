@@ -231,7 +231,7 @@ def init_widgets_top():
                 widget.Wlan(
                    background=color[3],
                     interface=wifi,
-                    format=' {essid} {percent:2.0%} ',
+                    format='{essid} {percent:2.0%}',
                     disconnected_message='Unplugged',
                     foreground=color[0],
                     mouse_callbacks={'Button1':lambda: qtile.cmd_function(network_widget)}
@@ -349,7 +349,7 @@ def init_screens():
                 widgets=[
                     widget.TextBox(
                         background=color[0],
-                        text="Apps",
+                        text="🗖",
                         foreground=color[2],
                         fontsize=fontsz
                     ),
@@ -415,7 +415,7 @@ def init_screens():
                     ),
                 widget.TextBox(
                         background=color[0],
-                        text="Bookmarks",
+                        text="",
                         foreground=color[4],
                         fontsize=fontsz
                     ),
@@ -486,6 +486,16 @@ def init_screens():
                     length=bar.STRETCH,
                     foreground=color[0]
                     ),
+                widget.UPowerWidget(
+                    border_charge_colour=color[6],
+                    border_colour=color[4],
+                    border_critical_colour='#cc0000',
+                    fill_critical='#cc0000',
+                    fill_low='#FF5511',
+                    fill_normal=color[4],
+                    foregound=color[4],
+                    fontshadow=[0]
+                ),
                 widget.Clock(
                     background=color[6],
                     foreground=color[0],
