@@ -141,33 +141,9 @@ def init_widgets_top():
                     length=bar.STRETCH,
                     background=color[0]
                     ),
-                widget.TextBox(
-                    background=color[6],
-                    foreground=color[0],
-                    text="",
-                    padding=0,
-                    fontsize=30,
-                ),
-                widget.Clock(
-                    background=color[6],
-                    foreground=color[0],
-                    format="%a %d %H:%M",
-                    update_interval=1
-                    ),
-                widget.TextBox(
-                    background=color[6],
-                    foreground=color[0],
-                    text="",
-                    padding=0,
-                    fontsize=30,
-                ),
                 widget.Spacer(
                     length=bar.STRETCH,
                     background=color[0]
-                    ),
-                widget.Systray(
-                    icon_size=iconsz,
-                    background=color[0],
                     ),
                 #### Spotify ####
                  widget.TextBox(
@@ -252,14 +228,14 @@ def init_widgets_top():
                         mouse_callbacks={'Button1':lambda: qtile.cmd_function(network_widget)}
                         ),]
                 ),
-                #widget.Wlan(
-                #   background=color[3],
-                #    interface=wifi,
-                #    format=' {essid} {percent:2.0%} ',
-                #    disconnected_message='Unplugged',
-                #    foreground=color[0],
-                #    mouse_callbacks={'Button1':lambda: qtile.cmd_function(network_widget)}
-                #    ),
+                widget.Wlan(
+                   background=color[3],
+                    interface=wifi,
+                    format=' {essid} {percent:2.0%} ',
+                    disconnected_message='Unplugged',
+                    foreground=color[0],
+                    mouse_callbacks={'Button1':lambda: qtile.cmd_function(network_widget)}
+                    ),
                 widget.Net(
                     background=color[3],
                     interface=wifi,
@@ -510,24 +486,12 @@ def init_screens():
                     length=bar.STRETCH,
                     foreground=color[0]
                     ),
-                widget.TextBox(
-                        background=color[0],
-                        text="Widgets",
-                        foreground=color[5],
-                        fontsize=fontsz
-                    ),
-                widget.TextBox(
-                    background=color[5],
+                widget.Clock(
+                    background=color[6],
                     foreground=color[0],
-                    text="",
-                    mouse_callbacks={'Button1':lambda: qtile.cmd_spawn('rofi  -theme "~/.config/rofi/filesfolders.rasi" -show find -modi find:~/.local/bin/finder')}
+                    format="%a %d %H:%M",
+                    update_interval=1
                     ),
-                widget.TextBox(
-                    background=color[5],
-                    foreground=color[0],
-                    text=" ",
-                    mouse_callbacks={'Button1':lambda: qtile.cmd_function(set_rand_wallpaper)},
-                ),
                 ],  
                 size=barsz,
                 border_width=barBorderWidth,
