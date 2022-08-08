@@ -9,7 +9,6 @@
 from numpy import size
 from pyparsing import cpp_style_comment
 from funct import *
-
 #### Widgets ####
 def init_widgets_defaults():
     return dict(font=main_font,fontsize=fontsz)
@@ -17,26 +16,20 @@ def init_widgets_defaults():
 def init_widgets_top():
     widgets_top = [
                 widget.TextBox(
-                    background=color[1],
+                    background="ffffff00",
                     font=awesome_font,
                     text="",
                     mouse_callbacks={'Button1': lambda: qtile.cmd_spawn('rofi -theme "~/.config/rofi/launcher.rasi" -show drun')},
                     foreground=color[0],
-                    fontsize=fontsz
+                    fontsize=fontsz,
+                    decorations=[RectDecoration(colour=color[1], radius=15, filled=True)],
                     ),
-                widget.TextBox(
-                    background=color[0],
-                    foreground=color[1],
-                    text="",
-                    padding=0,
-                    fontsize=30,
-                ),
                 #### Groups ####
                 widget.GroupBox(
-                    background=color[0],
+                    background="ffffff00",
                     font=awesome_font,
                     disable_drag=True,
-                    hide_unused=False,
+                    hide_unused=True,
                     padding_x=3,
                     borderwidth=0,
                     active=color[3], #Program opened in that group
@@ -47,43 +40,33 @@ def init_widgets_top():
                     center_aligned = True,
                     other_current_screen_border=color[1],
                     block_highlight_text_color=color[2],    
-                    urgent_border=color[5]
+                    urgent_border=color[5],
+                    decorations=[RectDecoration(colour=color[0], radius=15, filled=True)],
                     ),
-                widget.TextBox(
-                    background=color[2],
-                    foreground=color[0],
-                    text="",
-                    padding=0,
-                    fontsize=30,
-                ),
                 widget.Prompt(
-                    background=color[2],
                        prompt=prompt,
                        foreground=color[0],
                        cursor_color=color[0],
                        visual_bell_color=[0],
                        visual_bell_time=0.2,
+                       background="ffffff00",
+                       decorations=[RectDecoration(colour=color[1], radius=15, filled=True)],
                        ),
-                widget.TextBox(
-                    background=color[5],
-                    foreground=color[2],
-                    text="",
-                    padding=0,
-                    fontsize=30,
-                ),
+               
                 widget.CurrentLayout(
                     foreground=color[0],
-                    background=color[5]
+                    background="ffffff00",
+                       decorations=[RectDecoration(colour=color[5], radius=15, filled=True)],
                     ),
                 widget.TextBox(
-                    background=color[3],
-                    foreground=color[5],
-                    text="",
-                    padding=0,
-                    fontsize=30,
+                    background="ffffff00",
+                    decorations=[RectDecoration(colour=color[3], radius=[15,0,0,15], filled=True)],
+                    foreground=color[0],
+                    text="",
                 ),
                 widget.ThermalSensor(
-                    background=color[3],
+                    background="ffffff00",
+                    decorations=[RectDecoration(colour=color[3], radius=[0,15,15,0], filled=True)],
                     foreground=color[0],
                     foreground_alert='ff0000',
                     metric=True,
@@ -91,33 +74,39 @@ def init_widgets_top():
                     tag_sensor='Tctl'
                 ),
                 widget.TextBox(
-                    background=color[0],
-                    foreground=color[3],
-                    text="",
-                    padding=0,
-                    fontsize=30,
+                    background="ffffff00",
+                       decorations=[RectDecoration(colour=color[6], radius=[15,0,0,15], filled=True)],
+                    foreground=color[0],
+                    text="",
                 ),
+                widget.NvidiaSensors(
+                    background="ffffff00",
+                       decorations=[RectDecoration(colour=color[6], radius=[0,15,15,0], filled=True)],
+                    foreground=color[0],
+                ),
+                widget.Spacer(
+                    length=bar.STRETCH,
+                    background='ffffff00',
+                    ),
                 widget.WindowName(
-                    background=color[0],
+                    background="ffffff00",
+                       decorations=[RectDecoration(colour=color[0], radius=15, filled=True)],
                     foreground=color[4],
                     empty_group_string=ver,
-                    format='  {name}',
+                    format='  {class} → {name}',
+                    max_chars=100,
                 ),
                 widget.Spacer(
                     length=bar.STRETCH,
-                    background=color[0]
+                    background='ffffff00',
                     ),
-                widget.Spacer(
-                    length=bar.STRETCH,
-                    background=color[0]
+                widget.TextBox(
+                    background="ffffff00",
+                       decorations=[RectDecoration(colour=color[0], radius=[15,0,0,15], filled=True)],
+                    foreground=color[1],
+                    text="",
                     ),
                 #### Spotify ####
-                 widget.TextBox(
-                    background=color[0],
-                    foreground=color[4],
-                    text=" ",
-                    mouse_callbacks={'Button1':lambda: qtile.cmd_function(prev)},
-                    ),
                 widget.Mpris2(
                     background=color[0],
                     foreground=color[1],
@@ -127,7 +116,7 @@ def init_widgets_top():
                     stop_pause_text='',
                     display_metadata=['xesam:title', 'xesam:artist'],
                     scroll_interval=scrollint,
-                    scroll_wait_intervals=scrollwint,
+                    scroll_wait_intervals=scrollwint,    
                     ),
                 widget.Mpris2(
                     background=color[0],
@@ -165,21 +154,22 @@ def init_widgets_top():
                 widget.TextBox(
                     background=color[0],
                     foreground=color[4],
-                    text=" ",
-                    mouse_callbacks={'Button1':lambda: qtile.cmd_function(nexts)},
+                    text="",
+                    mouse_callbacks={'Button1':lambda: qtile.cmd_function(prev)},
                     ),
                 widget.TextBox(
-                    background=color[0],
-                    foreground=color[3],
-                    text="",
-                    padding=0,
-                    fontsize=30,
-                ),
+                    background="ffffff00",
+                    foreground=color[4],
+                    text="",
+                    mouse_callbacks={'Button1':lambda: qtile.cmd_function(nexts)},
+                    decorations=[RectDecoration(colour=color[0], radius=[0,15,15,0], filled=True)],
+                    ),
                 #### Network ####
                 widget.WidgetBox(
-                    background=color[3],
-                    text_closed="" + wifi_icon,
-                    text_open=' ',
+                    background="ffffff00",
+                    decorations=[RectDecoration(colour=color[3], radius=[15,0,0,15], filled=True)],
+                    text_closed=" " + wifi_icon + " ",
+                    text_open='  ',
                     foreground=color[0],
                     widgets=[widget.TextBox(
                         background=color[3],
@@ -203,48 +193,40 @@ def init_widgets_top():
                     mouse_callbacks={'Button1':lambda: qtile.cmd_function(network_widget)}
                     ),
                 widget.Net(
-                    background=color[3],
+                    background="ffffff00",
+                       decorations=[RectDecoration(colour=color[3], radius=[0,15,15,0], filled=True)],
                     interface=wifi,
                     format='{down}',
                     foreground=color[0],
                     use_bits=True,
                     mouse_callbacks={'Button1':lambda: qtile.cmd_function(network_widget)}
                     ),
+                
                 widget.TextBox(
-                    background=color[3],
-                    foreground=color[5],
-                    text="",
-                    padding=0,
-                    fontsize=30,
-                ),
-                widget.TextBox(
-                    background=color[5],
+                   background="ffffff00",
+                       decorations=[RectDecoration(colour=color[5], radius=[15,0,0,15], filled=True)],
                     font=awesome_font,
                     text="",
                     foreground=color[0],
                     ),
                 widget.KeyboardLayout(
-                    background=color[5],
+                    background="ffffff00",
+                       decorations=[RectDecoration(colour=color[5], radius=[0,15,15,0], filled=True)],
                     configured_keyboards=['us intl', 'latam'],
                     foreground=color[0],
                     ),
                 widget.TextBox(
-                    background=color[5],
-                    foreground=color[2],
-                    text="",
-                    padding=0,
-                    fontsize=30,
-                ),
-                widget.TextBox(
-                    background=color[2],
+                    background="ffffff00",
+                    decorations=[RectDecoration(colour=color[2], radius=[15,0,0,15], filled=True)],
                     font=awesome_font,
-                    text=" ",
+                    text="  ",
                     foreground=color[0],
                     padding=0,
                     mouse_callbacks={'Button1': lambda: qtile.cmd_spawn('pavucontrol')}
                     ),
                 widget.ALSAWidget(
-                    bckground=color[2],
+                    background="ffffff00",
+                       decorations=[RectDecoration(colour=color[8], radius=[0,15,15,0], filled=True)],
                     device='Master',
                     bar_colour_high=color[2],
                     bar_colour_loud=color[2],
@@ -252,34 +234,22 @@ def init_widgets_top():
                     bar_colour_mute=color[2],
                     hide_interval=3,
                     update_interval=0.1,
-                    bar_width=20,
+                    bar_width=60,
                     mode='bar',
                     foreground=color[0],
                 ),
                 widget.TextBox(
-                    background=color[2],
-                    foreground=color[0],
-                    text="",
-                    padding=0,
-                    fontsize=30,
-                ),
-                widget.TextBox(
-                    background=color[0],
+                    background="ffffff00",
+                       decorations=[RectDecoration(colour=color[0], radius=[15,0,0,15], filled=True)],
                     foreground=color[4],
                     text="",
                 ),
                 widget.Bluetooth(
-                    background=color[0],
+                    background="ffffff00",
+                       decorations=[RectDecoration(colour=color[0], radius=[0,15,15,0], filled=True)],
                     foreground=color[4],
                     hci='/dev_28_EC_9A_9B_64_72',
                     mouse_callbacks={'Button1': lambda: qtile.cmd_spawn('blueman-manager')}
-                ),
-                widget.TextBox(
-                    background=color[0],
-                    foreground=color[1],
-                    text="",
-                    padding=0,
-                    fontsize=30,
                 ),
                 #### Lock, Logout, Poweroff ####
                 widget.UPowerWidget(
@@ -290,10 +260,12 @@ def init_widgets_top():
                     fill_low='#FF5511',
                     fill_normal=color[0],
                     foregound=color[0],
-                    background=color[1],
+                    background="ffffff00",
+                       decorations=[RectDecoration(colour=color[6], radius=15, filled=True)],
                 ),
                 widget.TextBox(
-                    background=color[1],
+                    background="ffffff00",
+                       decorations=[RectDecoration(colour=color[1], radius=15, filled=True)],
                     font=awesome_font,
                     foreground=color[0],
                     text="",
@@ -314,7 +286,7 @@ def init_screens():
     return [
         Screen(
             top=bar.Bar(
-                background=color[7],
+                background='ffffff00',
                 widgets=init_widgets_screen_top(),  
                 size=barsz,
                 border_width=barBorderWidth,
@@ -324,7 +296,8 @@ def init_screens():
                 background="ffffff00",
                 widgets=[
                     widget.TextBox(
-                        background=color[0],
+                        background="ffffff00",
+                       decorations=[RectDecoration(colour=color[0], radius=[15,15,0,0], filled=True)],
                         text="🗖",
                         foreground=color[2],
                         fontsize=fontsz
@@ -374,24 +347,26 @@ def init_screens():
                 widget.TextBox(
                         background=color[2],
                         foreground=color[0],
-                        text="",
+                        text="",
                         mouse_callbacks={'Button1': lambda: qtile.cmd_spawn('calibre')},
                         fontsize=fontsz
                     ),
                 widget.TextBox(
-                        background=color[2],
+                        background="ffffff00",
                         foreground=color[0],
                         text="",
                         mouse_callbacks={'Button1': lambda: qtile.cmd_spawn('teams-for-linux')},
-                        fontsize=fontsz
+                        fontsize=fontsz,
+                        decorations=[RectDecoration(colour=color[2], radius=[0,0,15,15], filled=True)],
                     ),
                 widget.Spacer(
                         length=bar.STRETCH,
                         foreground=color[0]
                     ),
                 widget.TextBox(
-                        background=color[0],
-                        text="",
+                        background="ffffff00",
+                       decorations=[RectDecoration(colour=color[0], radius=[15,15,0,0], filled=True)],
+                        text="",
                         foreground=color[4],
                         fontsize=fontsz
                     ),
@@ -452,28 +427,37 @@ def init_screens():
                         fontsize=fontsz 
                     ),
                 widget.TextBox(
-                        background=color[4],
+                        background="ffffff00",
                         text="",
                         mouse_callbacks={'Button1': lambda: qtile.cmd_spawn('firefox https://www.reddit.com/')},
                         foreground=color[0],
-                        fontsize=fontsz
+                        fontsize=fontsz,
+                        decorations=[RectDecoration(colour=color[4], radius=[0,0,15,15], filled=True)],
                     ),
                 widget.Spacer(
                     length=bar.STRETCH,
-                    foreground=color[0]
+                    foreground=color[0],
                     ),
-               widget.OpenWeather(
-                    background=color[3],
+                widget.Systray(
+                    background="ffffff00",
+                ),
+                widget.Spacer(
+                    length=bar.STRETCH,
+                    foreground=color[0],
+                    ),
+                widget.OpenWeather(
+                    background="ffffff00",
                     app_key=w_appkey,
                     cityid=w_cityid,
                     foreground=color[0],
                     format='{temp}°{units_temperature} {humidity}%',
                     metric=True,
-                    update_interval=600
+                    update_interval=600,
+                    decorations=[RectDecoration(colour=color[6], radius=[15,15,0,0], filled=True)],
                     ),
                 widget.OpenWeather(
                     font=awesome_font,
-                    background=color[3],
+                    background="ffffff00",
                     app_key=w_appkey,
                     cityid=w_cityid,
                     weather_symbols={
@@ -500,13 +484,16 @@ def init_screens():
                     format='{icon}',
                     foreground=color[0],
                     metric=True,
-                    update_interval=600
+                    update_interval=600,
+                    decorations=[RectDecoration(colour=color[6], radius=[0,0,15,15], filled=True)],
                     ),
                 widget.Clock(
-                    background=color[6],
+                    background="ffffff00",
                     foreground=color[0],
                     format="%a %d %H:%M",
-                    update_interval=1
+                    mouse_callbacks={'Button1': lazy.group['scratchpad'].dropdown_toggle('khal')},
+                    update_interval=1,
+                    decorations=[RectDecoration(colour=color[6], radius=15, filled=True)],
                     ),
                 ],  
                 size=barsz,

@@ -37,24 +37,18 @@ def init_keys():
             Key([alt], "r",lazy.function(set_rand_wallpaper)), # Set randwom wallpaper / colors to entire system
 
             #### Apps ####
-            Key([mod, "shift"],"e",lazy.function(app_or_group("1", "thunar"))), #File manager
-            Key([alt, "shift"],"e",lazy.function(ranger)), # CLI file manager
+            Key([mod, "shift"],"e",lazy.spawn(term + ' -e /usr/bin/zsh -c ranger')), #File manager
             Key([mod, "shift"],"a",lazy.function(app_or_group("1", "anydesk"))),
-            Key([mod, "shift"],"s",lazy.function(app_or_group('2', ''))),
+            Key([mod, "shift"],"s",lazy.function(app_or_group('7', term + ' -e cmus'))),
 
             ## Group 2 (Organization: Mail)
             Key([mod, "shift"],"m",lazy.function(app_or_group('2', 'thunderbird'))),
-            
-            ## Group 3 (Social: Whatsapp, Telegram, )
-            Key([mod, "shift"],"f",lazy.function(app_or_group('3', 't'))),
 
             ## Group 4 (WEB: Firefox)(Admin: Mail, notes, social)
-            Key([mod, "shift"],"f",lazy.function(app_or_group('4', 'firefox'))),
-            Key([mod, "shift"],"g",lazy.function(app_or_group('4', 'google-chrome-stable'))),
+            Key([mod, "shift"],"f",lazy.spawn('firefox')),
+            Key([mod, "shift"],"g",lazy.spawn('google-chrome-stable')),
             
             ## Group 5 (Code/Write/Office: visual studio, typora, onlyofice)
-            Key([mod, "shift"],"h",lazy.function(app_or_group('5', 'typora'))),
-            Key([mod, "shift"],"o",lazy.function(app_or_group("6", 'libreoffice'))),
             Key([mod, "shift"],"c",lazy.function(app_or_group('5', 'code'))),
 
             ## Group 6 (Design: Gimp, Inkscape, feh)

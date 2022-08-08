@@ -12,8 +12,13 @@ import socket, random, requests
 import subprocess, json
 from os.path import expanduser
 from subprocess import run
-from libqtile import qtile, hook, layout, bar, widget
-from libqtile.config import Screen, Key, Drag, Click, Group, Match
+from libqtile import qtile, hook, layout, bar
+from libqtile.config import Screen, Key, Drag, Click, Group, Match, ScratchPad, DropDown
+from qtile_extras.widget.decorations import RectDecoration
+from qtile_extras import widget
+from libqtile.widget import TextBox
+from qtile_extras.widget.mixins import TooltipMixin
+
 from libqtile.command import lazy
 from rofi import Rofi
 from qtile_extras import widget
@@ -37,8 +42,8 @@ if resolution == "4k":
   fontsz = 20 # Bars Font size
   iconsz = 20 # Treay Icon size
   barsz = 30 # Bar size
-  lmargin = 5 # Layout margins
-  slmargin = 5 # Single window margin 
+  lmargin = 10 # Layout margins
+  slmargin = 10 # Single window margin 
   lborderwd = 4 # Layout border width
   sborderwidth = 4 # Single border width
 else:
