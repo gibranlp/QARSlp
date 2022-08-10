@@ -379,13 +379,6 @@ def init_screens():
                     ),
                 widget.TextBox(
                         background=color[4],
-                        text="",
-                        mouse_callbacks={'Button1': lambda: qtile.cmd_spawn('firefox https://google.com')},
-                        foreground=color[0],
-                        fontsize=fontsz
-                    ),
-                widget.TextBox(
-                        background=color[4],
                         text="",
                         mouse_callbacks={'Button1': lambda: qtile.cmd_spawn('google-chrome-stable https://drive.google.com/drive/shared-drives')},
                         foreground=color[0],

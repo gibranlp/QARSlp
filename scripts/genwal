@@ -27,13 +27,13 @@ set_wall(){
     then
       echo "${path}" | tee ~/.config/qtile/current_wallpaper #Write wallpaper path to file
       wpg -s ${path} ${theme} ${light} # Wal sets wallpaper and genates new color scheme
-      sudo rm -rf /usr/share/background.png
-      sudo cp "${path}" /usr/share/background.png #Copy background image image to be used in lightdm
+      sudo rm -rf /usr/share/lightdm-webkit/themes/lightdm-webkit-theme-aether/src/img/wallpapers/background.jpg
+      sudo cp "${path}" /usr/share/lightdm-webkit/themes/lightdm-webkit-theme-aether/src/img/wallpapers/background.jpg #Copy background image image to be used in lightdm
       qtile cmd-obj -o cmd -f restart # Restarts Qtile
     else
       echo "${wall}" | tee ~/.config/qtile/current_wallpaper #Write wallpaper path to file
       wpg -s ${wall} ${theme} ${light} # Wal sets wallpaper and genates new color scheme
-      sudo cp "${wall}" /usr/share/background.png #Copy background image image to be used in lightdm
+      sudo cp "${wall}" /usr/share/lightdm-webkit/themes/lightdm-webkit-theme-aether/src/img/wallpapers/background.jpg #Copy background image image to be used in lightdm
       qtile cmd-obj -o cmd -f restart 
   fi
 }

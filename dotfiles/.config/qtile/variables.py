@@ -24,39 +24,15 @@ from rofi import Rofi
 from qtile_extras import widget
 
 ### Variables ####
+main_font = "Fira Code Medium" # Font in use for the entire system
+awesome_font = "Font Awesome 6 Pro Solid"
 resolution = "4k" # 4k 3460 x 2560 or Fullhd 1920 x 1080
 ver = 'QARSlp  v2.1.7' # Current version
 mod = "mod4" # Command / Windows key
 alt = "mod1" # Alt key                  
 term = "alacritty" # Terminal in use
 home = os.path.expanduser('~') # Path for use in folders
-prompt = ":".format(os.environ["USER"], socket.gethostname()) # FOrmat of the prompt
-
-
-### Separators
-lwidth = 4
-
-#### Resolution fix ####
-
-if resolution == "4k":
-  fontsz = 20 # Bars Font size
-  iconsz = 20 # Treay Icon size
-  barsz = 30 # Bar size
-  lmargin = 10 # Layout margins
-  slmargin = 10 # Single window margin 
-  lborderwd = 4 # Layout border width
-  sborderwidth = 4 # Single border width
-else:
-  fontsz = 16 # Bars Font size
-  iconsz = 18 # Treay Icon size
-  barsz = 25 # Bar size
-  lmargin = 5 # Layout margins
-  slmargin = 5 # Single window margin 
-  lborderwd = 3 # Layout border width
-  sborderwidth = 3 # Single border width
-
-main_font = "Fira Code Medium" # Font in use for the entire system
-awesome_font = "Font Awesome 6 Pro Solid"
+prompt = ":".format(os.environ["USER"], socket.gethostname()) # Format of the prompt
 
 #### Groups ####
 group_names = ["1","2","3","4","5","6","7","8","9"]
@@ -74,7 +50,6 @@ group_matches=[
   [Match(wm_class=[])],]
 
 #### Bars ####
-
 barBorderWidth = [0,0,0,0] # bar borders top
 barTransparency = "44" #Bar & borders Transparency
 

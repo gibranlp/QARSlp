@@ -8,6 +8,25 @@
 # MIT licence
 from variables import *
 
+#### Resolution Fix ####
+
+if resolution == "4k":
+  fontsz = 20 # Bars Font size
+  iconsz = 20 # Treay Icon size
+  barsz = 30 # Bar size
+  lmargin = 20 # Layout margins
+  slmargin = 20 # Single window margin 
+  lborderwd = 5 # Layout border width
+  sborderwidth = 5 # Single border width
+else:
+  fontsz = 16 # Bars Font size
+  iconsz = 18 # Treay Icon size
+  barsz = 25 # Bar size
+  lmargin = 10 # Layout margins
+  slmargin = 10 # Single window margin 
+  lborderwd = 3 # Layout border width
+  sborderwidth = 3 # Single border width
+
 #### Hooks ####
 @hook.subscribe.startup
 def start():
@@ -143,8 +162,7 @@ def session_widget(qtile):
         elif index == 1:
             os.system('systemctl reboot')
         elif index == 2:
-            os.system('systemctl poweroff')
-             
+            os.system('systemctl poweroff')    
         else:
             os.system('dm-tool switch-to-greeter')
 
@@ -241,11 +259,6 @@ def stop(qtile):
     qtile.cmd_spawn("playerctl -p vlc stop")
     qtile.cmd_spawn("playerctl -p cmus stop")
 
-def ncsp(qtile):
-    qtile.groups_map["7"].cmd_toscreen(toggle=False)
-    qtile.cmd_spawn(term + ' -e cmus')
-
-
 #### Internet Search ####
 def wsearx():
     run(home + '/.local/bin/wsearch')
@@ -281,10 +294,7 @@ for i in range(len(group_names)):
             layout=group_layouts[i].lower(),
             label=group_labels[i],
         ))
-
-
 #### End Groups ####
-
 
 #### Layouts ####
 def init_layout_theme():
