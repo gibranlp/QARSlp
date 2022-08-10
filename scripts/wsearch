@@ -8,7 +8,7 @@
 # by: gibranlp <thisdoesnotwork@gibranlp.dev>
 # MIT licence 
 # 
-browser="librewolf"
+browser="firefox"
 
 engine=$(echo "${@:1}")
 search=$(echo "${@:2}")
