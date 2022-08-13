@@ -52,20 +52,17 @@ group_matches=[
   [Match(wm_class=[])],
   [Match(wm_class=[])],]
 
-#### Bars ####
-barBorderWidth = [0,0,0,0] # bar borders top
-barTransparency = "44" #Bar & borders Transparency
-
 #### Music / Media ####
 scrollchar = 50
 scrollint = 1
 scrollwint = 200
+
 ### Gaps
 #### Internet Chekup ####
 internet = ' Internet is working'
 #### Themes ####
-theme=['colorful','default', 'top_bar']
-backend = ["Wal", "Colorz", "Colorthief","Haishoku"]
+theme=['colorful','blur', 'minimal_top_bar_D','color1']
+backend = ['Wal', 'Colorz', 'Colorthief','Haishoku']
 defaultBackend= "Wal"
 rofi_session = Rofi(rofi_args=['-theme', '~/.config/rofi/logout.rasi'])
 rofi_display = Rofi(rofi_args=['-theme', '~/.config/rofi/display.rasi'])
@@ -78,5 +75,5 @@ rofi_fargewidget= Rofi(rofi_args=['-theme', '~/.config/rofi/fargewidget.rasi'])
 
 #### Weather ####
 w_appkey = "e45a0f07f0c675b273ef8636663941db" # 
-w_cityid ="3995402" #"3995402" Morelia, "3521342" Playa del Carmen, "3520914" Querétaro, "3514783" Veracruz
+w_cityid ="3995402" # "3995402" Morelia, "3521342" Playa del Carmen, "3520914" Querétaro, "3514783" Veracruz
 # https://openweathermap.org/city/

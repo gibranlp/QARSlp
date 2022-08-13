@@ -1,0 +1,135 @@
+/*
+ *  _______  _______  ______  _______  __        
+ * |       ||   _   ||   __ \|     __||  |.-----.
+ * |   -  _||       ||      <|__     ||  ||  _  |
+ * |_______||___|___||___|__||_______||__||   __|
+ *                                        |__|   
+ * QARSlp Qtile + Arch Ricing Script
+ * by: gibranlp <thisdoesnotwork@gibranlp.dev>
+ * MIT licence 
+ */
+
+configuration {
+	font:							"Fira Code Medium 13";
+    show-icons:                     false;
+	icon-theme: 					"Buuf";
+    display-drun: 					"";
+    drun-display-format:            "{name}";
+    disable-history:                false;
+	sidebar-mode: 					false;
+}
+
+@import "~/.cache/wal/colors-rofi-dark.rasi"
+
+window {
+    margin:                         1px 0% 1px 0%;
+    background-color:               @background;
+    text-color:                     @background;
+	height:							480px;
+	width:							700px;
+    location:                       west;
+    x-offset:                       0;
+    y-offset:                       0;
+    border:                         0px;
+    border-color:                   @selected-active-background;
+    border-radius:                  5px;
+}
+
+prompt {
+    enabled: 						true;
+	padding: 						0.20% 1% 0% -0.5%;
+	background-color: 				transparent;
+	text-color: 					@foreground;
+	font:							"Fira Code Medium 13";
+
+}
+
+entry {
+    background-color:               transparent;
+    text-color:                     @foreground;
+    placeholder-color:              @active-background;
+    expand:                         true;
+    horizontal-align:               0;
+    placeholder:                    "        ";
+    padding:                        0.20% 0% 0% 0%;
+    blink:                          true;
+    
+}
+
+inputbar {
+	children: 						[ prompt, entry ];
+    background-color:               transparent;
+    text-color:                     @background;
+    expand:                         false;
+    margin:                         0% 0% 0% 0%;
+    padding:                        1.5%;
+    border:                         3px;
+    border-color:                   @selected-active-background;
+    border-radius:                  3px;
+}
+
+listview {
+    background-color:               transparent;
+    columns:                        3;
+    spacing:                        5px;
+    cycle:                          true;
+    dynamic:                        true;
+    layout:                         vertical;
+    scrollbar:                      false;
+}
+
+mainbox {
+    background-color:               transparent;
+    children:                       [ inputbar, listview ];
+    
+
+}
+element {
+    background-color:               @active-background;
+    orientation:                    vertical;
+    margin:                         0px 0px 0px 0px;
+    padding:                        0% 0% 1% 0%;
+    text-color:                     @background;
+    border:                         3px;
+    border-color:                   transparent;
+    border-radius:                  3px;
+    
+}
+element.normal.normal {
+    background-color: transparent;
+    text-color: @foreground;
+}
+
+element.normal.active {
+    background-color: @active-background;
+    text-color: @foreground;
+}
+
+element.alternate.normal {
+    background-color: transparent;
+    text-color: @foreground;
+}
+
+element-text {
+    background-color: 				transparent;
+    text-color:       				@foreground;
+    expand:                         true;
+    horizontal-align:               0.5;
+    vertical-align:                 0.5;
+    margin:                         0.5% 0.5% -0.5% 0.5%;
+}
+
+element.selected.normal {
+    background-color: @active-background;
+    text-color: @background;
+    border-color: @selected-urgent-background;
+}
+
+element-text {
+    background-color: 				transparent;
+    text-color:       				inherit;
+    expand:                         true;
+    horizontal-align:               0.5;
+    vertical-align:                 0.5;
+    margin:                         0.5% 0.5% -0.5% 0.5%;
+}

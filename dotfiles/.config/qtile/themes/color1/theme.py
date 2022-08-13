@@ -19,41 +19,13 @@ def init_widgets_top():
     widgets_top = [
                 widget.Sep(
                     foreground=color[1],
-                    linewidth=lwidth,
-                ),
-                widget.Sep(
-                    foreground=color[2],
-                    linewidth=lwidth,
-                ),
-                widget.Sep(
-                    foreground=color[3],
-                    linewidth=lwidth,
-                ),
-                widget.Sep(
-                    foreground=color[4],
-                    linewidth=lwidth,
-                ),
-                widget.Sep(
-                    foreground=color[5],
-                    linewidth=lwidth,
-                ),
-                 widget.Sep(
-                    foreground=color[6],
-                    linewidth=lwidth,
-                ),
-                 widget.Sep(
-                    foreground=color[7],
-                    linewidth=lwidth,
-                ),
-                 widget.Sep(
-                    foreground=color[8],
-                    linewidth=lwidth,
+                    linewidth=5,
                 ),
                 #### Groups ####
                 widget.GroupBox(
                     font=awesome_font,
                     disable_drag=True,
-                    hide_unused=False,
+                    hide_unused=True,
                     padding_x=6,
                     borderwidth=0,
                     active=color[4],
@@ -71,62 +43,56 @@ def init_widgets_top():
                     foreground=color[2],    
                     urgent_border=color[4]
                     ),
+                widget.Sep(
+                    foreground=color[2],
+                    linewidth=5,
+                ),
                 widget.Prompt(
                        prompt=prompt,
                        padding=10,
-                       foreground=color[3],
+                       foreground=color[2],
                        ),
-                widget.Spacer(
-                    length=bar.STRETCH,
-                    foreground=color[0]
-                    ),
-                widget.Clock(
-                    foreground=color[2],
-                    fontshadow=color[0],
-                    format=" %b ",
-                    update_interval=1
-                    ),
-                widget.Clock(
-                    foreground=color[4],
-                    fontshadow=color[0],
-                    format="%a",
-                    update_interval=1
-                    ),
-                widget.Clock(
+                widget.Sep(
+                    foreground=color[3],
+                    linewidth=5,
+                ),
+                widget.ThermalSensor(
+                    background=color[0],
+                    foreground=color[3],
+                    foreground_alert='ff0000',
+                    metric=True,
+                    update_interval=1,
+                    tag_sensor='Tctl'
+                ),
+                widget.Sep(
+                    foreground=color[5],
+                    linewidth=5,
+                ),
+                widget.NvidiaSensors(
+                    background=color[0],
+                    foreground=color[5],
+                ),
+                widget.Sep(
+                    foreground=color[6],
+                    linewidth=5,
+                ),
+                widget.WindowName(
                     foreground=color[6],
                     fontshadow=color[0],
-                    format=" %d ",
-                    update_interval=1
-                    ),
-                widget.Clock(
-                    foreground=color[3],
-                    fontshadow=color[0],
-                    format="%H:%M ",
-                    update_interval=1
+                    padding=5,
+                    empty_group_string=ver,
+                    max_chars=50,
+                    format='  {name}',
                     ),
                 widget.Spacer(
                     length=bar.STRETCH,
                     foreground=color[0]
                     ),
+                widget.Sep(
+                    foreground=color[3],
+                    linewidth=5,
+                ),
                 #### Spotify ####
-                 widget.TextBox(
-                    foreground=color[3],
-                    fontshadow=color[1],
-                    text=" ",
-                    mouse_callbacks={'Button1':lambda: qtile.cmd_function(prev)},
-                    ),
-                widget.TextBox(
-                    foreground=color[4],
-                    fontshadow=color[1],
-                    text="",
-                    mouse_callbacks={'Button1':lambda: qtile.cmd_function(play_pause)},
-                    ),
-                widget.TextBox(
-                    foreground=color[3],
-                    fontshadow=color[1],
-                    text=" ",
-                    mouse_callbacks={'Button1':lambda: qtile.cmd_function(nexts)},
-                    ),
                 widget.Mpris2(
                     name='cmus',
                     objname='org.mpris.MediaPlayer2.cmus',
@@ -170,98 +136,137 @@ def init_widgets_top():
                     display_metadata=['xesam:title', 'xesam:artist'],
                     scroll_interval=scrollint,
                     scroll_wait_intervals=scrollwint,
-                    ),           
-                #### Layouts ####WW
-                widget.CurrentLayoutIcon(
-                    foreground=color[2],
-                    scale=0.8,
-                    ),
-                #### Pomodoro ####
+                    ), 
+                widget.Sep(
+                    foreground=color[4],
+                    linewidth=5,
+                ),
                 widget.WidgetBox(
-                    text_closed='  ',
+                    font=awesome_font,
+                    text_closed="",
+                    text_open='  ',
+                    foreground=color[4],
+                    fontshadow=color[0],
+                    widgets=[widget.TextBox(
+                        text=' '+private_ip,
+                        foreground=color[4],
+                        fontshadow=color[0],
+                        mouse_callbacks={'Button1':lambda: qtile.cmd_function(network_widget)}
+                        ),
+                        widget.TextBox(
+                        text=' '+public_ip + " " + wifi_icon,
+                        foreground=color[4],
+                        fontshadow=color[0],
+                        mouse_callbacks={'Button1':lambda: qtile.cmd_function(network_widget)}
+                        ),]
+                ),
+                widget.Wlan(
+                    interface=wifi,
+                    format='{percent:2.0%}  {essid}',
+                    disconnected_message='Unplugged',
+                    foreground=color[4],
+                    fontshadow=color[0],
+                    mouse_callbacks={'Button1':lambda: qtile.cmd_function(network_widget)}
+                    ),
+                widget.Net(
+                    interface=wifi,
+                    format='{down}',
+                    foreground=color[4],
+                    fontshadow=color[0],
+                    use_bits=True,
+                    mouse_callbacks={'Button1':lambda: qtile.cmd_function(network_widget)}
+                    ),
+                widget.Sep(
+                    foreground=color[5],
+                    linewidth=5,
+                ),
+                widget.WidgetBox(
+                    text_closed='',
                     text_open='  ',
-                    foreground=color[6],
+                    foreground=color[5],
                     fontshadow=color[0],
                     widgets=[widget.Pomodoro(
-                        foreground=color[6],
+                        foreground=color[5],
                         fontshadow=color[0],
-                        color_active=color[4],
-                        color_break=color[3],
-                        color_inactive=color[4],
-                        length_pomodori=50,
-                        length_short_break=5,
-                        length_long_break=15,
+                        color_active=color[7],
+                        color_break=color[5],
+                        color_inactive=color[8],
+                        length_pomodori=45,
+                        length_short_break=10,
+                        length_long_break=25,
                         num_pomodori=3,
-                        prefix_break=' Break',
-                        prefix_inactive=' Pomodoro',
-                        prefix_long_break=' Long Break',
-                        prefix_paused=' '
+                        prefix_break='Break',
+                        prefix_inactive='Start',
+                        prefix_long_break='Long Break',
+                        prefix_paused='Paused'
                     )],
                 ),
-                #### Updates ####\
-                widget.TextBox(
-                    font=awesome_font,
-                    foreground=color[3],
-                    fontshadow=color[0],
-                    text="  ",
-                    ),
+                widget.Sep(
+                    foreground=color[6],
+                    linewidth=5,
+                ),
                 widget.CheckUpdates(
                     update_interval=1800,
                     distro='Arch_paru',
-                    foreground=color[0],
+                    foreground=color[6],
                     mouse_callbacks={'Button1': lambda: qtile.cmd_spawn(term + ' -e sudo paru -Syu')},
-                    display_format="{updates} up",
-                    FOREGROUND=color[3],
-                    colour_have_updates=color[3],
-                    colour_no_updates=color[3],
-                    no_update_string=" ",
-                    restart_indicator=" ",
-                    fontshadow=color[0],
+                    display_format="",
+                    colour_have_updates=color[6],
+                    colour_no_updates=color[6],
+                    no_update_string="",
+                    restart_indicator="",
                     ),
-                  widget.UPowerWidget(
-                    border_charge_colour=color[4],
-                    border_colour=color[4],
-                    border_critical_colour='#cc0000',
-                    fill_critical='#cc0000',
-                    fill_low='#FF5511',
-                    fill_normal=color[4],
-                    foregound=color[4],
-                    fontshadow=[0]
+                widget.Sep(
+                    foreground=color[4],
+                    linewidth=5,
                 ),
-                widget.TextBox(
-                    font=awesome_font,
-                    text="  ",
-                    foreground=color[5],
-                    fontshadow=color[0],
-                    padding=0,
-                    mouse_callbacks={'Button1': lambda: qtile.cmd_spawn('pavucontrol')}
-                    ),
                 widget.ALSAWidget(
                     device='Master',
-                    bar_colour_high=color[6],
+                    bar_colour_high=color[4],
                     bar_colour_loud="#FF0000",
                     bar_colour_normal=color[4],
-                    bar_colour_mute=color[1],
+                    bar_colour_mute=color[0],
                     hide_interval=3,
                     update_interval=0.1,
                     bar_width=100,
                     mode='bar',
                     fontshadow=color[0],
-                    foreground=color[7],
+                    foreground=color[2],
+                    mouse_callbacks={'Button1': lambda: qtile.cmd_spawn('pavucontrol')},
+                ),
+                widget.Sep(
+                    foreground=color[2],
+                    linewidth=5,
                 ),
                 widget.Bluetooth(
-                    foreground=color[1],
+                    foreground=color[2],
                     fontshadow=color[0],
                     hci='/dev_28_EC_9A_9B_64_72',
                     mouse_callbacks={'Button1': lambda: qtile.cmd_spawn('blueman-manager')}
                 ),
-                #### Lock, Logout, Poweroff ####
-                widget.TextBox(
-                    font=awesome_font,
-                    foreground=color[4],
+                widget.Sep(
+                    foreground=color[5],
+                    linewidth=5,
+                ),
+                widget.UPowerWidget(
+                    border_charge_colour=color[5],
+                    border_colour=color[5],
+                    border_critical_colour='#cc0000',
+                    fill_critical='#cc0000',
+                    fill_low='#FF5511',
+                    fill_normal=color[5],
+                    foregound=color[5],
+                    fontshadow=[0]
+                ),
+                widget.Sep(
+                    foreground=color[3],
+                    linewidth=5,
+                ),
+                widget.Clock(
+                    foreground=color[3],
                     fontshadow=color[0],
-                    text=" ",
-                    mouse_callbacks={'Button1': lambda: qtile.cmd_function(session_widget)}
+                    format="%H:%M",
+                    update_interval=1
                     ),
     ]
     return widgets_top
@@ -278,12 +283,9 @@ def init_screens():
     return [
         Screen(
             top=bar.Bar(
-                margin=[5, 10, 0, 10],
-                background="ffffff00",
+                background=color[1],
                 widgets=init_widgets_screen_top(),  
                 size=barsz,
-                border_color=color[1]+ barTransparency,
-                border_width=barBorderWidth,
                 )),
         Screen()
         ]

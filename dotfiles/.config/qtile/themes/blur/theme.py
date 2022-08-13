@@ -19,7 +19,7 @@ def init_widgets_top():
                 widget.GroupBox(
                     font=awesome_font,
                     disable_drag=True,
-                    hide_unused=False,
+                    hide_unused=True,
                     padding_x=6,
                     borderwidth=0,
                     active=color[4],
@@ -56,19 +56,19 @@ def init_widgets_top():
                     ),
                 widget.Sep(
                     foreground=color[1],
-                    linewidth=lwidth,
+                    linewidth=5,
                 ),
                  widget.Sep(
                     foreground=color[2],
-                    linewidth=lwidth,
+                    linewidth=5,
                 ),
                  widget.Sep(
                     foreground=color[3],
-                    linewidth=lwidth,
+                    linewidth=5,
                 ),
                 widget.Sep(
                     foreground=color[4],
-                    linewidth=lwidth,
+                    linewidth=5,
                 ),
                 widget.Clock(
                     foreground=color[2],
@@ -96,19 +96,19 @@ def init_widgets_top():
                     ),
                  widget.Sep(
                     foreground=color[5],
-                    linewidth=lwidth,
+                    linewidth=5,
                 ),
                  widget.Sep(
                     foreground=color[6],
-                    linewidth=lwidth,
+                    linewidth=5,
                 ),
                  widget.Sep(
                     foreground=color[7],
-                    linewidth=lwidth,
+                    linewidth=5,
                 ),
                  widget.Sep(
                     foreground=color[8],
-                    linewidth=lwidth,
+                    linewidth=5,
                 ),
                 widget.Spacer(
                     length=bar.STRETCH,
@@ -177,13 +177,7 @@ def init_widgets_top():
                     scroll_interval=scrollint,
                     scroll_wait_intervals=scrollwint,
                     ),           
-                #### Layouts ####
-            widget.CurrentLayoutIcon(
-                    foreground=color[5],
-                    fontshadow=color[0],
-                    scale=0.7,
-                    use_mask=True,
-                    ),
+
                 #### Pomodoro ####
                 widget.WidgetBox(
                     text_closed='  ',
@@ -229,9 +223,9 @@ def init_widgets_top():
                   widget.UPowerWidget(
                     border_charge_colour=color[6],
                     border_colour=color[4],
-                    border_critical_colour='#cc0000',
-                    fill_critical='#cc0000',
-                    fill_low='#FF5511',
+                    border_critical_colour='#ff0000',
+                    fill_critical='#ff0000',
+                    fill_low=color[1],
                     fill_normal=color[4],
                     foregound=color[4],
                     fontshadow=[0]
@@ -532,18 +526,18 @@ def init_screens():
     return [
         Screen(
             top=bar.Bar(
-                background=[color[0] + barTransparency],
+                background=[color[0] + "70"],
                 widgets=init_widgets_screen_top(),  
                 size=barsz,
-                border_color=color[1]+ barTransparency,
-                border_width=barBorderWidth,
+                border_color=color[1]+ "70",
+                border_width=[0,0,3,0],
                 ),
             bottom=bar.Bar(
-                background=[color[0] + barTransparency],
+                background=[color[0] + "70"],
                 widgets=init_widgets_screen_bot(),
                 size=barsz,
-                border_color=color[1]+ barTransparency,
-                border_width=barBorderWidth,              
+                border_color=color[1]+ "70",
+                border_width=[3,0,0,0],              
                 )
         ),
         Screen()

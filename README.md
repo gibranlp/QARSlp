@@ -12,6 +12,15 @@
 
 This is a autoricing theme for Qtile, it takes a random wallpaper located at ~/Pictures/wallPapers and will change the entire system colors to the wallpaper ones.
 
+## Coming New Version 2.2
+
+  - Integrated Cava
+  - Fixed Bugs in Themes
+  - White Themes
+  - Fix GTK color sync
+  - More themes ** Priority
+    - include conky
+
 There are a few functions built  in the  Theme, such as:
 
 - Randomize Wallpaper
@@ -91,7 +100,3 @@ updater.sh
   - **Pacman**: 'base-devel' 'alacritty' 'xorg-xkill' 'xcolor' 'xdg-user-dirs' 'bluez' 'bluez-tools' 'blueman' 'htop' 'alsa-utils' 'alsa-lib' 'bc' 'ntfs-3g' 'alsa-firmware' 'playerctl' 'kdeconnect' 'firefox' 'pulseaudio' 'pulseaudio-alsa' 'pavucontrol' 'volumeicon' 'scrot' 'rofi' 'surfraw' 'python-pip' 'pkgfile' 'ranger' 'tumbler' 'feh' 'neofetch' 'lxappearance' 'lxsession' 'numlockx' 'unzip' 'bmon' 'lightdm' 'lm_sensors' 'obconf' 'viewnior' 'ntp' 'nm-connection-editor' 'network-manager-applet' 'arandr' 'cmatrix' 'xarchiver' 'python-pywal' 'python-psutil' 'python-xdg' 'python-iwlib' 'python-dateutil' 'ueberzug' 'xsettingsd' 'otf-ipafont' 'acpi' 'qtile' 'wget' 'cmake' 'tlp' 'zsh' 'texlive-full' 'gvfs' 'dunst'
   - **Pip Packages**: 'fontawesome' 'ipc' 'pywalfox' 'colorz' 'colorthief' 'haishoku' 'dbus-next' 'git+http://github.com/bcbnz/python-rofi.git'
   - **AUR Packages**: 'p7zip' 'unrar' 'openssh' 'farge' 'wpgtk-git' 'nbfc' 'qtile-extras-git' 'thunar-custom-actions' 'thunar-volman' 'thunar-archive-plugin-git' 'thunar-shares-plugin-git' 'picom-ibhagwan-git' 'deepin-screenshot' 'font-manager' 'jmtpfs' 'lightdm-webkit-theme-aether' 'themix-gui-git'
-
-
-### Know Issues
--  GTK still not working fine

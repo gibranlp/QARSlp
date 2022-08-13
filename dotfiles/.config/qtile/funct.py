@@ -127,23 +127,20 @@ def set_rand_wallpaper(qtile):
     if rand_wallpaper != wallpaper:
         subprocess.run(["wpg", "-s", "%s" % rand_wallpaper, "--backend", "%s" %defaultBackend.lower()])
         subprocess.run(["sudo", "cp", "%s" % rand_wallpaper,  "/usr/share/lightdm-webkit/themes/lightdm-webkit-theme-aether/src/img/wallpapers/background.jpg"])
-        #subprocess.run(["oomox-cli", "-o oomox-wal", home + "/.cache/wal/colors-oomox"])
         qtile.cmd_reload_config()
     else:
         qtile.cmd_reload_config()
 
 #### Change Color scheme widget ####
 def change_color_scheme(qtile):
-    options = [backend[0],backend[1],backend[2],backend[3], '<<-<< Light Themes >>-->>', backend[0],backend[1],backend[2],backend[3]]
+    options = backend
     index, key = rofi_backend.select('  Color Scheme', options)
     if key == -1 or index == 4:
         rofi_backend.close()
-    elif key == 0 and index < 4:
+    else:
         subprocess.run('wpg -s ' + wallpaper + ' --backend ' + backend[index].lower(), shell=True)
         qtile.cmd_reload_config()
-    elif key == 0 and index > 4:
-        subprocess.run('wpg -s ' + wallpaper + ' -L --backend ' + backend[index-5].lower(), shell=True)
-        qtile.cmd_reload_config()
+    
 
 #### Functions for Widgets ####
 #### Display Shortcuts widget
@@ -226,12 +223,13 @@ def network_widget(qtile):
 def change_theme(qtile):
     options = theme
     index, key = rofi_backend.select('  Select Theme', options)
-    if key == -1 or index >= 6:
+    if key == -1:
         rofi_backend.close()
-    elif key == 0 and index < 6:
+    else:
         subprocess.run('rm -rf ~/.config/qtile/theme.py', shell=True)
         subprocess.run('\cp ~/.config/qtile/themes/%s/theme.py ~/.config/qtile/'% theme[index], shell=True)
         subprocess.run('\cp ~/.config/qtile/themes/%s/rofi/* ~/.config/rofi/'% theme[index], shell=True)
+        subprocess.run('\cp ~/.config/qtile/themes/%s/picom/* ~/.config/picom/'% theme[index], shell=True)
         qtile.cmd_reload_config()
 
 #### Multimedia #### 

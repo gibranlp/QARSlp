@@ -38,9 +38,9 @@ def init_keys():
 
             Key([mod],"p",lazy.function(fargewidget)), # Color Picker Widget
 
-            Key([mod],"f",lazy.spawn(home + '/.local/bin/wsearch')), # WEB Search widget
+            Key([mod],"g",lazy.spawn(home + '/.local/bin/wsearch')), # WEB Search widget
 
-            Key([mod, "shift"],"f",lazy.spawn('rofi  -theme "~/.config/rofi/filesfolders.rasi" -show find -modi find:~/.local/bin/finder')), # Search files and folders
+            Key([mod, "shift"],"g",lazy.spawn('rofi  -theme "~/.config/rofi/filesfolders.rasi" -show find -modi find:~/.local/bin/finder')), # Search files and folders
 
             Key([mod],"x",lazy.function(session_widget)), # Log out
 
@@ -63,9 +63,9 @@ def init_keys():
 
             Key([mod, "shift"],"m",lazy.spawn('thunderbird')), # Open Thunderbird
 
-            Key([mod],"g",lazy.spawn('firefox')), # Open Firefox
+            Key([mod],"f",lazy.spawn('firefox')), # Open Firefox
             
-            Key([mod, "shift"],"g",lazy.spawn('google-chrome-stable')), # Open Google Chrome
+            Key([mod, "shift"],"f",lazy.spawn('google-chrome-stable')), # Open Google Chrome
             
             Key([mod, "shift"],"c",lazy.spawn('code')), # Open Visual Code Studio
             

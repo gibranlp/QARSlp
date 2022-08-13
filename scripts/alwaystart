@@ -13,6 +13,8 @@ pywalfox update &
 picom --backend glx &
 cp ~/.cache/wal/dunstrc ~/.config/dunst/dunstrc &
 cp ~/.cache/wal/colors.Xresources ~/.Xresources &
+cp ~/.cache/wal/config ~/.config/cava/config &
 oomox-cli -o oomox-wal ~/.cache/wal/colors-oomox &
+pkill -USR1 cava &
 dunst &
 wal -R 
