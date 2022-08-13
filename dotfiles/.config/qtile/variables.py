@@ -26,10 +26,13 @@ from qtile_extras import widget
 ### Variables ####
 main_font = "Fira Code Medium" # Font in use for the entire system
 awesome_font = "Font Awesome 6 Pro Solid"
+#### Resolution ####
 resolution = "4k" # 4k 3460 x 2560 or Fullhd 1920 x 1080
 ver = 'QARSlp  v2.1.7' # Current version
+#### Keys ####
 mod = "mod4" # Command / Windows key
 alt = "mod1" # Alt key                  
+
 term = "alacritty" # Terminal in use
 home = os.path.expanduser('~') # Path for use in folders
 prompt = ":".format(os.environ["USER"], socket.gethostname()) # Format of the prompt

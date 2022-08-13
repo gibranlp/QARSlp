@@ -14,16 +14,16 @@ if resolution == "4k":
   fontsz = 20 # Bars Font size
   iconsz = 20 # Treay Icon size
   barsz = 30 # Bar size
-  lmargin = 20 # Layout margins
-  slmargin = 20 # Single window margin 
+  lmargin = 10 # Layout margins
+  slmargin = 10 # Single window margin 
   lborderwd = 5 # Layout border width
   sborderwidth = 5 # Single border width
 else:
   fontsz = 16 # Bars Font size
   iconsz = 18 # Treay Icon size
   barsz = 25 # Bar size
-  lmargin = 10 # Layout margins
-  slmargin = 10 # Single window margin 
+  lmargin = 5 # Layout margins
+  slmargin = 5 # Single window margin 
   lborderwd = 3 # Layout border width
   sborderwidth = 3 # Single border width
 
