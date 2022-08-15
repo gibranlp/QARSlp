@@ -14,6 +14,8 @@ This is a autoricing theme for Qtile, it takes a random wallpaper located at ~/P
 
 ## Coming New Version 2.2
 
+- [ ] Best documentation **Important
+
   - [ ] Integrated Cava
   - [ ] Fixed Bugs in Themes
   - [ ] White Themes
