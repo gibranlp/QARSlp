@@ -19,7 +19,7 @@ def init_widgets_top():
                     background="ffffff00",
                     font=awesome_font,
                     text="",
-                    mouse_callbacks={'Button1': lambda: qtile.cmd_spawn('rofi -theme "~/.config/rofi/launcher.rasi" -show drun')},
+                    mouse_callbacks={'Button1': lambda: qtile.cmd_function(nightLight_widget)},
                     foreground=color[0],
                     fontsize=fontsz,
                     decorations=[RectDecoration(colour=color[1], radius=15, filled=True)],
@@ -105,6 +105,7 @@ def init_widgets_top():
                        decorations=[RectDecoration(colour=color[0], radius=[15,0,0,15], filled=True)],
                     foreground=color[1],
                     text="",
+                    mouse_callbacks={'Button1': lambda: qtile.cmd_spawn(term + " -e cava")},
                     ),
                 #### Spotify ####
                 widget.Mpris2(

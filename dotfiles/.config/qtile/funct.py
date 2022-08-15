@@ -147,6 +147,21 @@ def change_color_scheme(qtile):
 def shortcuts(qtile):
     subprocess.run("cat ~/.shortcuts | rofi -theme '~/.config/rofi/shortcuts.rasi' -i -dmenu -p ' Shortcuts:'",shell=True)
 
+#### NightLight widget
+def nightLight_widget(qtile):
+    options = [' Night Time(3500k)', ' Neutral (6500k)', ' Cool (7500k)']
+    index, key = rofi_session.select('  Night Light', options)
+    if key == -1:
+        rofi_session.close()
+    else:
+        if index == 0:
+             os.system('redshift -O 3500k -r -P')
+        elif index == 1:
+            os.system('redshift -x')
+        else:
+            os.system('redshift -O 7500k -r -P')
+
+
 #### Logout widget
 def session_widget(qtile):
     options = [' Log Out', ' Reboot',' Poweroff',' Lock']

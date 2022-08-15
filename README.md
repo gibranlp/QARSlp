@@ -14,12 +14,18 @@ This is a autoricing theme for Qtile, it takes a random wallpaper located at ~/P
 
 ## Coming New Version 2.2
 
-  - Integrated Cava
-  - Fixed Bugs in Themes
-  - White Themes
-  - Fix GTK color sync
-  - More themes ** Priority
-    - include conky
+  - [ ] Integrated Cava
+  - [ ] Fixed Bugs in Themes
+  - [ ] White Themes
+  - [ ] Fix GTK color sync
+  - [ ] More themes ** Priority
+    - [ ] include conky
+  - [x] Rofi widget to set Nighlight or maybe just a toggle
+    - [x] Using Redshift
+  - [ ] Redo Rofi templates
+  - [ ] Shortcuts to all Rofi Widgets
+  - [ ] Auto set size of display 4k FullHD other...
+  - [ ] 
 
 There are a few functions built  in the  Theme, such as:
 
