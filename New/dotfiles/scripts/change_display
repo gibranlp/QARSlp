@@ -1,0 +1,169 @@
+#!/usr/bin/env zsh
+# _______  _______  ______  _______  __        
+#|       ||   _   ||   __ \|     __||  |.-----.
+#|   -  _||       ||      <|__     ||  ||  _  |
+#|_______||___|___||___|__||_______||__||   __|
+#                                       |__|   
+# QARSlp Qtile + Arch Ricing System
+# By: gibranlp <thisdoesnotwork@gibranlp.dev>
+# MIT licence 
+#
+
+typeset XRANDR_TXT 
+typeset -A OUTPUT_CONFIGURED 
+
+function main() {
+  local -i iteration
+  local max_iteration
+  local output
+  local mode
+  local position
+  local xrandr_cmd
+
+  environment_check
+
+  max_iteration=${(w)#OUTPUT_CONFIGURED}
+  xrandr_cmd='xrandr'
+
+  while ! all_outputs_configured && (( $iteration <= $max_iteration )); do
+    if (( iteration++ )); then
+      select_output ' Next Screen' 'unconfigured' | read output
+      select_position "${output}" | read position
+      [[ "${position}" != '--off' ]] && select_mode "${output}" | read mode
+      OUTPUT_CONFIGURED[${output}]='true'
+    else
+      select_output '  Main Screen' 'all' | read output
+      select_mode "${output}" | read mode
+      OUTPUT_CONFIGURED[${output}]='true'
+      position='--primary'
+    fi
+    xrandr_cmd+=" --output ${output} ${position} ${mode}"
+  done
+
+  ${=xrandr_cmd}
+}
+
+function select_output() {
+  local -a menu
+  local output
+  local -ir err_bad_args=257
+  local -ir err_bad_selection=258
+  local -ir err_no_options=259
+
+  case "$2" in
+    'configured')
+      for output in ${(k)OUTPUT_CONFIGURED}; do
+        ${OUTPUT_CONFIGURED[$output]} && menu+=("$output")
+      done
+      ;;
+    'unconfigured')
+      for output in ${(k)OUTPUT_CONFIGURED}; do
+        ${OUTPUT_CONFIGURED[$output]} || menu+=("$output")
+      done
+      ;;
+    'all') menu=(${(k)OUTPUT_CONFIGURED}) ;;
+    *) return "${err_bad_args}" ;;
+  esac
+
+  case ${#menu} in
+    0) return "${err_no_options}" ;;
+    1) echo "${menu}" ;;
+    *) echo ${(F)menu} | rofi -theme ~/.config/rofi/display.rasi -dmenu -l 10 -p "$1" ;;
+  esac
+}
+
+function select_position() {
+  local anchor
+  local selection
+  local -ir err_bad_arg=257
+  local -ir err_bad_selection=258
+  local -ir err_no_anchor=259
+
+  [[ -z $1 ]] && return "${err_bad_arg}"
+
+  select_output "Set $1 relative to:" 'configured' | read anchor
+  [[ $? -eq 257 ]] && return "${err_no_anchor}"
+
+echo "left of ${anchor}
+right of ${anchor}
+above ${anchor}
+below ${anchor}
+mirror ${anchor}
+off" | rofi -theme ~/.config/rofi/display.rasi -dmenu -l 10 -p " Position  $1" | read selection
+
+  case "${selection[(w)1]}" in
+    left) echo "--left-of ${anchor}" ;;
+    right) echo "--right-of ${anchor}" ;;
+    above) echo "--above ${anchor}" ;;
+    below) echo "--below ${anchor}" ;;
+    mirror) echo "--same-as ${anchor}" ;;
+    off) echo "--off" ;;
+    *) return "${err_bad_selection}" ;;
+  esac
+}
+
+function select_mode() {
+  local menu
+  local selection
+  local -ir err_bad_args=257
+  local -ir err_bad_selection=258
+
+  if [[ -z $1 ]] && return "${err_bad_args}"
+
+  menu="$(echo \"${XRANDR_TXT}\" \
+    | sed -n '/^'$1' /,/^[^ ]/ s/ * //p' \
+    | cut -d ' ' -f 1 \
+    | grep x \
+    | cat <(echo auto) -)"
+
+  echo "${menu}" | rofi -theme ~/.config/rofi/display.rasi -dmenu -l 10 -p " Mode  $1" | read selection
+
+  case "${selection}" in
+    'auto') echo '--auto' ;;
+    *x*) echo "--mode ${selection}" ;;
+    *) return "${err_bad_selection}" ;;
+  esac
+}
+
+function all_outputs_configured() {
+  local config
+
+  for config in ${OUTPUT_CONFIGURED}; do
+    $config || return 257
+  done
+
+  return 0
+}
+
+function environment_check() {
+  if ! command -v cat &>/dev/null; then
+    echo 'You seem to be missing coreutils. You' >&2
+    exit 255
+  elif ! command -v grep &>/dev/null; then
+    echo 'grep seems to be missing. You' >&2
+    exit 255
+  elif ! command -v xrandr &>/dev/null; then
+    echo "Try xrandr-dmenu without xrandr." >&2
+    exit 255
+elif ! command -v rofi &>/dev/null; then
+    echo "Try xrandr-dmenu without dmenu." >&2
+    exit 255
+  elif ! xset q &>/dev/null; then
+    echo 'Waaaaaaaaaat?! You need to run this from inside X!' >&2
+    exit 1
+  fi
+}
+
+function initialize_globals() {
+  local output
+
+  XRANDR_TXT="$(xrandr)"
+  for output in $(grep ' connected' <<< "${XRANDR_TXT}" | cut -d ' ' -f 1); do
+    OUTPUT_CONFIGURED[${output}]='false'
+  done
+}
+
+initialize_globals
+readonly XRANDR_TXT
+main
+

@@ -48,7 +48,7 @@ function i_pip(){
 
   for pip_packet in "${pip_packets[@]}"; do
     echo "Instalando --> ${pip_packet}"
-    sudo pip install "${pip_packet}"
+    pip install "${pip_packet}"
   done
 }
 
