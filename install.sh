@@ -8,7 +8,7 @@
 # By: gibranlp <thisdoesnotwork@gibranlp.dev>
 # MIT licence 
 #
-function base_packages() {
+function base() {
   packets=(
     'base-devel'
     'alsa-utils'
@@ -76,6 +76,11 @@ function base_packages() {
     'redshift'
     'libmicrodns' # Libraries for vlc and Chromecast
     'protobuf' # Libraries for vlc and Chromecast
+    'linux-headers'
+    'linux-docs'
+    'linux-lts'
+    'linux-lts-headers'
+    'nvidia-dkms'
     
 
 )
@@ -86,10 +91,113 @@ for packet in "${packets[@]}"; do
 done
 }
 
+function pip(){
+  pip_packets=(
+    'fontawesome'
+    'ipc'
+    'colorz'
+    'colorthief'
+    'haishoku'
+    'dbus-next'
+    'git+http://github.com/bcbnz/python-rofi.git'
+    'requests'
+    'castero' # Podcast Client
+   
+  )
+
+  ## Podcasts
+  # https://feeds.simplecast.com/PxEW_ipK # OfficeLadies
+  # 
+
+  for pip_packet in "${pip_packets[@]}"; do
+    echo "Instalando --> ${pip_packet}"
+    pip install "${pip_packet}"
+  done
+}
+
+function aur () {
+  packets=(
+    'qtile-git'
+    'farge'
+    'python-pywalfox'
+    'qtile-extras-git'
+    'caffeine-ng'
+    'visual-studio-code-bin'
+    'slack-desktop'
+    'teams-for-linux'
+    'telegram-desktop'
+    'google-chrome'
+    'wpgtk-git'
+    'cava'
+    'thunar-extended'
+    'thunar-volman'
+    'hugo'
+    'nbfc'
+    'ntfs-3g'
+    'cava'
+    'nativefier-freedesktop-git'
+
+)
+for packet in "${packets[@]}"; do
+    echo "Instalando --> ${packet}"
+    paru -S "${packet}" --noconfirm
+done
+}
+
+function zsh(){
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+    git clone https://github.com/zsh-users/zsh-autosuggestions.git ~/.oh-my-zsh/plugins/zsh-autosuggestions
+    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/plugins/zsh-syntax-highlighting
+}
+
 function copy_dotfiles(){
   \cp -r ~/QARSlp/dotfiles/.[^.]* ~/
   sudo \cp -r ~/QARSlp/dotfiles/.[^.]* /root
 }
 
-base_packages
+function web_apps(){
+  mkdir -p ~/WebApps
+  cd ~/WebApps
+  nativefier https://github.com/ --name github --single-instance --tray
+  nativefier https://www.primevideo.com/ --name prime --single-instance --windevine --tray
+  nativefier https://drive.google.com/drive/shared-drives --name drive --single-instance --tray
+  nativefier https://www.figma.com/files/recent?fuid=1177005402390460721 --name figma --single-instance --tray
+  nativefier https://admin.google.com/?rapt=AEjHL4N0yGwzCoucouWtW0MKQj6kYhIIfkadjCaxgZTjhnUCSuKHDVoVPYARCWt1YOfZ542j11diwR4Td8HEVfzHv_vT509KMg --name admin --single-instance --tray
+  nativefier https://calendar.google.com/calendar/u/0/r?pli=1 --name calendar --single-instance --tray
+  nativefier https://www.notion.so/helgen/ --name notion --single-instance --tray
+  nativefier https://www.overleaf.com/project --name overleaf --single-instance --tray
+  nativefier https://meet.google.com/ --name meet --single-instance --tray
+
+  sudo ln -s ~/WebApps/PrimeVideo/WelcometoPrimeVideo /usr/bin/prime
+  sudo ln -s ~/WebApps/Drive/Drive /usr/bin/drive
+  sudo ln -s ~/WebApps/GoogleAdmin/GoogleAdmin /usr/bin/admin
+  sudo ln -s ~/WebApps/GoogleCalendar/GoogleCalendar /usr/bin/Calendar
+  sudo ln -s ~/WebApps/Notion/Notion /usr/bin/Notion
+  sudo ln -s ~/WebApps/Overleaf/Overleaf /usr/bin/overleaf
+  sudo ln -s ~/WebApps/Figma/Figma /usr/bin/Figma
+  sudo ln -s ~/WebApps/meet/meet /usr/bin/meet
+  sudo ln -s ~/WebApps/github/github /usr/bin/github
+}
+
+funciton post(){
+  timedatectl set-local-rtc 1
+  timedatectl set-timezone America/Mexico_City
+  sudo systemctl enable bluetooth.service
+  sudo systemctl start bluetooth.service
+  sudo systemctl enable sshd.service
+  sudo systemctl start sshd.service
+  sudo systemctl enable tlp.service
+  journalctl --vacuum-size=100M
+  journalctl --vacuum-time=2weeks
+  wpg-install.sh -gio
+  ~/.local/bin/genwal
+  pywalfox install
+  pywalfox start
+}
+
+sudo reflector --latest 10 --protocol https --sort rate --save /etc/pacman.d/mirrorlist
+base
+pip
+aur
+zsh
 copy_dotfiles
