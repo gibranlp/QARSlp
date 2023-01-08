@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+# _______  _______  ______  _______  __        
+#|       ||   _   ||   __ \|     __||  |.-----.
+#|   -  _||       ||      <|__     ||  ||  _  |
+#|_______||___|___||___|__||_______||__||   __|
+#                                       |__|   
+# QARSlp Qtile + Arch Ricing System
+# By: gibranlp <thisdoesnotwork@gibranlp.dev>
+# MIT licence 
+# 
+pkill dunst & 
+pywalfox update &  
+picom & 
+cp ~/.cache/wal/dunstrc ~/.config/dunst/dunstrc &
+cp ~/.cache/wal/config ~/.config/cava/config &
+pkill -USR1 cava &
+dunst &
+wal -R
