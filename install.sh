@@ -205,9 +205,9 @@ function post(){
 }
 #sudo pacman -Syyu
 #base
-paru
+#paru
+#aur
 pip
-aur
 zsh
 copy_dotfiles
 web_apps
