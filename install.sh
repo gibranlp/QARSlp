@@ -99,6 +99,35 @@ function paru_install(){
   rm -rf paru
 } 
 
+function aur_packages() {
+  packets=(
+    'farge'
+    'python-pywalfox'
+    'qtile-extras-git'
+    'caffeine-ng'
+    'qtile-git'
+    'visual-studio-code-bin'
+    'slack-desktop'
+    'teams-for-linux'
+    'telegram-desktop'
+    'google-chrome'
+    'wpgtk-git'
+    'cava'
+    'thunar-extended'
+    'thunar-volman'
+    'hugo'
+    'nbfc'
+    'ntfs-3g'
+    'cava'
+    'nativefier-freedesktop-git'
+
+)
+for packet in "${packets[@]}"; do
+    echo "Instalando --> ${packet}"
+    paru -S "${packet}" --noconfirm
+done
+}
+
 function zsh(){
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
     git clone https://github.com/zsh-users/zsh-autosuggestions.git ~/.oh-my-zsh/plugins/zsh-autosuggestions
@@ -152,8 +181,8 @@ function post(){
 #sudo pacman -Syyu
 #base
 #paru_install
-sudo pacman -Rcns qtile --noconfirm
-paru -S --noconfirm $(cat aur.txt)
+sudo pacman -Rcns qtile thunar --noconfirm
+aur_packages
 #pip install -r pip.txt
 zsh
 copy_dotfiles
