@@ -101,6 +101,7 @@ function paru(){
 
 function pip(){
   pip_packets=(
+    'requests'
     'fontawesome'
     'ipc'
     'colorz'
@@ -108,7 +109,6 @@ function pip(){
     'haishoku'
     'dbus-next'
     'git+http://github.com/bcbnz/python-rofi.git'
-    'requests' 
   )
 
 for pip_packet in "${pip_packets[@]}"; do
