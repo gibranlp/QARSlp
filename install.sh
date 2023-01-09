@@ -99,7 +99,7 @@ function paru(){
   rm -rf paru
 } 
 
-function pip(){
+function pip3(){
   pip_packets=(
     'requests'
     'fontawesome'
