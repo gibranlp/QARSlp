@@ -1,0 +1,8 @@
+requests
+fontawesome
+ipc
+colorz
+colorthief
+haishoku
+dbus-next
+git+http://github.com/bcbnz/python-rofi.git

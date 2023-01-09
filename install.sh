@@ -201,7 +201,7 @@ function post(){
 #base
 #paru
 #aur
-pip
+pip install -r pip.txt
 zsh
 copy_dotfiles
 web_apps
