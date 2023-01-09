@@ -80,7 +80,7 @@ function base() {
     'linux-docs'
     'linux-lts'
     'linux-lts-headers'
-    'nvidia-dkms'
+    #'nvidia-dkms'
     
 
 )
