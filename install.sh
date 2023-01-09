@@ -118,7 +118,7 @@ done
 }
 
 
-function aur () {
+function aur() {
   packets=(
     'qtile-git'
     'farge'
