@@ -91,6 +91,14 @@ for packet in "${packets[@]}"; do
 done
 }
 
+function paru(){
+  git clone https://aur.archlinux.org/paru.git 
+  cd paru 
+  makepkg -si
+  cd ..
+  rm -rf paru
+} 
+
 function pip(){
   pip_packets=(
     'fontawesome'
@@ -114,6 +122,7 @@ function pip(){
     pip install "${pip_packet}"
   done
 }
+
 
 function aur () {
   packets=(
@@ -195,8 +204,8 @@ function post(){
   pywalfox start
 }
 
-sudo reflector --latest 10 --protocol https --sort rate --save /etc/pacman.d/mirrorlist
 base
+paru
 pip
 aur
 zsh
