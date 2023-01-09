@@ -87,7 +87,7 @@ function base() {
 
 for packet in "${packets[@]}"; do
     echo "Instalando --> ${packet}"
-    sudo pacman -S "${packet}" --noconfirm --needed
+    sudo pacman -Syyu "${packet}" --noconfirm --needed
 done
 }
 
