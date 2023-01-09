@@ -210,3 +210,5 @@ pip
 aur
 zsh
 copy_dotfiles
+web_apps
+post
