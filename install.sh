@@ -94,7 +94,7 @@ done
 function paru(){
   git clone https://aur.archlinux.org/paru.git 
   cd paru 
-  makepkg -si
+  makepkg -si --noconfirm
   cd ..
   rm -rf paru
 } 
@@ -203,8 +203,8 @@ function post(){
   pywalfox install
   pywalfox start
 }
-sudo pacman -Syyu
-base
+#sudo pacman -Syyu
+#base
 paru
 pip
 aur
