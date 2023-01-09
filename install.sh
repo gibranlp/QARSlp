@@ -179,7 +179,7 @@ function web_apps(){
   sudo ln -s ~/WebApps/github/github /usr/bin/github
 }
 
-funciton post(){
+function post(){
   timedatectl set-local-rtc 1
   timedatectl set-timezone America/Mexico_City
   sudo systemctl enable bluetooth.service
