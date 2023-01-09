@@ -108,19 +108,13 @@ function pip(){
     'haishoku'
     'dbus-next'
     'git+http://github.com/bcbnz/python-rofi.git'
-    'requests'
-    'castero' # Podcast Client
-   
+    'requests' 
   )
 
-  ## Podcasts
-  # https://feeds.simplecast.com/PxEW_ipK # OfficeLadies
-  # 
-
-  for pip_packet in "${pip_packets[@]}"; do
-    echo "Instalando --> ${pip_packet}"
-    pip install "${pip_packet}"
-  done
+for pip_packet in "${pip_packets[@]}"; do
+  echo "Instalando --> ${pip_packet}"
+  pip install "${pip_packet}"
+done
 }
 
 
