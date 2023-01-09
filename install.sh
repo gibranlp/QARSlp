@@ -200,8 +200,8 @@ function post(){
 #sudo pacman -Syyu
 #base
 #paru
-#aur
-pip install -r pip.txt
+aur
+#pip install -r pip.txt
 zsh
 copy_dotfiles
 web_apps
