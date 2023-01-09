@@ -99,52 +99,8 @@ function paru(){
   rm -rf paru
 } 
 
-function pip3(){
-  pip_packets=(
-    'requests'
-    'fontawesome'
-    'ipc'
-    'colorz'
-    'colorthief'
-    'haishoku'
-    'dbus-next'
-    'git+http://github.com/bcbnz/python-rofi.git'
-  )
-
-for pip_packet in "${pip_packets[@]}"; do
-  echo "Instalando --> ${pip_packet}"
-  pip install "${pip_packet}"
-done
-}
-
-
 function aur() {
-  packets=(
-    'qtile-git'
-    'farge'
-    'python-pywalfox'
-    'qtile-extras-git'
-    'caffeine-ng'
-    'visual-studio-code-bin'
-    'slack-desktop'
-    'teams-for-linux'
-    'telegram-desktop'
-    'google-chrome'
-    'wpgtk-git'
-    'cava'
-    'thunar-extended'
-    'thunar-volman'
-    'hugo'
-    'nbfc'
-    'ntfs-3g'
-    'cava'
-    'nativefier-freedesktop-git'
-
-)
-for packet in "${packets[@]}"; do
-    echo "Instalando --> ${packet}"
-    paru -S "${packet}" --noconfirm
-done
+ paru -S --needed $(cat aur.txt)
 }
 
 function zsh(){
@@ -200,6 +156,7 @@ function post(){
 #sudo pacman -Syyu
 #base
 #paru
+sudo pacman -Rcns qtile --noconfirm
 aur
 #pip install -r pip.txt
 zsh
