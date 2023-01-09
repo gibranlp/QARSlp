@@ -87,7 +87,7 @@ function base() {
 
 for packet in "${packets[@]}"; do
     echo "Instalando --> ${packet}"
-    sudo pacman -Syyu "${packet}" --noconfirm --needed
+    sudo pacman -S "${packet}" --noconfirm --needed
 done
 }
 
@@ -203,7 +203,7 @@ function post(){
   pywalfox install
   pywalfox start
 }
-
+sudo pacman -Syyu
 base
 paru
 pip
