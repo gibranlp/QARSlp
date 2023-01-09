@@ -91,17 +91,13 @@ for packet in "${packets[@]}"; do
 done
 }
 
-function paru(){
+function paru_install(){
   git clone https://aur.archlinux.org/paru.git 
   cd paru 
   makepkg -si --noconfirm
   cd ..
   rm -rf paru
 } 
-
-function aur() {
- paru -S --needed $(cat aur.txt)
-}
 
 function zsh(){
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
@@ -155,9 +151,9 @@ function post(){
 }
 #sudo pacman -Syyu
 #base
-#paru
+#paru_install
 sudo pacman -Rcns qtile --noconfirm
-aur
+paru -S --noconfirm $(cat aur.txt)
 #pip install -r pip.txt
 zsh
 copy_dotfiles
