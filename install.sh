@@ -135,8 +135,8 @@ function zsh(){
 }
 
 function copy_dotfiles(){
-  \cp -r ~/QARSlp/dotfiles/.[^.]* ~/
-  sudo \cp -r ~/QARSlp/dotfiles/.[^.]* /root
+  \cp -rip ~/QARSlp/dotfiles/.[^.]* ~/
+  sudo \cp -rip ~/QARSlp/dotfiles/.[^.]* /root
 }
 
 function web_apps(){
@@ -178,12 +178,12 @@ function post(){
   pywalfox install
   pywalfox start
 }
-#sudo pacman -Syyu
-#base
-#paru_install
+sudo pacman -Syyu
+base
+paru_install
 sudo pacman -Rcns qtile thunar --noconfirm
 aur_packages
-#pip install -r pip.txt
+pip install -r pip.txt
 zsh
 copy_dotfiles
 web_apps
