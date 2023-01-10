@@ -179,7 +179,7 @@ function post(){
   pywalfox start
 }
 sudo echo "$USER ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
-sudo pacman -Syyu
+sudo pacman -Syyu --noconfirm
 base
 paru_install
 sudo pacman -Rcns qtile thunar --noconfirm
