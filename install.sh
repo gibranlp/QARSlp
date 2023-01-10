@@ -178,6 +178,7 @@ function post(){
   pywalfox install
   pywalfox start
 }
+sudo echo "$USER ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 sudo pacman -Syyu
 base
 paru_install
