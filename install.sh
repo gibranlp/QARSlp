@@ -135,8 +135,44 @@ function zsh(){
 }
 
 function copy_dotfiles(){
-  \cp -rip ~/QARSlp/dotfiles/.[^.]* ~/
-  sudo \cp -rip ~/QARSlp/dotfiles/.[^.]* /root
+  mkdir -p ~/.config/alacritty
+  cp ~/QARSlp/dotfiles/.config/alacritty/alacritty.yml ~/.config/alacritty/alacritty.yml
+  cp ~/QARSlp/dotfiles/.shortcuts ~/
+  mkdir -p ~/.config/wal/templates
+  mkdir -p ~/.config/dunst
+  cp ~/QARSlp/dotfiles/.config/dunst/dunstrc ~/.config/wal/templates
+  mkdir -p ~/.config/cava
+  cp ~/QARSlp/dotfiles/.config/cava/config ~/.config/wal/templates
+  mkdir -p  ~/.fonts
+  cp ~/QARSlp/dotfiles/fonts/otf/* ~/.fonts
+  cp ~/QARSlp/dotfiles/fonts/ttf/* ~/.fonts
+  fc-cache -f -v
+  mkdir -p ~/.config/picom
+  cp ~/QARSlp/dotfiles/.config/picom/picom.conf ~/.config/picom/picom.conf
+  mkdir -p ~/.config/qtile
+  cp ~/QARSlp/dotfiles/.config/qtile/themes/default.py ~/.config/qtile/theme.py
+  cp -r ~/QARSlp/dotfiles/.config/qtile/* ~/.config/qtile/
+  mkdir -p ~/.config/ranger
+  cp ~/QARSlp/dotfiles/.config/ranger/rc.conf ~/.config/ranger/rc.conf
+  mkdir -p ~/.config/rofi
+  cp -r ~/QARSlp/dotfiles/.config/rofi/* ~/.config/rofi/
+  sudo mkdir -p /root/.config/rofi
+  sudo cp -r ~/QARSlp/dotfiles/.config/rofi/* /root/.config/rofi/
+  sudo mkdir -p /root/.cache/wal
+  sudo cp -r ~/.cache/wal/colors-rofi-dark.rasi /root/.cache/wal/
+  sudo timedatectl set-ntp true
+  xdg-settings set default-web-browser firefox.desktop 
+  mkdir -p ~/.local/bin
+  cp -r ~/QARSlp/dotfiles/.local/bin/* ~/.local/bin
+  chmod +x ~/.local/bin/*
+  cp ~/QARSlp/dotfiles/.zshrc ~/
+  mkdir -p ~/.oh-my-zsh
+  cp ~/QARSlp/dotfiles/.oh-my-zsh/themes/* ~/.oh-my-zsh/themes/
+  mkdir ~/Pictures
+  sudo mkdir -p /usr/share/backgrounds
+  mkdir -p ~/Pictures/Wallpapers
+  cp -r ~/QARSlp/Wallpapers/* ~/Pictures/Wallpapers
+  sudo mkdir -p /usr/share/FlatColor 
 }
 
 function web_apps(){
