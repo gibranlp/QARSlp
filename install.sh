@@ -214,14 +214,13 @@ function post(){
   pywalfox install
   pywalfox start
 }
-sudo echo "$USER ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 sudo pacman -Syyu --noconfirm
 base
 paru_install
-sudo pacman -Rcns qtile thunar --noconfirm
-aur_packages
+#sudo pacman -Rcns qtile thunar --noconfirm
+#aur_packages
 pip install -r pip.txt
 zsh
 copy_dotfiles
-web_apps
-post
+#web_apps
+#post
