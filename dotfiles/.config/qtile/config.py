@@ -1,116 +1,197 @@
-# By: gibranlp <thisdoesnotwork@gibranlp.dev>
-# MIT licence
-from theme import *
-# Keys
-def init_keys():
-  keys = [ 
-    ##Basics
-    Key([alt], "r",lazy.function(set_rand_wallpaper)), # Set randwom wallpaper / colors to entire system
-    Key([mod], "Return", lazy.spawn(term)), # Open Terminal
-    Key([mod, "shift"], "Return", lazy.spawn('rofi -theme "~/.config/rofi/launcher.rasi" -show drun')), # Open Rofi launcher
-    Key([mod, "mod1"], "Return", lazy.spawn('sudo rofi -theme "~/.config/rofi/launcher.rasi" -show drun')), # Open Rofi Launcher as Sud
-    Key([mod], "r", lazy.spawncmd()), # Launch Prompt
-    Key([mod], "q",lazy.window.kill()), # Close Window 
-    Key([mod, "shift"], "r",lazy.reload_config()), # Restart Qtile
-    Key([mod, "shift"], "q",lazy.shutdown()), # Logout         
-    Key([alt], "Escape", lazy.spawn('xkill')), # Click window to close
-            
-    ## Widgets
-    Key([mod],"c",lazy.function(shortcuts)), # Shortcuts widget
-    Key([mod, "shift"],"o",lazy.function(nightLight_widget)),
-    Key([mod],"p",lazy.function(fargewidget)), # Color Picker Widget
-    Key([alt], "Return", lazy.spawn('rofi  -theme "~/.config/rofi/left_bar.rasi" -show find -modi find:~/.local/bin/finder')), # Search for files and folders
-    Key([mod],"f",lazy.spawn(home + '/.local/bin/wsearch')), # WEB Search widget
-    Key([mod, "shift"],"f",lazy.spawn('rofi  -theme "~/.config/rofi/filesfolders.rasi" -show find -modi find:~/.local/bin/finder')), # Search files and folders
-    Key([mod],"x",lazy.function(session_widget)), # Log out
-    Key([mod],"b",lazy.function(network_widget)), # Network Settings
-    Key([alt, "shift"],"w",lazy.function(change_color_scheme)), # Change Color Scheme
-    Key([alt],"w",lazy.function(change_theme)), # Change Theme
-    Key([mod, "shift"],"x",lazy.spawn(home + '/.local/bin/change_display')),# Monitor modes Widget
+# Copyright (c) 2010 Aldo Cortesi
+# Copyright (c) 2010, 2014 dequis
+# Copyright (c) 2012 Randall Ma
+# Copyright (c) 2012-2014 Tycho Andersen
+# Copyright (c) 2012 Craig Barnes
+# Copyright (c) 2013 horsik
+# Copyright (c) 2013 Tao Sauvage
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in
+# all copies or substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+# SOFTWARE.
 
-    ## Theming
-    Key([alt, "shift"], "r",lazy.function(random_colors)), # Set randwom wallpaper / colors to entire system
+from libqtile import bar, layout, widget
+from libqtile.config import Click, Drag, Group, Key, Match, Screen
+from libqtile.lazy import lazy
+from libqtile.utils import guess_terminal
 
-    ## Apps
-    Key([mod, "shift"],"e",lazy.spawn('thunar')),
-    Key(["control", "shift"],"Escape",lazy.spawn(term + ' -e htop')),
-    
-    #File manager
-    Key([mod, "shift"],"s",lazy.function(app_or_group('7', term + ' -e cmus'))), #Open Cmus en the group 7
-    Key([mod, "shift"],"m",lazy.spawn('thunderbird')), # Open Thunderbird
-    Key([mod],"g",lazy.spawn('firefox')), # Open Firefox   
-    Key([mod, "shift"],"g",lazy.spawn('google-chrome-stable')), # Open Google Chrome    
-    Key([mod, "shift"],"c",lazy.spawn('code')), # Open Visual Code Studio
-          
-    ## Layouts
-    Key([mod], "Tab",lazy.layout.next()), # Change focus of windows down
-    Key([mod, "shift"], "Tab",lazy.layout.up()), # Change focus of windows up
-    Key([alt], "Tab", lazy.layout.swap_left()), # Swap Left Down
-    Key([alt, "shift"], "Tab", lazy.layout.swap_right()), # Swap Right Up
-    Key([mod], 'period', lazy.next_screen()), # Send Cursor to next screen
+mod = "mod4"
+terminal = guess_terminal()
 
-    ## Brightness
-    Key([], "XF86MonBrightnessUp", lazy.spawn("xbacklight -inc 5")), # Aument Brightness
-    Key([], "XF86MonBrightnessDown", lazy.spawn("xbacklight -dec 5")), # Lower Brightness
+keys = [
+    # A list of available commands that can be bound to keys can be found
+    # at https://docs.qtile.org/en/latest/manual/config/lazy.html
+    # Switch between windows
+    Key([mod], "h", lazy.layout.left(), desc="Move focus to left"),
+    Key([mod], "l", lazy.layout.right(), desc="Move focus to right"),
+    Key([mod], "j", lazy.layout.down(), desc="Move focus down"),
+    Key([mod], "k", lazy.layout.up(), desc="Move focus up"),
+    Key([mod], "space", lazy.layout.next(), desc="Move window focus to other window"),
+    # Move windows between left/right columns or move up/down in current stack.
+    # Moving out of range in Columns layout will create new column.
+    Key([mod, "shift"], "h", lazy.layout.shuffle_left(), desc="Move window to the left"),
+    Key([mod, "shift"], "l", lazy.layout.shuffle_right(), desc="Move window to the right"),
+    Key([mod, "shift"], "j", lazy.layout.shuffle_down(), desc="Move window down"),
+    Key([mod, "shift"], "k", lazy.layout.shuffle_up(), desc="Move window up"),
+    # Grow windows. If current window is on the edge of screen and direction
+    # will be to screen edge - window would shrink.
+    Key([mod, "control"], "h", lazy.layout.grow_left(), desc="Grow window to the left"),
+    Key([mod, "control"], "l", lazy.layout.grow_right(), desc="Grow window to the right"),
+    Key([mod, "control"], "j", lazy.layout.grow_down(), desc="Grow window down"),
+    Key([mod, "control"], "k", lazy.layout.grow_up(), desc="Grow window up"),
+    Key([mod], "n", lazy.layout.normalize(), desc="Reset all window sizes"),
+    # Toggle between split and unsplit sides of stack.
+    # Split = all windows displayed
+    # Unsplit = 1 window displayed, like Max layout, but still with
+    # multiple stack panes
+    Key(
+        [mod, "shift"],
+        "Return",
+        lazy.layout.toggle_split(),
+        desc="Toggle between split and unsplit sides of stack",
+    ),
+    Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
+    # Toggle between different layouts as defined below
+    Key([mod], "Space", lazy.next_layout(), desc="Toggle between layouts"),
+    Key([mod], "q", lazy.window.kill(), desc="Kill focused window"),
+    Key([mod, "shift"], "r", lazy.reload_config(), desc="Reload the config"),
+    Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
+    Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
+]
 
-    ## Volume
-    Key([], "XF86AudioMute", lazy.spawn("amixer -q set Master toggle")), # Mute
-    Key([], "XF86AudioLowerVolume", lazy.spawn("amixer -q set Master 5%-")), # Lower Volume
-    Key([], "XF86AudioRaiseVolume", lazy.spawn("amixer -q set Master 5%+")), # Raise Volume
+groups = [Group(i) for i in "123456789"]
 
-    ## Media Control
-    Key([], "XF86AudioPlay", lazy.function(play_pause)), # Play Pause
-    Key([], "XF86AudioNext", lazy.function(nexts)), # Next song
-    Key([], "XF86AudioPrev", lazy.function(prev)), # Previous Song
+for i in groups:
+    keys.extend(
+        [
+            # mod1 + letter of group = switch to group
+            Key(
+                [mod],
+                i.name,
+                lazy.group[i.name].toscreen(),
+                desc="Switch to group {}".format(i.name),
+            ),
+            # mod1 + shift + letter of group = switch to & move focused window to group
+            Key(
+                [mod, "shift"],
+                i.name,
+                lazy.window.togroup(i.name, switch_group=True),
+                desc="Switch to & move focused window to group {}".format(i.name),
+            ),
+            # Or, use below if you prefer not to switch to that group.
+            # # mod1 + shift + letter of group = move focused window to group
+            # Key([mod, "shift"], i.name, lazy.window.togroup(i.name),
+            #     desc="move focused window to group {}".format(i.name)),
+        ]
+    )
 
-    ## Window hotkeys
-    Key([alt], "g", lazy.window.toggle_fullscreen()), # Toggle Current window Full screen
-    Key([alt, "shift"], "f", lazy.window.toggle_floating()), # Toggle current window floating
-    Key([mod], "space", lazy.next_layout()), # Cycle layouts
+layouts = [
+    layout.Columns(border_focus_stack=["#d75f5f", "#8f3d3d"], border_width=4),
+    layout.Max(),
+    # Try more layouts by unleashing below layouts.
+    # layout.Stack(num_stacks=2),
+    # layout.Bsp(),
+    # layout.Matrix(),
+    # layout.MonadTall(),
+    # layout.MonadWide(),
+    # layout.RatioTile(),
+    # layout.Tile(),
+    # layout.TreeTab(),
+    # layout.VerticalTile(),
+    # layout.Zoomy(),
+]
 
-    ## Resize windows
-    Key([mod], "h", lazy.layout.left()),
-    Key([mod], "l", lazy.layout.right()),
-    Key([mod], "j", lazy.layout.down()),
-    Key([mod], "k", lazy.layout.up()),
-    Key([mod, "shift"], "h", lazy.layout.swap_left()),
-    Key([mod, "shift"], "l", lazy.layout.swap_right()),
-    Key([mod, "shift"], "j", lazy.layout.shuffle_down()),
-    Key([mod, "shift"], "k", lazy.layout.shuffle_up()),
-    Key([mod], "i", lazy.layout.grow()),
-    Key([mod], "m", lazy.layout.shrink()),
-    Key([mod], "n", lazy.layout.normalize()),
-    Key([mod], "o", lazy.layout.maximize()),
-    Key([mod, "shift"], "space", lazy.layout.flip()),
-           
-    ##  Dunst Shortuts
-    Key(["control"], "space",  lazy.spawn("dunstctl close")), # Clear Last Notification
-    Key(["control", "shift"], "space",  lazy.spawn("dunstctl close-all")), # Clear All Notifications
-    Key(["control", "shift"], "n",  lazy.spawn("dunstctl  history-pop")), # Show Notificaction history
-    
-    ## Keyboard
-    Key([alt], "space", lazy.widget["keyboardlayout"].next_keyboard()), # Change Keyboard Layout
+widget_defaults = dict(
+    font="sans",
+    fontsize=12,
+    padding=3,
+)
+extension_defaults = widget_defaults.copy()
 
-    ## Screenshots
-    Key([], "Print", lazy.function(screenshot)),
-  ] # Screenshot widget
+screens = [
+    Screen(
+        bottom=bar.Bar(
+            [
+                widget.CurrentLayout(),
+                widget.GroupBox(),
+                widget.Prompt(),
+                widget.WindowName(),
+                widget.Chord(
+                    chords_colors={
+                        "launch": ("#ff0000", "#ffffff"),
+                    },
+                    name_transform=lambda name: name.upper(),
+                ),
+                widget.TextBox("default config", name="default"),
+                widget.TextBox("Press &lt;M-r&gt; to spawn", foreground="#d75f5f"),
+                # NB Systray is incompatible with Wayland, consider using StatusNotifier instead
+                # widget.StatusNotifier(),
+                widget.Systray(),
+                widget.Clock(format="%Y-%m-%d %a %I:%M %p"),
+                widget.QuickExit(),
+            ],
+            24,
+            # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
+            # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
+        ),
+    ),
+]
 
-  for i in groups:
-    keys.append(Key([mod], i.name, lazy.group[i.name].toscreen()))
-    keys.append(Key([mod, 'shift'], i.name, lazy.window.togroup(i.name)))
-  return keys
-#### End Keys ####
+# Drag floating layouts.
+mouse = [
+    Drag([mod], "Button1", lazy.window.set_position_floating(), start=lazy.window.get_position()),
+    Drag([mod], "Button3", lazy.window.set_size_floating(), start=lazy.window.get_size()),
+    Click([mod], "Button2", lazy.window.bring_to_front()),
+]
 
-##### Mouse/Keyboard #####
-def init_mouse():
-  return [Drag([mod], "Button1", lazy.window.set_position_floating(),      # Move floating windows
-  start=lazy.window.get_position()),
-  Drag([mod], "Button2", lazy.window.set_size_floating(),          # Resize floating windows
-  start=lazy.window.get_size()),
-  Click([mod, "shift"], "Button1", lazy.window.bring_to_front())]  # Bring floating window to front
+dgroups_key_binder = None
+dgroups_app_rules = []  # type: list
+follow_mouse_focus = True
+bring_front_click = False
+cursor_warp = False
+floating_layout = layout.Floating(
+    float_rules=[
+        # Run the utility of `xprop` to see the wm class and name of an X client.
+        *layout.Floating.default_float_rules,
+        Match(wm_class="confirmreset"),  # gitk
+        Match(wm_class="makebranch"),  # gitk
+        Match(wm_class="maketag"),  # gitk
+        Match(wm_class="ssh-askpass"),  # ssh-askpass
+        Match(title="branchdialog"),  # gitk
+        Match(title="pinentry"),  # GPG key password entry
+    ]
+)
+auto_fullscreen = True
+focus_on_window_activation = "smart"
+reconfigure_screens = True
 
-keys = init_keys()
-mouse = init_mouse()
+# If things like steam games want to auto-minimize themselves when losing
+# focus, should we respect this or not?
+auto_minimize = True
 
+# When using the Wayland backend, this can be used to configure input devices.
+wl_input_rules = None
+
+# XXX: Gasp! We're lying here. In fact, nobody really uses or cares about this
+# string besides java UI toolkits; you can see several discussions on the
+# mailing lists, GitHub issues, and other WM documentation that suggest setting
+# this string if your java app doesn't work correctly. We may as well just lie
+# and say that we're a working one by default.
+#
+# We choose LG3D to maximize irony: it is a 3D non-reparenting WM written in
+# java that happens to be on java's whitelist.
 wmname = "LG3D"
-

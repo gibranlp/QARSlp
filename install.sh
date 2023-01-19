@@ -101,14 +101,14 @@ function paru_install(){
 
 function aur_packages() {
   packets=(
+    'qtile-git'
     'farge'
     'python-pywalfox'
-    'qtile-extras-git'
+    #'qtile-extras-git'
     'caffeine-ng'
-    'qtile-git'
     'visual-studio-code-bin'
     'slack-desktop'
-    'teams-for-linux'
+    #'teams-for-linux'
     'telegram-desktop'
     'google-chrome'
     'wpgtk-git'
@@ -218,9 +218,9 @@ sudo pacman -Syyu --noconfirm
 base
 paru_install
 #sudo pacman -Rcns qtile thunar --noconfirm
-#aur_packages
+aur_packages
 pip install -r pip.txt
 zsh
 copy_dotfiles
 #web_apps
-#post
+post
