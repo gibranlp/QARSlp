@@ -14,7 +14,6 @@ from qtile_extras import widget
 from libqtile.widget import TextBox
 from libqtile.command import lazy
 from rofi import Rofi
-from qtile_extras import widget
 
 # Variables
 
