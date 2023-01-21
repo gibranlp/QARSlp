@@ -189,12 +189,12 @@ function web_apps(){
   nativefier https://meet.google.com/ --name meet --single-instance --tray
 
   sudo ln -s ~/WebApps/PrimeVideo/WelcometoPrimeVideo /usr/bin/prime
-  sudo ln -s ~/WebApps/Drive/Drive /usr/bin/drive
-  sudo ln -s ~/WebApps/GoogleAdmin/GoogleAdmin /usr/bin/admin
-  sudo ln -s ~/WebApps/GoogleCalendar/GoogleCalendar /usr/bin/Calendar
-  sudo ln -s ~/WebApps/Notion/Notion /usr/bin/Notion
-  sudo ln -s ~/WebApps/Overleaf/Overleaf /usr/bin/overleaf
-  sudo ln -s ~/WebApps/Figma/Figma /usr/bin/Figma
+  sudo ln -s ~/WebApps/drive/drive /usr/bin/drive
+  sudo ln -s ~/WebApps/admin/admin /usr/bin/admin
+  sudo ln -s ~/WebApps/calendar/calendar /usr/bin/calendar
+  sudo ln -s ~/WebApps/notion/notion /usr/bin/notion
+  sudo ln -s ~/WebApps/overleaf/overleaf /usr/bin/overleaf
+  sudo ln -s ~/WebApps/figma/figma /usr/bin/figma
   sudo ln -s ~/WebApps/meet/meet /usr/bin/meet
   sudo ln -s ~/WebApps/github/github /usr/bin/github
 }
