@@ -7,7 +7,7 @@ def init_keys():
     ##Basics
     Key([alt], "r",lazy.function(set_rand_wallpaper)), # Set randwom wallpaper / colors to entire system
     Key([mod], "Return", lazy.spawn(term)), # Open Terminal
-    Key([mod, "shift"], "Return", lazy.spawn('rofi -theme "~/.config/rofi/launcher.rasi" -show drun')), # Open Rofi launcher
+    Key([mod, "shift"], "Return", lazy.spawn('rofi -theme "~/.config/rofi/launcher.rasi" -show dmenu')), # Open Rofi launcher
     Key([mod, "mod1"], "Return", lazy.spawn('sudo rofi -theme "~/.config/rofi/launcher.rasi" -show drun')), # Open Rofi Launcher as Sud
     Key([mod], "r", lazy.spawncmd()), # Launch Prompt
     Key([mod], "q",lazy.window.kill()), # Close Window 

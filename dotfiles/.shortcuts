@@ -8,6 +8,7 @@
 Alt + R ::  Randomize Wallpaper 
 Alt + W :: Theme Select
 Alt +  + W :: Color Scheme Select
+Alt +  + R :: Randomize Colors
 <<----------<< Rofi Widgets >>---------->>
  +  +  ::  App Launcher
  + Alt +  ::  App Launcher (sudo)
@@ -15,7 +16,7 @@ Alt +  ::  Search (Files and Folders)
  + F ::  Search (WEB)
  + P ::  Color Picker
  + B ::  Network Menu
- + O ::  Night Light
+ +  + O ::  Night Light
  +  + X ::  Monitor Management
 prtnsc ::  Screenshot
  + X ::  Session Menu
