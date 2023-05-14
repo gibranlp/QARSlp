@@ -24,4 +24,21 @@ It features a dark & light color schemes with contrasting colors for active and 
 ### QARSlp
 
 ![QARSlp1](/screenshots/QARSlp1.png)
+![QARSlp2](/screenshots/QARSlp2.png)
 
+### QARSlp Light 
+![QARSlp3](/screenshots/QARSlp3.png)
+
+
+### Backends
+
+You can select different backends trough a Rofi widget using the same wallpaper, the backends available are Wal(Pywal default), Colorz, Colorthief, Haishoku.
+
+### Wal
+![Wal1](/screenshots/Wal1.png)
+### Colorz
+![Colorz1](/screenshots/Colorz.png)
+### Colorthief
+![Colorthief1](/screenshots/Colorthierf.png)
+### Haishoku
+![Haishoku1](/screenshots/Haishoku.png)
