@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+# _______  _______  ______  _______  __        
+#|       ||   _   ||   __ \|     __||  |.-----.
+#|   -  _||       ||      <|__     ||  ||  _  |
+#|_______||___|___||___|__||_______||__||   __|
+#                                       |__|   
+# QARSlp Qtile + Arch Ricing System
+# By: gibranlp <thisdoesnotwork@gibranlp.dev>
+# MIT licence 
+#
+dir="$HOME/Pictures/Wallpapers/"
+file=`/bin/ls -1 "$dir" | sort --random-sort | head -1` # Select random file on directory
+path=`readlink --canonicalize "$dir/$file"` # Converts to full path
+#### Set Wallpaper Selected / Random
+while getopts "w:t:l" opt; do
+  case "$opt" in
+    w) wall=$OPTARG ;;
+    t) back=$OPTARG ;;
+    l) light="-L" ;;
+  esac
+done
+
+set_wall(){
+  if [ -z "$wall" ]
+    then
+      wpg -s ${path} # Wal sets wallpaper and genates new color scheme
+      sudo cp ${path}  "/usr/share/backgrounds/background.png"
+      sudo cp -r ~/.local/share/themes/FlatColor  /usr/share/themes/
+      qtile cmd-obj -o cmd -f restart # Restarts Qtile
+    else
+      wpg -s ${dir}${wall} # Wal sets wallpaper and genates new color scheme
+      sudo cp ${dir}${wall}  "/usr/share/backgrounds/background.png"
+      sudo cp -r ~/.local/share/themes/FlatColor  /usr/share/themes/
+      qtile cmd-obj -o cmd -f restart 
+  fi
+}
+set_wall
