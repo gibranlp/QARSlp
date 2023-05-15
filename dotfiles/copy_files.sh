@@ -24,7 +24,6 @@ function copy_dotfiles(){
   sudo cp -r ~/QARSlp/dotfiles/.config/rofi/* /root/.config/rofi/
   sudo mkdir -p /root/.cache/wal
   sudo cp -r ~/.cache/wal/colors-rofi-dark.rasi /root/.cache/wal/
-  sudo timedatectl set-ntp true
   xdg-settings set default-web-browser firefox.desktop 
   mkdir -p ~/.local/bin
   cp -r ~/QARSlp/dotfiles/.local/bin/* ~/.local/bin

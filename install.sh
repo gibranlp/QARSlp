@@ -69,7 +69,7 @@ function base() {
     'noto-fonts-cjk'
     'ttf-dejavu'
     'ttf-liberation'
-    'ttf-opensans'layout
+    'ttf-opensans'
     'libayatana-appindicator'
     'tlp'
     'powertop'

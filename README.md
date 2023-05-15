@@ -185,3 +185,5 @@ This will generate the first palette of colors and set the wallpaper, the path o
 - [ ] Add more themes (if you have suggestions add them in issues)
 - [ ] Create an Arch ISO with this theme included.
 - [ ] Create a Taskwarrior interface with Rofi
+
+<a href="https://www.buymeacoffee.com/gibranlp"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a Coffee&emoji=&slug=gibranlp&button_colour=FFDD00&font_colour=000000&font_family=Bree&outline_colour=000000&coffee_colour=ffffff"></a>
