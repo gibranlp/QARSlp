@@ -127,3 +127,53 @@ Take Screenshots of the Screen, an Area, a Window, or the Screen in 5 seconds us
 Change the temperature of the monitor using [Redshift](https://github.com/jonls/redshift)
 
 ![Night Light](/screenshots/Night_light.png)
+
+## Conclusion
+With QARSlp you can have an always riced system, ready for productivity and fun, its compatible  and the ricing also covers applications like VScode, Telegram, Chrome, Brave, all GTk and CLI apps. It also come with [Pijulios](https://github.com/pijulius) Picom so you can have some animations when opening, moving and closing windows.
+
+# Installation
+
+To install QARSlp you will need to install a few dependencies:
+
+## Pacman
+
+```bash
+feh base-devel alsa-utils pulseaudio-alsa pavucontrol openssh alacritty xcolor playerctl scrot rofi surfraw python-pip ranger lxappearance bmon acpilight lm_sensors nm-connection-editor arandr python-psutil python-xdg python-iwlib python-dateutil ueberzug xsettingsd zsh dunst tk lightdm-gtk-greeter-settings reflector rsync curl cmus bc neofetch cmus xorg-xkill xdg-user-dirs bluez bluez-tools blueman htop os-prober gnome-disk-utility networkmanager unzip xarchiver tlp gvfs barrier noto-fonts noto-fonts-cjk libayatana-appindicator tlp powertop tumbler redshift libmicrodns protobuf xorg-xdpyinfo
+```
+## AUR
+
+QARSlp works with the Qtile-git and qtile-extras-git versions among other packages
+
+```bash
+qtile-git farge qtile-extras-git wpgtk-git cava thunar-extended thunar-volman hugo nbfc ntfs-3g i3lock-fancy picom-pijulius-git
+```
+
+## Pip
+
+You also need to install these pip packages
+
+```bash
+requests fontawesome ipc colorz colorthief haishoku dbus-next git+http://github.com/bcbnz/python-rofi.git
+```
+
+Once all the dependencies are installed, you must generate the templates for GTK by runing:
+
+```bash
+wpg-install.sh -gio
+```
+
+Then just copy all the files inside dotfiles to your ~ and the lightdm-gtk-greeter file into /etc/lightdm/lightdm-gtk-greeter.conf
+
+Finally give execution acces to the scripts inside ~/.local.bin files and run:
+
+```bash
+genwal
+```
+This will generate the first palette of colors and set the wallpaper, the path of the wallpaper is ~/Pictures/Wallpapers, just put all your wallpapers inside and enjoy.
+
+# Next Steps
+
+- [ ] Generate an AUR Installation package
+- [ ] Add more themes (if you have suggestions add them in issues)
+- [ ] Create an Arch ISO with this theme included.
+- [ ] Create a Taskwarrior interface with Rofi
