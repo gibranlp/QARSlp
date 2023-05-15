@@ -156,15 +156,23 @@ You also need to install these pip packages
 requests fontawesome ipc colorz colorthief haishoku dbus-next git+http://github.com/bcbnz/python-rofi.git
 ```
 
+If you want to use ZSH run this commands to install Oh-My-Zsh
+
+```bash
+h -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+git clone https://github.com/zsh-users/zsh-autosuggestions.git ~/.oh-my-zsh/plugins/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/plugins/zsh-syntax-highlighting
+```
+
 Once all the dependencies are installed, you must generate the templates for GTK by runing:
 
 ```bash
 wpg-install.sh -gio
 ```
 
-Then just copy all the files inside dotfiles to your ~ and the lightdm-gtk-greeter file into /etc/lightdm/lightdm-gtk-greeter.conf
+Then run the copy_files.sh script to generate all the folders and copy all the necesary files.
 
-Finally give execution acces to the scripts inside ~/.local.bin files and run:
+Finally in a terminal run:
 
 ```bash
 genwal
