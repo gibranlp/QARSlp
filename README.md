@@ -19,78 +19,111 @@ It features a dark & light color schemes with contrasting colors for active and 
 
 # Features
 
+## Lightdm
+
+This Qtile theme also changes Lightdm with the current wallpaper and color scheme.
+
+![Lightdm1](/screenshots/Lightdm1.png)
+![Lightdm2](/screenshots/Lightdm2.png)
+![Lightdm3](/screenshots/Lightdm3.png)
+
 ## Themes
 
-### QARSlp
+# QARSlp
 
 ![QARSlp1](/screenshots/QARSlp1.png)
 ![QARSlp2](/screenshots/QARSlp2.png)
 
-### Slash
+## Slash
 
 ![Slash1](/screenshots/Slash1.png)
 ![Slash2](/screenshots/Slash2.png)
 
-### Backends
+# Backends
 
 You can select different backends trough a Rofi widget using the same wallpaper, the backends available are Wal(Pywal default), Colorz, Colorthief and Haishoku.
 
-### Wal
+## Wal
 ![Wal1](/screenshots/Wal1.png)
 ![Wal2](/screenshots/Wal2.png)
-### Colorz
+## Colorz
 ![Colorz1](/screenshots/Colorz1.png)
 ![Colorz2](/screenshots/Colorz2.png)
-### Colorthief
+## Colorthief
 ![Colorthief1](/screenshots/Colorthierf1.png)
-![Colorthief2](/screenshots/Colorthierf2.png)
-### Haishoku
+![Colorthief2](/screenshots/Colorthief2.png)
+## Haishoku
+![Haishoku1](/screenshots/Haishoku1.png)
 ![Haishoku2](/screenshots/Haishoku2.png)
 
-### Rofi Utilities
+# Rofi Utilities
 
-There is some Rofi utilities embedded in the Qtile theme:
+I have added some [Rofi](https://github.com/davatorium/rofi) utilities, to make life simpler, here they are:
 
-#### Launcher
+## Launcher
 
 Launch any application or search for files and folders
 
 ![Launcher](/screenshots/Launcher.png)
 
-#### QARSlp Shortcuts
+## QARSlp Shortcuts
 
 Check out all the shortcuts of the system
 
 ![Shortcuts](/screenshots/Shortcuts.png)
 
-#### Theme Selector
+## Theme Selector
 
 Select the theme you want to use
 
 ![Theme Selector](/screenshots/Theme.png)
 
-#### Set Random Wallpaper Theme
+## Set Random Wallpaper Theme
 
-Ramdomly select a wallpaper and set the theme Dark or Light
+Select a theme dark or light and QARSlp will set a random wallpaper
 
 ![Random Wallpaper](/screenshots/Random_Wall.png)
 
-#### Backend Selector
+## Backend Selector
 
 Select a dark or light theme and then select a backend (Wal, Colorz, Colorthief or Haishoku) to generate a new palette theme.
 
 ![Backend1](/screenshots/Backend1.png)
 ![Backend2](/screenshots/Backend2.png)
 
-#### Multi Monitor Management
+## Multi Monitor Management
 
 Manage multi monitors fast and easy, select your main monitor and resolution, and then select where to put the sencodary monitor (left, right, up, down)
 
 ![Multi Monitor](/screenshots/Multi_monitor.png)
 
-#### Color Picker
+## Color Picker
 
 Select Hex or RGB and you can then click on the screen to get the color using [Farge](https://github.com/sdushantha/farge), you will get the color via notification using [Dunst](https://github.com/dunst-project/dunst)
 
 ![Color Picker1](/screenshots/Color_picker1.png)
 ![Color Picker1](/screenshots/Color_picker2.png)
+
+## Wifi Menu
+
+Select and connect to Wifi using Rofi.
+
+![Wifi](/screenshots/Wifi.png)
+
+## Sesion Menu
+
+Lock the PC, Sign out, Reboot or Poweroff.
+
+![Session](/screenshots/Session.png)
+
+## Screenshot
+
+Take Screenshots of the Screen, an Area, a Window, or the Screen in 5 seconds using [Scrot](https://github.com/dreamer/scrot)
+
+![Screenshot](/screenshots/Screenshot.png)
+
+## Night Light
+
+Change the temperature of the monitor using [Redshift](https://github.com/jonls/redshift)
+
+![Night Light](/screenshots/Night_light.png)
