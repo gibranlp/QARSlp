@@ -26,19 +26,71 @@ It features a dark & light color schemes with contrasting colors for active and 
 ![QARSlp1](/screenshots/QARSlp1.png)
 ![QARSlp2](/screenshots/QARSlp2.png)
 
-### QARSlp Light 
-![QARSlp3](/screenshots/QARSlp3.png)
+### Slash
 
+![Slash1](/screenshots/Slash1.png)
+![Slash2](/screenshots/Slash2.png)
 
 ### Backends
 
-You can select different backends trough a Rofi widget using the same wallpaper, the backends available are Wal(Pywal default), Colorz, Colorthief, Haishoku.
+You can select different backends trough a Rofi widget using the same wallpaper, the backends available are Wal(Pywal default), Colorz, Colorthief and Haishoku.
 
 ### Wal
 ![Wal1](/screenshots/Wal1.png)
+![Wal2](/screenshots/Wal2.png)
 ### Colorz
-![Colorz1](/screenshots/Colorz.png)
+![Colorz1](/screenshots/Colorz1.png)
+![Colorz2](/screenshots/Colorz2.png)
 ### Colorthief
-![Colorthief1](/screenshots/Colorthierf.png)
+![Colorthief1](/screenshots/Colorthierf1.png)
+![Colorthief2](/screenshots/Colorthierf2.png)
 ### Haishoku
-![Haishoku1](/screenshots/Haishoku.png)
+![Haishoku2](/screenshots/Haishoku2.png)
+
+### Rofi Utilities
+
+There is some Rofi utilities embedded in the Qtile theme:
+
+#### Launcher
+
+Launch any application or search for files and folders
+
+![Launcher](/screenshots/Launcher.png)
+
+#### QARSlp Shortcuts
+
+Check out all the shortcuts of the system
+
+![Shortcuts](/screenshots/Shortcuts.png)
+
+#### Theme Selector
+
+Select the theme you want to use
+
+![Theme Selector](/screenshots/Theme.png)
+
+#### Set Random Wallpaper Theme
+
+Ramdomly select a wallpaper and set the theme Dark or Light
+
+![Random Wallpaper](/screenshots/Random_Wall.png)
+
+#### Backend Selector
+
+Select a dark or light theme and then select a backend (Wal, Colorz, Colorthief or Haishoku) to generate a new palette theme.
+
+![Backend1](/screenshots/Backend1.png)
+![Backend2](/screenshots/Backend2.png)
+
+#### Multi Monitor Management
+
+Manage multi monitors fast and easy, select your main monitor and resolution, and then select where to put the sencodary monitor (left, right, up, down)
+
+![Multi Monitor](/screenshots/Multi_monitor.png)
+
+#### Color Picker
+
+Select Hex or RGB and you can then click on the screen to get the color using [Farge](https://github.com/sdushantha/farge), you will get the color via notification using [Dunst](https://github.com/dunst-project/dunst)
+
+![Color Picker1](/screenshots/Color_picker1.png)
+![Color Picker1](/screenshots/Color_picker2.png)

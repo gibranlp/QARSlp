@@ -26,7 +26,7 @@ alt = "mod1"
 
 ## Fonts
 main_font = "Fira Code Medium" # Font in use for the entire system
-awesome_font = "Font Awesome 6 Pro Solid" # Font for all the Special Characters
+awesome_font = "Font Awesome 6 Pro Solid" # Font for the icons
 font_size=17
 bar_size=30
 
@@ -238,8 +238,8 @@ def change_wallpaper(qtile):
         subprocess.run(["rm", "-rf", str(theme_dest)])
         subprocess.run(["cp", str(theme_file), str(theme_dest)])
         subprocess.run(["wpg", light_option, "-s", str(wallpaper_file), "--backend", def_Backend.lower()])
-        subprocess.run(["sudo", "cp", str(wallpaper_file), "/usr/share/backgrounds/background.png"])
-        subprocess.run(["sudo", "cp", "-r", str(Path.home() / ".local/share/themes/FlatColor"), "/usr/share/themes/"])
+        subprocess.run(["cp", str(wallpaper_file), "/usr/local/backgrounds/background.png"])
+        subprocess.run(["cp", "-r", str(Path.home() / ".local/share/themes/FlatColor"), "/usr/local/themes/"])
         qtile.reload_config()
 
       
@@ -262,9 +262,9 @@ def change_color_scheme_dark(qtile):
   if key == -1 or index == 4:
     rofi_backend.close()
   else:
-    subprocess.run(["wal", "-i", "/usr/share/backgrounds/background.png", "--backend", "%s" %backend[index].lower()])
-    subprocess.run(["wpg", "-s", "/usr/share/backgrounds/background.png", "--backend", "%s" %backend[index].lower()])
-    subprocess.run(["sudo", "cp", "-r", home + "/.local/share/themes/FlatColor",  "/usr/share/themes/"])
+    subprocess.run(["wal", "-i", "/usr/local/backgrounds/background.png", "--backend", "%s" %backend[index].lower()])
+    subprocess.run(["wpg", "-s", "/usr/local/backgrounds/background.png", "--backend", "%s" %backend[index].lower()])
+    subprocess.run(["sudo", "cp", "-r", home + "/.local/share/themes/FlatColor",  "/usr/local/themes/"])
     qtile.reload_config()
   
 def change_color_scheme_light(qtile):
@@ -273,9 +273,9 @@ def change_color_scheme_light(qtile):
   if key == -1 or index == 4:
     rofi_backend.close()
   else:
-    subprocess.run(["wal", "-i", "/usr/share/backgrounds/background.png", "--backend", "%s" %backend[index].lower()])
-    subprocess.run(["wpg", "-L", "-s", "/usr/share/backgrounds/background.png", "--backend", "%s" %backend[index].lower()])
-    subprocess.run(["sudo", "cp", "-r", home + "/.local/share/themes/FlatColor",  "/usr/share/themes/"])
+    subprocess.run(["wal", "-i", "/usr/local/backgrounds/background.png", "--backend", "%s" %backend[index].lower()])
+    subprocess.run(["wpg", "-L", "-s", "/usr/local/backgrounds/background.png", "--backend", "%s" %backend[index].lower()])
+    subprocess.run(["sudo", "cp", "-r", home + "/.local/share/themes/FlatColor",  "/usr/local/themes/"])
     qtile.reload_config()
 
 # Display Shortcuts widget

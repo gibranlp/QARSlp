@@ -173,8 +173,13 @@ function copy_dotfiles(){
   sudo mkdir -p /usr/share/backgrounds
   mkdir -p ~/Pictures/Wallpapers
   cp -r ~/QARSlp/Wallpapers/* ~/Pictures/Wallpapers
-  sudo cp ~/QARSlp/Wallpapers/wall.jpg /usr/shre/backgrounds/background.png
-  sudo mkdir -p /usr/share/FlatColor
+  sudo cp ~/QARSlp/Wallpapers/wall.jpg /usr/local/backgrounds/background.png
+  sudo mkdir -p /usr/local/themes
+  sudo cp -r ~/.local/share/themes/FlatColor /usr/local/themes
+  sudo chown $USER:$USER /usr/local/themes/FlatColor
+  sudo ln -s /usr/local/themes/FlatColor /usr/share/themes/FlatColor
+  sudo mkdir /usr/local/backgrounds
+  sudo chown $USER:$USER /usr/local/backgrounds
   sudo cp ~/QARSlp/lightdm-gtk-greeter.conf /etc/lightdm/lightdm-gtk-greeter.conf
 }
 
@@ -220,13 +225,17 @@ function post(){
 }
 
 function update(){
-  #cp -r ~/QARSlp/dotfiles/.local/bin/* ~/.local/bin
-  #chmod +x ~/.local/bin/*
   cp -r ~/QARSlp/dotfiles/.config/qtile/* ~/.config/qtile/
-  #cp ~/QARSlp/dotfiles/.fonts/* ~/.fonts
-  #sudo cp ~/QARSlp/dotfiles/.fonts/* /usr/share/fonts/
-  #fc-cache -f -v
-  cp ~/QARSlp/dotfiles/.config/picom/picom.conf ~/.config/picom/picom.conf
+  # cp ~/QARSlp/dotfiles/.config/picom/picom.conf ~/.config/picom/picom.conf
+  # sudo mkdir -p /usr/local/themes
+  # sudo cp -r ~/.local/share/themes/FlatColor /usr/local/themes
+  # sudo chown $USER:$USER /usr/local/themes/FlatColor
+  # sudo ln -s /usr/local/themes/FlatColor /usr/share/themes/FlatColor
+  # sudo mkdir /usr/local/backgrounds
+  # sudo chown $USER:$USER /usr/local/backgrounds
+  #sudo cp ~/QARSlp/lightdm-gtk-greeter.conf /etc/lightdm/lightdm-gtk-greeter.conf
+  
+
 }
 
 
