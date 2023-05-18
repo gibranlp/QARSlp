@@ -313,7 +313,7 @@ screens = [
               ],
               size=bar_size,
               background=transparent,
-              margin=[0,5,5,5],
+              margin=bar-margin,
           ),
     ),
 ]
