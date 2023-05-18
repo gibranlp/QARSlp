@@ -44,3 +44,5 @@ function copy_dotfiles(){
   sudo chown $USER:$USER /usr/local/backgrounds
   sudo cp ~/QARSlp/lightdm-gtk-greeter.conf /etc/lightdm/lightdm-gtk-greeter.conf
 }
+
+copy_dotfiles

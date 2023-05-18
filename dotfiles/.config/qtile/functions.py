@@ -69,9 +69,9 @@ elif xres == "1920" and yres == "1080": #FullHD
   font_size=16
   bar_size=25
   widget_width=220
-else: # Lower than FullHD
+else: # 1366 x 768 Macbook air 11"
   font_size=15
-  bar_size=25
+  bar_size=20
   widget_width=150
 
 
@@ -85,8 +85,8 @@ rofi_screenshot= Rofi(rofi_args=['-theme', '~/.config/rofi/screenshot.rasi'])
 rofi_fargewidget= Rofi(rofi_args=['-theme', '~/.config/rofi/fargewidget.rasi'])
 
 ## Margins
-layout_margin=5 # Layout margins
-single_layout_margin=5 # Single window margin 
+layout_margin=10 # Layout margins
+single_layout_margin=10 # Single window margin 
 ## Borders
 layout_border_width=4 # Layout border width
 single_border_width=4 # Single border width
