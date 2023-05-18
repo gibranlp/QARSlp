@@ -104,10 +104,22 @@ screens = [
               visual_bell_color=[4],
               visual_bell_time=0.2,
             ),
-            widget.Systray(),
-            widget.Spacer(
-              length=bar.STRETCH,
-              background=transparent,
+            widget.TextBox(
+              decorations=[RectDecoration(colour=color[0], radius=[7,0,0,7], filled=True)],
+              text="",
+              foreground=color[6],
+            ),
+            widget.Mpris2(
+              decorations=[RectDecoration(colour=color[6], radius=[0,7,7,0], filled=True)],
+              mouse_callbacks={'Button1': lambda: qtile.spawn(terminal  + " -e cava")},
+              objname=None,
+              foreground=color[0],
+              width=widget_width,
+              format=' {xesam:artist} -  {xesam:title}',
+              paused_text='Paused',
+              scroll=True,
+              scroll_repeat=True,
+              scroll_delay=0.1,
             ),
             # widget.Pomodoro(
             #   decorations=[RectDecoration(colour=color[2], radius=[7,0,0,7], filled=True)],
@@ -128,27 +140,12 @@ screens = [
             #   scroll=True,
             #   width=250,
             # ),
-            widget.TextBox(
-              decorations=[RectDecoration(colour=color[0], radius=[7,0,0,7], filled=True)],
-              text="",
-              foreground=color[6],
-            ),
-            widget.Mpris2(
-              decorations=[RectDecoration(colour=color[6], radius=[0,7,7,0], filled=True)],
-              mouse_callbacks={'Button1': lambda: qtile.spawn(terminal  + " -e cava")},
-              objname=None,
-              foreground=color[0],
-              width=widget_width,
-              format='{xesam:artist} -> {xesam:title}',
-              paused_text='Paused',
-              scroll=True,
-              scroll_repeat=True,
-              scroll_delay=0.1,
-            ),
+            
             widget.Spacer(
               length=bar.STRETCH,
               background=transparent,
             ),
+            widget.Systray(),
             widget.OpenWeather(
               decorations=[RectDecoration(colour=color[0], radius=[7,0,0,7], filled=True)],
               app_key=w_appkey,

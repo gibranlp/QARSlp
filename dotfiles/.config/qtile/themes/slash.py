@@ -121,16 +121,11 @@ screens = [
               objname=None,
               foreground=color[0],
               width=widget_width,
-              format='{xesam:artist} -> {xesam:title}',
+              format=' {xesam:artist} -  {xesam:title}',
               paused_text='Paused',
               scroll=True,
               scroll_repeat=True,
               scroll_delay=0.1,
-              **powerline,
-            ),
-            widget.Spacer(
-              length=bar.STRETCH,
-              background=color[0],
               **powerline,
             ),
             widget.OpenWeather(
@@ -312,7 +307,7 @@ screens = [
               ],
               size=bar_size,
               background=transparent,
-              margin=bar-margin,
+              margin=bar_margin,
           ),
     ),
 ]

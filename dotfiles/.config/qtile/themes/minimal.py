@@ -34,10 +34,6 @@ screens = [
               block_highlight_text_color=color[2],    
               urgent_border="fc0000",
             ),
-            widget.Spacer(
-              length=5,
-              background=color[0],
-            ),
             widget.WindowName(
               background=color[0],
               foreground=color[2],
@@ -64,16 +60,12 @@ screens = [
               mouse_callbacks={'Button1': lambda: qtile.spawn(terminal  + " -e cava")},
               objname=None,
               foreground=color[6],
-              width=300,
-              format='{xesam:artist} -> {xesam:title}',
+              width=widget_width,
+              format=' {xesam:artist} -  {xesam:title}',
               paused_text='Paused',
               scroll=True,
               scroll_repeat=True,
               scroll_delay=0.1,
-            ),
-            widget.Spacer(
-              length=bar.STRETCH,
-              background=color[0],
             ),
             widget.OpenWeather(
               background=color[0],
@@ -150,14 +142,14 @@ screens = [
             ## Lock, Logout, Poweroff
             widget.TextBox(
               background=color[0],
-              foreground=color[6],
+              foreground=color[2],
               text="",
               mouse_callbacks={'Button1': lambda: qtile.cmd_function(session_widget)},
             ),
               ],
               size=bar_size,
               background=transparent,
-              margin=bar-margin,
+              margin=bar_margin,
           ),
     ),
 ]

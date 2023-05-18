@@ -104,11 +104,6 @@ screens = [
               visual_bell_color=[7],
               visual_bell_time=0.2,
             ),
-            widget.Systray(),
-            widget.Spacer(
-              length=bar.STRETCH,
-              background=transparent,
-            ),
             # widget.Pomodoro(
             #   decorations=[RectDecoration(colour=color[2], radius=[7,0,0,7], filled=True)],
             #   foreground=color[0],
@@ -139,7 +134,7 @@ screens = [
               objname=None,
               foreground=color[0],
               width=widget_width,
-              format='{xesam:artist} -> {xesam:title}',
+              format=' {xesam:artist} -  {xesam:title}',
               paused_text='Paused',
               scroll=True,
               scroll_repeat=True,
@@ -149,6 +144,7 @@ screens = [
               length=bar.STRETCH,
               background=transparent,
             ),
+            widget.Systray(),
             widget.OpenWeather(
               decorations=[RectDecoration(colour=color[5], radius=[7,0,0,7], filled=True)],
               app_key=w_appkey,

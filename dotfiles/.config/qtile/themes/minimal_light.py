@@ -157,7 +157,7 @@ screens = [
               ],
               size=bar_size,
               background=transparent,
-              margin=bar-margin,
+              margin=bar_margin,
           ),
     ),
 ]
