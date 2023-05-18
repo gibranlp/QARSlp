@@ -69,14 +69,14 @@ yres = resolution[22:26]
 # Set Bar and font sizez for specific resolution
 
 if xres == "3840" and yres == "2160": #4k
-  layout_margin=20
-  single_layout_margin=20  
+  layout_margin=15
+  single_layout_margin=15  
   layout_border_width=5
   single_border_width=5
   font_size=20
   bar_size=30
   widget_width=400
-  bar_margin=[0,20,5,20]
+  bar_margin=[0,15,5,15]
 elif xres == "1920" and yres == "1080": #FullHD
   layout_margin=10
   single_layout_margin=10  
@@ -87,14 +87,14 @@ elif xres == "1920" and yres == "1080": #FullHD
   widget_width=220
   bar_margin=[0,10,5,10]
 else: # 1366 x 768 Macbook air 11"
-  layout_margin=0
-  single_layout_margin=0  
+  layout_margin=2
+  single_layout_margin=2  
   layout_border_width=2
   single_border_width=2
   font_size=13
   bar_size=20
   widget_width=100
-  bar_margin=[2,0,0,0]
+  bar_margin=[0,0,0,0]
 
 
 # Rofi Configuration files
