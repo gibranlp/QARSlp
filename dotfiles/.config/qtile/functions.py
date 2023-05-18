@@ -49,6 +49,13 @@ theme=['QARSlp', 'slash', 'minimal', 'no_bar']
 def_Backend='Colorz'
 backend=['Wal', 'Colorz', 'Colorthief','Haishoku']
 
+## Margins
+layout_margin=10 # Layout margins
+single_layout_margin=10 # Single window margin 
+## Borders
+layout_border_width=4 # Layout border width
+single_border_width=4 # Single border width
+
 # Transparent for bars and widgets
 transparent="00000000"
 widget_width=200
@@ -62,17 +69,32 @@ yres = resolution[22:26]
 # Set Bar and font sizez for specific resolution
 
 if xres == "3840" and yres == "2160": #4k
+  layout_margin=20
+  single_layout_margin=20  
+  layout_border_width=5
+  single_border_width=5
   font_size=20
   bar_size=30
   widget_width=400
+  bar_margin=[0,20,5,20]
 elif xres == "1920" and yres == "1080": #FullHD
+  layout_margin=10
+  single_layout_margin=10  
+  layout_border_width=3 
+  single_border_width=3
   font_size=16
   bar_size=25
   widget_width=220
+  bar_margin=[0,10,5,10]
 else: # 1366 x 768 Macbook air 11"
-  font_size=15
+  layout_margin=0
+  single_layout_margin=0  
+  layout_border_width=2
+  single_border_width=2
+  font_size=13
   bar_size=20
-  widget_width=150
+  widget_width=100
+  bar_margin=[2,0,0,0]
 
 
 # Rofi Configuration files
@@ -84,12 +106,7 @@ rofi_websearch= Rofi(rofi_args=['-theme', '~/.config/rofi/websearch.rasi'])
 rofi_screenshot= Rofi(rofi_args=['-theme', '~/.config/rofi/screenshot.rasi'])
 rofi_fargewidget= Rofi(rofi_args=['-theme', '~/.config/rofi/fargewidget.rasi'])
 
-## Margins
-layout_margin=10 # Layout margins
-single_layout_margin=10 # Single window margin 
-## Borders
-layout_border_width=4 # Layout border width
-single_border_width=4 # Single border width
+
 
 ### Weather
 w_appkey = "e45a0f07f0c675b273ef8636663941db" # Get a key here https://home.openweathermap.org/users/sign_up 
