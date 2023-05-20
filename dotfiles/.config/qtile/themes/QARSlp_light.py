@@ -7,8 +7,7 @@
 # QARSlp Qtile + Arch Ricing System
 # By: gibranlp <thisdoesnotwork@gibranlp.dev>
 # MIT licence 
-# QARSlp Light Theme
-
+#
 from functions import *
 
 # Theme
@@ -19,19 +18,19 @@ screens = [
         bottom=bar.Bar(
             [
             widget.GroupBox(
-              decorations=[RectDecoration(colour=color[1], radius=7, filled=True)],
+              decorations=[RectDecoration(colour=color[0], radius=7, filled=True)],
               font=awesome_font,
               disable_drag=True,
               hide_unused=True,
               borderwidth=0,
-              active=color[0], #Program opened in that group
-              inactive=color[2], # Empty Group
+              active=color[3], #Program opened in that group
+              inactive=color[6], # Empty Group
               rounded=False,
               highlight_method="text",
-              this_current_screen_border=color[7],
+              this_current_screen_border=color[2],
               center_aligned = True,
-              other_curren_screen_border=color[7],
-              block_highlight_text_color=color[7],    
+              other_curren_screen_border=color[2],
+              block_highlight_text_color=color[2],    
               urgent_border="fc0000",
             ),
             widget.Spacer(
@@ -40,21 +39,22 @@ screens = [
             ),
             widget.CurrentLayoutIcon(
               use_mask=True,
-              decorations=[RectDecoration(colour=color[2], radius=7, filled=True)],
-              foreground=color[7],
-              scale=0.7,
+              decorations=[RectDecoration(colour=color[3], radius=7, filled=True)],
+              foreground=color[0],
+              scale=0.8,
+              background=color[0],
             ),
             widget.Spacer(
               length=5,
               background=transparent,
             ),
             widget.TextBox(
-              decorations=[RectDecoration(colour=color[2], radius=[7,0,0,7], filled=True)],
-              foreground=color[7],
+              decorations=[RectDecoration(colour=color[0], radius=[7,0,0,7], filled=True)],
+              foreground=color[5],
               text="",
             ),
             widget.CPU(
-              decorations=[RectDecoration(colour=color[3], radius=[0,7,7,0], filled=True)],
+              decorations=[RectDecoration(colour=color[5], radius=[0,7,7,0], filled=True)],
               foreground=color[0],
               format='{load_percent}'
             ),
@@ -63,12 +63,12 @@ screens = [
               background=transparent,
             ),
             widget.TextBox(
-            decorations=[RectDecoration(colour=color[3], radius=[7,0,0,7], filled=True)],
-            foreground=color[7],
+            decorations=[RectDecoration(colour=color[0], radius=[7,0,0,7], filled=True)],
+            foreground=color[1],
             text="",
             ),
             widget.Memory(
-              decorations=[RectDecoration(colour=color[4], radius=[0,7,7,0], filled=True)],
+              decorations=[RectDecoration(colour=color[1], radius=[0,7,7,0], filled=True)],
               foreground=color[0],
               format='{MemUsed:.0f}{mm}',
               measure_mem='G',
@@ -78,12 +78,12 @@ screens = [
                 background=transparent,
             ),
             widget.TextBox(
-              decorations=[RectDecoration(colour=color[4], radius=[7,0,0,7], filled=True)],
-              foreground=color[7],
+              decorations=[RectDecoration(colour=color[0], radius=[7,0,0,7], filled=True)],
+              foreground=color[2],
               text="",
             ),
             widget.WindowName(
-              decorations=[RectDecoration(colour=color[5], radius=[0,7,7,0], filled=True)],
+              decorations=[RectDecoration(colour=color[2], radius=[0,7,7,0], filled=True)],
               foreground=color[0],
               width=widget_width,
               format='{name}',
@@ -97,12 +97,40 @@ screens = [
               background=transparent,
             ),
             widget.Prompt(
-              decorations=[RectDecoration(colour=color[5], radius=7, filled=True)],
+              decorations=[RectDecoration(colour=color[0], radius=7, filled=True)],
               prompt=prompt,
-              foreground=color[7],
-              cursor_color=color[7],
-              visual_bell_color=[7],
+              foreground=color[4],
+              cursor_color=color[4],
+              visual_bell_color=[4],
               visual_bell_time=0.2,
+            ),
+            widget.Spacer(
+              length=5,
+              background=transparent,
+            ),
+            widget.TextBox(
+              decorations=[RectDecoration(colour=color[0], radius=[7,0,0,7], filled=True)],
+              text="",
+              foreground=color[6],
+            ),
+            widget.Mpris2(
+              decorations=[RectDecoration(colour=color[6], radius=[0,0,0,0], filled=True)],
+              mouse_callbacks={'Button1': lambda: qtile.spawn(terminal  + " -e cava")},
+              objname=None,
+              foreground=color[0],
+              width=widget_width,
+              format='{xesam:artist}  {xesam:title}',
+              stopped_text="Stop",
+              paused_text='Paused',
+              scroll=True,
+              scroll_repeat=True,
+              scroll_delay=0.1,
+            ),
+            widget.TextBox(
+              decorations=[RectDecoration(colour=color[0], radius=[0,7,7,0], filled=True)],
+              text="",
+              foreground=color[6],
+              mouse_callbacks={'Button1': lambda: qtile.spawn(terminal  + " -e cava")},
             ),
             # widget.Pomodoro(
             #   decorations=[RectDecoration(colour=color[2], radius=[7,0,0,7], filled=True)],
@@ -123,30 +151,14 @@ screens = [
             #   scroll=True,
             #   width=250,
             # ),
-            widget.TextBox(
-              decorations=[RectDecoration(colour=color[6], radius=[7,0,0,7], filled=True)],
-              text="",
-              foreground=color[7],
-            ),
-            widget.Mpris2(
-              decorations=[RectDecoration(colour=color[5], radius=[0,7,7,0], filled=True)],
-              mouse_callbacks={'Button1': lambda: qtile.spawn(terminal  + " -e cava")},
-              objname=None,
-              foreground=color[0],
-              width=widget_width,
-              format=' {xesam:artist} -  {xesam:title}',
-              paused_text='Paused',
-              scroll=True,
-              scroll_repeat=True,
-              scroll_delay=0.1,
-            ),
+            
             widget.Spacer(
               length=bar.STRETCH,
               background=transparent,
             ),
             widget.Systray(),
             widget.OpenWeather(
-              decorations=[RectDecoration(colour=color[5], radius=[7,0,0,7], filled=True)],
+              decorations=[RectDecoration(colour=color[0], radius=[7,0,0,7], filled=True)],
               app_key=w_appkey,
               cityid=w_cityid,
               weather_symbols={
@@ -171,16 +183,16 @@ screens = [
                 "50n": "🌫",
                 },
                 format='{icon}',
-                foreground=color[0],
+                foreground=color[5],
                 metric=True,
                 update_interval=600,
                 
             ),
             widget.OpenWeather(
-              decorations=[RectDecoration(colour=color[4], radius=[0,7,7,0], filled=True)],
+              decorations=[RectDecoration(colour=color[5], radius=[0,7,7,0], filled=True)],
               app_key=w_appkey,
               cityid=w_cityid,
-              foreground=color[7],
+              foreground=color[0],
               format='{temp}°{units_temperature}',
               metric=True,
               update_interval=600,
@@ -221,24 +233,29 @@ screens = [
                   text=wifi_icon,
                   foreground=color[3],
                   mouse_callbacks={'Button1':lambda: qtile.spawn(home + "/.local/bin/wifi2")}),
-                # widget.Wlan(
-                #  decorations=[RectDecoration(colour=color[0], radius=0, filled=True)],
-                #  interface=wifi,
-                #  format='{essid}',
-                #  disconnected_message='',
-                #  foreground=color[3],
-                #  mouse_callbacks={'Button1':lambda: qtile.function(network_widget)}
-                # ),
               ]
             ),
-            # widget.Wlan(
-            #       decorations=[RectDecoration(colour=color[0],radius=0, filled=True)],
-            #       interface=wifi,
-            #       format='{percent:2.0%}',
-            #       disconnected_message='',
-            #       foreground=color[3],
-            #       mouse_callbacks={'Button1':lambda: qtile.function(network_widget)}
-            #     ),
+            widget.Wlan(
+                  decorations=[RectDecoration(colour=color[0], radius=0, filled=True)],
+                  interface=wifi,
+                  format='{essid}',
+                  disconnected_message='',
+                  foreground=color[3],
+                  max_chars=10,
+                  scroll=True,
+                  scroll_repeat=True,
+                  scroll_interval=0.1,
+                  scroll_step=1,
+                  update_interval=1,
+                  mouse_callbacks={'Button1':lambda: qtile.spawn(home + "/.local/bin/wifi2")}),
+            widget.Wlan(
+                   decorations=[RectDecoration(colour=color[0],radius=0, filled=True)],
+                   interface=wifi,
+                   format='{percent:2.0%}',
+                   disconnected_message='',
+                   foreground=color[3],
+                   mouse_callbacks={'Button1':lambda: qtile.function(network_widget)}
+                 ),
             widget.Net(
               prefix='M',
               interface=wifi,
@@ -253,12 +270,12 @@ screens = [
               background=transparent,
             ),
             widget.TextBox(
-              decorations=[RectDecoration(colour=color[3], radius=[7,0,0,7], filled=True)],
+              decorations=[RectDecoration(colour=color[0], radius=[7,0,0,7], filled=True)],
               text="",
-              foreground=color[0],
+              foreground=color[4],
             ),
             widget.KeyboardLayout(
-              decorations=[RectDecoration(colour=color[2], radius=[0,7,7,0], filled=True)],
+              decorations=[RectDecoration(colour=color[4], radius=[0,7,7,0], filled=True)],
               configured_keyboards=['us intl', 'latam'],
               foreground=color[0],
             ),
@@ -267,9 +284,9 @@ screens = [
               background=transparent,
             ),
             widget.TextBox(
-              decorations=[RectDecoration(colour=color[2], radius=[7,0,0,7], filled=True)],
+              decorations=[RectDecoration(colour=color[0], radius=[7,0,0,7], filled=True)],
               text="",
-              foreground=color[0],
+              foreground=color[5],
               mouse_callbacks={'Button1': lambda: qtile.spawn('pavucontrol')}
             ),
             widget.ALSAWidget(
@@ -283,7 +300,6 @@ screens = [
               update_interval=0.1,
               bar_width=80,
               mode='bar',
-              foreground=color[1],
               text_format=' ',
             ),
             widget.Spacer(
@@ -339,7 +355,7 @@ screens = [
               ],
               size=bar_size,
               background=transparent,
-              margin=bar-margin,
+              margin=bar_margin,
           ),
     ),
 ]

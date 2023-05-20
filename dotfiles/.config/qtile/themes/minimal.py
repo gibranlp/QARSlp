@@ -62,6 +62,7 @@ screens = [
               foreground=color[6],
               width=widget_width,
               format=' {xesam:artist} -  {xesam:title}',
+              stopped_text="Stop",
               paused_text='Paused',
               scroll=True,
               scroll_repeat=True,
