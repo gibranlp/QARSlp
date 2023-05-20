@@ -125,7 +125,7 @@ screens = [
             ),
             widget.TextBox(
               background=color[3],
-              text="",
+              text="",
               foreground=color[0],
               mouse_callbacks={'Button1': lambda: qtile.spawn(terminal  + " -e cava")},
               **powerline,            

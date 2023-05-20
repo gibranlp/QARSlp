@@ -128,7 +128,7 @@ screens = [
             ),
             widget.TextBox(
               decorations=[RectDecoration(colour=color[0], radius=[0,7,7,0], filled=True)],
-              text="",
+              text="",
               foreground=color[6],
               mouse_callbacks={'Button1': lambda: qtile.spawn(terminal  + " -e cava")},
             ),
