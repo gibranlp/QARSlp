@@ -47,11 +47,13 @@ rand_wallpaper = ""
 light="-c"
 
 # Theme
+curr_theme=str(variables[0].strip())
 theme=['QARSlp', 'slash', 'minimal', 'no_bar']
 
 # Pywal backends Options: Wal, Colorz, Colorthief, Haishoku
-def_Backend=str(variables[1].strip())
+def_backend=str(variables[1].strip()) # Default Color Scheme for random wallpaper
 backend=['Wal', 'Colorz', 'Colorthief','Haishoku']
+current_backend=str(variables[3].strip()) # Current backend in use
 
 ## Margins
 layout_margin=10 # Layout margins
@@ -254,7 +256,7 @@ def change_wallpaper(qtile):
         theme_dest = Path("~/.config/qtile/theme.py").expanduser()
         subprocess.run(["rm", "-rf", str(theme_dest)])
         subprocess.run(["cp", str(theme_file), str(theme_dest)])
-        subprocess.run(["wpg", light_option, "-s", str(wallpaper_file), "--backend", def_Backend.lower()])
+        subprocess.run(["wpg", light_option, "-s", str(wallpaper_file), "--backend", def_backend.lower()])
         subprocess.run(["cp", str(wallpaper_file), "/usr/local/backgrounds/background.png"])
         subprocess.run(["cp", "-r", str(Path.home() / ".local/share/themes/FlatColor"), "/usr/local/themes/"])
         qtile.reload_config()
@@ -275,7 +277,7 @@ def change_theme_color(qtile):
 ## Set default backend
 def set_default_backend(qtile):
   options = backend
-  index, key = rofi_backend.select('  Set Default Color Theme', options)
+  index, key = rofi_backend.select(' Set Default Backend - Current -> ' + def_backend , options)
   if key == -1 or index == 4:
     rofi_backend.close()
   else:
@@ -286,24 +288,30 @@ def set_default_backend(qtile):
 # Change Color Backend
 def change_color_scheme_dark(qtile):
   options = backend
-  index, key = rofi_backend.select('  Color Scheme', options)
+  index, key = rofi_backend.select('  Color Scheme - Current -> ' + current_backend, options)
   if key == -1 or index == 4:
     rofi_backend.close()
   else:
     subprocess.run(["wal", "-i", "/usr/local/backgrounds/background.png", "--backend", "%s" %backend[index].lower()])
     subprocess.run(["wpg", "-s", "/usr/local/backgrounds/background.png", "--backend", "%s" %backend[index].lower()])
     subprocess.run(["sudo", "cp", "-r", home + "/.local/share/themes/FlatColor",  "/usr/local/themes/"])
+    variables[3]=backend[index] + "\n"
+    with open(home + '/.config/qtile/variables', 'w') as file:
+      file.writelines(variables)
     qtile.reload_config()
   
 def change_color_scheme_light(qtile):
   options = backend
-  index, key = rofi_backend.select('  Color Scheme', options)
+  index, key = rofi_backend.select('  Color Scheme - Current -> ' + current_backend, options)
   if key == -1 or index == 4:
     rofi_backend.close()
   else:
     subprocess.run(["wal", "-i", "/usr/local/backgrounds/background.png", "--backend", "%s" %backend[index].lower()])
     subprocess.run(["wpg", "-L", "-s", "/usr/local/backgrounds/background.png", "--backend", "%s" %backend[index].lower()])
     subprocess.run(["sudo", "cp", "-r", home + "/.local/share/themes/FlatColor",  "/usr/local/themes/"])
+    variables[3]=backend[index] + "\n"
+    with open(home + '/.config/qtile/variables', 'w') as file:
+      file.writelines(variables)
     qtile.reload_config()
 
 # Display Shortcuts widget
@@ -382,7 +390,7 @@ def network_widget(qtile):
 # Change Theme widget
 def change_theme(qtile):
   options = theme
-  index, key = rofi_backend.select('  Select Theme', options)
+  index, key = rofi_backend.select('  Select Theme - Current -> ' + curr_theme , options)
   if key == -1:
     rofi_backend.close()
   else:
