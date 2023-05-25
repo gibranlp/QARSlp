@@ -37,6 +37,10 @@ terminal = "alacritty"
 home = os.path.expanduser('~') # Path for use in folders
 prompt = ":".format(os.environ["USER"], socket.gethostname()) # Format of the prompt
 
+## Import Persistent Variables
+file = open(home + '/.config/qtile/variables', 'r')
+variables=file.readlines()
+
 # Wallpapers / Theming
 wallpaper_dir= home + '/Pictures/Wallpapers/'
 rand_wallpaper = ""
@@ -106,10 +110,8 @@ rofi_websearch= Rofi(rofi_args=['-theme', '~/.config/rofi/websearch.rasi'])
 rofi_screenshot= Rofi(rofi_args=['-theme', '~/.config/rofi/screenshot.rasi'])
 rofi_fargewidget= Rofi(rofi_args=['-theme', '~/.config/rofi/fargewidget.rasi'])
 
-
-
 ### Weather
-w_appkey = "e45a0f07f0c675b273ef8636663941db" # Get a key here https://home.openweathermap.org/users/sign_up 
+w_appkey = str(variables[2].strip()) # Get a key here https://home.openweathermap.org/users/sign_up 
 w_cityid ="3995402" # "3995402" Morelia, "3521342" Playa del Carmen https://openweathermap.org/city/
 
 ## Hooks
@@ -149,10 +151,6 @@ def app_or_group(group, app):
       qtile.groups_map[group].cmd_toscreen(toggle=False)
       qtile.spawn(app)
     return f
-
-## Import Persistent Variables
-file = open(home + '/.config/qtile/variables', 'r')
-variables=file.readlines()
 
 ## Import Colors from Pywal
 with open(home + '/.cache/wal/colors.json') as wal_import:
