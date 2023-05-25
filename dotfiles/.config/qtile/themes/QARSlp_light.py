@@ -42,7 +42,6 @@ screens = [
               decorations=[RectDecoration(colour=color[3], radius=7, filled=True)],
               foreground=color[0],
               scale=0.8,
-              background=color[0],
             ),
             widget.Spacer(
               length=5,
@@ -241,7 +240,7 @@ screens = [
                   format='{essid}',
                   disconnected_message='',
                   foreground=color[3],
-                  max_chars=10,
+                  width=widget_width,
                   scroll=True,
                   scroll_repeat=True,
                   scroll_interval=0.1,

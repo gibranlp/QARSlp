@@ -46,7 +46,7 @@ light="-c"
 theme=['QARSlp', 'slash', 'minimal', 'no_bar']
 
 # Pywal backends Options: Wal, Colorz, Colorthief, Haishoku
-def_Backend='Colorz'
+def_Backend='Haishoku'
 backend=['Wal', 'Colorz', 'Colorthief','Haishoku']
 
 ## Margins
