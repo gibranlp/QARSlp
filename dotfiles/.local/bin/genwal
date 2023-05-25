@@ -24,13 +24,13 @@ set_wall(){
   if [ -z "$wall" ]
     then
       wpg -s ${path} # Wal sets wallpaper and genates new color scheme
-      sudo cp ${path}  "/usr/share/backgrounds/background.png"
-      sudo cp -r ~/.local/share/themes/FlatColor  /usr/share/themes/
+      cp ${path}  "/usr/local/backgrounds/background.png"
+      cp -r ~/.local/share/themes/FlatColor  /usr/local/themes/
       qtile cmd-obj -o cmd -f restart # Restarts Qtile
     else
       wpg -s ${dir}${wall} # Wal sets wallpaper and genates new color scheme
-      sudo cp ${dir}${wall}  "/usr/share/backgrounds/background.png"
-      sudo cp -r ~/.local/share/themes/FlatColor  /usr/share/themes/
+      cp ${dir}${wall}  "/usr/local/backgrounds/background.png"
+      cp -r ~/.local/share/themes/FlatColor  /usr/local/themes/
       qtile cmd-obj -o cmd -f restart 
   fi
 }

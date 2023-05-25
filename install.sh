@@ -230,14 +230,14 @@ function update(){
   # cp ~/QARSlp/dotfiles/.config/picom/picom.conf ~/.config/picom/picom.conf
   # sudo mkdir -p /usr/local/themes
   # sudo cp -r ~/.local/share/themes/FlatColor /usr/local/themes
-  # sudo chown $USER:$USER /usr/local/themes/FlatColor
+  # sudo chown -R $USER:$USER /usr/local/themes/FlatColor
   # sudo ln -s /usr/local/themes/FlatColor /usr/share/themes/FlatColor
   # sudo mkdir /usr/local/backgrounds
   # sudo chown $USER:$USER /usr/local/backgrounds
   #sudo cp ~/QARSlp/lightdm-gtk-greeter.conf /etc/lightdm/lightdm-gtk-greeter.conf
   
 
-}
+} 
 
 
 #sudo pacman -Syyu --noconfirm

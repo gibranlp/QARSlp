@@ -50,7 +50,7 @@ light="-c"
 theme=['QARSlp', 'slash', 'minimal', 'no_bar']
 
 # Pywal backends Options: Wal, Colorz, Colorthief, Haishoku
-def_Backend='Haishoku'
+def_Backend=str(variables[1].strip())
 backend=['Wal', 'Colorz', 'Colorthief','Haishoku']
 
 ## Margins
@@ -60,9 +60,8 @@ single_layout_margin=10 # Single window margin
 layout_border_width=4 # Layout border width
 single_border_width=4 # Single border width
 
-# Transparent for bars and widgets
-transparent="00000000"
-widget_width=200
+#Widgets
+widget_width=200 #Width of widgets varies depending the resolution
 
 # Get current screen resolution
 resolution = os.popen('xdpyinfo | awk "/dimensions/{print $2}"').read()
@@ -165,6 +164,9 @@ with open(home + '/.cache/wal/colors.json') as wal_import:
     return [*val_colors]
 
 color = init_colors()
+
+# Transparent for bars and widgets
+transparent=color[0] + "00"
 
 # Select random wallpaper
 selection = random.choice(os.listdir(wallpaper_dir))
@@ -269,6 +271,17 @@ def change_theme_color(qtile):
       change_color_scheme_dark(qtile)
     else:
       change_color_scheme_light(qtile)
+
+## Set default backend
+def set_default_backend(qtile):
+  options = backend
+  index, key = rofi_backend.select('  Set Default Color Theme', options)
+  if key == -1 or index == 4:
+    rofi_backend.close()
+  else:
+    variables[1]=backend[index] + "\n"
+    with open(home + '/.config/qtile/variables', 'w') as file:
+      file.writelines(variables)
      
 # Change Color Backend
 def change_color_scheme_dark(qtile):
@@ -476,6 +489,7 @@ keys = [
     Key([mod],"c",lazy.function(shortcuts)), # Shortcuts widget
     Key([mod, "shift"],"o",lazy.function(nightLight_widget)),
     Key([mod],"p",lazy.function(fargewidget)), # Color Picker Widget
+    Key([alt],"d",lazy.function(set_default_backend)), # Set Default backend widget
     Key([alt], "Return", lazy.spawn('rofi  -theme "~/.config/rofi/left_bar.rasi" -show find -modi find:~/.local/bin/finder')), # Search for files and folders
     Key([mod],"f",lazy.spawn(home + '/.local/bin/wsearch')), # WEB Search widget
     Key([mod, "shift"],"f",lazy.spawn('rofi  -theme "~/.config/rofi/filesfolders.rasi" -show find -modi find:~/.local/bin/finder')), # Search files and folders
