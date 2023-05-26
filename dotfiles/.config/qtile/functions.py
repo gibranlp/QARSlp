@@ -180,6 +180,19 @@ while True:
     selection = random.choice(os.listdir(wallpaper_dir))
     selected_wallpaper = os.path.join(wallpaper_dir, selection)
 
+# Set Random Wallpaper
+def change_wallpaper(qtile):
+  themes_dir = Path(str(variables[4].strip())).expanduser()
+  theme_file = str(themes_dir) + "/" +  str(variables[0].strip()) + ".py"
+  wallpaper_file = rand_wallpaper
+  theme_dest = Path("~/.config/qtile/theme.py").expanduser()
+  subprocess.run(["rm", "-rf", str(theme_dest)])
+  subprocess.run(["cp", str(theme_file), str(theme_dest)])
+  subprocess.run(["wpg", light, "-s", str(wallpaper_file), "--backend", def_backend.lower()])
+  subprocess.run(["cp", str(wallpaper_file), "/usr/local/backgrounds/background.png"])
+  subprocess.run(["cp", "-r", str(Path.home() / ".local/share/themes/FlatColor"), "/usr/local/themes/"])
+  qtile.reload_config()
+
 ## Get network device in use
 def get_net_dev():
   get_dev = "ip addr show | awk '/inet.*brd/{print $NF; exit}'"
@@ -234,20 +247,6 @@ def calendar_notification_next(qtile):{
 }
 
 ## Rofi Widgets
-
-## Set Random Wallpaper
-def change_wallpaper(qtile):
-  themes_dir = Path(str(variables[4].strip())).expanduser()
-  theme_file = str(themes_dir) + "/" +  str(variables[0].strip()) + ".py"
-  wallpaper_file = rand_wallpaper
-  theme_dest = Path("~/.config/qtile/theme.py").expanduser()
-  subprocess.run(["rm", "-rf", str(theme_dest)])
-  subprocess.run(["cp", str(theme_file), str(theme_dest)])
-  subprocess.run(["wpg", light, "-s", str(wallpaper_file), "--backend", def_backend.lower()])
-  subprocess.run(["cp", str(wallpaper_file), "/usr/local/backgrounds/background.png"])
-  subprocess.run(["cp", "-r", str(Path.home() / ".local/share/themes/FlatColor"), "/usr/local/themes/"])
-  qtile.reload_config()
-
 
 ## Select Dark or Light Theming
 def dark_white(qtile):
