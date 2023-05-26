@@ -180,7 +180,7 @@ function copy_dotfiles(){
   sudo ln -s /usr/local/themes/FlatColor /usr/share/themes/FlatColor
   sudo mkdir /usr/local/backgrounds
   sudo chown $USER:$USER /usr/local/backgrounds
-  sudo cp ~/QARSlp/lightdm-gtk-greeter.conf /etc/lightdm/lightdm-gtk-greeter.conf
+  sudo cp ~/QARSlp/dotfiles/lightdm-gtk-greeter.conf /etc/lightdm/lightdm-gtk-greeter.conf
 }
 
 function web_apps(){
@@ -227,6 +227,7 @@ function post(){
 function update(){
   cp -r ~/QARSlp/dotfiles/.config/qtile/* ~/.config/qtile/
   cp -r ~/QARSlp/dotfiles/.local/bin/* ~/.local/bin
+  cp ~/QARSlp/dotfiles/.config/dunst/dunstrc ~/.config/wal/templates
   # cp ~/QARSlp/dotfiles/.config/picom/picom.conf ~/.config/picom/picom.conf
   # sudo mkdir -p /usr/local/themes
   # sudo cp -r ~/.local/share/themes/FlatColor /usr/local/themes
