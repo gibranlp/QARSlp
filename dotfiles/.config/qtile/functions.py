@@ -26,7 +26,7 @@ alt = "mod1"
 
 ## Fonts
 main_font = "Fira Code Medium" # Font in use for the entire system
-awesome_font = "Font Awesome 6 Pro Solid" # Font for the icons
+awesome_font = "Font Awesome 6 Pro" # Font for the icons
 font_size=17
 bar_size=30
 
@@ -189,7 +189,7 @@ def get_net_dev():
 
 wifi = get_net_dev()
 
-# Set Ethernet or Wifi Icon according
+# Set Ethernet or Wifi icon according
 if wifi.startswith('e'):
   wifi_icon=''
 else:

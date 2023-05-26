@@ -264,20 +264,20 @@ screens = [
               mouse_callbacks={'Button1':lambda: qtile.function(network_widget)},
               decorations=[RectDecoration(colour=color[3], radius=[0,7,7,0], filled=True)],
             ),
-            widget.Spacer(
-              length=5,
-              background=transparent,
-            ),
-            widget.TextBox(
-              decorations=[RectDecoration(colour=color[0], radius=[7,0,0,7], filled=True)],
-              text="",
-              foreground=color[4],
-            ),
-            widget.KeyboardLayout(
-              decorations=[RectDecoration(colour=color[4], radius=[0,7,7,0], filled=True)],
-              configured_keyboards=['us intl', 'latam'],
-              foreground=color[0],
-            ),
+            # widget.Spacer(
+            #   length=5,
+            #   background=transparent,
+            # ),
+            # widget.TextBox(
+            #   decorations=[RectDecoration(colour=color[0], radius=[7,0,0,7], filled=True)],
+            #   text="",
+            #   foreground=color[4],
+            # ),
+            # widget.KeyboardLayout(
+            #   decorations=[RectDecoration(colour=color[4], radius=[0,7,7,0], filled=True)],
+            #   configured_keyboards=['us intl', 'latam'],
+            #   foreground=color[0],
+            # ),
             widget.Spacer(
               length=5,
               background=transparent,

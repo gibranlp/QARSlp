@@ -112,3 +112,4 @@ export PATH=$PATH:/opt/ade
 wal -R -q && clear
 echo "TF"$(( (`date +%s` - `date +%s -d '2003/08/1'`) / 86400 ))
 echo "LT"$(( (`date +%s` - `date +%s -d '2022/08/15'`) / 86400 ))
+setxkbmap -layout us -variant intl
