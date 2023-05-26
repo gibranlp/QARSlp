@@ -25,13 +25,13 @@
     width =(0, 400)
 
     # The maximum height of a single notification, excluding the frame.
-    height = 200
+    height = 150
 
     # Position the notification in the top right corner
-    origin = center-right
+    origin = top
 
     # Offset from the origin
-    offset = 5x200
+    offset = 5x5
 
     # Scale factor. It is auto-detected if value is 0.
     scale = 0
@@ -156,7 +156,7 @@
     #   %n  progress value if set without any extra characters
     #   %%  Literal %
     # Markup is allowed
-    format = "🕭 <b>%s</b>\n%b\n%p\n%n"
+    format = " <b>%s</b>\n%b\n%p\n%n"
 
     # Alignment of message text.
     # Possible values are "left", "center" and "right".
@@ -198,7 +198,7 @@
     min_icon_size = 32
 
     # Scale larger icons down to this size, set to 0 to disable
-    max_icon_size = 100
+    max_icon_size = 70
 
     # Paths to default icons.
     icon_path = /usr/share/icons/gnome/16x16/status/:/usr/share/icons/gnome/16x16/devices/
@@ -234,7 +234,7 @@
     # corners.
     # The radius will be automatically lowered if it exceeds half of the
     # notification height to avoid clipping text and/or icons.
-    corner_radius = 5
+    corner_radius = 0
 
     # Ignore the dbus closeNotification message.
     # Useful to enforce the timeout set by dunst configuration. Without this
@@ -301,7 +301,7 @@
     foreground = "{color3}"
     frame_color = "{color2}"
     timeout = 10
-    format = " <b>%s</b>\n%b\n%p\n%n"
+    format = " <b>%s</b>\n%b\n%p\n%n"
     # Icon for notifications with low urgency, uncomment to enable
     #default_icon = 
 
@@ -310,7 +310,7 @@
     foreground = "{color3}"
     frame_color = "{color2}"
     timeout = 10
-    format = "🕭 <b>%s</b>\n%b\n%p\n%n"
+    format = " <b>%s</b>\n%b\n%p\n%n"
     # Icon for notifications with normal urgency, uncomment to enable
     #default_icon = /path/to/icon
 
@@ -319,7 +319,7 @@
     foreground = "{color7}"
     frame_color = "{color7}"
     timeout = 0
-    format = " <b>%s</b>\n%b\n%p\n%n"
+    format = " <b>%s</b>\n%b\n%p\n%n"
     
     # Icon for notifications with critical urgency, uncomment to enable
     #default_icon = /path/to/icon

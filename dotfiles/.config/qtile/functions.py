@@ -252,7 +252,7 @@ def change_wallpaper(qtile):
 ## Select Dark or Light Theming
 def dark_white(qtile):
   options = ['Dark', 'Light']
-  index, key = rofi_backend.select('  Set Dark or Light Theming', options)
+  index, key = rofi_backend.select('  Dark or  Light Theme', options)
   if key == -1 or index == 2:
     rofi_backend.close()
   else:
@@ -275,7 +275,7 @@ def dark_white(qtile):
 ## Set default backend
 def set_default_backend(qtile):
   options = backend
-  index, key = rofi_backend.select(' Set Default Backend - Current -> ' + def_backend , options)
+  index, key = rofi_backend.select('  Backend -  ' + def_backend , options)
   if key == -1 or index == 4:
     rofi_backend.close()
   else:
@@ -347,7 +347,7 @@ def network_widget(qtile):
   else:
     connected = ' Turn Wifi On'
     active="on"
-  options = [connected,' Bandwith Monitor (CLI)', ' Network Manager (CLI)']
+  options = [connected,'  Bandwith Monitor (CLI)', ' Network Manager (CLI)']
   index, key = rofi_network.select(wifi_icon + internet + " " + private_ip + " ->" + "  " + public_ip, options)
   if key == -1:
     rofi_network.close()
@@ -363,7 +363,7 @@ def network_widget(qtile):
 # Change Theme widget
 def change_theme(qtile):
   options = theme
-  index, key = rofi_backend.select('  Select Theme - Current -> ' + curr_theme , options)
+  index, key = rofi_backend.select('  Theme -  ' + curr_theme , options)
   if key == -1:
     rofi_backend.close()
   else:
