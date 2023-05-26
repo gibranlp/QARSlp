@@ -10,8 +10,7 @@ Ctrl + Alt + P :: Increase Brightness
 <<----------<< Theming >>---------->>
 Alt + R ::  Randomize Wallpaper With default Color Scheme
 Alt + W :: Theme Select
-Alt + D :: Set Default Color Scheme
-Alt +  + W :: Color Scheme Select
+Alt +  + W :: Set Color Scheme
 Alt +  + R :: Randomize Colors
 <<----------<< Rofi Widgets >>---------->>
  +  +  ::  App Launcher

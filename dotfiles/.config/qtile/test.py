@@ -1,11 +1,18 @@
 from theme import *
 
-print(variables)
-print(def_Backend)
+def dark_white(qtile):
+  options = ['Dark', 'Light']
+  index, key = rofi_backend.select('  Random Wallpaper & Theme', options)
+  if key == -1 or index == 2:
+    rofi_backend.close()
+  else:
+    if index == 0:
+      variables[3]="-c" "\n"
+    else:
+      variables[3]="-L" "\n"
 
-for variable in variables:
-    print(variable)
-
-print(def_Backend)
-
-set_default_backend(qtile)
+    with open(home + '/.config/qtile/variables', 'w') as file:
+      file.writelines(variables)
+    qtile.reload_config()
+    
+dark_white(qtile)
