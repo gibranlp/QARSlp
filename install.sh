@@ -14,6 +14,7 @@ function base() {
     'base-devel'
     'alsa-utils'
     'pulseaudio-alsa'
+    'pulseaudio-bluethooth'
     'pavucontrol'
     'openssh'
     'alacritty'
