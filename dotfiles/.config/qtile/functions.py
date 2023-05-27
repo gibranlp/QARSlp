@@ -17,9 +17,10 @@ from qtile_extras import widget
 from qtile_extras.widget.decorations import (RectDecoration, PowerLineDecoration)
 from rofi import Rofi
 from pathlib import Path
-from qtile_extras.popup.toolkit import (PopupImage, PopupText,PopupRelativeLayout,PopupWidget)
+from qtile_extras.popup.toolkit import (PopupImage, PopupText, PopupRelativeLayout, PopupWidget)
 
-# Variables
+#### Variables ####
+
 # Modifiers
 mod = "mod4"
 alt = "mod1"
@@ -27,11 +28,11 @@ alt = "mod1"
 ## Fonts
 main_font = "Fira Code Medium" # Font in use for the entire system
 awesome_font = "Font Awesome 6 Pro" # Font for the icons
-font_size=17
-bar_size=30
+font_size=17 # This value will be overwritten by the size of the display
+bar_size=30 # This value will be overwritten by the size of the display
 
 # Terminal 
-terminal = "alacritty"
+terminal = "alacritty" # Terminal in use
 
 #Home Path
 home = os.path.expanduser('~') # Path for use in folders
@@ -42,9 +43,9 @@ file = open(home + '/.config/qtile/variables', 'r')
 variables=file.readlines()
 
 # Wallpapers / Theming
-wallpaper_dir= home + '/Pictures/Wallpapers/'
+wallpaper_dir= home + '/Pictures/Wallpapers/' # Wallpapers folders
 rand_wallpaper = ""
-light=str(variables[3].strip())
+light=str(variables[3].strip()) # Optin for light themes
 
 # Theme
 curr_theme=str(variables[0].strip())
@@ -71,7 +72,6 @@ yres = resolution[22:26]
 
 
 # Set Bar and font sizez for specific resolution
-
 if xres == "3840" and yres == "2160": #4k
   layout_margin=10
   single_layout_margin=10  
@@ -398,33 +398,18 @@ def screenshot(qtile):
     else:
       subprocess.run("scrot -d 5 -c 'Screenshot_%S-%m-%y.png' -e 'mv $f ~/Pictures/ #; feh -F ~/Pictures/$f' && dunstify ' Timed Screenshot Taken!'",shell=True)
 
-#Popup Widgets
-
+# Popup Widgets
 def show_graphs(qtile):
     controls = [
-        PopupWidget(
-            widget=widget.CPUGraph(
-              type='box',
-              graph_color=color[1],
-              border_color=color[4],
-              fill_color=[3],
-            ),
-            width=0.45,
-            height=0.45,
+        PopupText(
+            text="",
             pos_x=0.05,
-            pos_y=0.05
-        ),
-        PopupWidget(
-            widget=widget.MemoryGraph(
-              type='box',
-              graph_color=color[1],
-              border_color=color[4],
-              fill_color=[3],
-            ),
-            width=0.45,
-            height=0.45,
-            pos_x=0.5,
-            pos_y=0.05
+            pos_y=0.05,
+            width=0.2,
+            height=0.2,
+            h_align="left",
+            fontsize=30,
+            foreground=color[1],
         ),
         PopupWidget(
             widget=widget.NetGraph(
@@ -433,22 +418,22 @@ def show_graphs(qtile):
               border_color=color[4],
               fill_color=[3],
             ),
-            width=0.9,
-            height=0.45,
-            pos_x=0.05,
-            pos_y=0.5
+            width=0.8,
+            height=0.2,
+            pos_x=0.5,
+            pos_y=0.05,
         )
     ]
 
     layout = PopupRelativeLayout(
         qtile,
-        width=500,
-        height=200,
+        width=300,
+        height=100,
         controls=controls,
         background=color[0],
         initial_focus=None,
         close_on_click=True,
-        hide_on_timeout=120,
+        hide_on_timeout=30,
     )
     layout.show(centered=True)
 

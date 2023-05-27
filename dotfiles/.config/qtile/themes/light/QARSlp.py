@@ -109,7 +109,7 @@ screens = [
             ),
             widget.TextBox(
               decorations=[RectDecoration(colour=color[0], radius=[7,0,0,7], filled=True)],
-              text="",
+              text="",
               foreground=color[6],
             ),
             widget.Mpris2(
@@ -325,14 +325,15 @@ screens = [
                border_colour=color[3],
                border_critical_colour='#cc0000',
                fill_critical='#cc0000',
+               border_low='#FFF5511',
                fill_low='#FF5511',
                fill_normal=color[3],
                foreground=color[3],
                decorations=[RectDecoration(colour=color[0], radius=[7,0,0,7], filled=True)],
-               percentage_critical=0.2,
-               percentage_low=0.4,
-               text_charging=' ({percentage:.0f}%) {ttf} to ',
-               text_discharging=' ({percentage:.0f}%) {tte} Left',
+               percentage_critical=0.15,
+               percentage_low=0.3,
+               text_charging=' ({percentage:.0f}%) {ttf} ',
+               text_discharging=' ({percentage:.0f}%) {tte} ',
             ),
             ## Lock, Logout, Poweroff
             widget.TextBox(
