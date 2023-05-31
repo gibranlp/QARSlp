@@ -69,8 +69,7 @@ resolution = os.popen('xdpyinfo | awk "/dimensions/{print $2}"').read()
 xres = resolution[17:21]
 yres = resolution[22:26]
 
-
-# Set Bar and font sizez for specific resolution
+# Set Bar and font sizes for different resolutions
 if xres == "3840" and yres == "2160": #4k
   layout_margin=10
   single_layout_margin=10  
@@ -98,7 +97,6 @@ else: # 1366 x 768 Macbook air 11"
   bar_size=20
   widget_width=100
   bar_margin=[0,0,0,0]
-
 
 # Rofi Configuration files
 rofi_session = Rofi(rofi_args=['-theme', '~/.config/rofi/logout.rasi'])
@@ -167,9 +165,6 @@ color = init_colors()
 
 # Transparent for bars and widgets
 transparent=color[0] + "00"
-
-# Select random wallpaper
-
 
 # Set Random Wallpaper
 def change_wallpaper(qtile):
@@ -351,7 +346,6 @@ def network_widget(qtile):
     else:
       qtile.cmd_spawn(terminal + ' -e nmtui')
 
-
 # Change Theme widget
 def change_theme(qtile):
   options = theme
@@ -367,7 +361,6 @@ def change_theme(qtile):
       file.writelines(variables)
     qtile.reload_config()
     
-
 # Set random colors to theme
 def random_colors(qtile):
   subprocess.run(["wpg", "-z", "%s" % wallpaper])
@@ -496,7 +489,6 @@ for i in groups:
     keys.append(Key([mod], i.name, lazy.group[i.name].toscreen()))
     keys.append(Key([mod, 'shift'], i.name, lazy.window.togroup(i.name)))
 
-
 ## Layouts
 def init_layout_theme():
   return {"font":main_font,
@@ -529,4 +521,3 @@ widget_defaults = dict(
     fontsize=font_size,
     padding=3,
 )
-extension_defaults = widget_defaults.copy()
