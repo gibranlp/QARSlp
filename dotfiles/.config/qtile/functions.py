@@ -44,7 +44,6 @@ variables=file.readlines()
 
 # Wallpapers / Theming
 wallpaper_dir= home + '/Pictures/Wallpapers/' # Wallpapers folders
-rand_wallpaper = ""
 light=str(variables[3].strip()) # Optin for light themes
 
 # Theme
@@ -170,21 +169,15 @@ color = init_colors()
 transparent=color[0] + "00"
 
 # Select random wallpaper
-selection = random.choice(os.listdir(wallpaper_dir))
-selected_wallpaper = os.path.join(wallpaper_dir, selection)
-while True:
-  if selected_wallpaper != wallpaper:
-    rand_wallpaper = selected_wallpaper
-    break
-  else:
-    selection = random.choice(os.listdir(wallpaper_dir))
-    selected_wallpaper = os.path.join(wallpaper_dir, selection)
+
 
 # Set Random Wallpaper
 def change_wallpaper(qtile):
+  selection = random.choice(os.listdir(wallpaper_dir))
+  selected_wallpaper = os.path.join(wallpaper_dir, selection)
   themes_dir = Path(str(variables[4].strip())).expanduser()
   theme_file = str(themes_dir) + "/" +  str(variables[0].strip()) + ".py"
-  wallpaper_file = rand_wallpaper
+  wallpaper_file = selected_wallpaper
   theme_dest = Path("~/.config/qtile/theme.py").expanduser()
   subprocess.run(["rm", "-rf", str(theme_dest)])
   subprocess.run(["cp", str(theme_file), str(theme_dest)])
@@ -398,46 +391,6 @@ def screenshot(qtile):
     else:
       subprocess.run("scrot -d 5 -c 'Screenshot_%S-%m-%y.png' -e 'mv $f ~/Pictures/ #; feh -F ~/Pictures/$f' && dunstify ' Timed Screenshot Taken!'",shell=True)
 
-# Popup Widgets
-def show_graphs(qtile):
-    controls = [
-        PopupText(
-            text="",
-            pos_x=0.05,
-            pos_y=0.05,
-            width=0.2,
-            height=0.2,
-            h_align="left",
-            fontsize=30,
-            foreground=color[1],
-        ),
-        PopupWidget(
-            widget=widget.NetGraph(
-              type='box',
-              graph_color=color[1],
-              border_color=color[4],
-              fill_color=[3],
-            ),
-            width=0.8,
-            height=0.2,
-            pos_x=0.5,
-            pos_y=0.05,
-        )
-    ]
-
-    layout = PopupRelativeLayout(
-        qtile,
-        width=300,
-        height=100,
-        controls=controls,
-        background=color[0],
-        initial_focus=None,
-        close_on_click=True,
-        hide_on_timeout=30,
-    )
-    layout.show(centered=True)
-
-
 ## Keys
 keys = [
     #Basics
@@ -521,9 +474,6 @@ keys = [
     Key(["control"], "space",  lazy.spawn("dunstctl close")), # Clear Last Notification
     Key(["control", "shift"], "space",  lazy.spawn("dunstctl close-all")), # Clear All Notifications
     Key(["control", "shift"], "n",  lazy.spawn("dunstctl  history-pop")), # Show Notificaction history
-
-    #Popup Widgets
-    Key([mod, "shift"], "g", lazy.function(show_graphs)),
 ]
 
 ## Groups
