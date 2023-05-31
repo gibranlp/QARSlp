@@ -1,18 +1,12 @@
-from theme import *
 
-def dark_white(qtile):
-  options = ['Dark', 'Light']
-  index, key = rofi_backend.select('  Random Wallpaper & Theme', options)
-  if key == -1 or index == 2:
-    rofi_backend.close()
-  else:
-    if index == 0:
-      variables[3]="-c" "\n"
-    else:
-      variables[3]="-L" "\n"
+from functions import *
 
-    with open(home + '/.config/qtile/variables', 'w') as file:
-      file.writelines(variables)
-    qtile.reload_config()
-    
-dark_white(qtile)
+def get_net_dev():
+  get_dev = "echo $(ip route get 8.8.8.8 | awk -- '{printf $5}')"
+  ps = subprocess.Popen(get_dev,shell=True,stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
+  output = ps.communicate()[0].decode('ascii').strip()
+  return(output)
+
+wifi = get_net_dev()
+
+print(wifi)
