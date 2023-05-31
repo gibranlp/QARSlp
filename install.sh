@@ -230,7 +230,7 @@ function update(){
   cp -r ~/QARSlp/dotfiles/.config/qtile/* ~/.config/qtile/
   cp -r ~/QARSlp/dotfiles/.local/bin/* ~/.local/bin
   cp ~/QARSlp/dotfiles/.config/dunst/dunstrc ~/.config/wal/templates
-  # cp ~/QARSlp/dotfiles/.config/picom/picom.conf ~/.config/picom/picom.conf
+  cp ~/QARSlp/dotfiles/.config/picom/picom.conf ~/.config/picom/picom.conf
   # sudo mkdir -p /usr/local/themes
   # sudo cp -r ~/.local/share/themes/FlatColor /usr/local/themes
   # sudo chown -R $USER:$USER /usr/local/themes/FlatColor

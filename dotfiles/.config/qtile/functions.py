@@ -387,7 +387,7 @@ def screenshot(qtile):
 ## Keys
 keys = [
     #Basics
-    Key([alt], "r",lazy.function(change_wallpaper)), # Set randwom wallpaper / colors to entire system
+    Key([alt], "r",lazy.function(change_wallpaper)), # Set random wallpaper / colors to entire system
     Key([mod], "Return", lazy.spawn(terminal)), # Open Terminal
     Key([mod, "shift"], "Return", lazy.spawn('rofi -theme "~/.config/rofi/launcher.rasi" -show run')), # Open Rofi launcher
     Key([mod], "r", lazy.spawncmd()), # Launch Prompt
