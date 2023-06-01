@@ -472,11 +472,15 @@ keys = [
 ## Groups
 groups = []
 group_names = ["Escape","1","2","3","4","5","6","7","8","9"]
+
+#### Groups Labels
 group_labels=["零","一","二","三","四","五","六","七","八","九"] # Kanji Numbers
 #group_labels=["0","1","2","3","4","5","6","7","8","9"] # Numbers
 #group_labels=["","","","","","","","","",""] # Circles
 #group_labels=["","","","","","","","","",""] # Dot Circles
 #group_labels=["󰏃","󰏃","󰏃","󰏃","󰏃","󰏃","󰏃","󰏃","󰏃","󰏃",]
+####
+
 group_layouts=["monadtall", "monadtall", "monadtall", "matrix","monadtall", "monadtall", "monadtall","monadtall", "monadtall", "floating"]
 for i in range(len(group_names)):
   groups.append(
