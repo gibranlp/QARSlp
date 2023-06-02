@@ -113,9 +113,11 @@ single_border_width=4 # Single border width
 
 ## Calendar Notifications
 
-Using Dunst if you click on the clok you will get the current month in the calendar, if you move the mouse wheel on the clock you can change the month upp and down also.
+Using Dunst if you click on the clock you will get the current month in the calendar, if you move the mouse wheel on the clock you can change the month upp and down also.
 
 ![Calendar](/screenshots/calendar.png)
+![Calendar1](/screenshots/calendar1.png)
+![Calendar2](/screenshots/calendar2.png)
 
 ## Lightdm
 
