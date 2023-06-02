@@ -59,7 +59,7 @@ group_labels=["零","一","二","三","四","五","六","七","八","九"] # Kan
 
 ## Icon 
 
-The network icon will change depending if you are connectedo the Ethernet or Wifi
+The network icon will change automatically depending if you are connectedo the Ethernet or Wifi, when connected to wifi the SSID will also be visible.
 
 - Wifi
     - ![wifi](/screenshots/wifi.png)
@@ -68,6 +68,14 @@ The network icon will change depending if you are connectedo the Ethernet or Wif
     - ![Ethernet](/screenshots/ethernet.png)
 
 ## Net & Wlan Qtile Widgets
+
+In the QARSlp & Slash themes, you can click in the Network icon and the widget will display the current local IP and the Public IP.
+
+- Wifi
+    - ![wifi](/screenshots/wifi-ip.png)
+
+- Ethernet
+    - ![Ethernet](/screenshots/ethernet-ip.png)
 
 
 
