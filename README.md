@@ -135,6 +135,10 @@ This Qtile theme also changes Lightdm with the current wallpaper and color schem
 
 # Themes
 
+## Theme Selector
+
+Select the theme you want to use (QARSlp, Slash, Minimal, no_bar), so far, i have in mind a lot more themes.
+
 ![Themes](/screenshots/themes.gif)
 
 
@@ -150,7 +154,7 @@ This Qtile theme also changes Lightdm with the current wallpaper and color schem
 
 # Backends
 
-You can select different backends trough a Rofi widget using the same wallpaper, the backends available are Wal(Pywal default), Colorz, Colorthief and Haishoku.
+You can select different backends trough a Rofi widget using the same wallpaper, the backends available are Wal, Colorz, Colorthief and Haishoku.
 
 ![Backends](/screenshots/bckends.gif)
 
@@ -183,18 +187,6 @@ Check out all the shortcuts of the system
 
 ![Shortcuts](/screenshots/Shortcuts.png)
 
-## Theme Selector
-
-Select the theme you want to use
-
-![Theme Selector](/screenshots/Theme.png)
-
-## Backend Selector
-
-Select a dark or light theme and then select a backend (Wal, Colorz, Colorthief or Haishoku) to generate a new palette theme.
-
-![Backend1](/screenshots/Backend1.png)
-![Backend2](/screenshots/Backend2.png)
 
 ## Multi Monitor Management
 
