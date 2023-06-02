@@ -152,7 +152,7 @@ This Qtile theme also changes Lightdm with the current wallpaper and color schem
 
 You can select different backends trough a Rofi widget using the same wallpaper, the backends available are Wal(Pywal default), Colorz, Colorthief and Haishoku.
 
-![Backends](/screenshots/backends.gif)
+![Backends](/screenshots/bckends.gif)
 
 ## Wal
 ![Wal1](/screenshots/Wal1.png)
