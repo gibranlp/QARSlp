@@ -49,11 +49,30 @@ awesome_font = "Font Awesome 6 Pro" # Font for the icons
 There are Several labels for the groups already defined you can change them by uncommenting the line you want between the lines 476 - 482 in the file ~/.config/qtile/functions.py
 
 ```bash
-group_labels=["零","一","二","三","四","五","六","七","八","九"] # Kanji Numbers
+#group_labels=["零","一","二","三","四","五","六","七","八","九"] # Kanji Numbers
 #group_labels=["0","1","2","3","4","5","6","7","8","9"] # Numbers
 #group_labels=["","","","","","","","","",""] # Circles
 #group_labels=["","","","","","","","","",""] # Dot Circles
+#group_labels=["󰏃","󰏃","󰏃","󰏃","󰏃","󰏃","󰏃","󰏃","󰏃","󰏃",] # Custom
 ```
+
+- Kanji Numbers
+    - ![wifi](/screenshots/kanji.png)
+
+
+- Numbers
+    - ![wifi](/screenshots/numbers.png)
+
+- Circles
+    - ![wifi](/screenshots/circles.png)
+
+- Dot Circles
+    - ![wifi](/screenshots/dot-circles.png)
+
+- Custom
+    - ![wifi](/screenshots/custom.png)
+
+You can use any icon from [here](https://fontawesome.com/v5/cheatsheet/pro) in case you want to make your own custom groups
 
 # Ethernet & Wifi
 
