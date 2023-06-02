@@ -19,6 +19,12 @@ It features a dark & light color schemes with contrasting colors for active and 
 
 # Features
 
+## Set Random Wallpaper Theme
+
+To set a random wallpaper simply type Alt + R and theentire system will change with the wallpaper.
+
+![Random Wallpaper](/screenshots/random-wallpaper.gif)
+
 # Persistent Changes
 
 A file named ~/.config/qtile/variables is created to save some variables, the content of the file is as follows:
@@ -177,12 +183,6 @@ Check out all the shortcuts of the system
 Select the theme you want to use
 
 ![Theme Selector](/screenshots/Theme.png)
-
-## Set Random Wallpaper Theme
-
-Select a theme dark or light and QARSlp will set a random wallpaper
-
-![Random Wallpaper](/screenshots/Random_Wall.png)
 
 ## Backend Selector
 
