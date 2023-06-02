@@ -115,7 +115,7 @@ single_border_width=4 # Single border width
 
 Using Dunst if you click on the clok you will get the current month in the calendar, if you move the mouse wheel on the clock you can change the month upp and down also.
 
-![Calendar](/screenshots/calendar)
+![Calendar](/screenshots/calendar.png)
 
 ## Lightdm
 
