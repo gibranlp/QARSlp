@@ -376,13 +376,13 @@ def screenshot(qtile):
     rofi_screenshot.close()
   else:
     if index ==0:
-      subprocess.run("scrot -d 1 'Screenshot_%S-%m-%y.png' -e 'mv $f ~/Pictures/ #; feh -F ~/Pictures/$f' && dunstify ' Screen Picture Taken!'",shell=True)
+      subprocess.run("flameshot full --path ~/Pictures/Screenshot.png --delay 500",shell=True)
     elif index==1:
       subprocess.run("scrot -u 'Screenshot_%S-%m-%y.png' -e 'mv $f ~/Pictures/ #; feh -F ~/Pictures/$f' && dunstify ' Window Picture Taken!'",shell=True)
     elif index==2:
-      subprocess.run("scrot -s 'Screenshot_%S-%m-%y.png' -e 'mv $f ~/Pictures/ #; feh -F ~/Pictures/$f' && dunstify ' Area Picture Taken!'",shell=True)
+      subprocess.run("flameshot gui --path ~/Pictures/Screenshot.png --delay 400",shell=True)
     else:
-      subprocess.run("scrot -d 5 -c 'Screenshot_%S-%m-%y.png' -e 'mv $f ~/Pictures/ #; feh -F ~/Pictures/$f' && dunstify ' Timed Screenshot Taken!'",shell=True)
+      subprocess.run("flameshot full --path ~/Pictures/Screenshot.png --delay 5000",shell=True)
 
 ## Keys
 keys = [

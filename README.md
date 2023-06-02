@@ -19,6 +19,77 @@ It features a dark & light color schemes with contrasting colors for active and 
 
 # Features
 
+# Persistent Changes
+
+A file named ~/.config/qtile/variables is created to save some variables, the content of the file is as follows:
+
+```bash
+QARSlp # This is the current theme
+Wal # This is the Backend in use 
+1hjg1y23y3hj # Here goes the Api key to use the Openweather widget 
+-c # This is to select a Light Theme
+~/.config/qtile/themes/dark # This is the location folder of the dark and Light themes
+```
+This file is updated automatically when you select a new theme or change the backend, and its used so after you reboot your pc the system will remain the same.
+
+# Fonts
+
+The entire system is configures to use the Fira Code Medium font, and Awesome Pro 6 for all the icons in the bar and in the Rofi Widgets.
+
+If you want to change the fonts, make sure you have the fonts installed and then change the lines 29 and 30 in the file ~/.config/qtile/functions.py
+
+```bash
+## Fonts
+main_font = "Fira Code Medium" # Font in use for the entire system
+awesome_font = "Font Awesome 6 Pro" # Font for the icons
+```
+
+# Groups Labels
+
+There are Several labels for the groups already defined you can change them by uncommenting the line you want between the lines 476 - 482 in the file ~/.config/qtile/functions.py
+
+```bash
+group_labels=["零","一","二","三","四","五","六","七","八","九"] # Kanji Numbers
+#group_labels=["0","1","2","3","4","5","6","7","8","9"] # Numbers
+#group_labels=["","","","","","","","","",""] # Circles
+#group_labels=["","","","","","","","","",""] # Dot Circles
+```
+
+# Ethernet & Wifi
+
+## Icon 
+
+The network icon will change depending if you are connectedo the Ethernet or Wifi
+
+- Wifi
+    - ![wifi](/screenshots/wifi.png)
+
+- Ethernet
+    - ![Ethernet](/screenshots/ethernet.png)
+
+## Net & Wlan Qtile Widgets
+
+
+
+## General Margins and Borders
+
+If you want to change the margins for all themes just go into the lines 57-62 in the file ~/.config/qtile/functions.py
+
+```bash
+## Margins
+layout_margin=10 # Layout margins
+single_layout_margin=10 # Single window margin 
+## Borders
+layout_border_width=4 # Layout border width
+single_border_width=4 # Single border width
+```
+
+## Calendar Notifications
+
+Using Dunst if you click on the clok you will get the current month in the calendar, if you move the mouse wheel on the clock you can change the month upp and down also.
+
+![Calendar](/screenshots/calendar)
+
 ## Lightdm
 
 This Qtile theme also changes Lightdm with the current wallpaper and color scheme.
@@ -116,9 +187,9 @@ Lock the PC, Sign out, Reboot or Poweroff.
 
 ![Session](/screenshots/Session.png)
 
-## Screenshot
+## Screenshot Widget
 
-Take Screenshots of the Screen, an Area, a Window, or the Screen in 5 seconds using [Scrot](https://github.com/dreamer/scrot)
+Take Screenshots of the Screen, an Area, a Window, or the Screen in 5 seconds using [Scrot](https://github.com/dreamer/scrot) and [Flameshot](https://flameshot.org/)
 
 ![Screenshot](/screenshots/Screenshot.png)
 
