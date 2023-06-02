@@ -8,9 +8,9 @@ Ctrl + Alt + L :: Lock Screen
 Ctrl + Alt + O :: Lower Brightness
 Ctrl + Alt + P :: Increase Brightness
 <<----------<< Theming >>---------->>
-Alt + R ::  Randomize Wallpaper 
+Alt + R ::  Randomize Wallpaper With default Color Scheme
 Alt + W :: Theme Select
-Alt +  + W :: Color Scheme Select
+Alt +  + W :: Set Color Scheme
 Alt +  + R :: Randomize Colors
 <<----------<< Rofi Widgets >>---------->>
  +  +  ::  App Launcher

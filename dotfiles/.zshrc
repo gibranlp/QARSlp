@@ -9,7 +9,7 @@
 # MIT licence 
 #
 export ZSH=$HOME/.oh-my-zsh
-ZSH_THEME="passion"
+ZSH_THEME="agnoster"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -112,3 +112,4 @@ export PATH=$PATH:/opt/ade
 wal -R -q && clear
 echo "TF"$(( (`date +%s` - `date +%s -d '2003/08/1'`) / 86400 ))
 echo "LT"$(( (`date +%s` - `date +%s -d '2022/08/15'`) / 86400 ))
+setxkbmap -layout us -variant intl

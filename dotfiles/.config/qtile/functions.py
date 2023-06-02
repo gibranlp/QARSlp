@@ -17,21 +17,22 @@ from qtile_extras import widget
 from qtile_extras.widget.decorations import (RectDecoration, PowerLineDecoration)
 from rofi import Rofi
 from pathlib import Path
-from qtile_extras.popup.toolkit import (PopupImage, PopupText,PopupRelativeLayout,PopupWidget)
+from qtile_extras.popup.toolkit import (PopupImage, PopupText, PopupRelativeLayout, PopupWidget)
 
-# Variables
+#### Variables ####
+
 # Modifiers
 mod = "mod4"
 alt = "mod1"
 
 ## Fonts
 main_font = "Fira Code Medium" # Font in use for the entire system
-awesome_font = "Font Awesome 6 Pro Solid" # Font for the icons
-font_size=17
-bar_size=30
+awesome_font = "Font Awesome 6 Pro" # Font for the icons
+font_size=17 # This value will be overwritten by the size of the display
+bar_size=30 # This value will be overwritten by the size of the display
 
 # Terminal 
-terminal = "alacritty"
+terminal = "alacritty" # Terminal in use
 
 #Home Path
 home = os.path.expanduser('~') # Path for use in folders
@@ -42,15 +43,15 @@ file = open(home + '/.config/qtile/variables', 'r')
 variables=file.readlines()
 
 # Wallpapers / Theming
-wallpaper_dir= home + '/Pictures/Wallpapers/'
-rand_wallpaper = ""
-light="-c"
+wallpaper_dir= home + '/Pictures/Wallpapers/' # Wallpapers folders
+light=str(variables[3].strip()) # Optin for light themes
 
 # Theme
+curr_theme=str(variables[0].strip())
 theme=['QARSlp', 'slash', 'minimal', 'no_bar']
 
 # Pywal backends Options: Wal, Colorz, Colorthief, Haishoku
-def_Backend='Haishoku'
+def_backend=str(variables[1].strip()) # Default Color Scheme for random wallpaper
 backend=['Wal', 'Colorz', 'Colorthief','Haishoku']
 
 ## Margins
@@ -60,18 +61,15 @@ single_layout_margin=10 # Single window margin
 layout_border_width=4 # Layout border width
 single_border_width=4 # Single border width
 
-# Transparent for bars and widgets
-transparent="00000000"
-widget_width=200
+#Widgets
+widget_width=200 #Width of widgets varies depending the resolution
 
 # Get current screen resolution
 resolution = os.popen('xdpyinfo | awk "/dimensions/{print $2}"').read()
 xres = resolution[17:21]
 yres = resolution[22:26]
 
-
-# Set Bar and font sizez for specific resolution
-
+# Set Bar and font sizes for different resolutions
 if xres == "3840" and yres == "2160": #4k
   layout_margin=10
   single_layout_margin=10  
@@ -99,7 +97,6 @@ else: # 1366 x 768 Macbook air 11"
   bar_size=20
   widget_width=100
   bar_margin=[0,0,0,0]
-
 
 # Rofi Configuration files
 rofi_session = Rofi(rofi_args=['-theme', '~/.config/rofi/logout.rasi'])
@@ -166,27 +163,34 @@ with open(home + '/.cache/wal/colors.json') as wal_import:
 
 color = init_colors()
 
-# Select random wallpaper
-selection = random.choice(os.listdir(wallpaper_dir))
-selected_wallpaper = os.path.join(wallpaper_dir, selection)
-while True:
-  if selected_wallpaper != wallpaper:
-    rand_wallpaper = selected_wallpaper
-    break
-  else:
-    selection = random.choice(os.listdir(wallpaper_dir))
-    selected_wallpaper = os.path.join(wallpaper_dir, selection)
+# Transparent for bars and widgets
+transparent=color[0] + "00"
+
+# Set Random Wallpaper
+def change_wallpaper(qtile):
+  selection = random.choice(os.listdir(wallpaper_dir))
+  selected_wallpaper = os.path.join(wallpaper_dir, selection)
+  themes_dir = Path(str(variables[4].strip())).expanduser()
+  theme_file = str(themes_dir) + "/" +  str(variables[0].strip()) + ".py"
+  wallpaper_file = selected_wallpaper
+  theme_dest = Path("~/.config/qtile/theme.py").expanduser()
+  subprocess.run(["rm", "-rf", str(theme_dest)])
+  subprocess.run(["cp", str(theme_file), str(theme_dest)])
+  subprocess.run(["wpg", light, "-s", str(wallpaper_file), "--backend", def_backend.lower()])
+  subprocess.run(["cp", str(wallpaper_file), "/usr/local/backgrounds/background.png"])
+  subprocess.run(["cp", "-r", str(Path.home() / ".local/share/themes/FlatColor"), "/usr/local/themes/"])
+  qtile.reload_config()
 
 ## Get network device in use
 def get_net_dev():
-  get_dev = "ip addr show | awk '/inet.*brd/{print $NF; exit}'"
+  get_dev = "echo $(ip route get 8.8.8.8 | awk -- '{printf $5}')"
   ps = subprocess.Popen(get_dev,shell=True,stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
   output = ps.communicate()[0].decode('ascii').strip()
   return(output)
 
 wifi = get_net_dev()
 
-# Set Ethernet or Wifi Icon according
+# Set Ethernet or Wifi icon according
 if wifi.startswith('e'):
   wifi_icon=''
 else:
@@ -232,65 +236,42 @@ def calendar_notification_next(qtile):{
 
 ## Rofi Widgets
 
-## Change Wallpaper & Theme
-def change_wallpaper(qtile):
-    themes_dir = Path("~/.config/qtile/themes").expanduser()
-    options = ['Dark', 'Light']
-    index, key = rofi_backend.select('  Random Wallpaper & Theme', options)
-    if key == -1 or index == 2:
-        rofi_backend.close()
-    else:
-        if index == 0:
-            theme_file = str(themes_dir) + "/" +  str(variables[0].strip()) + ".py"
-            wallpaper_file = rand_wallpaper
-            light_option = "-c"
-        else:
-            theme_file = str(themes_dir) + "/" +  str(variables[0].strip()) + "_light.py"
-            wallpaper_file = rand_wallpaper
-            light_option = "-L"
-
-        theme_dest = Path("~/.config/qtile/theme.py").expanduser()
-        subprocess.run(["rm", "-rf", str(theme_dest)])
-        subprocess.run(["cp", str(theme_file), str(theme_dest)])
-        subprocess.run(["wpg", light_option, "-s", str(wallpaper_file), "--backend", def_Backend.lower()])
-        subprocess.run(["cp", str(wallpaper_file), "/usr/local/backgrounds/background.png"])
-        subprocess.run(["cp", "-r", str(Path.home() / ".local/share/themes/FlatColor"), "/usr/local/themes/"])
-        qtile.reload_config()
-
-      
-## Change Theme
-def change_theme_color(qtile):
-  options = ['Dark','Light']
-  index, key = rofi_backend.select('  Set Theme', options)
-  if key == -1 or index == 4:
+## Select Dark or Light Theming
+def dark_white(qtile):
+  options = ['Dark', 'Light']
+  index, key = rofi_backend.select('  Dark or  Light Theme', options)
+  if key == -1 or index == 2:
     rofi_backend.close()
   else:
     if index == 0:
-      change_color_scheme_dark(qtile)
+      variables[3]="-c" + "\n"
+      variables[4]="~/.config/qtile/themes/dark" + "\n"
+      subprocess.run(["wal", "-i", "/usr/local/backgrounds/background.png", "--backend", "%s" %def_backend])
+      subprocess.run(["wpg", "-s", "/usr/local/backgrounds/background.png", "--backend", "%s" %def_backend])
     else:
-      change_color_scheme_light(qtile)
-     
-# Change Color Backend
-def change_color_scheme_dark(qtile):
-  options = backend
-  index, key = rofi_backend.select('  Color Scheme', options)
-  if key == -1 or index == 4:
-    rofi_backend.close()
-  else:
-    subprocess.run(["wal", "-i", "/usr/local/backgrounds/background.png", "--backend", "%s" %backend[index].lower()])
-    subprocess.run(["wpg", "-s", "/usr/local/backgrounds/background.png", "--backend", "%s" %backend[index].lower()])
+      variables[3]="-L" + "\n"
+      variables[4]="~/.config/qtile/themes/light" + "\n"
+      subprocess.run(["wal", "-l", "-i", "/usr/local/backgrounds/background.png", "--backend", "%s" %def_backend])
+      subprocess.run(["wpg", "-L", "-s", "/usr/local/backgrounds/background.png", "--backend", "%s" %def_backend])
+
     subprocess.run(["sudo", "cp", "-r", home + "/.local/share/themes/FlatColor",  "/usr/local/themes/"])
+    with open(home + '/.config/qtile/variables', 'w') as file:
+      file.writelines(variables)
     qtile.reload_config()
-  
-def change_color_scheme_light(qtile):
+      
+## Set default backend
+def set_default_backend(qtile):
   options = backend
-  index, key = rofi_backend.select('  Color Scheme', options)
+  index, key = rofi_backend.select('  Backend -  ' + def_backend , options)
   if key == -1 or index == 4:
     rofi_backend.close()
   else:
-    subprocess.run(["wal", "-i", "/usr/local/backgrounds/background.png", "--backend", "%s" %backend[index].lower()])
-    subprocess.run(["wpg", "-L", "-s", "/usr/local/backgrounds/background.png", "--backend", "%s" %backend[index].lower()])
+    subprocess.run(["wal", light.lower(), "-i", "/usr/local/backgrounds/background.png", "--backend", "%s" %backend[index].lower()])
+    subprocess.run(["wpg", light, "-s", "/usr/local/backgrounds/background.png", "--backend", "%s" %backend[index].lower()])
     subprocess.run(["sudo", "cp", "-r", home + "/.local/share/themes/FlatColor",  "/usr/local/themes/"])
+    variables[1]=backend[index] + "\n"
+    with open(home + '/.config/qtile/variables', 'w') as file:
+      file.writelines(variables)
     qtile.reload_config()
 
 # Display Shortcuts widget
@@ -353,7 +334,7 @@ def network_widget(qtile):
   else:
     connected = ' Turn Wifi On'
     active="on"
-  options = [connected,' Bandwith Monitor (CLI)', ' Network Manager (CLI)']
+  options = [connected,'  Bandwith Monitor (CLI)', ' Network Manager (CLI)']
   index, key = rofi_network.select(wifi_icon + internet + " " + private_ip + " ->" + "  " + public_ip, options)
   if key == -1:
     rofi_network.close()
@@ -365,11 +346,10 @@ def network_widget(qtile):
     else:
       qtile.cmd_spawn(terminal + ' -e nmtui')
 
-
 # Change Theme widget
 def change_theme(qtile):
   options = theme
-  index, key = rofi_backend.select('  Select Theme', options)
+  index, key = rofi_backend.select('  Theme -  ' + curr_theme , options)
   if key == -1:
     rofi_backend.close()
   else:
@@ -381,7 +361,6 @@ def change_theme(qtile):
       file.writelines(variables)
     qtile.reload_config()
     
-
 # Set random colors to theme
 def random_colors(qtile):
   subprocess.run(["wpg", "-z", "%s" % wallpaper])
@@ -397,73 +376,18 @@ def screenshot(qtile):
     rofi_screenshot.close()
   else:
     if index ==0:
-      subprocess.run("scrot -d 1 'Screenshot_%S-%m-%y.png' -e 'mv $f ~/Pictures/ #; feh -F ~/Pictures/$f' && dunstify ' Screen Picture Taken!'",shell=True)
+      subprocess.run("flameshot full --path ~/Pictures/Screenshot.png --delay 500",shell=True)
     elif index==1:
       subprocess.run("scrot -u 'Screenshot_%S-%m-%y.png' -e 'mv $f ~/Pictures/ #; feh -F ~/Pictures/$f' && dunstify ' Window Picture Taken!'",shell=True)
     elif index==2:
-      subprocess.run("scrot -s 'Screenshot_%S-%m-%y.png' -e 'mv $f ~/Pictures/ #; feh -F ~/Pictures/$f' && dunstify ' Area Picture Taken!'",shell=True)
+      subprocess.run("flameshot gui --path ~/Pictures/Screenshot.png --delay 400",shell=True)
     else:
-      subprocess.run("scrot -d 5 -c 'Screenshot_%S-%m-%y.png' -e 'mv $f ~/Pictures/ #; feh -F ~/Pictures/$f' && dunstify ' Timed Screenshot Taken!'",shell=True)
-
-#Popup Widgets
-
-def show_graphs(qtile):
-    controls = [
-        PopupWidget(
-            widget=widget.CPUGraph(
-              type='box',
-              graph_color=color[1],
-              border_color=color[4],
-              fill_color=[3],
-            ),
-            width=0.45,
-            height=0.45,
-            pos_x=0.05,
-            pos_y=0.05
-        ),
-        PopupWidget(
-            widget=widget.MemoryGraph(
-              type='box',
-              graph_color=color[1],
-              border_color=color[4],
-              fill_color=[3],
-            ),
-            width=0.45,
-            height=0.45,
-            pos_x=0.5,
-            pos_y=0.05
-        ),
-        PopupWidget(
-            widget=widget.NetGraph(
-              type='box',
-              graph_color=color[1],
-              border_color=color[4],
-              fill_color=[3],
-            ),
-            width=0.9,
-            height=0.45,
-            pos_x=0.05,
-            pos_y=0.5
-        )
-    ]
-
-    layout = PopupRelativeLayout(
-        qtile,
-        width=500,
-        height=200,
-        controls=controls,
-        background=color[0],
-        initial_focus=None,
-        close_on_click=True,
-        hide_on_timeout=120,
-    )
-    layout.show(centered=True)
-
+      subprocess.run("flameshot full --path ~/Pictures/Screenshot.png --delay 5000",shell=True)
 
 ## Keys
 keys = [
     #Basics
-    Key([alt], "r",lazy.function(change_wallpaper)), # Set randwom wallpaper / colors to entire system
+    Key([alt], "r",lazy.function(change_wallpaper)), # Set random wallpaper / colors to entire system
     Key([mod], "Return", lazy.spawn(terminal)), # Open Terminal
     Key([mod, "shift"], "Return", lazy.spawn('rofi -theme "~/.config/rofi/launcher.rasi" -show run')), # Open Rofi launcher
     Key([mod], "r", lazy.spawncmd()), # Launch Prompt
@@ -474,6 +398,7 @@ keys = [
 
     # Widgets
     Key([mod],"c",lazy.function(shortcuts)), # Shortcuts widget
+    Key([mod],"d",lazy.function(dark_white)), # Select Dark or Light Theme
     Key([mod, "shift"],"o",lazy.function(nightLight_widget)),
     Key([mod],"p",lazy.function(fargewidget)), # Color Picker Widget
     Key([alt], "Return", lazy.spawn('rofi  -theme "~/.config/rofi/left_bar.rasi" -show find -modi find:~/.local/bin/finder')), # Search for files and folders
@@ -482,7 +407,7 @@ keys = [
     Key([mod],"t",lazy.spawn('rofi  -theme "~/.config/rofi/tasks.rasi" -show tasks:task')), # Task list
     Key([mod],"x",lazy.function(session_widget)), # Log out
     Key([mod],"b",lazy.spawn(home + '/.local/bin/wifi2')), # Network Settings
-    Key([alt, "shift"],"w",lazy.function(change_theme_color)), # Change Color Scheme
+    Key([alt, "shift"],"w",lazy.function(set_default_backend)), # Set Default Color Scheme
     Key([alt],"w",lazy.function(change_theme)), # Change Theme
     Key([mod, "shift"],"x",lazy.spawn(home + '/.local/bin/change_display')),# Monitor modes Widget
     Key([alt, "shift"], "r",lazy.function(random_colors)), # Set randwom wallpaper / colors to entire system
@@ -542,19 +467,20 @@ keys = [
     Key(["control"], "space",  lazy.spawn("dunstctl close")), # Clear Last Notification
     Key(["control", "shift"], "space",  lazy.spawn("dunstctl close-all")), # Clear All Notifications
     Key(["control", "shift"], "n",  lazy.spawn("dunstctl  history-pop")), # Show Notificaction history
-
-    #Popup Widgets
-    Key([mod, "shift"], "g", lazy.function(show_graphs)),
 ]
 
 ## Groups
 groups = []
 group_names = ["Escape","1","2","3","4","5","6","7","8","9"]
+
+#### Groups Labels
 group_labels=["零","一","二","三","四","五","六","七","八","九"] # Kanji Numbers
 #group_labels=["0","1","2","3","4","5","6","7","8","9"] # Numbers
 #group_labels=["","","","","","","","","",""] # Circles
 #group_labels=["","","","","","","","","",""] # Dot Circles
 #group_labels=["󰏃","󰏃","󰏃","󰏃","󰏃","󰏃","󰏃","󰏃","󰏃","󰏃",]
+####
+
 group_layouts=["monadtall", "monadtall", "monadtall", "matrix","monadtall", "monadtall", "monadtall","monadtall", "monadtall", "floating"]
 for i in range(len(group_names)):
   groups.append(
@@ -566,7 +492,6 @@ for i in range(len(group_names)):
 for i in groups:
     keys.append(Key([mod], i.name, lazy.group[i.name].toscreen()))
     keys.append(Key([mod, 'shift'], i.name, lazy.window.togroup(i.name)))
-
 
 ## Layouts
 def init_layout_theme():
@@ -600,4 +525,3 @@ widget_defaults = dict(
     fontsize=font_size,
     padding=3,
 )
-extension_defaults = widget_defaults.copy()
