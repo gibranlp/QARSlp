@@ -133,9 +133,12 @@ This Qtile theme also changes Lightdm with the current wallpaper and color schem
 ![Lightdm2](/screenshots/Lightdm2.png)
 ![Lightdm3](/screenshots/Lightdm3.png)
 
-## Themes
+# Themes
 
-# QARSlp
+![Themes](/screenshots/themes.gif)
+
+
+## QARSlp
 
 ![QARSlp1](/screenshots/QARSlp1.png)
 ![QARSlp2](/screenshots/QARSlp2.png)
