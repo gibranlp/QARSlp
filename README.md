@@ -49,6 +49,12 @@ Wal # This is the Backend in use
 ```
 This file is updated automatically when you select a new theme or change the backend, and its used so after you reboot your pc the system will remain the same.
 
+## Top Bar or Bottom Bar? no problem
+
+With this rofi widget you can change your bar to the top or the bottom, with any theme.
+
+- ![Bar](/screenshots/bars.gif)
+
 ## Fonts
 
 The entire system is configures to use the Fira Code Medium font, and Awesome Pro 6 for all the icons in the bar and in the Rofi Widgets.
