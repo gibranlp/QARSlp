@@ -13,5 +13,4 @@ transmission-daemon &
 kdeconnect-indicator &
 blueman-applet &
 barrier &
-sudo Networkmanager &
 

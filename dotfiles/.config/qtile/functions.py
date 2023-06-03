@@ -47,7 +47,10 @@ wallpaper_dir= home + '/Pictures/Wallpapers/' # Wallpapers folders
 light=str(variables[3].strip()) # Optin for light themes
 
 # Theme
-curr_theme=str(variables[0].strip())
+current_theme=str(variables[0].strip())
+themes_dir = home + str(variables[4].strip())
+theme_dest = (home + "/.config/qtile/theme.py")
+theme_file = themes_dir + "/" + current_theme
 theme=['QARSlp', 'slash', 'minimal', 'no_bar']
 
 # Pywal backends Options: Wal, Colorz, Colorthief, Haishoku
@@ -170,12 +173,7 @@ transparent=color[0] + "00"
 def change_wallpaper(qtile):
   selection = random.choice(os.listdir(wallpaper_dir))
   selected_wallpaper = os.path.join(wallpaper_dir, selection)
-  themes_dir = Path(str(variables[4].strip())).expanduser()
-  theme_file = str(themes_dir) + "/" +  str(variables[0].strip()) + ".py"
   wallpaper_file = selected_wallpaper
-  theme_dest = Path("~/.config/qtile/theme.py").expanduser()
-  subprocess.run(["rm", "-rf", str(theme_dest)])
-  subprocess.run(["cp", str(theme_file), str(theme_dest)])
   subprocess.run(["wpg", light, "-s", str(wallpaper_file), "--backend", def_backend.lower()])
   subprocess.run(["cp", str(wallpaper_file), "/usr/local/backgrounds/background.png"])
   subprocess.run(["cp", "-r", str(Path.home() / ".local/share/themes/FlatColor"), "/usr/local/themes/"])
@@ -245,16 +243,18 @@ def dark_white(qtile):
   else:
     if index == 0:
       variables[3]="-c" + "\n"
-      variables[4]="~/.config/qtile/themes/dark" + "\n"
+      variables[4]="/.config/qtile/themes/dark" + "\n"
+      subprocess.run(['cp', home + '/.config/qtile/themes/dark/' + current_theme + ".py", home + '/.config/qtile/theme.py'])
       subprocess.run(["wal", "-i", "/usr/local/backgrounds/background.png", "--backend", "%s" %def_backend])
       subprocess.run(["wpg", "-s", "/usr/local/backgrounds/background.png", "--backend", "%s" %def_backend])
     else:
       variables[3]="-L" + "\n"
-      variables[4]="~/.config/qtile/themes/light" + "\n"
+      variables[4]="/.config/qtile/themes/light" + "\n"
+      subprocess.run(['cp', home + '/.config/qtile/themes/light/' + current_theme + ".py", home + '/.config/qtile/theme.py'])
       subprocess.run(["wal", "-l", "-i", "/usr/local/backgrounds/background.png", "--backend", "%s" %def_backend])
       subprocess.run(["wpg", "-L", "-s", "/usr/local/backgrounds/background.png", "--backend", "%s" %def_backend])
 
-    subprocess.run(["sudo", "cp", "-r", home + "/.local/share/themes/FlatColor",  "/usr/local/themes/"])
+    subprocess.run(["cp", "-r", home + "/.local/share/themes/FlatColor",  "/usr/local/themes/"])
     with open(home + '/.config/qtile/variables', 'w') as file:
       file.writelines(variables)
     qtile.reload_config()
@@ -268,7 +268,7 @@ def set_default_backend(qtile):
   else:
     subprocess.run(["wal", light.lower(), "-i", "/usr/local/backgrounds/background.png", "--backend", "%s" %backend[index].lower()])
     subprocess.run(["wpg", light, "-s", "/usr/local/backgrounds/background.png", "--backend", "%s" %backend[index].lower()])
-    subprocess.run(["sudo", "cp", "-r", home + "/.local/share/themes/FlatColor",  "/usr/local/themes/"])
+    subprocess.run(["cp", "-r", home + "/.local/share/themes/FlatColor",  "/usr/local/themes/"])
     variables[1]=backend[index] + "\n"
     with open(home + '/.config/qtile/variables', 'w') as file:
       file.writelines(variables)
@@ -349,14 +349,14 @@ def network_widget(qtile):
 # Change Theme widget
 def change_theme(qtile):
   options = theme
-  index, key = rofi_backend.select('  Theme -  ' + curr_theme , options)
+  index, key = rofi_backend.select('  Theme -  ' + current_theme , options)
   if key == -1:
     rofi_backend.close()
   else:
     subprocess.run('rm -rf ~/.config/qtile/theme.py', shell=True)
     variables[0]=theme[index] + "\n"
-    current_theme=theme[index] + ".py"
-    subprocess.run('\cp ~/.config/qtile/themes/%s ~/.config/qtile/theme.py'% current_theme, shell=True)
+    new_theme=theme[index] + ".py"
+    subprocess.run(['cp', themes_dir + "/" + new_theme, home + '/.config/qtile/theme.py'])
     with open(home + '/.config/qtile/variables', 'w') as file:
       file.writelines(variables)
     qtile.reload_config()
@@ -474,11 +474,11 @@ groups = []
 group_names = ["Escape","1","2","3","4","5","6","7","8","9"]
 
 #### Groups Labels
-group_labels=["零","一","二","三","四","五","六","七","八","九"] # Kanji Numbers
+#group_labels=["零","一","二","三","四","五","六","七","八","九"] # Kanji Numbers
 #group_labels=["0","1","2","3","4","5","6","7","8","9"] # Numbers
 #group_labels=["","","","","","","","","",""] # Circles
 #group_labels=["","","","","","","","","",""] # Dot Circles
-#group_labels=["󰏃","󰏃","󰏃","󰏃","󰏃","󰏃","󰏃","󰏃","󰏃","󰏃",]
+group_labels=["󰏃","󰏃","󰏃","󰏃","󰏃","󰏃","󰏃","󰏃","󰏃","󰏃",]
 ####
 
 group_layouts=["monadtall", "monadtall", "monadtall", "matrix","monadtall", "monadtall", "monadtall","monadtall", "monadtall", "floating"]

@@ -1,4 +1,4 @@
-#
+#!/usr/bin/env bash
 # _______  _______  ______  _______  __        
 #|       ||   _   ||   __ \|     __||  |.-----.
 #|   -  _||       ||      <|__     ||  ||  _  |
@@ -8,12 +8,9 @@
 # By: gibranlp <thisdoesnotwork@gibranlp.dev>
 # MIT licence 
 #
-from functions import *
 
-# Theme
-## Screens
+function update(){
+  cp -r ~/QARSlp/dotfiles/.config/qtile/* ~/.config/qtile/
+}
 
-screens = [
-  Screen(
-    ),
-]
+update
