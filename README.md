@@ -25,7 +25,18 @@ To set a random wallpaper simply type Alt + R and theentire system will change w
 
 ![Random Wallpaper](/screenshots/random-wallpaper.gif)
 
-# Persistent Changes
+## Different Display Sizes
+
+I use different computers with different monitor sizes, so i managed to make this theme to change to look good on every monitor i have, this theme differenciates between 4K (3840x2160), HD (1920x1080) and a lower resolution (1366 x 768) of a mini laptop.
+
+- 4K (3480 x 2160)
+    - ![4K](/screenshots/4k.png)
+- HD (1920 x 1080)
+    - ![HD](/screenshots/hd.png)
+- Lower Resolution (1366 x 768)
+    - ![4K](/screenshots/low.png)
+
+## Persistent Changes
 
 A file named ~/.config/qtile/variables is created to save some variables, the content of the file is as follows:
 
@@ -38,7 +49,7 @@ Wal # This is the Backend in use
 ```
 This file is updated automatically when you select a new theme or change the backend, and its used so after you reboot your pc the system will remain the same.
 
-# Fonts
+## Fonts
 
 The entire system is configures to use the Fira Code Medium font, and Awesome Pro 6 for all the icons in the bar and in the Rofi Widgets.
 
@@ -50,7 +61,7 @@ main_font = "Fira Code Medium" # Font in use for the entire system
 awesome_font = "Font Awesome 6 Pro" # Font for the icons
 ```
 
-# Groups Labels
+## Groups Labels
 
 There are Several labels for the groups already defined you can change them by uncommenting the line you want between the lines 476 - 482 in the file ~/.config/qtile/functions.py
 
@@ -101,8 +112,6 @@ In the QARSlp & Slash themes, you can click in the Network icon and the widget w
 
 - Ethernet
     - ![Ethernet](/screenshots/ethernet-ip.png)
-
-
 
 ## General Margins and Borders
 

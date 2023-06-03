@@ -64,6 +64,9 @@ single_layout_margin=10 # Single window margin
 layout_border_width=4 # Layout border width
 single_border_width=4 # Single border width
 
+# Bar Position
+bar_position=str(variables[5].strip())
+
 #Widgets
 widget_width=200 #Width of widgets varies depending the resolution
 
@@ -81,7 +84,10 @@ if xres == "3840" and yres == "2160": #4k
   font_size=20
   bar_size=30
   widget_width=400
-  bar_margin=[0,10,5,10]
+  if bar_position == "bottom":
+    bar_margin=[0,10,5,10]
+  else:
+    bar_margin=[5,10,0,10]
 elif xres == "1920" and yres == "1080": #FullHD
   layout_margin=5
   single_layout_margin=5  
@@ -90,7 +96,10 @@ elif xres == "1920" and yres == "1080": #FullHD
   font_size=16
   bar_size=25
   widget_width=220
-  bar_margin=[0,5,5,5]
+  if bar_position == "bottom":
+    bar_margin=[0,5,5,5]
+  else:
+    bar_margin=[5,5,0,5]
 else: # 1366 x 768 Macbook air 11"
   layout_margin=2
   single_layout_margin=2  
@@ -258,6 +267,24 @@ def dark_white(qtile):
     with open(home + '/.config/qtile/variables', 'w') as file:
       file.writelines(variables)
     qtile.reload_config()
+
+
+## Select Bar Position Top or Bottom
+def bar_pos(qtile):
+  options = ['Top', 'Bottom']
+  index, key = rofi_backend.select('  Top Bar or  Bottom Bar -> ' + bar_position , options)
+  if key == -1 or index == 2:
+    rofi_backend.close()
+  else:
+    if index == 0:
+      variables[5]="top"
+    else:
+      variables[5]="bottom"
+
+    subprocess.run(["cp", "-r", home + "/.local/share/themes/FlatColor",  "/usr/local/themes/"])
+    with open(home + '/.config/qtile/variables', 'w') as file:
+      file.writelines(variables)
+    qtile.reload_config()
       
 ## Set default backend
 def set_default_backend(qtile):
@@ -399,7 +426,8 @@ keys = [
     # Widgets
     Key([mod],"c",lazy.function(shortcuts)), # Shortcuts widget
     Key([mod],"d",lazy.function(dark_white)), # Select Dark or Light Theme
-    Key([mod, "shift"],"o",lazy.function(nightLight_widget)),
+    Key([mod, "shift"],"w",lazy.function(bar_pos)), # Set bar position
+    Key([mod, "shift"],"o",lazy.function(nightLight_widget)), # Set night light
     Key([mod],"p",lazy.function(fargewidget)), # Color Picker Widget
     Key([alt], "Return", lazy.spawn('rofi  -theme "~/.config/rofi/left_bar.rasi" -show find -modi find:~/.local/bin/finder')), # Search for files and folders
     Key([mod],"f",lazy.spawn(home + '/.local/bin/wsearch')), # WEB Search widget
@@ -474,11 +502,11 @@ groups = []
 group_names = ["Escape","1","2","3","4","5","6","7","8","9"]
 
 #### Groups Labels
-#group_labels=["零","一","二","三","四","五","六","七","八","九"] # Kanji Numbers
+group_labels=["零","一","二","三","四","五","六","七","八","九"] # Kanji Numbers
 #group_labels=["0","1","2","3","4","5","6","7","8","9"] # Numbers
 #group_labels=["","","","","","","","","",""] # Circles
 #group_labels=["","","","","","","","","",""] # Dot Circles
-group_labels=["󰏃","󰏃","󰏃","󰏃","󰏃","󰏃","󰏃","󰏃","󰏃","󰏃",]
+#group_labels=["󰏃","󰏃","󰏃","󰏃","󰏃","󰏃","󰏃","󰏃","󰏃","󰏃",] # Custom
 ####
 
 group_layouts=["monadtall", "monadtall", "monadtall", "matrix","monadtall", "monadtall", "monadtall","monadtall", "monadtall", "floating"]
