@@ -79,6 +79,7 @@ function base() {
     'redshift'
     'libmicrodns' # Libraries for vlc and Chromecast
     'protobuf' # Libraries for vlc and Chromecast
+    'linux'
     'linux-headers'
     'linux-docs'
     'linux-lts'
