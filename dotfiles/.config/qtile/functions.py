@@ -542,7 +542,6 @@ def init_layouts():
   return [
     layout.MonadTall(max_ratio=0.90,ratio=0.75,**layout_theme),
     layout.MonadWide(max_ratio=0.90,ratio=0.70,**layout_theme),
-    layout.MonadThreeCol(**layout_theme),
     layout.Matrix(**layout_theme),
     layout.Floating(**layout_theme),
     ]

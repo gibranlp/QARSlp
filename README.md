@@ -36,19 +36,6 @@ I use different computers with different monitor sizes, so i managed to make thi
 - Lower Resolution (1366 x 768)
     - ![4K](/screenshots/low.png)
 
-## Persistent Changes
-
-A file named ~/.config/qtile/variables is created to save some variables, the content of the file is as follows:
-
-```bash
-QARSlp # This is the current theme
-Wal # This is the Backend in use 
-1hjg1y23y3hj # Here goes the Api key to use the Openweather widget 
--c # This is to select a Light Theme
-~/.config/qtile/themes/dark # This is the location folder of the dark and Light themes
-```
-This file is updated automatically when you select a new theme or change the backend, and its used so after you reboot your pc the system will remain the same.
-
 ## Top Bar or Bottom Bar? no problem
 
 With this rofi widget you can change your bar to the top or the bottom, with any theme.
@@ -185,6 +172,10 @@ You can select different backends trough a Rofi widget using the same wallpaper,
 ## Haishoku
 ![Haishoku1](/screenshots/Haishoku1.png)
 ![Haishoku2](/screenshots/Haishoku2.png)
+
+# Random Colors of the Theme
+
+If you still need more colors all you have to do is to press Alt + Shift + R and this will randomize the current color scheme.
 
 # Rofi Utilities
 

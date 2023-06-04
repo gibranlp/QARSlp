@@ -11,6 +11,7 @@
 
 function update(){
   cp -r ~/QARSlp/dotfiles/.config/qtile/* ~/.config/qtile/
+  cp ~/QARSlp/dotfiles/.shortcuts ~/
 }
 
 update
