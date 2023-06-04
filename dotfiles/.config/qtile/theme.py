@@ -13,11 +13,9 @@ from functions import *
 # Theme
 ## Screens
 
-screens = [
-    Screen(
-        bottom=bar.Bar(
-            [
-            widget.GroupBox(
+def init_widgets_list():
+    widgets_list = [
+        widget.GroupBox(
               decorations=[RectDecoration(colour=color[0], radius=7, filled=True)],
               font=awesome_font,
               disable_drag=True,
@@ -340,11 +338,24 @@ screens = [
               foreground=color[0],
               text="",
               mouse_callbacks={'Button1': lambda: qtile.function(session_widget)}
-            ),
-              ],
-              size=bar_size,
-              background=transparent,
-              margin=bar_margin,
-          ),
-    ),
-]
+            )]
+    return widgets_list
+
+def screen1_widgets():
+    widgets_screen1=init_widgets_list()
+    return widgets_screen1
+
+
+def init_screens_bottom():
+    return[Screen(bottom=bar.Bar(widgets=screen1_widgets(),size=bar_size,background=transparent,margin=bar_margin))]
+
+def init_screens_top():
+    return[Screen(top=bar.Bar(widgets=screen1_widgets(),size=bar_size,background=transparent,margin=bar_margin))]
+
+if bar_position == "top":
+    screens=init_screens_top()
+else:
+  screens=init_screens_bottom()
+
+widgets_list = init_widgets_list()
+widgets_screen1 = screen1_widgets()

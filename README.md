@@ -25,20 +25,24 @@ To set a random wallpaper simply type Alt + R and theentire system will change w
 
 ![Random Wallpaper](/screenshots/random-wallpaper.gif)
 
-# Persistent Changes
+## Different Display Sizes
 
-A file named ~/.config/qtile/variables is created to save some variables, the content of the file is as follows:
+I use different computers with different monitor sizes, so i managed to make this theme to change to look good on every monitor i have, this theme differenciates between 4K (3840x2160), HD (1920x1080) and a lower resolution (1366 x 768) of a mini laptop.
 
-```bash
-QARSlp # This is the current theme
-Wal # This is the Backend in use 
-1hjg1y23y3hj # Here goes the Api key to use the Openweather widget 
--c # This is to select a Light Theme
-~/.config/qtile/themes/dark # This is the location folder of the dark and Light themes
-```
-This file is updated automatically when you select a new theme or change the backend, and its used so after you reboot your pc the system will remain the same.
+- 4K (3480 x 2160)
+    - ![4K](/screenshots/4k.png)
+- HD (1920 x 1080)
+    - ![HD](/screenshots/hd.png)
+- Lower Resolution (1366 x 768)
+    - ![4K](/screenshots/low.png)
 
-# Fonts
+## Top Bar or Bottom Bar? no problem
+
+With this rofi widget you can change your bar to the top or the bottom, with any theme.
+
+- ![Bar](/screenshots/bars.gif)
+
+## Fonts
 
 The entire system is configures to use the Fira Code Medium font, and Awesome Pro 6 for all the icons in the bar and in the Rofi Widgets.
 
@@ -50,7 +54,7 @@ main_font = "Fira Code Medium" # Font in use for the entire system
 awesome_font = "Font Awesome 6 Pro" # Font for the icons
 ```
 
-# Groups Labels
+## Groups Labels
 
 There are Several labels for the groups already defined you can change them by uncommenting the line you want between the lines 476 - 482 in the file ~/.config/qtile/functions.py
 
@@ -101,8 +105,6 @@ In the QARSlp & Slash themes, you can click in the Network icon and the widget w
 
 - Ethernet
     - ![Ethernet](/screenshots/ethernet-ip.png)
-
-
 
 ## General Margins and Borders
 
@@ -170,6 +172,10 @@ You can select different backends trough a Rofi widget using the same wallpaper,
 ## Haishoku
 ![Haishoku1](/screenshots/Haishoku1.png)
 ![Haishoku2](/screenshots/Haishoku2.png)
+
+# Random Colors of the Theme
+
+If you still need more colors all you have to do is to press Alt + Shift + R and this will randomize the current color scheme.
 
 # Rofi Utilities
 
@@ -278,9 +284,9 @@ This will generate the first palette of colors and set the wallpaper, the path o
 
 # Next Steps
 
+- [ ] I will be working in the light themes which now look bad in general.
 - [ ] Generate an AUR Installation package
 - [ ] Add more themes (if you have suggestions add them in issues)
-- [ ] Create an Arch ISO with this theme included.
 - [ ] Create a Taskwarrior interface with Rofi
 
 If you like it please help me support this project, some coffee would help me to improve it and dedicate more time. thanks.

@@ -1,12 +1,10 @@
 
 from functions import *
+ 
 
-def get_net_dev():
-  get_dev = "echo $(ip route get 8.8.8.8 | awk -- '{printf $5}')"
-  ps = subprocess.Popen(get_dev,shell=True,stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
-  output = ps.communicate()[0].decode('ascii').strip()
-  return(output)
+#change_themes(qtile)
+new_theme="slash" + ".py"
+#subprocess.run(['cp', themes_dir, "/", new_theme, " ", theme_dest ])
+print(['cp', themes_dir, "/", new_theme, " ", theme_dest ])
 
-wifi = get_net_dev()
-
-print(wifi)
+subprocess.run(['cp', themes_dir + "/" + new_theme, home + '/.config/qtile/theme.py'])

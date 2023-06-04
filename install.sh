@@ -79,6 +79,7 @@ function base() {
     'redshift'
     'libmicrodns' # Libraries for vlc and Chromecast
     'protobuf' # Libraries for vlc and Chromecast
+    'linux'
     'linux-headers'
     'linux-docs'
     'linux-lts'
@@ -211,6 +212,8 @@ function web_apps(){
   sudo ln -s ~/WebApps/meet/meet /usr/bin/meet
   sudo ln -s ~/WebApps/github/github /usr/bin/github
   sudo ln -s ~/WebApps/clockify/clockify /usr/bin/clockify
+  wpg-install.sh -gio
+  ~/.local/bin/genwal
 }
 
 function post(){
@@ -223,17 +226,11 @@ function post(){
   sudo systemctl enable tlp.service
   journalctl --vacuum-size=100M
   journalctl --vacuum-time=2weeks
-  wpg-install.sh -gio
-  ~/.local/bin/genwal
+  
 }
 
 function update(){
   cp -r ~/QARSlp/dotfiles/.config/qtile/* ~/.config/qtile/
-  cp -r ~/QARSlp/dotfiles/.local/bin/* ~/.local/bin
-  cp ~/QARSlp/dotfiles/.config/dunst/dunstrc ~/.config/wal/templates
-  cp ~/QARSlp/dotfiles/.config/picom/picom.conf ~/.config/picom/picom.conf
-  cp ~/QARSlp/dotfiles/.config/dunst/dunstrc ~/.config/wal/templates
-  sudo pacman -S flameshot --no-confirm
 }
 
 

@@ -13,11 +13,9 @@ from functions import *
 # Theme
 ## Screens
 
-screens = [
-    Screen(
-        bottom=bar.Bar(
-            [
-            widget.GroupBox(
+def init_widgets_list():
+    widgets_list = [
+        widget.GroupBox(
               decorations=[RectDecoration(colour=color[0], radius=7, filled=True)],
               font=awesome_font,
               disable_drag=True,
@@ -109,7 +107,7 @@ screens = [
             ),
             widget.TextBox(
               decorations=[RectDecoration(colour=color[0], radius=[7,0,0,7], filled=True)],
-              text="",
+              text="",
               foreground=color[6],
             ),
             widget.Mpris2(
@@ -325,15 +323,14 @@ screens = [
                border_colour=color[3],
                border_critical_colour='#cc0000',
                fill_critical='#cc0000',
-               border_low='#FFF5511',
                fill_low='#FF5511',
                fill_normal=color[3],
                foreground=color[3],
                decorations=[RectDecoration(colour=color[0], radius=[7,0,0,7], filled=True)],
-               percentage_critical=0.15,
-               percentage_low=0.3,
-               text_charging=' ({percentage:.0f}%) {ttf} ',
-               text_discharging=' ({percentage:.0f}%) {tte} ',
+               percentage_critical=0.2,
+               percentage_low=0.4,
+               text_charging=' ({percentage:.0f}%) {ttf} to ',
+               text_discharging=' ({percentage:.0f}%) {tte} Left',
             ),
             ## Lock, Logout, Poweroff
             widget.TextBox(
@@ -341,11 +338,24 @@ screens = [
               foreground=color[0],
               text="",
               mouse_callbacks={'Button1': lambda: qtile.function(session_widget)}
-            ),
-              ],
-              size=bar_size,
-              background=transparent,
-              margin=bar_margin,
-          ),
-    ),
-]
+            )]
+    return widgets_list
+
+def screen1_widgets():
+    widgets_screen1=init_widgets_list()
+    return widgets_screen1
+
+
+def init_screens_bottom():
+    return[Screen(bottom=bar.Bar(widgets=screen1_widgets(),size=bar_size,background=transparent,margin=bar_margin))]
+
+def init_screens_top():
+    return[Screen(top=bar.Bar(widgets=screen1_widgets(),size=bar_size,background=transparent,margin=bar_margin))]
+
+if bar_position == "top":
+    screens=init_screens_top()
+else:
+  screens=init_screens_bottom()
+
+widgets_list = init_widgets_list()
+widgets_screen1 = screen1_widgets()

@@ -8,7 +8,6 @@
 # By: gibranlp <thisdoesnotwork@gibranlp.dev>
 # MIT licence 
 #
-sudo Networkmanager &
 rm -rf ~/.config/wpg/schemes/*
 pkill dunst &  
 picom & 

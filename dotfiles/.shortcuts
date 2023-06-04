@@ -4,29 +4,29 @@
  +  ::  Terminal
  +  + R ::  Restart Qtile
  +  + Q ::  Logout
-Ctrl + Alt + L :: Lock Screen
-Ctrl + Alt + O :: Lower Brightness
-Ctrl + Alt + P :: Increase Brightness
+Ctrl + Alt + L ::  Lock Screen
+Ctrl + Alt + O ::  Lower Brightness
+Ctrl + Alt + P ::  Increase Brightness
 <<----------<< Theming >>---------->>
 Alt + R ::  Randomize Wallpaper With default Color Scheme
-Alt + W :: Theme Select
-Alt +  + W :: Set Color Scheme
-Alt +  + R :: Randomize Colors
+Alt + W ::  Theme Select
+Alt +  + W ::  Set Color Scheme
+Alt +  + R ::  Randomize Colors
+ +  + W ::   Select Top or Bottom Bar
 <<----------<< Rofi Widgets >>---------->>
- +  +  ::  App Launcher
- + Alt +  ::  App Launcher (sudo)
+ +  +  ::  App Launcher 
 Alt +  ::  Search (Files and Folders)
  + F ::  Search (WEB)
  + P ::  Color Picker
  + B ::  Network Menu
  +  + O ::  Night Light
- +  + X ::  Monitor Management
+ +  + X ::    Monitor Management
 prtnsc ::  Screenshot
  + X ::  Session Menu
 <<----------<< Windows >>---------->>
- + Q :: Kill Window  (Close program)
+ + Q :: Kill Window 
  + Escape ::  Kill Window (Mouse Click)
-Alt + F ::  Toggle Fullscreen
+Alt + G ::  Toggle Fullscreen
 Alt +  :: <- Swap Left
 Alt +  +  :: -> Swap Right
 Alt +  + F ::  Toggle Floating
