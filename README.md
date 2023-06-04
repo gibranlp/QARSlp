@@ -284,9 +284,9 @@ This will generate the first palette of colors and set the wallpaper, the path o
 
 # Next Steps
 
+- [ ] I will be working in the light themes which now look bad in general.
 - [ ] Generate an AUR Installation package
 - [ ] Add more themes (if you have suggestions add them in issues)
-- [ ] Create an Arch ISO with this theme included.
 - [ ] Create a Taskwarrior interface with Rofi
 
 If you like it please help me support this project, some coffee would help me to improve it and dedicate more time. thanks.
