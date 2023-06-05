@@ -291,5 +291,5 @@ This will generate the first palette of colors and set the wallpaper, the path o
 
 If you like it please help me support this project, some coffee would help me to improve it and dedicate more time. thanks.
 
-<a href="https://www.patreon.com/user?u=48005915"><img src="/screenshots/patreon.svg"></a>
+<a href="https://www.patreon.com/user?u=48005915"><img src="/screenshots/patreon.svg" width=50></a>
 <a href="https://www.buymeacoffee.com/gibranlp"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a Coffee&emoji=&slug=gibranlp&button_colour=FFDD00&font_colour=000000&font_family=Bree&outline_colour=000000&coffee_colour=ffffff"></a>
