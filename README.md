@@ -291,4 +291,7 @@ This will generate the first palette of colors and set the wallpaper, the path o
 
 If you like it please help me support this project, some coffee would help me to improve it and dedicate more time. thanks.
 
+![CI Action](https://github.com/gibranlp/QARSlp)
+[![patreon](https://www.patreon.com/user?u=48005915)
+
 <a href="https://www.buymeacoffee.com/gibranlp"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a Coffee&emoji=&slug=gibranlp&button_colour=FFDD00&font_colour=000000&font_family=Bree&outline_colour=000000&coffee_colour=ffffff"></a>
