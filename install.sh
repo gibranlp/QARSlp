@@ -11,6 +11,7 @@
 function base() {
   packets=(
     'feh'
+    'fuse-exfat'
     'base-devel'
     'alsa-utils'
     'pulseaudio-alsa'
