@@ -119,7 +119,10 @@ layout_border_width=4 # Layout border width
 single_border_width=4 # Single border width
 ```
 
-## Calendar Notifications
+## Calendar  & Notifications
+
+![Notifications](/screenshots/notifications.gif)
+
 
 Using Dunst if you click on the clock you will get the current month in the calendar, if you move the mouse wheel on the clock you can change the month upp and down also.
 
@@ -130,6 +133,8 @@ Using Dunst if you click on the clock you will get the current month in the cale
 ## Lightdm
 
 This Qtile theme also changes Lightdm with the current wallpaper and color scheme.
+
+![Notifications](/screenshots/lightdm.gif)
 
 ![Lightdm1](/screenshots/Lightdm1.png)
 ![Lightdm2](/screenshots/Lightdm2.png)
@@ -183,6 +188,8 @@ I have added some [Rofi](https://github.com/davatorium/rofi) utilities, to make 
 
 ## Launcher
 
+![Launcher](/screenshots/launcher.gif)
+
 Launch any application or search for files and folders
 
 ![Launcher](/screenshots/Launcher.png)
@@ -190,6 +197,8 @@ Launch any application or search for files and folders
 ## QARSlp Shortcuts
 
 Check out all the shortcuts of the system
+
+![Shortcuts](/screenshots/screenshot.gif)
 
 ![Shortcuts](/screenshots/Shortcuts.png)
 
@@ -203,6 +212,8 @@ Manage multi monitors fast and easy, select your main monitor and resolution, an
 ## Color Picker
 
 Select Hex or RGB and you can then click on the screen to get the color using [Farge](https://github.com/sdushantha/farge), you will get the color via notification using [Dunst](https://github.com/dunst-project/dunst)
+
+![Color Picker](/screenshots/color_picker.gif)
 
 ![Color Picker1](/screenshots/Color_picker1.png)
 ![Color Picker1](/screenshots/Color_picker2.png)
@@ -223,11 +234,15 @@ Lock the PC, Sign out, Reboot or Poweroff.
 
 Take Screenshots of the Screen, an Area, a Window, or the Screen in 5 seconds using [Scrot](https://github.com/dreamer/scrot) and [Flameshot](https://flameshot.org/)
 
+![Screenshot](/screenshots/screenshot.gif)
+
 ![Screenshot](/screenshots/Screenshot.png)
 
 ## Night Light
 
 Change the temperature of the monitor using [Redshift](https://github.com/jonls/redshift)
+
+![nightLight](/screenshots/nightlight.gif)
 
 ![Night Light](/screenshots/Night_light.png)
 
