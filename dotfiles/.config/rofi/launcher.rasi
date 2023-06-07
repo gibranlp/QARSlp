@@ -9,7 +9,7 @@
 
 /*****----- Configuration -----*****/
 configuration {
-	modi:                       "run,filebrowser";
+	modi:                       "drun,filebrowser";
     show-icons:                 true;
     display-drun:               " Apps";
     display-run:                " Run";
@@ -49,7 +49,7 @@ configuration {
     alternate-active-foreground: @color1;
 
     /* For Screens with 1920x1080 resolution */
-    screen-margin:               30%;
+    screen-margin:               1%;
     box-spacing:                 20px;
     list-padding:                8px;
     element-padding:             15px;
@@ -74,9 +74,9 @@ window {
     transparency:                "real";
     location:                    center;
     anchor:                      center;
-    fullscreen:                  true;
-    width:                       100%;
-    height:                      100%;
+    fullscreen:                  false;
+    width:                       30%;
+    height:                      30%;
     x-offset:                    0px;
     y-offset:                    0px;
 
@@ -91,7 +91,7 @@ window {
     /* Backgroud Colors */
     background-color:            @background-colour;
     /* Backgroud Image */
-    //background-image:          url("/path/to/image.png", none);
+    background-image:          url("/usr/local/backgrounds/background.png", none);
     /* Simple Linear Gradient */
     //background-image:          linear-gradient(red, orange, pink, purple);
     /* Directional Linear Gradient */
@@ -137,7 +137,7 @@ textbox-prompt-colon {
     enabled:                     true;
     expand:                      false;
     padding:                     @element-padding;
-    str:                         "";
+    str:                         "";
     border:                      0px solid;
     border-radius:               @element-radius;
     border-color:                @border-colour;
@@ -151,7 +151,7 @@ entry {
     background-color:            inherit;
     text-color:                  inherit;
     cursor:                      text;
-    placeholder:                 "Search...";
+    placeholder:                 "Find...";
     placeholder-color:           inherit;
 }
 num-filtered-rows {
@@ -261,7 +261,7 @@ element alternate.active {
 element-icon {
     background-color:            transparent;
     text-color:                  inherit;
-    size:                        32px;
+    size:                        50px;
     cursor:                      inherit;
 }
 element-text {

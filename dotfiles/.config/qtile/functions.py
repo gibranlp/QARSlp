@@ -441,10 +441,10 @@ keys = [
     Key([alt, "shift"], "r",lazy.function(random_colors)), # Set randwom wallpaper / colors to entire system
 
     # Layouts
-    Key([mod], "Tab",lazy.layout.next()), # Change focus of windows down
+    Key([mod], "Tab",lazy.layout.down()), # Change focus of windows down
     Key([mod, "shift"], "Tab",lazy.layout.up()), # Change focus of windows up
-    Key([alt], "Tab", lazy.layout.swap_left()), # Swap Left Down
-    Key([alt, "shift"], "Tab", lazy.layout.swap_right()), # Swap Right Up
+    Key([alt], "Tab", lazy.layout.shuffle_down()), # Swap Left Down
+    Key([alt, "shift"], "Tab", lazy.layout.shuffle_up()), # Swap Right Up
     Key([mod], 'period', lazy.next_screen()), # Send Cursor to next screen
 
     # Brightness
@@ -473,6 +473,7 @@ keys = [
     Key([mod], "l", lazy.layout.right()),
     Key([mod], "j", lazy.layout.down()),
     Key([mod], "k", lazy.layout.up()),
+    Key([mod, "shift"], "h", lazy.layout.swap_left()),
     Key([mod, "shift"], "l", lazy.layout.swap_right()),
     Key([mod, "shift"], "j", lazy.layout.shuffle_down()),
     Key([mod, "shift"], "k", lazy.layout.shuffle_up()),
@@ -509,7 +510,7 @@ group_labels=["零","一","二","三","四","五","六","七","八","九"] # Kan
 #group_labels=["󰏃","󰏃","󰏃","󰏃","󰏃","󰏃","󰏃","󰏃","󰏃","󰏃",] # Custom
 ####
 
-group_layouts=["monadtall", "monadtall", "monadtall", "matrix","monadtall", "monadtall", "monadtall","monadtall", "monadtall", "floating"]
+group_layouts=["spiral", "spiral", "spiral", "spiral","spiral", "spiral", "spiral","spiral", "spiral", "floating"]
 for i in range(len(group_names)):
   groups.append(
     Group(
@@ -540,9 +541,9 @@ layout_theme = init_layout_theme()
 
 def init_layouts():
   return [
-    layout.MonadTall(max_ratio=0.90,ratio=0.75,**layout_theme),
+    #layout.MonadTall(max_ratio=0.90,ratio=0.75,**layout_theme),
+    layout.Spiral(main_pane="left",**layout_theme),
     layout.MonadWide(max_ratio=0.90,ratio=0.70,**layout_theme),
-    layout.Matrix(**layout_theme),
     layout.Floating(**layout_theme),
     ]
 layouts = init_layouts()

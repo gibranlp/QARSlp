@@ -121,7 +121,7 @@ function aur_packages() {
     'thunar-volman'
     'hugo'
     'nbfc'
-    'ntfs-3g'+
+    'ntfs-3g'
     'i3lock-fancy'
     'wal-telegram-git'
     'picom-pijulius-git'
