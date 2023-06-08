@@ -14,7 +14,7 @@ from libqtile import qtile, bar, layout, widget, hook
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
 from qtile_extras import widget
-from qtile_extras.widget.decorations import (RectDecoration, PowerLineDecoration)
+from qtile_extras.widget.decorations import (RectDecoration, PowerLineDecoration, BorderDecoration)
 from rofi import Rofi
 from pathlib import Path
 from qtile_extras.popup.toolkit import (PopupImage, PopupText, PopupRelativeLayout, PopupWidget)
@@ -46,12 +46,15 @@ variables=file.readlines()
 wallpaper_dir= home + '/Pictures/Wallpapers/' # Wallpapers folders
 light=str(variables[3].strip()) # Optin for light themes
 
+# Diferenciator to generate the secondary pallete
+fixed_color = '111222'
+
 # Theme
 current_theme=str(variables[0].strip())
 themes_dir = home + str(variables[4].strip())
 theme_dest = (home + "/.config/qtile/theme.py")
 theme_file = themes_dir + "/" + current_theme
-theme=['QARSlp', 'slash', 'minimal', 'no_bar']
+theme=['QARSlp', 'nice', 'slash', 'minimal', 'no_bar']
 
 # Pywal backends Options: Wal, Colorz, Colorthief, Haishoku
 def_backend=str(variables[1].strip()) # Default Color Scheme for random wallpaper
@@ -174,6 +177,33 @@ with open(home + '/.cache/wal/colors.json') as wal_import:
     return [*val_colors]
 
 color = init_colors()
+
+## Generate Secondary Palette
+def secondary_pallete(colors, fixed_color):
+    updated_colors = []
+    for color in colors:
+        # Remove the '#' symbol
+        color = color.lstrip('#')
+
+        # Convert hexadecimal colors to integers
+        color_int = int(color, 16)
+        fixed_color_int = int(fixed_color, 16)
+
+        # Perform addition
+        result_int = color_int + fixed_color_int
+
+        # Ensure the result is within the valid range of 0-FFFFFF
+        result_int = min(result_int, 0xFFFFFF)
+        result_int = max(result_int, 0)
+
+        # Convert the result back to hexadecimal
+        result_hex = '#' + hex(result_int)[2:].zfill(6).upper()
+
+        updated_colors.append(result_hex)
+
+    return updated_colors
+
+secondary_color = secondary_pallete(color, fixed_color)
 
 # Transparent for bars and widgets
 transparent=color[0] + "00"
@@ -505,8 +535,8 @@ groups = []
 group_names = ["Escape","1","2","3","4","5","6","7","8","9"]
 
 #### Groups Labels
-group_labels=["零","一","二","三","四","五","六","七","八","九"] # Kanji Numbers
-#group_labels=["0","1","2","3","4","5","6","7","8","9"] # Numbers
+#group_labels=["零","一","二","三","四","五","六","七","八","九"] # Kanji Numbers
+group_labels=["0","1","2","3","4","5","6","7","8","9"] # Numbers
 #group_labels=["","","","","","","","","",""] # Circles
 #group_labels=["","","","","","","","","",""] # Dot Circles
 #group_labels=["󰏃","󰏃","󰏃","󰏃","󰏃","󰏃","󰏃","󰏃","󰏃","󰏃",] # Custom
@@ -543,9 +573,8 @@ layout_theme = init_layout_theme()
 
 def init_layouts():
   return [
-    #layout.MonadTall(max_ratio=0.90,ratio=0.75,**layout_theme),
-    layout.Spiral(main_pane="left",**layout_theme),
-    layout.MonadWide(max_ratio=0.90,ratio=0.70,**layout_theme),
+    layout.Spiral(main_pane="left",ratio_increment=0.01,**layout_theme),
+    layout.MonadTall(max_ratio=0.90,ratio=0.75,**layout_theme),
     layout.Floating(**layout_theme),
     ]
 layouts = init_layouts()
