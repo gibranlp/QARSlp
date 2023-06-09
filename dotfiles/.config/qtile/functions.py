@@ -252,11 +252,6 @@ def get_public_ip():
         
 public_ip = get_public_ip()
 
-## Check Internet Connection
-internet = ' Connected! -> '
-if public_ip.startswith('0'):
-  internet = "∅ No internet connection "
-
 # Call Calendar Notification
 
 def calendar_notification(qtile):{
@@ -392,7 +387,7 @@ def network_widget(qtile):
     connected = ' Turn Wifi On'
     active="on"
   options = [connected,'  Bandwith Monitor (CLI)', ' Network Manager (CLI)']
-  index, key = rofi_network.select(wifi_icon + internet + " " + private_ip + " ->" + "  " + public_ip, options)
+  index, key = rofi_network.select(wifi_icon + "  IP " + private_ip + " ->" + "  IP" + public_ip, options)
   if key == -1:
     rofi_network.close()
   else:
@@ -464,7 +459,7 @@ keys = [
     Key([mod, "shift"],"f",lazy.spawn('rofi  -theme "~/.config/rofi/filesfolders.rasi" -show find -modi find:~/.local/bin/finder')), # Search files and folders
     Key([mod],"t",lazy.spawn('rofi  -theme "~/.config/rofi/tasks.rasi" -show tasks:task')), # Task list
     Key([mod],"x",lazy.function(session_widget)), # Log out
-    Key([mod],"b",lazy.spawn(home + '/.local/bin/wifi2')), # Network Settings
+    Key([mod],"b",lazy.function(network_widget)), # Network Settings
     Key([alt, "shift"],"w",lazy.function(set_default_backend)), # Set Default Color Scheme
     Key([alt],"w",lazy.function(change_theme)), # Change Theme
     Key([mod, "shift"],"x",lazy.spawn(home + '/.local/bin/change_display')),# Monitor modes Widget

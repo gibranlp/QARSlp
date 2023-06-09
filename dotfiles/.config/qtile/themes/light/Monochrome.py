@@ -41,7 +41,7 @@ def init_widgets_list():
         urgent_border="fc0000",
         padding_y=10,
         padding_x=5,
-        visible_groups=['1','2','3','4']
+        visible_groups=['Escape','1','2','3','4']
       ),
       widget.Spacer(
         length=5,
@@ -127,11 +127,19 @@ def init_widgets_list():
         background=transparent,
       ), 
       ## Network
-      widget.TextBox(
-        decorations=[RectDecoration(colour=color[0], radius=[7,0,0,7],filled=True)],
-        text=' ' + wifi_icon + ' ',
-        foreground=color[7],
-        mouse_callbacks={'Button1':lambda: qtile.spawn(home + "/.local/bin/wifi2")}
+        widget.TextBox(
+          decorations=[RectDecoration(colour=color[0], radius=[7,0,0,7],filled=True)],
+          text=' ' + wifi_icon + ' ',
+          foreground=color[7],
+          mouse_callbacks={'Button1':lambda: qtile.spawn(home + "/.local/bin/wifi2")}
+        ),
+      widget.Wlan(
+        decorations=[RectDecoration(colour=color[0],radius=0, filled=True)],
+        interface=wifi,
+        format='{percent:2.0%} ',
+        disconnected_message='',
+        foreground=color[3],
+        mouse_callbacks={'Button1':lambda: qtile.function(network_widget)}
       ),
       widget.KeyboardLayout(
         decorations=[RectDecoration(colour=color[0], radius=[0,7,7,0],filled=True)],
