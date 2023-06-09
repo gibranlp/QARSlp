@@ -14,7 +14,7 @@ from libqtile import qtile, bar, layout, widget, hook
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
 from qtile_extras import widget
-from qtile_extras.widget.decorations import (RectDecoration, PowerLineDecoration)
+from qtile_extras.widget.decorations import (RectDecoration, PowerLineDecoration, BorderDecoration)
 from rofi import Rofi
 from pathlib import Path
 from qtile_extras.popup.toolkit import (PopupImage, PopupText, PopupRelativeLayout, PopupWidget)
@@ -46,12 +46,15 @@ variables=file.readlines()
 wallpaper_dir= home + '/Pictures/Wallpapers/' # Wallpapers folders
 light=str(variables[3].strip()) # Optin for light themes
 
+# Diferenciator, this will get added to generate a slightly different pallete
+differentiator = '090909' 
+
 # Theme
 current_theme=str(variables[0].strip())
 themes_dir = home + str(variables[4].strip())
 theme_dest = (home + "/.config/qtile/theme.py")
 theme_file = themes_dir + "/" + current_theme
-theme=['QARSlp', 'slash', 'minimal', 'no_bar']
+theme=['QARSlp', 'nice', 'slash', 'minimal', 'Monochrome', 'no_bar']
 
 # Pywal backends Options: Wal, Colorz, Colorthief, Haishoku
 def_backend=str(variables[1].strip()) # Default Color Scheme for random wallpaper
@@ -174,6 +177,33 @@ with open(home + '/.cache/wal/colors.json') as wal_import:
     return [*val_colors]
 
 color = init_colors()
+
+## Generate Secondary Palette
+def secondary_pallete(colors, differentiator):
+    updated_colors = []
+    for color in colors:
+        # Remove the '#' symbol
+        color = color.lstrip('#')
+
+        # Convert hexadecimal colors to integers
+        color_int = int(color, 16)
+        differentiator_int = int(differentiator, 16)
+
+        # Perform addition
+        result_int = color_int + differentiator_int
+
+        # Ensure the result is within the valid range of 0-FFFFFF
+        result_int = min(result_int, 0xFFFFFF)
+        result_int = max(result_int, 0)
+
+        # Convert the result back to hexadecimal
+        result_hex = '#' + hex(result_int)[2:].zfill(6).upper()
+
+        updated_colors.append(result_hex)
+
+    return updated_colors
+
+secondary_color = secondary_pallete(color, differentiator)
 
 # Transparent for bars and widgets
 transparent=color[0] + "00"
@@ -441,10 +471,10 @@ keys = [
     Key([alt, "shift"], "r",lazy.function(random_colors)), # Set randwom wallpaper / colors to entire system
 
     # Layouts
-    Key([mod], "Tab",lazy.layout.next()), # Change focus of windows down
+    Key([mod], "Tab",lazy.layout.down()), # Change focus of windows down
     Key([mod, "shift"], "Tab",lazy.layout.up()), # Change focus of windows up
-    Key([alt], "Tab", lazy.layout.swap_left()), # Swap Left Down
-    Key([alt, "shift"], "Tab", lazy.layout.swap_right()), # Swap Right Up
+    Key([alt], "Tab", lazy.layout.shuffle_down()), # Swap Left Down
+    Key([alt, "shift"], "Tab", lazy.layout.shuffle_up()), # Swap Right Up
     Key([mod], 'period', lazy.next_screen()), # Send Cursor to next screen
 
     # Brightness
@@ -473,11 +503,14 @@ keys = [
     Key([mod], "l", lazy.layout.right()),
     Key([mod], "j", lazy.layout.down()),
     Key([mod], "k", lazy.layout.up()),
+    Key([mod, "shift"], "h", lazy.layout.swap_left()),
     Key([mod, "shift"], "l", lazy.layout.swap_right()),
     Key([mod, "shift"], "j", lazy.layout.shuffle_down()),
     Key([mod, "shift"], "k", lazy.layout.shuffle_up()),
     Key([mod], "i", lazy.layout.grow()),
+    Key([mod, "shift"], "i", lazy.layout.grow_main()),
     Key([mod], "m", lazy.layout.shrink()),
+    Key([mod, "shift"], "m", lazy.layout.shrink_main()),
     Key([mod], "n", lazy.layout.normalize()),
     Key([mod], "o", lazy.layout.maximize()),
     Key([mod, "shift"], "space", lazy.layout.flip()),
@@ -502,14 +535,14 @@ groups = []
 group_names = ["Escape","1","2","3","4","5","6","7","8","9"]
 
 #### Groups Labels
-group_labels=["零","一","二","三","四","五","六","七","八","九"] # Kanji Numbers
+#group_labels=["零","一","二","三","四","五","六","七","八","九"] # Kanji Numbers
 #group_labels=["0","1","2","3","4","5","6","7","8","9"] # Numbers
 #group_labels=["","","","","","","","","",""] # Circles
 #group_labels=["","","","","","","","","",""] # Dot Circles
-#group_labels=["󰏃","󰏃","󰏃","󰏃","󰏃","󰏃","󰏃","󰏃","󰏃","󰏃",] # Custom
+group_labels=["","","","","","","","","",""] # Custom
 ####
 
-group_layouts=["monadtall", "monadtall", "monadtall", "matrix","monadtall", "monadtall", "monadtall","monadtall", "monadtall", "floating"]
+group_layouts=["spiral", "spiral", "spiral", "spiral","spiral", "spiral", "spiral","spiral", "spiral", "floating"]
 for i in range(len(group_names)):
   groups.append(
     Group(
@@ -540,9 +573,8 @@ layout_theme = init_layout_theme()
 
 def init_layouts():
   return [
+    layout.Spiral(main_pane="left",ratio_increment=0.01,**layout_theme),
     layout.MonadTall(max_ratio=0.90,ratio=0.75,**layout_theme),
-    layout.MonadWide(max_ratio=0.90,ratio=0.70,**layout_theme),
-    layout.Matrix(**layout_theme),
     layout.Floating(**layout_theme),
     ]
 layouts = init_layouts()
