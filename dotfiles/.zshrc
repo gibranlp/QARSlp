@@ -93,6 +93,10 @@ export LANG=en_US.UTF-8
 #   export EDITOR='mvim'
 # fi
 
+eval $(thefuck --alias)
+# You can use whatever you want as an alias, like for Mondays:
+eval $(thefuck --alias FUCK)
+
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
@@ -103,6 +107,7 @@ export LANG=en_US.UTF-8
 #
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
+alias lzd="lazydocker"
 alias tsm="transmission-remote"
 #export PATH=~/usr/local/bin:$PATH
 export PATH=~/home/$USER/.local/bin:$PATH

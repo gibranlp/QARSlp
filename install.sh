@@ -87,6 +87,8 @@ function base() {
     'linux-lts-headers'
     'xorg-xdpyinfo'
     'taskwarrior-tui'
+    'fzf'
+    'thefuck'
     #'nvidia-dkms'
 )
 
@@ -126,6 +128,7 @@ function aur_packages() {
     'i3lock-fancy'
     'wal-telegram-git'
     'picom-pijulius-git'
+    'lazy-docker'
 )
 for packet in "${packets[@]}"; do
     echo "Instalando --> ${packet}"
