@@ -50,7 +50,7 @@ def init_widgets_list():
         ),
         widget.Prompt(
           prompt=prompt,
-          fontsize=font_size-3,
+          fontsize=font_size-2,
           foreground=color[4],
           cursor_color=color[4],
           visual_bell_color=[4],
@@ -59,7 +59,7 @@ def init_widgets_list():
         widget.Mpris2(
           mouse_callbacks={'Button1': lambda: qtile.spawn(terminal  + " -e cava")},
           objname=None,
-          fontsize=font_size-3,
+          fontsize=font_size-2,
           foreground=color[5],
           width=widget_width,
           format='{xesam:artist}  {xesam:title}',
@@ -76,11 +76,11 @@ def init_widgets_list():
         widget.TextBox(
           foreground=color[2],
           text="",
-          fontsize=font_size-3,
+          fontsize=font_size-4,
           mouse_callbacks={'Button1': lambda: qtile.function(calendar_notification),'Button4': lambda: qtile.function(calendar_notification_prev),'Button5': lambda: qtile.function(calendar_notification_next)}, 
         ),
         widget.Clock(
-          foreground=color[7],
+          foreground=secondary_color[7],
           fontsize=font_size -4,
           format="%H:%M",
           update_interval=1,
@@ -95,14 +95,14 @@ def init_widgets_list():
           background=secondary_color[0],
           foreground=color[3],
           text=" ",
-          fontsize=font_size-3,
+          fontsize=font_size-4,
         ),  
         widget.CPU(
           decorations=[RectDecoration(use_widget_background=True, radius=[0,10,10,0], padding_y=3, filled=True)],
           background=secondary_color[0],
-          foreground=color[7],
+          foreground=secondary_color[7],
           format='{load_percent}% ',
-          fontsize=font_size-3,
+          fontsize=font_size-2,
         ),
         widget.Spacer(
           length=5,
@@ -111,17 +111,17 @@ def init_widgets_list():
         widget.TextBox(
           decorations=[RectDecoration(use_widget_background=True, radius=[10,0,0,10], padding_y=3, filled=True)],
           background=secondary_color[0],
-          fontsize=font_size-3,
+          fontsize=font_size-4,
           foreground=color[4],
           text=" ",
         ),
         widget.Memory(
           decorations=[RectDecoration(use_widget_background=True, radius=[0,10,10,0], padding_y=3, filled=True)],
           background=secondary_color[0],
-          foreground=color[7],
+          foreground=secondary_color[7],
           format='{MemUsed:.0f}{mm} ',
           measure_mem='M',
-          fontsize=font_size-3,
+          fontsize=font_size-2,
         ),
         widget.Spacer(
           length=5,
@@ -132,7 +132,8 @@ def init_widgets_list():
           background=secondary_color[0],
           text="",
           foreground=color[5],
-          mouse_callbacks={'Button1': lambda: qtile.spawn('pavucontrol')}
+          mouse_callbacks={'Button1': lambda: qtile.spawn('pavucontrol')},
+          fontsize=font_size-4
         ),
         widget.ALSAWidget(
           decorations=[RectDecoration(use_widget_background=True, radius=[0,10,10,0], padding_y=3, filled=True)],
@@ -156,7 +157,7 @@ def init_widgets_list():
         widget.WidgetBox(
           decorations=[RectDecoration(use_widget_background=True, radius=[10,0,0,10], padding_y=3, filled=True)],
           background=secondary_color[0],
-          fontsize=font_size-3,
+          fontsize=font_size-4,
           text_closed=' ' + wifi_icon + ' ',
           text_open='  ',
           foreground=color[6],
@@ -164,35 +165,35 @@ def init_widgets_list():
             widget.TextBox(
               decorations=[RectDecoration(use_widget_background=True, radius=0, padding_y=3, filled=True)],
               background=secondary_color[0],
-              fontsize=font_size-3,
+              fontsize=font_size-4,
               text='  ',
               foreground=color[4],
               mouse_callbacks={'Button1':lambda: qtile.spawn(home + "/.local/bin/wifi2")}),
             widget.TextBox(
               decorations=[RectDecoration(use_widget_background=True, radius=0, padding_y=3, filled=True)],
               background=secondary_color[0],
-              fontsize=font_size-3,
+              fontsize=font_size-2,
               text=private_ip,
-              foreground=color[7],
+              foreground=secondary_color[7],
               mouse_callbacks={'Button1':lambda: qtile.spawn(home + "/.local/bin/wifi2")}),
             widget.TextBox(
               decorations=[RectDecoration(use_widget_background=True, radius=0, padding_y=3, filled=True)],
               background=secondary_color[0],
-              fontsize=font_size-3,
+              fontsize=font_size-4,
               text='  ',
               foreground=color[4],
               mouse_callbacks={'Button1':lambda: qtile.spawn(home + "/.local/bin/wifi2")}),
             widget.TextBox(
               decorations=[RectDecoration(use_widget_background=True, radius=0, padding_y=3, filled=True)],
               background=secondary_color[0],
-              fontsize=font_size-3,
+              fontsize=font_size-2,
               text=public_ip,
-              foreground=color[7],
+              foreground=secondary_color[7],
               mouse_callbacks={'Button1':lambda: qtile.spawn(home + "/.local/bin/wifi2")}),
             widget.TextBox(
               decorations=[RectDecoration(use_widget_background=True, radius=0, padding_y=3, filled=True)],
               background=secondary_color[0],
-              fontsize=font_size-3,
+              fontsize=font_size-4,
               text=wifi_icon,
               foreground=color[4],
               mouse_callbacks={'Button1':lambda: qtile.spawn(home + "/.local/bin/wifi2")}),
@@ -201,7 +202,7 @@ def init_widgets_list():
         widget.Wlan(
           decorations=[RectDecoration(use_widget_background=True, radius=0, padding_y=3, filled=True)],
           background=secondary_color[0],
-          fontsize=font_size-3,
+          fontsize=font_size-2,
           interface=wifi,
           format='{essid}',
           disconnected_message='',
@@ -216,7 +217,7 @@ def init_widgets_list():
         widget.Wlan(
           decorations=[RectDecoration(use_widget_background=True, radius=0, padding_y=3, filled=True)],
           background=secondary_color[0],
-          fontsize=font_size-3,
+          fontsize=font_size-4,
           interface=wifi,
           format='{percent:2.0%}',
           disconnected_message='',
@@ -226,11 +227,11 @@ def init_widgets_list():
         widget.Net(
           decorations=[RectDecoration(use_widget_background=True, radius=[0,10,10,0], padding_y=3, filled=True)],
           background=secondary_color[0],
-          fontsize=font_size-3,
+          fontsize=font_size-2,
           prefix='M',
           interface=wifi,
           format='{down:4.1f}↓↑{up:3.1f}',
-          foreground=color[7],
+          foreground=secondary_color[7],
           use_bits=True,
           mouse_callbacks={'Button1':lambda: qtile.function(network_widget)},
         ),
@@ -241,8 +242,8 @@ def init_widgets_list():
         widget.UPowerWidget(
           decorations=[RectDecoration(use_widget_background=True, radius=0, padding_y=3, filled=True)],
           background=secondary_color[0],
-          fontsize=font_size-3,
-          border_charge_colour=color[7],
+          fontsize=font_size-2,
+          border_charge_colour=secondary_color[7],
           border_colour=color[3],
           border_critical_colour='#cc0000',
           fill_critical='#cc0000',
@@ -265,8 +266,8 @@ def init_widgets_list():
         ),
         widget.KeyboardLayout(
           configured_keyboards=['us intl', 'latam'],
-          fontsize=font_size-3,
-          foreground=color[7],
+          fontsize=font_size-2,
+          foreground=secondary_color[7],
         ),]
     return widgets_list
 

@@ -46,15 +46,15 @@ variables=file.readlines()
 wallpaper_dir= home + '/Pictures/Wallpapers/' # Wallpapers folders
 light=str(variables[3].strip()) # Optin for light themes
 
-# Diferenciator to generate the secondary pallete
-fixed_color = '111222'
+# Diferenciator, this will get added to generate a slightly different pallete
+differentiator = '090909' 
 
 # Theme
 current_theme=str(variables[0].strip())
 themes_dir = home + str(variables[4].strip())
 theme_dest = (home + "/.config/qtile/theme.py")
 theme_file = themes_dir + "/" + current_theme
-theme=['QARSlp', 'nice', 'slash', 'minimal', 'no_bar']
+theme=['QARSlp', 'nice', 'slash', 'minimal', 'Monochrome', 'no_bar']
 
 # Pywal backends Options: Wal, Colorz, Colorthief, Haishoku
 def_backend=str(variables[1].strip()) # Default Color Scheme for random wallpaper
@@ -179,7 +179,7 @@ with open(home + '/.cache/wal/colors.json') as wal_import:
 color = init_colors()
 
 ## Generate Secondary Palette
-def secondary_pallete(colors, fixed_color):
+def secondary_pallete(colors, differentiator):
     updated_colors = []
     for color in colors:
         # Remove the '#' symbol
@@ -187,10 +187,10 @@ def secondary_pallete(colors, fixed_color):
 
         # Convert hexadecimal colors to integers
         color_int = int(color, 16)
-        fixed_color_int = int(fixed_color, 16)
+        differentiator_int = int(differentiator, 16)
 
         # Perform addition
-        result_int = color_int + fixed_color_int
+        result_int = color_int + differentiator_int
 
         # Ensure the result is within the valid range of 0-FFFFFF
         result_int = min(result_int, 0xFFFFFF)
@@ -203,7 +203,7 @@ def secondary_pallete(colors, fixed_color):
 
     return updated_colors
 
-secondary_color = secondary_pallete(color, fixed_color)
+secondary_color = secondary_pallete(color, differentiator)
 
 # Transparent for bars and widgets
 transparent=color[0] + "00"
@@ -536,10 +536,10 @@ group_names = ["Escape","1","2","3","4","5","6","7","8","9"]
 
 #### Groups Labels
 #group_labels=["零","一","二","三","四","五","六","七","八","九"] # Kanji Numbers
-group_labels=["0","1","2","3","4","5","6","7","8","9"] # Numbers
+#group_labels=["0","1","2","3","4","5","6","7","8","9"] # Numbers
 #group_labels=["","","","","","","","","",""] # Circles
 #group_labels=["","","","","","","","","",""] # Dot Circles
-#group_labels=["󰏃","󰏃","󰏃","󰏃","󰏃","󰏃","󰏃","󰏃","󰏃","󰏃",] # Custom
+group_labels=["","","","","","","","","",""] # Custom
 ####
 
 group_layouts=["spiral", "spiral", "spiral", "spiral","spiral", "spiral", "spiral","spiral", "spiral", "floating"]
