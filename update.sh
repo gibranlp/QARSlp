@@ -10,12 +10,7 @@
 #
 
 function update(){
-  cp -r ~/QARSlp/dotfiles/.config/qtile/* ~/.config/qtile/
-  cp ~/QARSlp/dotfiles/.shortcuts ~/
-  cp ~/QARSlp/dotfiles/.config/picom/picom.conf ~/.config/picom/picom.conf
-  cp ~/QARSlp/dotfiles/.zshrc ~/
-  mkdir -p ~/.config/ncspot
-  cp ~/QARSlp/dotfiles/.config/ncspot/config.toml ~/.config/ncspot/config.toml
+  cp -r ~/QARSlp/dotfiles/.config/rofi2/* ~/.config/rofi/
 }
 
 update

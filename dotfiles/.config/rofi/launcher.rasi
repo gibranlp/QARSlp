@@ -74,7 +74,7 @@ window {
     transparency:                "real";
     location:                    center;
     anchor:                      center;
-    fullscreen:                  true;
+    fullscreen:                  false;
     width:                       100%;
     height:                      100%;
     x-offset:                    0px;
