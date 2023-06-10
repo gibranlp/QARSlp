@@ -47,7 +47,10 @@ wallpaper_dir= home + '/Pictures/Wallpapers/' # Wallpapers folders
 light=str(variables[3].strip()) # Optin for light themes
 
 # Diferenciator, this will get added to generate a slightly different pallete
-differentiator = '191919' 
+differentiator = '191919'
+
+#Show all groups
+hide_unused_groups=True
 
 # Theme
 current_theme=str(variables[0].strip())
@@ -386,17 +389,19 @@ def network_widget(qtile):
   else:
     connected = ' Turn Wifi On'
     active="on"
-  options = [connected,'  Bandwith Monitor (CLI)', ' Network Manager (CLI)']
-  index, key = rofi_network.select(wifi_icon + "  IP " + private_ip + " ->" + "  IP" + public_ip, options)
+  options = [connected,'  Bandwith Monitor (CLI)', ' Network Manager (CLI)', ' Wlan Manager']
+  index, key = rofi_network.select(" IP " + private_ip + " ->" + "  IP " + public_ip, options)
   if key == -1:
     rofi_network.close()
   else:
-    if index ==0:
+    if index == 0:
       subprocess.run("nmcli radio wifi " + active, shell=True)
     elif index==1:
       qtile.cmd_spawn(terminal + ' -e bmon')
-    else:
+    elif index==1:
       qtile.cmd_spawn(terminal + ' -e nmtui')
+    else:
+      qtile.cmd_spawn(home + '/.local/bin/wifi2')
 
 # Change Theme widget
 def change_theme(qtile):

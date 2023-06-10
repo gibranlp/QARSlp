@@ -19,7 +19,7 @@ def init_widgets_list():
               decorations=[RectDecoration(colour=color[0], radius=7, filled=True)],
               font=awesome_font,
               disable_drag=True,
-              hide_unused=False,
+              hide_unused=hide_unused_groups,
               borderwidth=0,
               active=color[3], #Program opened in that group
               inactive=color[6], # Empty Group
@@ -30,7 +30,7 @@ def init_widgets_list():
               other_curren_screen_border=color[2],
               block_highlight_text_color=color[2],    
               urgent_border="fc0000",
-              visible_groups=['Escape','1','2','3','4'],
+              #visible_groups=['Escape','1','2','3','4'],
             ),
             widget.Spacer(
               length=5,
