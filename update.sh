@@ -12,6 +12,8 @@
 function update(){
   cp -r ~/QARSlp/dotfiles/.config/qtile/* ~/.config/qtile/
   cp ~/QARSlp/dotfiles/.shortcuts ~/
+  cp ~/QARSlp/dotfiles/.config/picom/picom.conf ~/.config/picom/picom.conf
+  cp ~/QARSlp/dotfiles/.zshrc ~/
 }
 
 update
