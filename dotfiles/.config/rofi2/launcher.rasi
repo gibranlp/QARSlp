@@ -23,8 +23,8 @@ window {
     location:                    center;
     anchor:                      center;
     fullscreen:                  false;
-    width:                       30%;
-    height:                      40%;
+    width:                       800px;
+    height:                      700px;
     x-offset:                    0px;
     y-offset:                    0px;
 
