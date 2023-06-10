@@ -14,6 +14,8 @@ function update(){
   cp ~/QARSlp/dotfiles/.shortcuts ~/
   cp ~/QARSlp/dotfiles/.config/picom/picom.conf ~/.config/picom/picom.conf
   cp ~/QARSlp/dotfiles/.zshrc ~/
+  mkdir -p ~/.config/ncspot
+  cp ~/QARSlp/dotfiles/.config/ncspot/config.toml ~/.config/ncspot/config.toml
 }
 
 update

@@ -152,6 +152,8 @@ function copy_dotfiles(){
   cp ~/QARSlp/dotfiles/.config/rofi/QARSlp.rasi ~/.config/wal/templates
   mkdir -p ~/.config/cava
   cp ~/QARSlp/dotfiles/.config/cava/config ~/.config/wal/templates
+  mkdir -p ~/.config/ncspot
+  cp ~/QARSlp/dotfiles/.config/ncspot/config.toml ~/.config/ncspot/config.toml
   mkdir -p  ~/.fonts
   cp ~/QARSlp/dotfiles/.fonts/* ~/.fonts
   fc-cache -f -v
