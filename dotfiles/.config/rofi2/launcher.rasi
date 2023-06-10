@@ -1,17 +1,17 @@
-@import "~/.cache/wal/QARSlp.rasi"
 
 /*****----- Configuration -----*****/
 configuration {
 	modi:                       "drun,run,filebrowser";
     show-icons:                 true;
-    display-drun:               "APPS";
-    display-run:                "RUN";
-    display-filebrowser:        "FILES";
+    display-drun:               "";
+    display-run:                "";
+    display-filebrowser:        "";
 	drun-display-format:        "{name}";
 	window-format:              "{w} · {c} · {t}";
 }
 
 /*****----- Global Properties -----*****/
+@import "~/.cache/wal/QARSlp.rasi" 
 * {
     font:                        "Fira Code Medium 12";
 }
@@ -23,13 +23,13 @@ window {
     location:                    center;
     anchor:                      center;
     fullscreen:                  false;
-    width:                       1000px;
+    width:                       800px;
     x-offset:                    0px;
     y-offset:                    0px;
 
     /* properties for all widgets */
     enabled:                     true;
-    border-radius:               15px;
+    border-radius:               30px 5px 30px 5px;
     cursor:                      "default";
     background-color:            @background;
 }
@@ -39,16 +39,8 @@ mainbox {
     enabled:                     true;
     spacing:                     0px;
     background-color:            transparent;
-    orientation:                 horizontal;
-    children:                    [ "imagebox", "listbox" ];
-}
-
-imagebox {
-    padding:                     20px;
-    background-color:            transparent;
-    background-image:            url("/usr/local/backgrounds/background.png", height);
     orientation:                 vertical;
-    children:                    [ "inputbar", "dummy", "mode-switcher" ];
+    children:                    [ "inputbar", "listbox" ];
 }
 
 listbox {
@@ -59,59 +51,67 @@ listbox {
     children:                    [ "message", "listview" ];
 }
 
-dummy {
-    background-color:            transparent;
-}
-
 /*****----- Inputbar -----*****/
 inputbar {
     enabled:                     true;
     spacing:                     10px;
-    padding:                     15px;
-    border-radius:               10px;
-    background-color:            @background;
+    padding:                     100px 60px;
+    background-color:            transparent;
+    background-image:            url("/usr/local/backgrounds/background.png", width);
     text-color:                  @foreground;
-    children:                    [ "textbox-prompt-colon", "entry" ];
+    orientation:                 horizontal;
+    children:                    [ "textbox-prompt-colon", "entry", "dummy", "mode-switcher" ];
 }
 textbox-prompt-colon {
     enabled:                     true;
     expand:                      false;
-    str:                         "";
-    background-color:            inherit;
+    str:                         "";
+    padding:                     12px 15px;
+    border-radius:               15px 5px 15px 5px;
+    background-color:            @background;
     text-color:                  inherit;
 }
 entry {
     enabled:                     true;
-    background-color:            inherit;
+    expand:                      false;
+    width:                       250px;
+    padding:                     12px 16px;
+    border-radius:               5px 15px 5px 15px;
+    background-color:            @background;
     text-color:                  inherit;
     cursor:                      text;
     placeholder:                 "Search";
     placeholder-color:           inherit;
 }
+dummy {
+    expand:                      true;
+    background-color:            transparent;
+}
 
 /*****----- Mode Switcher -----*****/
 mode-switcher{
     enabled:                     true;
-    spacing:                     20px;
+    spacing:                     10px;
     background-color:            transparent;
     text-color:                  @foreground;
 }
 button {
-    padding:                     15px;
-    border-radius:               10px;
+    width:                       45px;
+    padding:                     12px;
+    border-radius:               15px 5px 15px 5px;
     background-color:            @background;
     text-color:                  inherit;
     cursor:                      pointer;
 }
 button selected {
-    background-color:            @color1;
+    background-color:            @color3;
     text-color:                  @foreground;
 }
 
 /*****----- Listview -----*****/
 listview {
     enabled:                     true;
-    columns:                     1;
+    columns:                     2;
     lines:                       8;
     cycle:                       true;
     dynamic:                     true;
@@ -130,9 +130,9 @@ listview {
 /*****----- Elements -----*****/
 element {
     enabled:                     true;
-    spacing:                     15px;
-    padding:                     8px;
-    border-radius:               10px;
+    spacing:                     10px;
+    padding:                     12px;
+    border-radius:               15px 5px 15px 5px;
     background-color:            transparent;
     text-color:                  @foreground;
     cursor:                      pointer;
@@ -142,23 +142,23 @@ element normal.normal {
     text-color:                  inherit;
 }
 element normal.urgent {
-    background-color:            @color2;
+    background-color:            @color5;
     text-color:                  @foreground;
 }
 element normal.active {
-    background-color:            @color4;
-    text-color:                  @foreground;
-}
-element selected.normal {
     background-color:            @color1;
     text-color:                  @foreground;
 }
+element selected.normal {
+    background-color:            @color3;
+    text-color:                  @foreground;
+}
 element selected.urgent {
-    background-color:            @color2;
+    background-color:            @color5;
     text-color:                  @foreground;
 }
 element selected.active {
-    background-color:            @color2;
+    background-color:            @color5;
     text-color:                  @foreground;
 }
 element-icon {
@@ -180,16 +180,16 @@ message {
     background-color:            transparent;
 }
 textbox {
-    padding:                     15px;
-    border-radius:               10px;
+    padding:                     12px;
+    border-radius:               15px 5px 15px 5px;
     background-color:            @background;
     text-color:                  @foreground;
     vertical-align:              0.5;
     horizontal-align:            0.0;
 }
 error-message {
-    padding:                     15px;
-    border-radius:               20px;
+    padding:                     12px;
+    border-radius:               0px;
     background-color:            @background;
     text-color:                  @foreground;
 }
