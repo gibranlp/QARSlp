@@ -67,8 +67,8 @@ backend=['Wal', 'Colorz', 'Colorthief','Haishoku']
 layout_margin=10 # Layout margins
 single_layout_margin=10 # Single window margin 
 ## Borders
-layout_border_width=4 # Layout border width
-single_border_width=4 # Single border width
+layout_border_width=5 # Layout border width
+single_border_width=5 # Single border width
 
 # Bar Position
 bar_position=str(variables[5].strip())
@@ -97,8 +97,8 @@ if xres == "3840" and yres == "2160": #4k
 elif xres == "1920" and yres == "1080": #FullHD
   layout_margin=5
   single_layout_margin=5  
-  layout_border_width=3 
-  single_border_width=3
+  layout_border_width=4 
+  single_border_width=4
   font_size=16
   bar_size=25
   widget_width=220
