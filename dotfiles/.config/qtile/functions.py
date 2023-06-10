@@ -47,7 +47,7 @@ wallpaper_dir= home + '/Pictures/Wallpapers/' # Wallpapers folders
 light=str(variables[3].strip()) # Optin for light themes
 
 # Diferenciator, this will get added to generate a slightly different pallete
-differentiator = '090909' 
+differentiator = '191919' 
 
 # Theme
 current_theme=str(variables[0].strip())

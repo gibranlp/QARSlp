@@ -280,8 +280,8 @@ def init_widgets_list():
           **powerline,
         ),
         widget.UPowerWidget(
-            border_charge_colour=color[7],
-            border_colour=color[3],
+            border_charge_colour=color[3],
+            border_colour=secondary_color[0],
             border_critical_colour='#cc0000',
             fill_critical='#cc0000',
             fill_low='#FF5511',

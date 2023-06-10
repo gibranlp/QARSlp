@@ -9,7 +9,7 @@
 # MIT licence 
 #
 export ZSH=$HOME/.oh-my-zsh
-ZSH_THEME="agnoster"
+ZSH_THEME="passion"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -94,8 +94,6 @@ export LANG=en_US.UTF-8
 # fi
 
 eval $(thefuck --alias)
-# You can use whatever you want as an alias, like for Mondays:
-eval $(thefuck --alias FUCK)
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -114,7 +112,6 @@ export PATH=~/home/$USER/.local/bin:$PATH
 export PATH=~/.emacs.d/bin:$PATH
 export PATH=~/.local/bin:$PATH
 export PATH=$PATH:/opt/ade
-wal -R -q && clear
-echo "TF"$(( (`date +%s` - `date +%s -d '2003/08/1'`) / 86400 ))
-echo "LT"$(( (`date +%s` - `date +%s -d '2022/08/15'`) / 86400 ))
+wal -R -q && clear 
+echo "TF "$(( (`date +%s` - `date +%s -d '2003/08/1'`) / 86400 )) "CP "$(( (`date +%s` - `date +%s -d '2022/02/19'`) / 86400 )) "LT "$(( (`date +%s` - `date +%s -d '2022/08/15'`) / 86400 )) 
 setxkbmap -layout us -variant intl

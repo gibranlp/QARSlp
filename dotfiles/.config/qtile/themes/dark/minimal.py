@@ -125,8 +125,8 @@ def init_widgets_list():
           mouse_callbacks={'Button1': lambda: qtile.function(calendar_notification),'Button4': lambda: qtile.function(calendar_notification_prev),'Button5': lambda: qtile.function(calendar_notification_next)}, 
         ),
         widget.UPowerWidget(
-            border_charge_colour=color[7],
-            border_colour=color[2],
+            border_charge_colour=color[2],
+            border_colour=secondary_color[0],
             border_critical_colour='#cc0000',
             fill_critical='#cc0000',
             fill_low='#FF5511',
