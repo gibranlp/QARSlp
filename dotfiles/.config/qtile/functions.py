@@ -362,7 +362,7 @@ def fargewidget(qtile):
 # Logout widget
 def session_widget(qtile):
   options = [' Log Out', ' Reboot',' Poweroff',' Lock']
-  index, key = rofi_session.select('  Session', options)
+  index, key = rofi_session.select('  Session', options)
   if key == -1:
     rofi_session.close()
   else:

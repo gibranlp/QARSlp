@@ -11,6 +11,7 @@
 
 function update(){
   cp -r ~/QARSlp/dotfiles/.config/rofi2/* ~/.config/rofi/
+  cp -r ~/QARSlp/dotfiles/.config/qtile/* ~/.config/qtile/
 }
 
 update
