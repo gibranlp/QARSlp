@@ -1,7 +1,7 @@
 
 /*****----- Configuration -----*****/
 configuration {
-	modi:                       "drun,run,filebrowser";
+	modi:                       "run,filebrowser";
     show-icons:                 true;
     display-drun:               "";
     display-run:                "";
@@ -30,7 +30,7 @@ window {
 
     /* properties for all widgets */
     enabled:                     true;
-    border-radius:               30px 5px 30px 5px;
+    border-radius:               5px;
     cursor:                      "default";
     background-color:            @background;
 }
@@ -62,13 +62,15 @@ inputbar {
     text-color:                  @foreground;
     orientation:                 horizontal;
     children:                    [ "textbox-prompt-colon", "entry", "dummy", "mode-switcher" ];
+    border-radius:               5px;
+
 }
 textbox-prompt-colon {
     enabled:                     true;
     expand:                      false;
     str:                         "";
     padding:                     12px 15px;
-    border-radius:               15px 5px 15px 5px;
+    border-radius:               5px;
     background-color:            @background;
     text-color:                  inherit;
 }
@@ -77,7 +79,7 @@ entry {
     expand:                      false;
     width:                       250px;
     padding:                     12px 16px;
-    border-radius:               5px 15px 5px 15px;
+    border-radius:               5px;
     background-color:            @background;
     text-color:                  inherit;
     cursor:                      text;
@@ -99,7 +101,7 @@ mode-switcher{
 button {
     width:                       45px;
     padding:                     12px;
-    border-radius:               15px 5px 15px 5px;
+    border-radius:               5px;
     background-color:            @background;
     text-color:                  inherit;
     cursor:                      pointer;
@@ -112,7 +114,7 @@ button selected {
 /*****----- Listview -----*****/
 listview {
     enabled:                     true;
-    columns:                     2;
+    columns:                     1;
     lines:                       8;
     cycle:                       true;
     dynamic:                     true;
@@ -133,7 +135,7 @@ element {
     enabled:                     true;
     spacing:                     10px;
     padding:                     12px;
-    border-radius:               15px 5px 15px 5px;
+    border-radius:               5px;
     background-color:            transparent;
     text-color:                  @foreground;
     cursor:                      pointer;
@@ -165,7 +167,7 @@ element selected.active {
 element-icon {
     background-color:            transparent;
     text-color:                  inherit;
-    size:                        32px;
+    size:                        40px;
     cursor:                      inherit;
 }
 element-text {
@@ -182,7 +184,7 @@ message {
 }
 textbox {
     padding:                     12px;
-    border-radius:               15px 5px 15px 5px;
+    border-radius:               5px;
     background-color:            @background;
     text-color:                  @foreground;
     vertical-align:              0.5;
