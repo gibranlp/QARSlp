@@ -394,9 +394,9 @@ def network_widget(qtile):
     rofi_network.close()
   else:
     if index == 0:
-      qtile.cmd_spawn(home + '/.local/bin/wifi2')
-    elif index==1:
       subprocess.run("nmcli radio wifi " + active, shell=True)
+    elif index==1:
+      qtile.cmd_spawn(home + '/.local/bin/wifi2')
     elif index==1:
       qtile.cmd_spawn(terminal + ' -e bmon')
     else:
