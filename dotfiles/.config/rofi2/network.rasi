@@ -8,17 +8,17 @@
 window {
     /* properties for window widget */
     transparency:                "real";
-    location:                    west;
+    location:                    center;
     anchor:                      center;
     fullscreen:                  false;
-    width:                       650px;
-    height:                      100%;
-    x-offset:                    325px;
+    width:                       600px;
+    height:                      560px;
+    x-offset:                    0px;
     y-offset:                    0px;
 
     /* properties for all widgets */
     enabled:                     true;
-    border-radius:               0px 5px 5px 0px;
+    border-radius:               5px;
     cursor:                      "default";
     background-color:            @background;
 }

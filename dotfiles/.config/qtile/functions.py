@@ -118,12 +118,11 @@ else: # 1366 x 768 Macbook air 11"
 
 # Rofi Configuration files
 rofi_session = Rofi(rofi_args=['-theme', '~/.config/rofi/logout.rasi'])
-rofi_display = Rofi(rofi_args=['-theme', '~/.config/rofi/display.rasi'])
 rofi_network= Rofi(rofi_args=['-theme', '~/.config/rofi/network.rasi'])
 rofi_backend= Rofi(rofi_args=['-theme', '~/.config/rofi/backend.rasi'])
 rofi_websearch= Rofi(rofi_args=['-theme', '~/.config/rofi/websearch.rasi'])
-rofi_screenshot= Rofi(rofi_args=['-theme', '~/.config/rofi/screenshot.rasi'])
-rofi_fargewidget= Rofi(rofi_args=['-theme', '~/.config/rofi/fargewidget.rasi'])
+rofi_screenshot= Rofi(rofi_args=['-theme', '~/.config/rofi/logout.rasi'])
+rofi_fargewidget= Rofi(rofi_args=['-theme', '~/.config/rofi/logout.rasi'])
 
 ### Weather
 w_appkey = str(variables[2].strip()) # Get a key here https://home.openweathermap.org/users/sign_up 
@@ -389,19 +388,19 @@ def network_widget(qtile):
   else:
     connected = ' Turn Wifi On'
     active="on"
-  options = [connected,'  Bandwith Monitor (CLI)', ' Network Manager (CLI)', ' Wlan Manager']
-  index, key = rofi_network.select(" IP " + private_ip + " ->" + "  IP " + public_ip, options)
+  options = [connected,' Wlan Manager','  Bandwith Monitor (CLI)', ' Network Manager (CLI)']
+  index, key = rofi_network.select(" IP " + private_ip + " -" + "  IP " + public_ip, options)
   if key == -1:
     rofi_network.close()
   else:
     if index == 0:
+      qtile.cmd_spawn(home + '/.local/bin/wifi2')
+    elif index==1:
       subprocess.run("nmcli radio wifi " + active, shell=True)
     elif index==1:
       qtile.cmd_spawn(terminal + ' -e bmon')
-    elif index==1:
-      qtile.cmd_spawn(terminal + ' -e nmtui')
     else:
-      qtile.cmd_spawn(home + '/.local/bin/wifi2')
+      qtile.cmd_spawn(terminal + ' -e nmtui')
 
 # Change Theme widget
 def change_theme(qtile):
