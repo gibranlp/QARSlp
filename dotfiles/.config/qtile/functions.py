@@ -331,7 +331,7 @@ def set_default_backend(qtile):
 
 # Display Shortcuts widget
 def shortcuts(qtile):
-  subprocess.run("cat ~/.shortcuts | rofi -theme '~/.config/rofi/left_bar.rasi' -i -dmenu -p ' Shortcuts:'",shell=True)
+  subprocess.run("cat ~/.shortcuts | rofi -theme '~/.config/rofi/shortcuts.rasi' -i -dmenu -p ' Shortcuts:'",shell=True)
 
 # NightLight widget
 def nightLight_widget(qtile):
