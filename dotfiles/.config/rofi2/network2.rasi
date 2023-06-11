@@ -60,7 +60,7 @@ entry {
     expand:                      false;
     width:                       350px;
     padding:                     12px 16px;
-    border-radius:               5px;
+    border-radius:               0px 5px 5px 0px;
     background-color:            @background;
     text-color:                  inherit;
     cursor:                      text;
