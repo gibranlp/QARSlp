@@ -574,6 +574,7 @@ def init_layouts():
   return [
     layout.Spiral(main_pane="left",ratio_increment=0.01,**layout_theme),
     layout.MonadTall(max_ratio=0.90,ratio=0.75,**layout_theme),
+    layout.MonadWide(max_ratio=0.90,ratio=0.75,**layout_theme),
     layout.Floating(**layout_theme),
     ]
 layouts = init_layouts()
