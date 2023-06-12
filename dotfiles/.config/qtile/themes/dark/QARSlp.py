@@ -49,7 +49,7 @@ def init_widgets_list():
             widget.TextBox(
               decorations=[RectDecoration(colour=color[0], radius=[7,0,0,7], filled=True)],
               foreground=color[5],
-              text="",
+              text="",
             ),
             widget.CPU(
               decorations=[RectDecoration(colour=color[5], radius=[0,7,7,0], filled=True)],
@@ -69,7 +69,7 @@ def init_widgets_list():
               decorations=[RectDecoration(colour=color[1], radius=[0,7,7,0], filled=True)],
               foreground=color[0],
               format='{MemUsed:.0f}{mm}',
-              measure_mem='G',
+              measure_mem='M',
             ),
             widget.Spacer(
                 length=5,

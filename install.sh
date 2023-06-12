@@ -89,6 +89,7 @@ function base() {
     'taskwarrior-tui'
     'fzf'
     'thefuck'
+    'pamixer'
     #'nvidia-dkms'
 )
 

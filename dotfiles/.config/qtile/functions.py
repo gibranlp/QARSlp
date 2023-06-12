@@ -484,8 +484,8 @@ keys = [
 
     # Volume
     Key([], "XF86AudioMute", lazy.spawn("amixer -q set Master toggle")), # Mute
-    Key([], "XF86AudioLowerVolume", lazy.spawn("amixer -q set Master 5%-")), # Lower Volume
-    Key([], "XF86AudioRaiseVolume", lazy.spawn("amixer -q set Master 5%+")), # Raise Volume
+    Key([], "XF86AudioLowerVolume", lazy.spawn("amixer -q set Master 5%- && dunstify $(pamixer --get-volume-human)", shell=True)),
+    Key([], "XF86AudioRaiseVolume", lazy.spawn("amixer -q set Master 5%+ && dunstify $(pamixer --get-volume-human)", shell=True)), # Raise Volume
 
     # Media Control
     Key([], "XF86AudioPlay", lazy.spawn("playerctl --player=%any play-pause")), # Play Pause
