@@ -117,12 +117,11 @@ else: # 1366 x 768 Macbook air 11"
   bar_margin=[0,0,0,0]
 
 # Rofi Configuration files
-rofi_session = Rofi(rofi_args=['-theme', '~/.config/rofi/logout.rasi'])
+rofi_right = Rofi(rofi_args=['-theme', '~/.config/rofi/logout.rasi'])
 rofi_network= Rofi(rofi_args=['-theme', '~/.config/rofi/network.rasi'])
-rofi_backend= Rofi(rofi_args=['-theme', '~/.config/rofi/backend.rasi'])
-rofi_websearch= Rofi(rofi_args=['-theme', '~/.config/rofi/websearch.rasi'])
-rofi_screenshot= Rofi(rofi_args=['-theme', '~/.config/rofi/logout.rasi'])
-rofi_fargewidget= Rofi(rofi_args=['-theme', '~/.config/rofi/logout.rasi'])
+rofi_left= Rofi(rofi_args=['-theme', '~/.config/rofi/backend.rasi'])
+rofi_center= Rofi(rofi_args=['-theme', '~/.config/rofi/center.rasi'])
+
 
 ### Weather
 w_appkey = str(variables[2].strip()) # Get a key here https://home.openweathermap.org/users/sign_up 
@@ -273,9 +272,9 @@ def calendar_notification_next(qtile):{
 ## Select Dark or Light Theming
 def dark_white(qtile):
   options = ['Dark', 'Light']
-  index, key = rofi_backend.select('  Dark or  Light Theme', options)
+  index, key = rofi_left.select('  Dark or  Light Theme', options)
   if key == -1 or index == 2:
-    rofi_backend.close()
+    rofi_left.close()
   else:
     if index == 0:
       variables[3]="-c" + "\n"
@@ -299,9 +298,9 @@ def dark_white(qtile):
 ## Select Bar Position Top or Bottom
 def bar_pos(qtile):
   options = ['Top', 'Bottom']
-  index, key = rofi_backend.select('  Top Bar or  Bottom Bar -> ' + bar_position , options)
+  index, key = rofi_left.select('  Top Bar or  Bottom Bar -> ' + bar_position , options)
   if key == -1 or index == 2:
-    rofi_backend.close()
+    rofi_left.close()
   else:
     if index == 0:
       variables[5]="top"
@@ -316,9 +315,9 @@ def bar_pos(qtile):
 ## Set default backend
 def set_default_backend(qtile):
   options = backend
-  index, key = rofi_backend.select('  Backend -  ' + def_backend , options)
+  index, key = rofi_left.select('  Backend -  ' + def_backend , options)
   if key == -1 or index == 4:
-    rofi_backend.close()
+    rofi_left.close()
   else:
     subprocess.run(["wal", light.lower(), "-i", "/usr/local/backgrounds/background.png", "--backend", "%s" %backend[index].lower()])
     subprocess.run(["wpg", light, "-s", "/usr/local/backgrounds/background.png", "--backend", "%s" %backend[index].lower()])
@@ -335,9 +334,9 @@ def shortcuts(qtile):
 # NightLight widget
 def nightLight_widget(qtile):
   options = [' Night Time(3500k)', ' Neutral (6500k)', ' Cool (7500k)']
-  index, key = rofi_session.select('  Night Light', options)
+  index, key = rofi_center.select('  Night Light', options)
   if key == -1:
-    rofi_session.close()
+    rofi_center.close()
   else:
     if index == 0:
       os.system('redshift -O 3500k -r -P')
@@ -349,9 +348,9 @@ def nightLight_widget(qtile):
 # Farge Widget
 def fargewidget(qtile):
   options = [' Hex',' RGB']
-  index, key = rofi_fargewidget.select('  Color Picker', options)
+  index, key = rofi_center.select('  Color Picker', options)
   if key == -1:
-    rofi_fargewidget.close()
+    rofi_center.close()
   else:
     if index ==0:
       subprocess.run("farge --notify --expire-time 10000",shell=True)
@@ -361,9 +360,9 @@ def fargewidget(qtile):
 # Logout widget
 def session_widget(qtile):
   options = [' Log Out', ' Reboot',' Poweroff',' Lock']
-  index, key = rofi_session.select('  Session', options)
+  index, key = rofi_right.select('  Session', options)
   if key == -1:
-    rofi_session.close()
+    rofi_right.close()
   else:
     if index == 0:
       qtile.cmd_shutdown()
@@ -405,9 +404,9 @@ def network_widget(qtile):
 # Change Theme widget
 def change_theme(qtile):
   options = theme
-  index, key = rofi_backend.select('  Theme -  ' + current_theme , options)
+  index, key = rofi_left.select('  Theme -  ' + current_theme , options)
   if key == -1:
-    rofi_backend.close()
+    rofi_left.close()
   else:
     subprocess.run('rm -rf ~/.config/qtile/theme.py', shell=True)
     variables[0]=theme[index] + "\n"
@@ -427,9 +426,9 @@ def random_colors(qtile):
 # Screenshot widget
 def screenshot(qtile):
   options = [' Screen', ' Window', ' Area', ' 5s Screen']
-  index, key = rofi_screenshot.select('  Screenshot', options)
+  index, key = rofi_center.select('  Screenshot', options)
   if key == -1:
-    rofi_screenshot.close()
+    rofi_center.close()
   else:
     if index ==0:
       subprocess.run("flameshot full --path ~/Pictures/Screenshot.png --delay 500",shell=True)
