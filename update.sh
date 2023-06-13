@@ -14,7 +14,7 @@ function update(){
   cp -r ~/QARSlp/dotfiles/.config/qtile/* ~/.config/qtile/
   cp ~/QARSlp/dotfiles/.shortcuts ~/
   cp -r ~/QARSlp/dotfiles/.local/bin/* ~/.local/bin
-  cp ~/QARSlp/dotfiles/.config/picom/picom.conf ~/.config/picom/picom.conf
+  #cp ~/QARSlp/dotfiles/.config/picom/picom.conf ~/.config/picom/picom.conf
   cp ~/QARSlp/dotfiles/.config/dunst/dunstrc ~/.config/wal/templates
 }
 
