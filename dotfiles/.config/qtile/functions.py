@@ -477,8 +477,8 @@ keys = [
     # Layouts
     Key([mod], "Tab",lazy.layout.down()), # Change focus of windows down
     Key([mod, "shift"], "Tab",lazy.layout.up()), # Change focus of windows up
-    Key([alt], "Tab", lazy.layout.shuffle_down()), # Swap Left Down
-    Key([alt, "shift"], "Tab", lazy.layout.shuffle_up()), # Swap Right Up
+    Key([alt], "Tab", lazy.layout.swap_left()), # Swap Left Down
+    Key([alt, "shift"], "Tab", lazy.layout.swap_right()), # Swap Right Up
     Key([mod], 'period', lazy.next_screen()), # Send Cursor to next screen
 
     # Brightness
