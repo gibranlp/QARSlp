@@ -10,7 +10,7 @@
 #
 
 function update(){
-  cp -r ~/QARSlp/dotfiles/.config/rofi2/* ~/.config/rofi/
+  cp -r ~/QARSlp/dotfiles/.config/rofi/* ~/.config/rofi/
   cp -r ~/QARSlp/dotfiles/.config/qtile/* ~/.config/qtile/
   cp ~/QARSlp/dotfiles/.shortcuts ~/
   cp -r ~/QARSlp/dotfiles/.local/bin/* ~/.local/bin
