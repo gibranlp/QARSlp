@@ -44,7 +44,7 @@ variables=file.readlines()
 
 # Wallpapers / Theming
 wallpaper_dir= home + '/Pictures/Wallpapers/' # Wallpapers folders
-light=str(variables[3].strip()) # Optin for light themes
+light=str(variables[3].strip()) # Option for light themes
 
 # Diferenciator, this will get added to generate a slightly different pallete
 differentiator = '191919'
@@ -213,10 +213,16 @@ transparent=color[0] + "00"
 def change_wallpaper(qtile):
   selection = random.choice(os.listdir(wallpaper_dir))
   selected_wallpaper = os.path.join(wallpaper_dir, selection)
-  wallpaper_file = selected_wallpaper
-  subprocess.run(["wpg", light, "-s", str(wallpaper_file), "--backend", def_backend.lower()])
-  subprocess.run(["cp", str(wallpaper_file), "/usr/local/backgrounds/background.png"])
-  subprocess.run(["cp", "-r", str(Path.home() / ".local/share/themes/FlatColor"), "/usr/local/themes/"])
+  i=0
+  while selected_wallpaper != wallpaper and i<10:
+    subprocess.run(["wpg", light, "-s", str(selected_wallpaper), "--backend", def_backend.lower()])
+    subprocess.run(["cp", str(selected_wallpaper), "/usr/local/backgrounds/background.png"])
+    subprocess.run(["cp", "-r", str(Path.home() / ".local/share/themes/FlatColor"), "/usr/local/themes/"])
+    break
+  else:
+    selection = random.choice(os.listdir(wallpaper_dir))
+    selected_wallpaper = os.path.join(wallpaper_dir, selection)
+  
   qtile.reload_config()
 
 ## Get network device in use
