@@ -11,6 +11,7 @@
 function base() {
   packets=(
     'feh'
+    'unclutter'
     'fuse-exfat'
     'base-devel'
     'alsa-utils'
@@ -111,7 +112,7 @@ function aur_packages() {
   packets=(
     'qtile-git'
     'farge'
-    #'python-pywalfox'
+    #'python-pywalfox' # If you install firefox you will need  this
     'qtile-extras-git'
     'caffeine-ng-git'
     'visual-studio-code-bin'
@@ -195,8 +196,9 @@ function copy_dotfiles(){
 }
 
 function web_apps(){
-  mkdir -p ~/WebApps
-  cd ~/WebApps
+
+  mkdir -p ~/Apps
+  cd ~/Apps
   nativefier https://github.com/ --name github --single-instance 
   nativefier https://www.primevideo.com/ --name prime --single-instance --windevine 
   nativefier https://drive.google.com/drive/shared-drives --name drive --single-instance 
@@ -209,16 +211,16 @@ function web_apps(){
   nativefier https://app.clockify.me/tracker# --name clockify --single-instance 
   nativefier https://admin.microsoft.com/Adminportal/Home#/homepage --name madmin --single-instance 
 
-  sudo ln -s ~/WebApps/PrimeVideo/WelcometoPrimeVideo /usr/bin/prime
-  sudo ln -s ~/WebApps/drive/drive /usr/bin/drive
-  sudo ln -s ~/WebApps/admin/admin /usr/bin/admin
-  sudo ln -s ~/WebApps/calendar/calendar /usr/bin/calendar
-  sudo ln -s ~/WebApps/notion/notion /usr/bin/notion
-  sudo ln -s ~/WebApps/overleaf/overleaf /usr/bin/overleaf
-  sudo ln -s ~/WebApps/figma/figma /usr/bin/figma
-  sudo ln -s ~/WebApps/meet/meet /usr/bin/meet
-  sudo ln -s ~/WebApps/github/github /usr/bin/github
-  sudo ln -s ~/WebApps/clockify/clockify /usr/bin/clockify
+  sudo ln -s ~/Apps/PrimeVideo/WelcometoPrimeVideo /usr/bin/prime
+  sudo ln -s ~/Apps/drive/drive /usr/bin/drive
+  sudo ln -s ~/Apps/admin/admin /usr/bin/admin
+  sudo ln -s ~/Apps/calendar/calendar /usr/bin/calendar
+  sudo ln -s ~/Apps/notion/notion /usr/bin/notion
+  sudo ln -s ~/Apps/overleaf/overleaf /usr/bin/overleaf
+  sudo ln -s ~/Apps/figma/figma /usr/bin/figma
+  sudo ln -s ~/Apps/meet/meet /usr/bin/meet
+  sudo ln -s ~/Apps/github/github /usr/bin/github
+  sudo ln -s ~/Apps/clockify/clockify /usr/bin/clockify
   wpg-install.sh -gio
   ~/.local/bin/genwal
 }
@@ -235,12 +237,6 @@ function post(){
   journalctl --vacuum-time=2weeks
   
 }
-
-function update(){
-  cp -r ~/QARSlp/dotfiles/.config/qtile/* ~/.config/qtile/
-}
-
-
 #sudo pacman -Syyu --noconfirm
 #base
 #paru_install
