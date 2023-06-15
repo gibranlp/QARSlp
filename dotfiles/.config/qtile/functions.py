@@ -546,7 +546,7 @@ group_names = ["Escape","1","2","3","4","5","6","7","8","9"]
 group_labels=["","","","","","","","","",""] # Custom
 ####
 
-group_layouts=["spiral", "spiral", "spiral", "spiral","spiral", "spiral", "spiral","spiral", "spiral", "floating"]
+group_layouts=["monadtall", "monadtall", "monadtall", "monadtall","monadtall", "monadtall", "monadtall","monadtall", "monadtall", "floating"]
 for i in range(len(group_names)):
   groups.append(
     Group(
