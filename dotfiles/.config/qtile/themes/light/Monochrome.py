@@ -21,6 +21,7 @@ def init_widgets_list():
         decorations=[RectDecoration(colour=color[0], radius=7, filled=True)],
         foreground=color_in_use,
         text=" QARSlp",
+        padding_x=5,
       ),
       widget.Spacer(
         length=5,
@@ -42,7 +43,6 @@ def init_widgets_list():
         block_highlight_text_color=color_in_use,    
         urgent_border="fc0000",
         padding_y=10,
-        padding_x=5,
       ),
       widget.Spacer(
         length=5,
