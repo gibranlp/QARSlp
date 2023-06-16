@@ -91,6 +91,9 @@ function base() {
     'fzf'
     'thefuck'
     'pamixer'
+    'gvfs-mtp' 
+    'gvfs-nfs'
+    'gvfs-smb'
     #'nvidia-dkms'
 )
 
