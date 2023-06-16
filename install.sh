@@ -212,7 +212,8 @@ function web_apps(){
   nativefier https://www.overleaf.com/project --name overleaf --single-instance 
   nativefier https://meet.google.com/ --name meet --single-instance 
   nativefier https://app.clockify.me/tracker# --name clockify --single-instance 
-  nativefier https://admin.microsoft.com/Adminportal/Home#/homepage --name madmin --single-instance 
+  nativefier https://admin.microsoft.com/Adminportal/Home#/homepage --name madmin --single-instance
+  nativefier https://helgentrial.atlassian.net/jira/software/projects/IR/boards/1 --name jira --single-instance
 
   sudo ln -s ~/Apps/PrimeVideo/WelcometoPrimeVideo /usr/bin/prime
   sudo ln -s ~/Apps/drive/drive /usr/bin/drive
@@ -224,6 +225,7 @@ function web_apps(){
   sudo ln -s ~/Apps/meet/meet /usr/bin/meet
   sudo ln -s ~/Apps/github/github /usr/bin/github
   sudo ln -s ~/Apps/clockify/clockify /usr/bin/clockify
+   sudo ln -s ~/Apps/jira/jira /usr/bin/jira
   wpg-install.sh -gio
   ~/.local/bin/genwal
 }

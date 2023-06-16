@@ -142,7 +142,7 @@ def follow_window(client):
     match = next((m for m in group.matches if m.compare(client)), None)
     if match:
       targetgroup = qtile.groups_map[group.name]
-      targetgroup.cmd_toscreen(toggle=False)
+      targetgroup.toscreen(toggle=False)
       break
 
 @hook.subscribe.client_name_updated
@@ -151,17 +151,17 @@ def follow_window_name(client):
     match = next((m for m in group.matches if m.compare(client)), None)
     if match:
       targetgroup = qtile.groups_map[group.name]
-      targetgroup.cmd_toscreen(toggle=False)
+      targetgroup.toscreen(toggle=False)
       break
 
 ##Specific Apps/Groups
 def app_or_group(group, app):
   def f(qtile):
     if qtile.groups_map[group].windows:
-       qtile.groups_map[group].cmd_toscreen(toggle=False)
+       qtile.groups_map[group].toscreen(toggle=False)
        qtile.spawn(app)
     else:
-      qtile.groups_map[group].cmd_toscreen(toggle=False)
+      qtile.groups_map[group].cdtoscreen(toggle=False)
       qtile.spawn(app)
     return f
 
@@ -371,7 +371,7 @@ def session_widget(qtile):
     rofi_right.close()
   else:
     if index == 0:
-      qtile.cmd_shutdown()
+      qtile.shutdown()
     elif index == 1:
       os.system('systemctl reboot')
     elif index == 2:
@@ -401,11 +401,11 @@ def network_widget(qtile):
     if index == 0:
       subprocess.run("nmcli radio wifi " + active, shell=True)
     elif index==1:
-      qtile.cmd_spawn(home + '/.local/bin/wifi2')
-    elif index==1:
-      qtile.cmd_spawn(terminal + ' -e bmon')
+      qtile.spawn(home + '/.local/bin/wifi2')
+    elif index==2:
+      qtile.spawn(terminal + ' -e bmon')
     else:
-      qtile.cmd_spawn(terminal + ' -e nmtui')
+      qtile.spawn(terminal + ' -e nmtui')
 
 # Change Theme widget
 def change_theme(qtile):
