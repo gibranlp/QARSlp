@@ -50,7 +50,7 @@ light=str(variables[3].strip()) # Option for light themes
 differentiator = '191919'
 
 #Show all groups
-hide_unused_groups=True
+hide_unused_groups=False
 
 # Theme
 current_theme=str(variables[0].strip())
@@ -543,7 +543,9 @@ group_names = ["Escape","1","2","3","4","5","6","7","8","9"]
 #group_labels=["0","1","2","3","4","5","6","7","8","9"] # Numbers
 #group_labels=["","","","","","","","","",""] # Circles
 #group_labels=["","","","","","","","","",""] # Dot Circles
-group_labels=["","","","","","","","","",""] # Custom
+#group_labels=["","","","","","","","","",""] # Custom
+group_labels=["","","","","","","","","",""] # Star Wars
+
 ####
 
 group_layouts=["monadtall", "monadtall", "monadtall", "monadtall","monadtall", "monadtall", "monadtall","monadtall", "monadtall", "floating"]
