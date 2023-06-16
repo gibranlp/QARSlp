@@ -122,6 +122,18 @@ def init_widgets_list():
               length=5,
               background=transparent,
             ),
+            widget.Prompt(
+              decorations=[RectDecoration(colour=color[0], radius=7, filled=True)],
+              prompt=prompt,
+              foreground=color[4],
+              cursor_color=color[4],
+              visual_bell_color=[4],
+              visual_bell_time=0.2,
+            ),
+            widget.Spacer(
+              length=5,
+              background=transparent,
+            ),
             widget.UPowerWidget(
                border_charge_colour=color[3],
                border_colour=secondary_color[0],
@@ -135,18 +147,6 @@ def init_widgets_list():
                percentage_low=0.4,
                text_charging=' ({percentage:.0f}%) {ttf} to ',
                text_discharging=' ({percentage:.0f}%) {tte} Left',
-            ),
-            widget.Spacer(
-              length=5,
-              background=transparent,
-            ),
-            widget.Prompt(
-              decorations=[RectDecoration(colour=color[0], radius=7, filled=True)],
-              prompt=prompt,
-              foreground=color[4],
-              cursor_color=color[4],
-              visual_bell_color=[4],
-              visual_bell_time=0.2,
             ),
             # widget.Pomodoro(
             #   decorations=[RectDecoration(colour=color[2], radius=[7,0,0,7], filled=True)],
