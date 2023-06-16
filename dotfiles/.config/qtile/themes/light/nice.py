@@ -139,7 +139,7 @@ def init_widgets_list():
           fontsize=font_size-2
         ),
         widget.ALSAWidget(
-          decorations=[RectDecoration(use_widget_background=True, radius=[0,10,10,0], padding_y=1, filled=True)],
+          decorations=[RectDecoration(use_widget_background=True,radius=0, padding_y=1, filled=True)],
           background=secondary_color[0],
           device='Master',
           bar_colour_high=color[0],
@@ -151,6 +151,12 @@ def init_widgets_list():
           bar_width=80,
           mode='bar',
           text_format=' ',
+        ),
+        widget.TextBox(
+          decorations=[RectDecoration(colour=secondary_color[0], radius=[0,10,10,0], filled=True)],
+          text=" ",
+          foreground=color[5],
+          mouse_callbacks={'Button1': lambda: qtile.spawn('pavucontrol')}
         ),
         widget.Spacer(
           length=5,
