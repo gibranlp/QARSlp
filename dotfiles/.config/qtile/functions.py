@@ -85,8 +85,8 @@ yres = resolution[22:26]
 if xres == "3840" and yres == "2160": #4k
   layout_margin=10
   single_layout_margin=10  
-  layout_border_width=5
-  single_border_width=5
+  layout_border_width=7
+  single_border_width=7
   font_size=20
   bar_size=30
   widget_width=400
