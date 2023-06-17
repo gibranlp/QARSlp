@@ -90,6 +90,8 @@ if xres == "3840" and yres == "2160": #4k
   font_size=20
   bar_size=30
   widget_width=400
+  maxRatio=0.90
+  Ratio=0.75
   if bar_position == "bottom":
     bar_margin=[0,10,5,10]
   else:
@@ -102,6 +104,8 @@ elif xres == "1920" and yres == "1080": #FullHD
   font_size=16
   bar_size=25
   widget_width=220
+  maxRatio=0.80
+  Ratio=0.60
   if bar_position == "bottom":
     bar_margin=[0,5,5,5]
   else:
@@ -114,6 +118,8 @@ else: # 1366 x 768 Macbook air 11"
   font_size=13
   bar_size=20
   widget_width=100
+  maxRatio=0.60
+  Ratio=0.50
   bar_margin=[0,0,0,0]
 
 # Rofi Configuration files
@@ -464,8 +470,6 @@ keys = [
     Key([mod, "shift"],"o",lazy.function(nightLight_widget)), # Set night light
     Key([mod],"p",lazy.function(fargewidget)), # Color Picker Widget
     Key([alt], "Return", lazy.spawn('rofi  -theme "~/.config/rofi/left_bar.rasi" -show find -modi find:~/.local/bin/finder')), # Search for files and folders
-    Key([mod],"f",lazy.spawn(home + '/.local/bin/wsearch')), # WEB Search widget
-    Key([mod, "shift"],"f",lazy.spawn('rofi  -theme "~/.config/rofi/filesfolders.rasi" -show find -modi find:~/.local/bin/finder')), # Search files and folders
     Key([mod],"t",lazy.spawn('rofi  -theme "~/.config/rofi/tasks.rasi" -show tasks:task')), # Task list
     Key([mod],"x",lazy.function(session_widget)), # Log out
     Key([mod],"b",lazy.function(network_widget)), # Network Settings
@@ -580,8 +584,8 @@ layout_theme = init_layout_theme()
 def init_layouts():
   return [
     layout.Spiral(main_pane="left",ratio_increment=0.01,**layout_theme),
-    layout.MonadTall(max_ratio=0.90,ratio=0.75,**layout_theme),
-    layout.MonadWide(max_ratio=0.90,ratio=0.75,**layout_theme),
+    layout.MonadTall(max_ratio=maxRatio,ratio=Ratio,**layout_theme),
+    layout.MonadWide(max_ratio=maxRatio,ratio=Ratio,**layout_theme),
     layout.Floating(**layout_theme),
     ]
 layouts = init_layouts()

@@ -28,10 +28,10 @@
     height = 150
 
     # Position the notification in the top right corner
-    origin = bottom-right
+    origin = top-right
 
     # Offset from the origin
-    offset = 30x30
+    offset = 20x50
 
     # Scale factor. It is auto-detected if value is 0.
     scale = 0
@@ -494,7 +494,7 @@ timeout = 10
 
 [Pamixer]
 appname = dunstify
-format = " %s"
+format = " Volume %s"
 timeout = 1
 urgency = normal
 set_stack_tag = "volume"
