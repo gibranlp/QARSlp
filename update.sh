@@ -8,6 +8,17 @@
 # By: gibranlp <thisdoesnotwork@gibranlp.dev>
 # MIT licence 
 #
+function install_updated_packages() {
+  packets=(
+   'exa'
+)
+
+for packet in "${packets[@]}"; do
+    echo "Instalando --> ${packet}"
+    sudo pacman -S "${packet}" --noconfirm --needed
+done
+}
+
 
 function update(){
   cp -r ~/QARSlp/dotfiles/.config/rofi/* ~/.config/rofi/
@@ -18,4 +29,5 @@ function update(){
   cp ~/QARSlp/dotfiles/.config/dunst/dunstrc ~/.config/wal/templates
 }
 
+install_updated_packages
 update

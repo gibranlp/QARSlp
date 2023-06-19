@@ -94,6 +94,7 @@ function base() {
     'gvfs-mtp' 
     'gvfs-nfs'
     'gvfs-smb'
+    'exa'
     #'nvidia-dkms'
 )
 
