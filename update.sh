@@ -10,7 +10,7 @@
 #
 function install_updated_packages() {
   packets=(
-   'exa'
+   ''
 )
 
 for packet in "${packets[@]}"; do
@@ -29,5 +29,5 @@ function update(){
   cp ~/QARSlp/dotfiles/.config/dunst/dunstrc ~/.config/wal/templates
 }
 
-install_updated_packages
+#install_updated_packages
 update

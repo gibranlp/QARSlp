@@ -128,7 +128,7 @@ rofi_network= Rofi(rofi_args=['-theme', '~/.config/rofi/network.rasi'])
 rofi_left= Rofi(rofi_args=['-theme', '~/.config/rofi/backend.rasi'])
 rofi_center= Rofi(rofi_args=['-theme', '~/.config/rofi/center.rasi'])
 rofi_shortcuts= Rofi(rofi_args=['-theme', '~/.config/rofi/shortcuts.rasi'])
-rofi_launcher= Rofi(rofi_args=['-theme', '~/.config/rofi/launcher.rasi'])
+rofi_wallpaper= Rofi(rofi_args=['-show', 'filebrowser' '-show-icons', '-theme', '~/.config/rofi/wallpaper.rasi'])
 
 
 ### Weather
@@ -328,8 +328,8 @@ def bar_pos(qtile):
 
 ## Select Wallpaper
 def select_wallpaper(qtile):
-  options = subprocess.check_output(["exa", wallpaper_dir]).decode("utf-8").splitlines()
-  index, key = rofi_launcher.select(' Select Wallpaper: ', options)
+  options = subprocess.check_output(["ls", wallpaper_dir]).decode("utf-8").splitlines()
+  index, key = rofi_wallpaper.select(' Select Wallpaper: ', options)
   if key == -1 or index == 2:
     rofi_left.close()
   else:
@@ -472,7 +472,7 @@ keys = [
     Key([alt], "r",lazy.function(change_wallpaper)), # Set random wallpaper / colors to entire system
     Key([mod, "shift"], "e",lazy.function(select_wallpaper)), # Set random wallpaper / colors to entire system
     Key([mod], "Return", lazy.spawn(terminal)), # Open Terminal
-    Key([mod, "shift"], "Return", lazy.spawn('rofi -theme "~/.config/rofi/launcher.rasi" -show run')), # Open Rofi launcher
+    Key([mod, "shift"], "Return", lazy.spawn('rofi -show drun -show-icons -theme "~/.config/rofi/launcher.rasi"')), # Open Rofi launcher
     Key([mod], "r", lazy.spawncmd()), # Launch Prompt
     Key([mod], "q",lazy.window.kill()), # Close Window 
     Key([mod, "shift"], "r",lazy.reload_config()), # Restart Qtile
