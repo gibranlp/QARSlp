@@ -296,7 +296,7 @@ def init_widgets_list():
               mouse_callbacks={'Button1': lambda: qtile.spawn('pavucontrol')}
             ),
             widget.ALSAWidget(
-              decorations=[RectDecoration(colour=color[5], filled=True)],
+              decorations=[RectDecoration(colour=color[5], radius=0,filled=True)],
               device='Master',
               bar_colour_high=color[0],
               bar_colour_loud=color[0],
