@@ -82,7 +82,7 @@ xres = resolution[17:21]
 yres = resolution[22:26]
 
 # Set Bar and font sizes for different resolutions
-if xres == "3840" and yres == "2160": #4k
+if xres >= "3840" and yres >= "2160": #4k
   layout_margin=10
   single_layout_margin=10  
   layout_border_width=7
@@ -127,6 +127,8 @@ rofi_right = Rofi(rofi_args=['-theme', '~/.config/rofi/logout.rasi'])
 rofi_network= Rofi(rofi_args=['-theme', '~/.config/rofi/network.rasi'])
 rofi_left= Rofi(rofi_args=['-theme', '~/.config/rofi/backend.rasi'])
 rofi_center= Rofi(rofi_args=['-theme', '~/.config/rofi/center.rasi'])
+rofi_shortcuts= Rofi(rofi_args=['-theme', '~/.config/rofi/shortcuts.rasi'])
+rofi_launcher= Rofi(rofi_args=['-theme', '~/.config/rofi/launcher.rasi'])
 
 
 ### Weather
@@ -323,7 +325,20 @@ def bar_pos(qtile):
     with open(home + '/.config/qtile/variables', 'w') as file:
       file.writelines(variables)
     qtile.reload_config()
-      
+
+## Select Wallpaper
+def select_wallpaper(qtile):
+  options = subprocess.check_output(["exa", wallpaper_dir]).decode("utf-8").splitlines()
+  index, key = rofi_launcher.select(' Select Wallpaper: ', options)
+  if key == -1 or index == 2:
+    rofi_left.close()
+  else:
+    subprocess.run(["wpg", light, "-s", wallpaper_dir + str(options[index]), "--backend", def_backend.lower()])
+    subprocess.run(["cp", wallpaper_dir + str(options[index]), "/usr/local/backgrounds/background.png"])
+    subprocess.run(["cp", "-r", str(Path.home() / ".local/share/themes/FlatColor"), "/usr/local/themes/"])
+    qtile.reload_config()
+
+
 ## Set default backend
 def set_default_backend(qtile):
   options = backend
@@ -455,6 +470,7 @@ def screenshot(qtile):
 keys = [
     #Basics
     Key([alt], "r",lazy.function(change_wallpaper)), # Set random wallpaper / colors to entire system
+    Key([mod, "shift"], "e",lazy.function(select_wallpaper)), # Set random wallpaper / colors to entire system
     Key([mod], "Return", lazy.spawn(terminal)), # Open Terminal
     Key([mod, "shift"], "Return", lazy.spawn('rofi -theme "~/.config/rofi/launcher.rasi" -show run')), # Open Rofi launcher
     Key([mod], "r", lazy.spawncmd()), # Launch Prompt
