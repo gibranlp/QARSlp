@@ -15,10 +15,11 @@ window {
     height:                      100%;
     x-offset:                    325px;
     y-offset:                    0px;
+    border-radius:               0px;
 
     /* properties for all widgets */
     enabled:                     true;
-    border-radius:               0px 5px 5px 0px;
+
     cursor:                      "default";
     background-color:            @background;
 }
@@ -57,7 +58,8 @@ inputbar {
 
 prompt {
 
-    padding:                     12px 16px;    border-radius:               0px 5px 5px 0px;
+    padding:                     12px 16px;    
+    border-radius:               0px 5px 5px 0px;
     background-color:            @background;
     text-color:                  inherit;
     horizontal-align:             0.5;

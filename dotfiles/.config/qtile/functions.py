@@ -128,7 +128,7 @@ rofi_network= Rofi(rofi_args=['-theme', '~/.config/rofi/network.rasi'])
 rofi_left= Rofi(rofi_args=['-theme', '~/.config/rofi/backend.rasi'])
 rofi_center= Rofi(rofi_args=['-theme', '~/.config/rofi/center.rasi'])
 rofi_shortcuts= Rofi(rofi_args=['-theme', '~/.config/rofi/shortcuts.rasi'])
-rofi_wallpaper= Rofi(rofi_args=['-show', 'filebrowser' '-show-icons', '-theme', '~/.config/rofi/wallpaper.rasi'])
+
 
 
 ### Weather
@@ -329,7 +329,7 @@ def bar_pos(qtile):
 ## Select Wallpaper
 def select_wallpaper(qtile):
   options = subprocess.check_output(["ls", wallpaper_dir]).decode("utf-8").splitlines()
-  index, key = rofi_wallpaper.select(' Select Wallpaper: ', options)
+  index, key = rofi_shortcuts.select(' Select Wallpaper: ', options)
   if key == -1 or index == 2:
     rofi_left.close()
   else:
