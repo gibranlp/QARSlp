@@ -296,11 +296,11 @@ def init_widgets_list():
               mouse_callbacks={'Button1': lambda: qtile.spawn('pavucontrol')}
             ),
             widget.ALSAWidget(
-              decorations=[RectDecoration(colour=color[5], filled=True)],
+              decorations=[RectDecoration(colour=color[0], radius=0, filled=True)],
               device='Master',
-              bar_colour_high=color[0],
-              bar_colour_loud=color[0],
-              bar_colour_normal=color[0],
+              bar_colour_high=color[5],
+              bar_colour_loud=color[5],
+              bar_colour_normal=color[5],
               bar_colour_mute=color[5],
               hide_interval=5,
               update_interval=0.1,
@@ -348,7 +348,8 @@ def init_widgets_list():
               decorations=[RectDecoration(colour=color[6], radius=7, filled=True)],
               foreground=color[0],
               text="",
-              mouse_callbacks={'Button1': lambda: qtile.function(session_widget)}
+              mouse_callbacks={'Button1': lambda: qtile.function(session_widget)},
+              padding_x=5,
             )]
     return widgets_list
 
