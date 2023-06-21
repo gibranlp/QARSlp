@@ -24,7 +24,7 @@ window {
     anchor:                      center;
     fullscreen:                  false;
     width:                       850px;
-    height:                      670px;
+    height:                      620px;
     x-offset:                    0px;
     y-offset:                    0px;
 
@@ -46,7 +46,7 @@ mainbox {
 
 listbox {
     spacing:                     20px;
-    padding:                     0px;
+    padding:                     10px;
     background-color:            transparent;
     orientation:                 vertical;
     children:                    [ "message", "listview" ];
