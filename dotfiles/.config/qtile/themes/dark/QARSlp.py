@@ -292,16 +292,16 @@ def init_widgets_list():
             widget.TextBox(
               decorations=[RectDecoration(colour=color[0], radius=[7,0,0,7], filled=True)],
               text="",
-              foreground=color[5],
+              foreground=color[2],
               mouse_callbacks={'Button1': lambda: qtile.spawn('pavucontrol')}
             ),
             widget.ALSAWidget(
               decorations=[RectDecoration(colour=color[0], radius=0, filled=True)],
               device='Master',
-              bar_colour_high=color[5],
-              bar_colour_loud=color[5],
-              bar_colour_normal=color[5],
-              bar_colour_mute=color[5],
+              bar_colour_high=color[2],
+              bar_colour_loud=color[2],
+              bar_colour_normal=color[2],
+              bar_colour_mute=color[2],
               hide_interval=5,
               update_interval=0.1,
               bar_width=80,
@@ -311,7 +311,7 @@ def init_widgets_list():
             widget.TextBox(
               decorations=[RectDecoration(colour=color[0], radius=[0,7,7,0], filled=True)],
               text=" ",
-              foreground=color[5],
+              foreground=color[2],
               mouse_callbacks={'Button1': lambda: qtile.spawn('pavucontrol')}
             ),
             widget.Spacer(
@@ -322,11 +322,11 @@ def init_widgets_list():
               foreground=color[0],
               format="%a",
               update_interval=1,
-              decorations=[RectDecoration(colour=color[3], radius=[7,0,0,7], filled=True)],
+              decorations=[RectDecoration(colour=color[1], radius=[7,0,0,7], filled=True)],
               mouse_callbacks={'Button1': lambda: qtile.function(calendar_notification),'Button4': lambda: qtile.function(calendar_notification_prev),'Button5': lambda: qtile.function(calendar_notification_next)},
             ),
             widget.Clock(
-              foreground=color[3],
+              foreground=color[1],
               format="%d",
               update_interval=1,
               decorations=[RectDecoration(colour=color[0], radius=0,filled=True)],
@@ -336,8 +336,22 @@ def init_widgets_list():
               foreground=color[0],
               format="%H:%M",
               update_interval=1,
-              decorations=[RectDecoration(colour=color[3], radius=[0,7,7,0], filled=True)],
+              decorations=[RectDecoration(colour=color[1], radius=[0,7,7,0], filled=True)],
               mouse_callbacks={'Button1': lambda: qtile.function(calendar_notification),'Button4': lambda: qtile.function(calendar_notification_prev),'Button5': lambda: qtile.function(calendar_notification_next)},              
+            ),
+            widget.Spacer(
+              length=5,
+              background=transparent,
+            ),
+            widget.TextBox(
+              decorations=[RectDecoration(colour=color[0], radius=[7,0,0,7], filled=True)],
+              text="",
+              foreground=color[4],
+            ),
+            widget.KeyboardLayout(
+              decorations=[RectDecoration(colour=color[4], radius=[0,7,7,0], filled=True)],
+              configured_keyboards=['us intl', 'latam'],
+              foreground=color[0],
             ),
             widget.Spacer(
               length=5,
