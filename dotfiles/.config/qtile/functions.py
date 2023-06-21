@@ -50,7 +50,7 @@ light=str(variables[3].strip()) # Option for light themes
 differentiator = '191919'
 
 #Show all groups
-hide_unused_groups=True
+hide_unused_groups=False
 
 # Theme
 current_theme=str(variables[0].strip())
@@ -559,12 +559,13 @@ groups = []
 group_names = ["Escape","1","2","3","4","5","6","7","8","9"]
 
 #### Groups Labels
-group_labels=["零","一","二","三","四","五","六","七","八","九"] # Kanji Numbers
+#group_labels=["零","一","二","三","四","五","六","七","八","九"] # Kanji Numbers
 #group_labels=["0","1","2","3","4","5","6","7","8","9"] # Numbers
 #group_labels=["","","","","","","","","",""] # Circles
 #group_labels=["","","","","","","","","",""] # Dot Circles
-#group_labels=["","","","","","","","","",""] # Custom
+group_labels=["","","","","","","","","",""] # Custom
 #group_labels=["","","","","","","","","",""] # Star Wars
+
 
 ####
 

@@ -22,6 +22,7 @@ def init_widgets_list():
         foreground=color_in_use,
         text=" QARSlp",
         padding_x=5,
+        mouse_callbacks={'Button1':lambda: qtile.spawn('rofi -show drun -show-icons -theme "~/.config/rofi/launcher.rasi"')},
       ),
       widget.Spacer(
         length=5,
@@ -138,7 +139,7 @@ def init_widgets_list():
         decorations=[RectDecoration(colour=color[0],radius=0, filled=True)],
         interface=wifi,
         format='{percent:2.0%} ',
-        disconnected_message='',
+        disconnected_message='',
         foreground=color[3],
         mouse_callbacks={'Button1':lambda: qtile.function(network_widget)}
       ),

@@ -96,7 +96,7 @@ def init_widgets_list():
             ),
             widget.TextBox(
               decorations=[RectDecoration(colour=color[0], radius=[7,0,0,7], filled=True)],
-              text="",
+              text="",
               foreground=color[6],
             ),
             widget.Mpris2(
@@ -345,7 +345,7 @@ def init_widgets_list():
             ),
             widget.TextBox(
               decorations=[RectDecoration(colour=color[0], radius=[7,0,0,7], filled=True)],
-              text="",
+              text="",
               foreground=color[4],
             ),
             widget.KeyboardLayout(
@@ -361,7 +361,7 @@ def init_widgets_list():
             widget.TextBox(
               decorations=[RectDecoration(colour=color[6], radius=7, filled=True)],
               foreground=color[0],
-              text="",
+              text="",
               mouse_callbacks={'Button1': lambda: qtile.function(session_widget)},
               padding_x=5,
             )]
