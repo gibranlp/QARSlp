@@ -196,7 +196,7 @@ function copy_dotfiles(){
   sudo mkdir /usr/local/backgrounds
   sudo chown $USER:$USER /usr/local/backgrounds
   sudo cp ~/QARSlp/dotfiles/lightdm-gtk-greeter.conf /etc/lightdm/lightdm-gtk-greeter.conf
-  sudo cp ~QARSlp/pulse/system.pa /etc/pulse/system.pa
+  sudo cp ~/QARSlp/dotfiles/pulse/system.pa /etc/pulse/system.pa
 }
 
 function web_apps(){
