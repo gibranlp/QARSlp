@@ -83,21 +83,21 @@ yres = resolution[22:26]
 
 # Set Bar and font sizes for different resolutions
 if xres >= "3840" and yres >= "2160": #4k
-  layout_margin=10
+  layout_margin=15
   single_layout_margin=10  
-  layout_border_width=7
-  single_border_width=7
+  layout_border_width=5
+  single_border_width=5
   font_size=20
   bar_size=30
   widget_width=400
   maxRatio=0.90
   Ratio=0.75
   if bar_position == "bottom":
-    bar_margin=[0,10,5,10]
+    bar_margin=[0,15,10,15]
   else:
-    bar_margin=[5,10,0,10]
+    bar_margin=[10,15,0,15]
 elif xres == "1920" and yres == "1080": #FullHD
-  layout_margin=5
+  layout_margin=10
   single_layout_margin=5  
   layout_border_width=4 
   single_border_width=4
@@ -107,9 +107,9 @@ elif xres == "1920" and yres == "1080": #FullHD
   maxRatio=0.80
   Ratio=0.60
   if bar_position == "bottom":
-    bar_margin=[0,5,5,5]
+    bar_margin=[0,10,5,10]
   else:
-    bar_margin=[5,5,0,5]
+    bar_margin=[5,10,0,10]
 else: # 1366 x 768 Macbook air 11"
   layout_margin=2
   single_layout_margin=2  
