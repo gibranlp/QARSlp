@@ -284,7 +284,7 @@ def calendar_notification_next(qtile):{
 def select_wallpaper(qtile):
   options = subprocess.check_output(["ls", wallpaper_dir]).decode("utf-8").splitlines()
   index, key = rofi_left.select(' Select Wallpaper: ', options)
-  if key == -1 or index == 2:
+  if key == -1:
     rofi_left.close()
   else:
     subprocess.run(["wpg", light, "-s", wallpaper_dir + str(options[index]), "--backend", def_backend.lower()])
@@ -484,7 +484,6 @@ def control_panel(qtile):
     '     Pick Color',
     '     View Shortcuts',
     ' Session Menu',
-    ' Buy me a Coffee'
     ]
   index, key = rofi_left.select('  Control Panel', options)
   if key == -1:
@@ -516,8 +515,6 @@ def control_panel(qtile):
       qtile.function(shortcuts)
     elif index == 16:
       qtile.function(session_widget)
-    elif index == 17:
-      subprocess.run(['brave', '-e', 'gibranlp.dev'])
     
     
 
