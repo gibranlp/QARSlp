@@ -11,11 +11,11 @@ window {
     location:                    west;
     anchor:                      center;
     fullscreen:                  false;
-    width:                       650px;
-    height:                      100%;
-    x-offset:                    325px;
+    width:                       550px;
+    height:                      99%;
+    x-offset:                    275px;
     y-offset:                    0px;
-    border-radius:               0px;
+    border-radius:               0px 5px 5px 0px;
 
     /* properties for all widgets */
     enabled:                     true;
@@ -52,7 +52,7 @@ inputbar {
     orientation:                 horizontal;
     children:                    ["prompt"];
     border-radius:               5px;
-    horizontal-align:               0.5;
+    horizontal-align:            0.5;
 
 }
 
@@ -132,7 +132,7 @@ element-text {
     text-color:                  inherit;
     cursor:                      inherit;
     vertical-align:              0.5;
-    horizontal-align:            0.5;
+    horizontal-align:            0;
 }
 
 /*****----- Message -----*****/

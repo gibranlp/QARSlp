@@ -96,7 +96,7 @@ def init_widgets_list():
             ),
             widget.TextBox(
               decorations=[RectDecoration(colour=color[0], radius=[7,0,0,7], filled=True)],
-              text="",
+              text="",
               foreground=color[6],
             ),
             widget.Mpris2(
