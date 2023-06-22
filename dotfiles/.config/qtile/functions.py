@@ -90,8 +90,8 @@ if xres >= "3840" and yres >= "2160": #4k
   font_size=20
   bar_size=30
   widget_width=400
-  maxRatio=0.90
-  Ratio=0.75
+  max_ratio=0.80
+  ratio=0.60
   if bar_position == "bottom":
     bar_margin=[0,15,10,15]
   else:
@@ -104,8 +104,8 @@ elif xres == "1920" and yres == "1080": #FullHD
   font_size=16
   bar_size=25
   widget_width=220
-  maxRatio=0.80
-  Ratio=0.60
+  max_ratio=0.80
+  ratio=0.50
   if bar_position == "bottom":
     bar_margin=[0,10,5,10]
   else:
@@ -118,8 +118,8 @@ else: # 1366 x 768 Macbook air 11"
   font_size=13
   bar_size=20
   widget_width=100
-  maxRatio=0.60
-  Ratio=0.50
+  max_ratio=0.60
+  ratio=0.50
   bar_margin=[0,0,0,0]
 
 # Rofi Configuration files
@@ -656,8 +656,8 @@ layout_theme = init_layout_theme()
 def init_layouts():
   return [
     layout.Spiral(main_pane="left",ratio_increment=0.01,**layout_theme),
-    layout.MonadTall(max_ratio=maxRatio,ratio=Ratio,**layout_theme),
-    layout.MonadWide(max_ratio=maxRatio,ratio=Ratio,**layout_theme),
+    layout.MonadTall(max_ratio=max_ratio,ratio=ratio,**layout_theme),
+    layout.MonadWide(max_ratio=max_ratio,ratio=ratio,**layout_theme),
     layout.Floating(**layout_theme),
     ]
 layouts = init_layouts()
