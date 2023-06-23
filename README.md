@@ -35,7 +35,7 @@ To set a random wallpaper simply type Alt + R and the entire system will change 
 
 If you want a specific wallpaper you can use the **Select Wallpaper** widget, or use **mod + shift + E**, and the widget will come up.
 
-![Random Wallpaper](/screenshots/randwall.gif)
+![Random Wallpaper](/screenshots/select_wal.gif)
 
 ## Different Display Sizes
 
@@ -48,9 +48,9 @@ I use different computers with different monitor sizes, so i managed to make thi
 - Lower Resolution (1366 x 768)
     - ![4K](/screenshots/low.png)
 
-## Top Bar or Bottom Bar? no problem
+## Flexible Bar
 
-With this rofi widget you can change your bar to the top or the bottom, with any theme.
+With this rofi widget you can change your bar to the top or the bottom, with any theme, just press **mod + shift + W** to bring this widget to the front.
 
 - ![Bar](/screenshots/bars.gif)
 
