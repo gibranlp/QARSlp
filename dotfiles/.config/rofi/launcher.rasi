@@ -24,7 +24,7 @@ window {
     anchor:                      center;
     fullscreen:                  false;
     width:                       650px;
-    height:                      620px;
+    height:                      650px;
     x-offset:                    0px;
     y-offset:                    0px;
 
@@ -114,8 +114,8 @@ button selected {
 /*****----- Listview -----*****/
 listview {
     enabled:                     true;
-    columns:                     2;
-    lines:                       8;
+    columns:                     3;
+    lines:                       3;
     cycle:                       true;
     dynamic:                     true;
     scrollbar:                   false;
@@ -140,6 +140,7 @@ element {
     background-color:            transparent;
     text-color:                  @foreground;
     cursor:                      pointer;
+    orientation:                 vertical;
 }
 element normal.normal {
     background-color:            inherit;
@@ -176,6 +177,7 @@ element-text {
     text-color:                  inherit;
     cursor:                      inherit;
     vertical-align:              0.5;
+    horizontal-align:            0.5;
 }
 
 /*****----- Message -----*****/

@@ -8,9 +8,10 @@
 # By: gibranlp <thisdoesnotwork@gibranlp.dev>
 # MIT licence 
 #
-function install_updated_packages() {
+function install_new_packages() {
   packets=(
-   ''
+   'xclip'
+   'xdotool'
 )
 
 for packet in "${packets[@]}"; do
@@ -19,17 +20,27 @@ for packet in "${packets[@]}"; do
 done
 }
 
+function aur_packages() {
+  packets=(
+    'rofi-emoji'
+)
+for packet in "${packets[@]}"; do
+    echo "Instalando --> ${packet}"
+    paru -S "${packet}" --noconfirm
+done
+}
 
 function update(){
   cp -r ~/QARSlp/dotfiles/.config/rofi/* ~/.config/rofi/
   cp -r ~/QARSlp/dotfiles/.config/qtile/* ~/.config/qtile/
-  cp ~/QARSlp/dotfiles/.shortcuts ~/
-  cp -r ~/QARSlp/dotfiles/.local/bin/* ~/.local/bin
-  cp ~/QARSlp/dotfiles/.config/picom/picom.conf ~/.config/picom/picom.conf
-  cp ~/QARSlp/dotfiles/.config/dunst/dunstrc ~/.config/wal/templates
-  cp ~/QARSlp/dotfiles/.config/cava/config ~/.config/wal/templates
-  cp ~/QARSlp/dotfiles/.config/ranger/rc.conf ~/.config/ranger/rc.conf
+  # cp ~/QARSlp/dotfiles/.shortcuts ~/
+  # cp -r ~/QARSlp/dotfiles/.local/bin/* ~/.local/bin
+  # cp ~/QARSlp/dotfiles/.config/picom/picom.conf ~/.config/picom/picom.conf
+  # cp ~/QARSlp/dotfiles/.config/dunst/dunstrc ~/.config/wal/templates
+  # cp ~/QARSlp/dotfiles/.config/cava/config ~/.config/wal/templates
+  # cp ~/QARSlp/dotfiles/.config/ranger/rc.conf ~/.config/ranger/rc.conf
 }
 
-#install_updated_packages
+#install_new_packages
+#aur_packages
 update

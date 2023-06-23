@@ -518,13 +518,14 @@ def control_panel(qtile):
     
     
 
-## Keys
+## 
 keys = [
     #Basics
     Key([alt], "r",lazy.function(change_wallpaper)), # Set random wallpaper / colors to entire system
     Key([mod, "shift"], "e",lazy.function(select_wallpaper)), # Set random wallpaper / colors to entire system
     Key([mod], "Return", lazy.spawn(terminal)), # Open Terminal
     Key([mod, "shift"], "Return", lazy.spawn('rofi -show drun -show-icons -theme "~/.config/rofi/launcher.rasi"')), # Open Rofi launcher
+    Key(["control", "shift"], "Return", lazy.spawn('rofi -modi emoji -show emoji -theme "~/.config/rofi/network2.rasi"')), # Open Rofi launcher
     Key([mod], "r", lazy.spawncmd()), # Launch Prompt
     Key([mod], "q",lazy.window.kill()), # Close Window 
     Key([mod, "shift"], "r",lazy.reload_config()), # Restart Qtile
