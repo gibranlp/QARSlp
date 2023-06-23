@@ -95,6 +95,8 @@ function base() {
     'gvfs-nfs'
     'gvfs-smb'
     'exa'
+    'xclip'
+    'xdotool'
     #'nvidia-dkms'
 )
 
@@ -135,6 +137,7 @@ function aur_packages() {
     'wal-telegram-git'
     'picom-pijulius-git'
     'lazy-docker'
+    'rofi-emoji'
 )
 for packet in "${packets[@]}"; do
     echo "Instalando --> ${packet}"
