@@ -12,6 +12,7 @@ function install_new_packages() {
   packets=(
    'xclip'
    'xdotool'
+   'noto-fonts-emoji'
 )
 
 for packet in "${packets[@]}"; do
@@ -41,6 +42,6 @@ function update(){
   # cp ~/QARSlp/dotfiles/.config/ranger/rc.conf ~/.config/ranger/rc.conf
 }
 
-#install_new_packages
-#aur_packages
+install_new_packages
+aur_packages
 update
