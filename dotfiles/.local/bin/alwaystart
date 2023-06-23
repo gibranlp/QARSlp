@@ -8,7 +8,8 @@
 # By: gibranlp <thisdoesnotwork@gibranlp.dev>
 # MIT licence 
 #
-rm -rf ~/.config/wpg/schemes/*
+unclutter -idle 1 &
+rm -rf ~/.config/wpg/schemes/* &
 pkill dunst &  
 picom & 
 cp ~/.cache/wal/dunstrc ~/.config/dunst/dunstrc &

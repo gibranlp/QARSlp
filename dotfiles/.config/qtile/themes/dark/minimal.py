@@ -101,7 +101,7 @@ def init_widgets_list():
           background=color[0],
           text=wifi_icon,
           foreground=color[3],
-          mouse_callbacks={'Button1': lambda: qtile.cmd_function(network_widget)},
+          mouse_callbacks={'Button1': lambda: qtile.function(network_widget)},
           ),
         widget.ALSAWidget(
           background=color[0],
@@ -143,7 +143,7 @@ def init_widgets_list():
           background=color[0],
           foreground=color[2],
           text="",
-          mouse_callbacks={'Button1': lambda: qtile.cmd_function(session_widget)},
+          mouse_callbacks={'Button1': lambda: qtile.function(session_widget)},
         )]
     return widgets_list
 

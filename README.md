@@ -19,11 +19,23 @@ It features a dark & light color schemes with contrasting colors for active and 
 
 # Features
 
+## Control Panel
+
+I just made a rofi widget with the most common options such as **Set Random Wallpaper**, **Select Wallpaper**, **change the default Backend for  Pywal**, **Move the Bar Top or Bottom**, among others, simply press **Alt + Return** and watch the widget popup.
+
+![control-panel](/screenshots/control-panel.gif)
+
 ## Set Random Wallpaper Theme
 
-To set a random wallpaper simply type Alt + R and theentire system will change with the wallpaper.
+To set a random wallpaper simply type Alt + R and the entire system will change with the wallpaper.
 
-![Random Wallpaper](/screenshots/random-wallpaper.gif)
+![Random Wallpaper](/screenshots/randwall.gif)
+
+## Select Wallpaper 
+
+If you want a specific wallpaper you can use the **Select Wallpaper** widget, or use **mod + shift + E**, and the widget will come up.
+
+![Random Wallpaper](/screenshots/select_wal.gif)
 
 ## Different Display Sizes
 
@@ -36,9 +48,9 @@ I use different computers with different monitor sizes, so i managed to make thi
 - Lower Resolution (1366 x 768)
     - ![4K](/screenshots/low.png)
 
-## Top Bar or Bottom Bar? no problem
+## Flexible Bar
 
-With this rofi widget you can change your bar to the top or the bottom, with any theme.
+With this rofi widget you can change your bar to the top or the bottom, with any theme, just press **mod + shift + W** to bring this widget to the front.
 
 - ![Bar](/screenshots/bars.gif)
 

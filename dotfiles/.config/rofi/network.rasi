@@ -1,150 +1,153 @@
-/*
- *  _______  _______  ______  _______  __        
- * |       ||   _   ||   __ \|     __||  |.-----.
- * |   -  _||       ||      <|__     ||  ||  _  |
- * |_______||___|___||___|__||_______||__||   __|
- *                                        |__|   
- * QARSlp Qtile + Arch Ricing Script
- * by: gibranlp <thisdoesnotwork@gibranlp.dev>
- * MIT licence 
- */
-
-configuration {
-	font:							"Fira Code Medium 14";
-    show-icons:                     false;
+/*****----- Global Properties -----*****/
+@import "~/.cache/wal/QARSlp.rasi" 
+* {
+    font:                        "Fira Code Medium 13";
 }
 
-@import "~/.cache/wal/QARSlp.rasi"
-
-*{
-    screen-margin:               10% 30%;
-    box-spacing:                 20px;
-    list-padding:                8px;
-    element-padding:             15px;
-    element-radius:              8px;
-    element-spacing:             15px;
-}
-
+/*****----- Main Window -----*****/
 window {
+    /* properties for window widget */
     transparency:                "real";
     location:                    center;
     anchor:                      center;
+    fullscreen:                  false;
+    width:                       600px;
+    height:                      560px;
+    x-offset:                    0px;
+    y-offset:                    0px;
+
+    /* properties for all widgets */
+    enabled:                     true;
+    border-radius:               5px;
+    cursor:                      "default";
     background-color:            @background;
-    text-color:                  @background;
-	height:						 100%;
-	width:						 100%;
-    location:                    center;
-    x-offset:                    0;
-    y-offset:                    0;
 }
 
+/*****----- Main Box -----*****/
 mainbox {
     enabled:                     true;
-    spacing:                     @box-spacing;
-    margin:                      @screen-margin;
-    padding:                     0px;
-    border:                      0px solid;
-    border-radius:               0px 0px 0px 0px;
-    border-color:                @border-colour;
+    spacing:                     0px;
     background-color:            transparent;
-    children:                    [ "inputbar", "message", "listview" ];
+    orientation:                 vertical;
+    children:                    [ "inputbar", "listbox" ];
+}
+
+listbox {
+    spacing:                     20px;
+    padding:                     20px;
+    background-color:            transparent;
+    orientation:                 vertical;
+    children:                    [ "message", "listview" ];
+}
+
+/*****----- Inputbar -----*****/
+inputbar {
+    enabled:                     true;
+    spacing:                     10px;
+    padding:                     100px 0px;
+    background-color:            transparent;
+    background-image:            url("/usr/local/backgrounds/background.png", width);
+    text-color:                  @foreground;
+    orientation:                 horizontal;
+    children:                    ["prompt"];
+    border-radius:               5px;
+    horizontal-align:               0.5;
+
 }
 
 prompt {
-    enabled: 						true;
-	padding: 						0.20% 1% 0% 0%;
-	background-color: 				transparent;
-	text-color: 					@background;
-	font:							"Fira Code Medium 13";
+
+    padding:                     12px 16px;    border-radius:               0px 5px 5px 0px;
+    background-color:            @background;
+    text-color:                  inherit;
+    horizontal-align:             0.5;
+ 
 }
 
-entry {
-    background-color:               @color3;
-    text-color:                     @background;
-    placeholder-color:              @background;
-    expand:                         true;
-    horizontal-align:               0;
-    placeholder:                    "";
-    blink:                          true;
-}
 
-inputbar {
-	children: 						[ prompt, entry];
-    background-color:               @color3;
-    text-color:                     @background;
-    expand:                         false;
-    margin:                         0% 0% 0% 0%;
-    padding:                        1.5%;
-    border:                         0px;
-    border-color:                   @selected-active-background;
-    border-radius:                  3px;
-}
-
+/*****----- Listview -----*****/
 listview {
-    background-color:               transparent;
-    columns:                        1;
-    cycle:                          true;
-    dynamic:                        true;
-    layout:                         vertical;
-    scrollbar:       				false;
-}
-
-mainbox {
-    background-color:               transparent;
-    children:                       [ inputbar, listview ];
-}
-element {
-    background-color:               @active-background;
-    orientation:                    vertical;
-    margin:                         0px 0px 0px 0px;
-    padding:                        0% 0% 1% 0%;
-    text-color:                     @background;
-    border:                         0px;
-    border-color:                   transparent;
-    border-radius:                  3px;
+    enabled:                     true;
+    columns:                     1;
+    lines:                       4;
+    cycle:                       true;
+    dynamic:                     true;
+    scrollbar:                   false;
+    layout:                      vertical;
+    reverse:                     false;
+    fixed-height:                true;
+    fixed-columns:               true;
+    
+    spacing:                     10px;
+    background-color:            transparent;
+    text-color:                  @foreground;
+    cursor:                      "default";
     
 }
-element.normal.normal {
-    background-color: transparent;
-    text-color: @foreground;
-}
 
-element.normal.active {
-    background-color: @color2;
-    text-color: @background;
+/*****----- Elements -----*****/
+element {
+    enabled:                     true;
+    spacing:                     10px;
+    padding:                     12px;
+    border-radius:               5px;
+    background-color:            transparent;
+    text-color:                  @foreground;
+    cursor:                      pointer;
 }
-
-element.alternate.normal {
-    background-color: transparent;
-    text-color: @color1;
+element normal.normal {
+    background-color:            inherit;
+    text-color:                  inherit;
 }
-
+element normal.urgent {
+    background-color:            @color5;
+    text-color:                  @foreground;
+}
+element normal.active {
+    background-color:            @color1;
+    text-color:                  @foreground;
+}
+element selected.normal {
+    background-color:            @color3;
+    text-color:                  @background;
+}
+element selected.urgent {
+    background-color:            @color5;
+    text-color:                  @foreground;
+}
+element selected.active {
+    background-color:            @color5;
+    text-color:                  @foreground;
+}
+element-icon {
+    background-color:            transparent;
+    text-color:                  inherit;
+    size:                        40px;
+    cursor:                      inherit;
+}
 element-text {
-    background-color: 				transparent;
-    text-color:       				@foreground;
-    expand:                         true;
-    horizontal-align:               0.5;
-    vertical-align:                 0.5;
-    margin:                         0.5% 0.5% -0.5% 0.5%;
+    background-color:            transparent;
+    text-color:                  inherit;
+    cursor:                      inherit;
+    vertical-align:              0.5;
+    horizontal-align:            0.5;
 }
 
-element.selected.normal {
-    background-color: @color2;
-    text-color: @background;
-    border-color: @selected-urgent-background;
+/*****----- Message -----*****/
+message {
+    background-color:            transparent;
 }
-
-element.selected.active {
-    background-color: @color2;
-    text-color: @background;
-    border-color: @selected-urgent-background;
+textbox {
+    padding:                     12px;
+    border-radius:               5px;
+    background-color:            @background;
+    text-color:                  @foreground;
+    vertical-align:              0.5;
+    horizontal-align:            0.0;
 }
-
-element-text {
-    background-color: 				transparent;
-    text-color:       				inherit;
-    expand:                         true;
-    horizontal-align:               0.5;
-    vertical-align:                 0.5;
-    margin:                         0.5% 0.5% -0.5% 0.5%;
+error-message {
+    padding:                     12px;
+    border-radius:               0px;
+    background-color:            @background;
+    text-color:                  @foreground;
 }

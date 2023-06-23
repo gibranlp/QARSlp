@@ -234,7 +234,7 @@ def init_widgets_list():
                 format='{percent:2.0%}',
                 disconnected_message='',
                 foreground=color[3],
-                mouse_callbacks={'Button1':lambda: qtile.cmd_function(network_widget)},
+                mouse_callbacks={'Button1':lambda: qtile.function(network_widget)},
                 **powerline,
         ),
         # widget.TextBox(
@@ -299,7 +299,7 @@ def init_widgets_list():
           background=color[6],
           foreground=color[0],
           text="",
-          mouse_callbacks={'Button1': lambda: qtile.cmd_function(session_widget)},
+          mouse_callbacks={'Button1': lambda: qtile.function(session_widget)},
         )]
     return widgets_list
 

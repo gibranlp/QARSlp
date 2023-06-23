@@ -28,10 +28,10 @@
     height = 150
 
     # Position the notification in the top right corner
-    origin = bottom-right
+    origin = top-right
 
     # Offset from the origin
-    offset = 10x30
+    offset = 20x50
 
     # Scale factor. It is auto-detected if value is 0.
     scale = 0
@@ -297,7 +297,7 @@
 [urgency_low]
     # IMPORTANT: colors have to be defined in quotation marks.
     # Otherwise the "#" and following would be interpreted as a comment.
-    background = "{color6}"
+    background = "{color3}"
     foreground = "{color0}"
     frame_color = "{color0}"
     timeout = 4
@@ -315,7 +315,7 @@
     #default_icon = /path/to/icon
 
 [urgency_critical]
-    background = "{background}"
+    background = "{color0}"
     foreground = "{color1}"
     frame_color = "{color1}"
     timeout = 10
@@ -472,11 +472,13 @@ timeout = 10
 appname = ncspot
 format = " Now Playing\n%s\n%b"
 timeout = 10
+urgency = low
 
 [Spotify]
 appname = Spotify
 format = " Now Playing\n%s\n%b"
 timeout = 10
+urgency = low
 
 [Transmission]
 appname = Transmission
@@ -489,3 +491,10 @@ appname = TelegramDesktop
 format = " New Message\n%s\n%b"
 new_icon = Transmission
 timeout = 10
+
+[Pamixer]
+appname = dunstify
+format = " Volume %s"
+timeout = 1
+urgency = normal
+set_stack_tag = "volume"

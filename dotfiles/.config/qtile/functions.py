@@ -44,7 +44,7 @@ variables=file.readlines()
 
 # Wallpapers / Theming
 wallpaper_dir= home + '/Pictures/Wallpapers/' # Wallpapers folders
-light=str(variables[3].strip()) # Optin for light themes
+light=str(variables[3].strip()) # Option for light themes
 
 # Diferenciator, this will get added to generate a slightly different pallete
 differentiator = '191919'
@@ -82,30 +82,34 @@ xres = resolution[17:21]
 yres = resolution[22:26]
 
 # Set Bar and font sizes for different resolutions
-if xres == "3840" and yres == "2160": #4k
-  layout_margin=10
+if xres >= "3840" and yres >= "2160": #4k
+  layout_margin=15
   single_layout_margin=10  
   layout_border_width=5
   single_border_width=5
   font_size=20
   bar_size=30
   widget_width=400
+  max_ratio=0.80
+  ratio=0.60
   if bar_position == "bottom":
-    bar_margin=[0,10,5,10]
+    bar_margin=[0,15,10,15]
   else:
-    bar_margin=[5,10,0,10]
+    bar_margin=[10,15,0,15]
 elif xres == "1920" and yres == "1080": #FullHD
-  layout_margin=5
+  layout_margin=10
   single_layout_margin=5  
   layout_border_width=4 
   single_border_width=4
   font_size=16
   bar_size=25
   widget_width=220
+  max_ratio=0.80
+  ratio=0.50
   if bar_position == "bottom":
-    bar_margin=[0,5,5,5]
+    bar_margin=[0,10,5,10]
   else:
-    bar_margin=[5,5,0,5]
+    bar_margin=[5,10,0,10]
 else: # 1366 x 768 Macbook air 11"
   layout_margin=2
   single_layout_margin=2  
@@ -114,16 +118,16 @@ else: # 1366 x 768 Macbook air 11"
   font_size=13
   bar_size=20
   widget_width=100
+  max_ratio=0.60
+  ratio=0.50
   bar_margin=[0,0,0,0]
 
 # Rofi Configuration files
-rofi_session = Rofi(rofi_args=['-theme', '~/.config/rofi/logout.rasi'])
-rofi_display = Rofi(rofi_args=['-theme', '~/.config/rofi/display.rasi'])
+rofi_right = Rofi(rofi_args=['-theme', '~/.config/rofi/right.rasi'])
 rofi_network= Rofi(rofi_args=['-theme', '~/.config/rofi/network.rasi'])
-rofi_backend= Rofi(rofi_args=['-theme', '~/.config/rofi/backend.rasi'])
-rofi_websearch= Rofi(rofi_args=['-theme', '~/.config/rofi/websearch.rasi'])
-rofi_screenshot= Rofi(rofi_args=['-theme', '~/.config/rofi/screenshot.rasi'])
-rofi_fargewidget= Rofi(rofi_args=['-theme', '~/.config/rofi/fargewidget.rasi'])
+rofi_left= Rofi(rofi_args=['-theme', '~/.config/rofi/left.rasi'])
+
+
 
 ### Weather
 w_appkey = str(variables[2].strip()) # Get a key here https://home.openweathermap.org/users/sign_up 
@@ -144,7 +148,7 @@ def follow_window(client):
     match = next((m for m in group.matches if m.compare(client)), None)
     if match:
       targetgroup = qtile.groups_map[group.name]
-      targetgroup.cmd_toscreen(toggle=False)
+      targetgroup.toscreen(toggle=False)
       break
 
 @hook.subscribe.client_name_updated
@@ -153,17 +157,17 @@ def follow_window_name(client):
     match = next((m for m in group.matches if m.compare(client)), None)
     if match:
       targetgroup = qtile.groups_map[group.name]
-      targetgroup.cmd_toscreen(toggle=False)
+      targetgroup.toscreen(toggle=False)
       break
 
 ##Specific Apps/Groups
 def app_or_group(group, app):
   def f(qtile):
     if qtile.groups_map[group].windows:
-       qtile.groups_map[group].cmd_toscreen(toggle=False)
+       qtile.groups_map[group].toscreen(toggle=False)
        qtile.spawn(app)
     else:
-      qtile.groups_map[group].cmd_toscreen(toggle=False)
+      qtile.groups_map[group].cdtoscreen(toggle=False)
       qtile.spawn(app)
     return f
 
@@ -215,10 +219,16 @@ transparent=color[0] + "00"
 def change_wallpaper(qtile):
   selection = random.choice(os.listdir(wallpaper_dir))
   selected_wallpaper = os.path.join(wallpaper_dir, selection)
-  wallpaper_file = selected_wallpaper
-  subprocess.run(["wpg", light, "-s", str(wallpaper_file), "--backend", def_backend.lower()])
-  subprocess.run(["cp", str(wallpaper_file), "/usr/local/backgrounds/background.png"])
-  subprocess.run(["cp", "-r", str(Path.home() / ".local/share/themes/FlatColor"), "/usr/local/themes/"])
+  i=0
+  while selected_wallpaper != wallpaper and i<10:
+    subprocess.run(["wpg", light, "-s", str(selected_wallpaper), "--backend", def_backend.lower()])
+    subprocess.run(["cp", str(selected_wallpaper), "/usr/local/backgrounds/background.png"])
+    subprocess.run(["cp", "-r", str(Path.home() / ".local/share/themes/FlatColor"), "/usr/local/themes/"])
+    break
+  else:
+    selection = random.choice(os.listdir(wallpaper_dir))
+    selected_wallpaper = os.path.join(wallpaper_dir, selection)
+  
   qtile.reload_config()
 
 ## Get network device in use
@@ -270,13 +280,115 @@ def calendar_notification_next(qtile):{
 }
 
 ## Rofi Widgets
+## Select Wallpaper
+def select_wallpaper(qtile):
+  options = subprocess.check_output(["ls", wallpaper_dir]).decode("utf-8").splitlines()
+  index, key = rofi_left.select(' Select Wallpaper: ', options)
+  if key == -1:
+    rofi_left.close()
+  else:
+    subprocess.run(["wpg", light, "-s", wallpaper_dir + str(options[index]), "--backend", def_backend.lower()])
+    subprocess.run(["cp", wallpaper_dir + str(options[index]), "/usr/local/backgrounds/background.png"])
+    subprocess.run(["cp", "-r", str(Path.home() / ".local/share/themes/FlatColor"), "/usr/local/themes/"])
+    qtile.reload_config()
+
+
+## Set default backend
+def set_default_backend(qtile):
+  options = backend
+  index, key = rofi_left.select('  Backend -  ' + def_backend , options)
+  if key == -1 or index == 4:
+    rofi_left.close()
+  else:
+    subprocess.run(["wal", light.lower(), "-i", "/usr/local/backgrounds/background.png", "--backend", "%s" %backend[index].lower()])
+    subprocess.run(["wpg", light, "-s", "/usr/local/backgrounds/background.png", "--backend", "%s" %backend[index].lower()])
+    subprocess.run(["cp", "-r", home + "/.local/share/themes/FlatColor",  "/usr/local/themes/"])
+    variables[1]=backend[index] + "\n"
+    with open(home + '/.config/qtile/variables', 'w') as file:
+      file.writelines(variables)
+    qtile.reload_config()
+
+# Display Shortcuts widget
+def shortcuts(qtile):
+  subprocess.run("cat ~/.shortcuts | rofi -theme '~/.config/rofi/left.rasi' -i -dmenu -p ' Shortcuts:'",shell=True)
+
+# NightLight widget
+def nightLight_widget(qtile):
+  options = [' Night Time(3500k)', ' Neutral (6500k)', ' Cool (7500k)']
+  index, key = rofi_right.select('  Night Light', options)
+  if key == -1:
+    rofi_right.close()
+  else:
+    if index == 0:
+      os.system('redshift -O 3500k -r -P')
+    elif index == 1:
+      os.system('redshift -x')
+    else:
+      os.system('redshift -O 7500k -r -P')
+
+# Farge Widget
+def fargewidget(qtile):
+  options = [' Hex',' RGB']
+  index, key = rofi_right.select('  Color Picker', options)
+  if key == -1:
+    rofi_right.close()
+  else:
+    if index ==0:
+      subprocess.run("farge --notify --expire-time 10000",shell=True)
+    else:
+      subprocess.run("farge --notify --rgb --expire-time 10000",shell=True)
+
+# Logout widget
+def session_widget(qtile):
+  options = [' Log Out', ' Reboot',' Poweroff',' Lock']
+  index, key = rofi_right.select('  Session', options)
+  if key == -1:
+    rofi_right.close()
+  else:
+    if index == 0:
+      qtile.shutdown()
+    elif index == 1:
+      os.system('systemctl reboot')
+    elif index == 2:
+      os.system('systemctl poweroff')    
+    else:
+      os.system('i3lock-fancy -p -f Fira-Code-Medium -t "Password?"')
+
+# Network Widget
+def network_widget(qtile):
+  get_ssid = "iwgetid -r"
+  pos = subprocess.Popen(get_ssid,shell=True,stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
+  ssid = pos.communicate()[0].decode('ascii').strip()
+  get_status = "nmcli radio wifi"
+  ps = subprocess.Popen(get_status,shell=True,stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
+  status = ps.communicate()[0].decode('ascii').strip()
+  if status == 'enabled':
+    connected = ' Turn Wifi Off'
+    active = "off"
+  else:
+    connected = ' Turn Wifi On'
+    active="on"
+  options = [connected,' Wlan Manager','  Bandwith Monitor (CLI)', ' Network Manager (CLI)']
+  index, key = rofi_network.select(" IP " + private_ip + " -" + "  IP " + public_ip, options)
+  if key == -1:
+    rofi_network.close()
+  else:
+    if index == 0:
+      subprocess.run("nmcli radio wifi " + active, shell=True)
+    elif index==1:
+      qtile.spawn(home + '/.local/bin/wifi2')
+    elif index==2:
+      qtile.spawn(terminal + ' -e bmon')
+    else:
+      qtile.spawn(terminal + ' -e nmtui')
+
 
 ## Select Dark or Light Theming
 def dark_white(qtile):
   options = ['Dark', 'Light']
-  index, key = rofi_backend.select('  Dark or  Light Theme', options)
+  index, key = rofi_left.select('  Dark or  Light Theme', options)
   if key == -1 or index == 2:
-    rofi_backend.close()
+    rofi_left.close()
   else:
     if index == 0:
       variables[3]="-c" + "\n"
@@ -300,9 +412,9 @@ def dark_white(qtile):
 ## Select Bar Position Top or Bottom
 def bar_pos(qtile):
   options = ['Top', 'Bottom']
-  index, key = rofi_backend.select('  Top Bar or  Bottom Bar -> ' + bar_position , options)
+  index, key = rofi_left.select('  Top Bar or  Bottom Bar -> ' + bar_position , options)
   if key == -1 or index == 2:
-    rofi_backend.close()
+    rofi_left.close()
   else:
     if index == 0:
       variables[5]="top"
@@ -313,102 +425,13 @@ def bar_pos(qtile):
     with open(home + '/.config/qtile/variables', 'w') as file:
       file.writelines(variables)
     qtile.reload_config()
-      
-## Set default backend
-def set_default_backend(qtile):
-  options = backend
-  index, key = rofi_backend.select('  Backend -  ' + def_backend , options)
-  if key == -1 or index == 4:
-    rofi_backend.close()
-  else:
-    subprocess.run(["wal", light.lower(), "-i", "/usr/local/backgrounds/background.png", "--backend", "%s" %backend[index].lower()])
-    subprocess.run(["wpg", light, "-s", "/usr/local/backgrounds/background.png", "--backend", "%s" %backend[index].lower()])
-    subprocess.run(["cp", "-r", home + "/.local/share/themes/FlatColor",  "/usr/local/themes/"])
-    variables[1]=backend[index] + "\n"
-    with open(home + '/.config/qtile/variables', 'w') as file:
-      file.writelines(variables)
-    qtile.reload_config()
-
-# Display Shortcuts widget
-def shortcuts(qtile):
-  subprocess.run("cat ~/.shortcuts | rofi -theme '~/.config/rofi/left_bar.rasi' -i -dmenu -p ' Shortcuts:'",shell=True)
-
-# NightLight widget
-def nightLight_widget(qtile):
-  options = [' Night Time(3500k)', ' Neutral (6500k)', ' Cool (7500k)']
-  index, key = rofi_session.select('  Night Light', options)
-  if key == -1:
-    rofi_session.close()
-  else:
-    if index == 0:
-      os.system('redshift -O 3500k -r -P')
-    elif index == 1:
-      os.system('redshift -x')
-    else:
-      os.system('redshift -O 7500k -r -P')
-
-# Farge Widget
-def fargewidget(qtile):
-  options = [' Hex',' RGB']
-  index, key = rofi_fargewidget.select('  Color Picker', options)
-  if key == -1:
-    rofi_fargewidget.close()
-  else:
-    if index ==0:
-      subprocess.run("farge --notify --expire-time 10000",shell=True)
-    else:
-      subprocess.run("farge --notify --rgb --expire-time 10000",shell=True)
-
-# Logout widget
-def session_widget(qtile):
-  options = [' Log Out', ' Reboot',' Poweroff',' Lock']
-  index, key = rofi_session.select('  Session', options)
-  if key == -1:
-    rofi_session.close()
-  else:
-    if index == 0:
-      qtile.cmd_shutdown()
-    elif index == 1:
-      os.system('systemctl reboot')
-    elif index == 2:
-      os.system('systemctl poweroff')    
-    else:
-      os.system('i3lock-fancy -p -f Fira-Code-Medium -t "Password?"')
-
-# Network Widget
-def network_widget(qtile):
-  get_ssid = "iwgetid -r"
-  pos = subprocess.Popen(get_ssid,shell=True,stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
-  ssid = pos.communicate()[0].decode('ascii').strip()
-  get_status = "nmcli radio wifi"
-  ps = subprocess.Popen(get_status,shell=True,stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
-  status = ps.communicate()[0].decode('ascii').strip()
-  if status == 'enabled':
-    connected = ' Turn Wifi Off'
-    active = "off"
-  else:
-    connected = ' Turn Wifi On'
-    active="on"
-  options = [connected,'  Bandwith Monitor (CLI)', ' Network Manager (CLI)', ' Wlan Manager']
-  index, key = rofi_network.select(" IP " + private_ip + " ->" + "  IP " + public_ip, options)
-  if key == -1:
-    rofi_network.close()
-  else:
-    if index == 0:
-      subprocess.run("nmcli radio wifi " + active, shell=True)
-    elif index==1:
-      qtile.cmd_spawn(terminal + ' -e bmon')
-    elif index==1:
-      qtile.cmd_spawn(terminal + ' -e nmtui')
-    else:
-      qtile.cmd_spawn(home + '/.local/bin/wifi2')
 
 # Change Theme widget
 def change_theme(qtile):
   options = theme
-  index, key = rofi_backend.select('  Theme -  ' + current_theme , options)
+  index, key = rofi_left.select('  Theme -  ' + current_theme , options)
   if key == -1:
-    rofi_backend.close()
+    rofi_left.close()
   else:
     subprocess.run('rm -rf ~/.config/qtile/theme.py', shell=True)
     variables[0]=theme[index] + "\n"
@@ -428,9 +451,9 @@ def random_colors(qtile):
 # Screenshot widget
 def screenshot(qtile):
   options = [' Screen', ' Window', ' Area', ' 5s Screen']
-  index, key = rofi_screenshot.select('  Screenshot', options)
+  index, key = rofi_right.select('  Screenshot', options)
   if key == -1:
-    rofi_screenshot.close()
+    rofi_right.close()
   else:
     if index ==0:
       subprocess.run("flameshot full --path ~/Pictures/Screenshot.png --delay 500",shell=True)
@@ -441,12 +464,67 @@ def screenshot(qtile):
     else:
       subprocess.run("flameshot full --path ~/Pictures/Screenshot.png --delay 5000",shell=True)
 
+# Control Panel Widget
+def control_panel(qtile):
+  options = [
+    ' Wallpaper & Color Options',
+    '     Set Random Wallpaper',
+    '     Select Wallpaper',
+    '     Set Color Scheme',
+    ' Theme Options',
+    '     Select Dark or Light Theme',
+    '     Set Bar Top or Bottom',
+    '     Change Bar Theme',
+    ' Tools',
+    '     Network Manager',
+    '     Screenshot Widget',
+    '     Change Monitor Temperature',
+    '     Manage Multimonitors',
+    ' Miscelaneous',
+    '     Pick Color',
+    '     View Shortcuts',
+    ' Session Menu',
+    ]
+  index, key = rofi_left.select('  Control Panel', options)
+  if key == -1:
+    rofi_right.close()
+  else:
+    if index == 1:
+      qtile.function(change_wallpaper)
+    elif index == 2:
+      qtile.function(select_wallpaper)
+    elif index == 3:
+      qtile.function(set_default_backend)
+    elif index == 5:
+      qtile.function(dark_white)
+    elif index == 6:
+      qtile.function(bar_pos)
+    elif index == 7:
+      qtile.function(change_theme)
+    elif index == 9:
+      qtile.function(network_widget)
+    elif index == 10:
+      qtile.function(screenshot)
+    elif index == 11:
+      qtile.function(nightLight_widget)
+    elif index == 12:
+      subprocess.run(home + '/.local/bin/change_display')
+    elif index == 14:
+      qtile.function(fargewidget)
+    elif index == 15:
+      qtile.function(shortcuts)
+    elif index == 16:
+      qtile.function(session_widget)
+    
+    
+
 ## Keys
 keys = [
     #Basics
     Key([alt], "r",lazy.function(change_wallpaper)), # Set random wallpaper / colors to entire system
+    Key([mod, "shift"], "e",lazy.function(select_wallpaper)), # Set random wallpaper / colors to entire system
     Key([mod], "Return", lazy.spawn(terminal)), # Open Terminal
-    Key([mod, "shift"], "Return", lazy.spawn('rofi -theme "~/.config/rofi/launcher.rasi" -show run')), # Open Rofi launcher
+    Key([mod, "shift"], "Return", lazy.spawn('rofi -show drun -show-icons -theme "~/.config/rofi/launcher.rasi"')), # Open Rofi launcher
     Key([mod], "r", lazy.spawncmd()), # Launch Prompt
     Key([mod], "q",lazy.window.kill()), # Close Window 
     Key([mod, "shift"], "r",lazy.reload_config()), # Restart Qtile
@@ -459,9 +537,7 @@ keys = [
     Key([mod, "shift"],"w",lazy.function(bar_pos)), # Set bar position
     Key([mod, "shift"],"o",lazy.function(nightLight_widget)), # Set night light
     Key([mod],"p",lazy.function(fargewidget)), # Color Picker Widget
-    Key([alt], "Return", lazy.spawn('rofi  -theme "~/.config/rofi/left_bar.rasi" -show find -modi find:~/.local/bin/finder')), # Search for files and folders
-    Key([mod],"f",lazy.spawn(home + '/.local/bin/wsearch')), # WEB Search widget
-    Key([mod, "shift"],"f",lazy.spawn('rofi  -theme "~/.config/rofi/filesfolders.rasi" -show find -modi find:~/.local/bin/finder')), # Search files and folders
+    Key([alt], "Return", lazy.function(control_panel)), # Search for files and folders
     Key([mod],"t",lazy.spawn('rofi  -theme "~/.config/rofi/tasks.rasi" -show tasks:task')), # Task list
     Key([mod],"x",lazy.function(session_widget)), # Log out
     Key([mod],"b",lazy.function(network_widget)), # Network Settings
@@ -473,8 +549,8 @@ keys = [
     # Layouts
     Key([mod], "Tab",lazy.layout.down()), # Change focus of windows down
     Key([mod, "shift"], "Tab",lazy.layout.up()), # Change focus of windows up
-    Key([alt], "Tab", lazy.layout.shuffle_down()), # Swap Left Down
-    Key([alt, "shift"], "Tab", lazy.layout.shuffle_up()), # Swap Right Up
+    Key([alt], "Tab", lazy.layout.swap_left()), # Swap Left Down
+    Key([alt, "shift"], "Tab", lazy.layout.swap_right()), # Swap Right Up
     Key([mod], 'period', lazy.next_screen()), # Send Cursor to next screen
 
     # Brightness
@@ -485,8 +561,8 @@ keys = [
 
     # Volume
     Key([], "XF86AudioMute", lazy.spawn("amixer -q set Master toggle")), # Mute
-    Key([], "XF86AudioLowerVolume", lazy.spawn("amixer -q set Master 5%-")), # Lower Volume
-    Key([], "XF86AudioRaiseVolume", lazy.spawn("amixer -q set Master 5%+")), # Raise Volume
+    Key([], "XF86AudioLowerVolume", lazy.spawn("amixer -q set Master 5%- && dunstify $(pamixer --get-volume-human)", shell=True)),
+    Key([], "XF86AudioRaiseVolume", lazy.spawn("amixer -q set Master 5%+ && dunstify $(pamixer --get-volume-human)", shell=True)), # Raise Volume
 
     # Media Control
     Key([], "XF86AudioPlay", lazy.spawn("playerctl --player=%any play-pause")), # Play Pause
@@ -539,10 +615,13 @@ group_names = ["Escape","1","2","3","4","5","6","7","8","9"]
 #group_labels=["0","1","2","3","4","5","6","7","8","9"] # Numbers
 #group_labels=["","","","","","","","","",""] # Circles
 #group_labels=["","","","","","","","","",""] # Dot Circles
-group_labels=["","","","","","","","","",""] # Custom
+group_labels=["","","","","","","","","",""] # Custom
+#group_labels=["","","","","","","","","",""] # Star Wars
+
+
 ####
 
-group_layouts=["spiral", "spiral", "spiral", "spiral","spiral", "spiral", "spiral","spiral", "spiral", "floating"]
+group_layouts=["monadtall", "monadtall", "monadtall", "monadtall","monadtall", "monadtall", "monadtall","monadtall", "monadtall", "floating"]
 for i in range(len(group_names)):
   groups.append(
     Group(
@@ -574,7 +653,8 @@ layout_theme = init_layout_theme()
 def init_layouts():
   return [
     layout.Spiral(main_pane="left",ratio_increment=0.01,**layout_theme),
-    layout.MonadTall(max_ratio=0.90,ratio=0.75,**layout_theme),
+    layout.MonadTall(max_ratio=max_ratio,ratio=ratio,**layout_theme),
+    layout.MonadWide(max_ratio=max_ratio,ratio=ratio,**layout_theme),
     layout.Floating(**layout_theme),
     ]
 layouts = init_layouts()
