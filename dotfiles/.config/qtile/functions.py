@@ -517,6 +517,7 @@ def control_panel(qtile):
     ' Miscelaneous',
     '     Pick Color',
     '     View Shortcuts',
+    '     Emojis',
     ' Session Menu',
     ]
   index, key = rofi_left.select('  Control Panel', options)
@@ -548,6 +549,8 @@ def control_panel(qtile):
     elif index == 15:
       qtile.function(shortcuts)
     elif index == 16:
+      qtile.spawn('rofi -modi emoji -show emoji -theme "~/.config/rofi/network2.rasi"')
+    elif index == 17:
       qtile.function(session_widget)
     
     
