@@ -216,8 +216,8 @@ secondary_color = secondary_pallete(color, differentiator)
 
 def i3lock_colors(qtile):
   subprocess.run(['i3lock', 
-    '--ring-color={}'.format(secondary_color[0])+"33",
-    '--inside-color={}'.format(secondary_color[0])+"33",
+    '--ring-color={}'.format(secondary_color[0])+"55",
+    '--inside-color={}'.format(secondary_color[0])+"55",
     '--line-color={}'.format(color[2]),
     '--separator-color={}'.format(color[4]),
     '--time-color={}'.format(color[2]),           
