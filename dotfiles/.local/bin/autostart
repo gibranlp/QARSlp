@@ -13,4 +13,5 @@ transmission-daemon &
 kdeconnect-indicator &
 blueman-applet &
 barrier &
+syncthing &
 
