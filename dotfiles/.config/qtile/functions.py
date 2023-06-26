@@ -90,8 +90,8 @@ if xres >= "3840" and yres >= "2160": #4k
   font_size=20
   bar_size=30
   widget_width=400
-  max_ratio=0.80
-  ratio=0.60
+  max_ratio=0.85
+  ratio=0.70
   if bar_position == "bottom":
     bar_margin=[0,15,10,15]
   else:
@@ -104,8 +104,8 @@ elif xres == "1920" and yres == "1080": #FullHD
   font_size=16
   bar_size=25
   widget_width=220
-  max_ratio=0.80
-  ratio=0.50
+  max_ratio=0.85
+  ratio=0.70
   if bar_position == "bottom":
     bar_margin=[0,10,5,10]
   else:
@@ -211,6 +211,33 @@ def secondary_pallete(colors, differentiator):
     return updated_colors
 
 secondary_color = secondary_pallete(color, differentiator)
+
+# Run i3-lock with Colors
+
+def i3lock_colors(qtile):
+  subprocess.run(['i3lock', 
+    '--insidever-color={}'.format(secondary_color[5])+"22",
+    '--ringver-color={}'.format(color[2]),
+    '--insidewrong-color={}'.format(color[6]),
+    '--ringwrong-color={}'.format(color[3]),
+    '--inside-color={}'.format(secondary_color[5])+"22",
+    '--ring-color={}'.format(secondary_color[5])+"22",        
+    '--line-color={}'.format(color[2]),          
+    '--separator-color={}'.format(color[4]),   
+    '--verif-color={}'.format(color[7]),          
+    '--wrong-color=#880000bb',          
+    '--time-color={}'.format(color[2]),           
+    '--date-color={}'.format(color[3]),           
+    '--layout-color={}'.format(color[0]),         
+    '--keyhl-color={}'.format(color[1]),         
+    '--bshl-color={}'.format(color[3]),               
+    '--clock',
+    '--blur', '10',                 
+    '--indicator',       
+    '--time-str="%H:%M:%S"',   
+    '--date-str="%A, %Y-%m-%d"',
+    ])
+
 
 # Transparent for bars and widgets
 transparent=color[0] + "00"
@@ -352,7 +379,7 @@ def session_widget(qtile):
     elif index == 2:
       os.system('systemctl poweroff')    
     else:
-      os.system('i3lock-fancy -p -f Fira-Code-Medium -t "Password?"')
+      qtile.function(i3lock_colors)
 
 # Network Widget
 def network_widget(qtile):
@@ -599,7 +626,7 @@ keys = [
     Key([], "Print", lazy.function(screenshot)),
 
     # Lock Screen
-    Key(["control", alt],"l",lazy.spawn('i3lock-fancy -p -f Fira-Code-Medium -t "Password?"')), # Run i3lock 
+    Key(["control", alt],"l",lazy.function(i3lock_colors)), # Run i3lock 
 
     # Dunst Shortuts
     Key(["control"], "space",  lazy.spawn("dunstctl close")), # Clear Last Notification
@@ -622,7 +649,7 @@ group_labels=["","","","","","","","","",""] # Cus
 
 ####
 
-group_layouts=["monadtall", "monadtall", "monadtall", "monadtall","monadtall", "monadtall", "monadtall","monadtall", "monadtall", "floating"]
+group_layouts=["monadtall", "monadtall", "monadtall", "monadtall","monadtall", "monadtall", "monadtall","monadtall", "monadtall", "monadtall"]
 for i in range(len(group_names)):
   groups.append(
     Group(

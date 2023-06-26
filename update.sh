@@ -42,6 +42,6 @@ function update(){
   # cp ~/QARSlp/dotfiles/.config/ranger/rc.conf ~/.config/ranger/rc.conf
 }
 
-install_new_packages
-aur_packages
+#install_new_packages
+#aur_packages
 update
