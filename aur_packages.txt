@@ -1,0 +1,7 @@
+qtile-git
+farge
+qtile-extras-git
+wpgtk-git
+cava
+picom-pijulius-git
+rofi-emoji

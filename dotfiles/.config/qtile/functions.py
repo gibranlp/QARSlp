@@ -90,8 +90,8 @@ if xres >= "3840" and yres >= "2160": #4k
   font_size=20
   bar_size=30
   widget_width=400
-  max_ratio=0.80
-  ratio=0.60
+  max_ratio=0.85
+  ratio=0.70
   if bar_position == "bottom":
     bar_margin=[0,15,10,15]
   else:
@@ -104,8 +104,8 @@ elif xres == "1920" and yres == "1080": #FullHD
   font_size=16
   bar_size=25
   widget_width=220
-  max_ratio=0.80
-  ratio=0.50
+  max_ratio=0.85
+  ratio=0.70
   if bar_position == "bottom":
     bar_margin=[0,10,5,10]
   else:
@@ -211,6 +211,40 @@ def secondary_pallete(colors, differentiator):
     return updated_colors
 
 secondary_color = secondary_pallete(color, differentiator)
+
+# Run i3-lock with Colors
+
+def i3lock_colors(qtile):
+  subprocess.run(['i3lock', 
+    '--ring-color={}'.format(secondary_color[0])+"55",
+    '--inside-color={}'.format(secondary_color[0])+"55",
+    '--line-color={}'.format(color[2]),
+    '--separator-color={}'.format(color[4]),
+    '--time-color={}'.format(color[2]),           
+    '--date-color={}'.format(color[4]),
+    '--insidever-color={}'.format(secondary_color[0])+"99",
+    '--ringver-color={}'.format(secondary_color[0])+"99",
+    '--verif-color={}'.format(color[7]),          
+    '--verif-text=Checking',
+    '--insidewrong-color={}'.format(secondary_color[0])+"DD",
+    '--ringwrong-color={}'.format(secondary_color[0])+"DD",
+    '--wrong-color={}'.format(color[1]),
+    '--wrong-text=Wrong!',
+            
+              
+       
+              
+                        
+    '--keyhl-color={}'.format(color[4]),         
+    '--bshl-color={}'.format(color[2]),
+                 
+    '--clock',
+    '--blur', '10',                 
+    '--indicator',       
+    '--time-str="%H:%M:%S"',   
+    '--date-str="%A, %Y-%m-%d"',
+    ])
+
 
 # Transparent for bars and widgets
 transparent=color[0] + "00"
@@ -352,7 +386,7 @@ def session_widget(qtile):
     elif index == 2:
       os.system('systemctl poweroff')    
     else:
-      os.system('i3lock-fancy -p -f Fira-Code-Medium -t "Password?"')
+      qtile.function(i3lock_colors)
 
 # Network Widget
 def network_widget(qtile):
@@ -483,6 +517,7 @@ def control_panel(qtile):
     ' Miscelaneous',
     '     Pick Color',
     '     View Shortcuts',
+    '     Emojis',
     ' Session Menu',
     ]
   index, key = rofi_left.select('  Control Panel', options)
@@ -514,17 +549,20 @@ def control_panel(qtile):
     elif index == 15:
       qtile.function(shortcuts)
     elif index == 16:
+      qtile.spawn('rofi -modi emoji -show emoji -theme "~/.config/rofi/network2.rasi"')
+    elif index == 17:
       qtile.function(session_widget)
     
     
 
-## Keys
+## 
 keys = [
     #Basics
     Key([alt], "r",lazy.function(change_wallpaper)), # Set random wallpaper / colors to entire system
     Key([mod, "shift"], "e",lazy.function(select_wallpaper)), # Set random wallpaper / colors to entire system
     Key([mod], "Return", lazy.spawn(terminal)), # Open Terminal
     Key([mod, "shift"], "Return", lazy.spawn('rofi -show drun -show-icons -theme "~/.config/rofi/launcher.rasi"')), # Open Rofi launcher
+    Key(["control", "shift"], "Return", lazy.spawn('rofi -modi emoji -show emoji -theme "~/.config/rofi/network2.rasi"')), # Open Rofi launcher
     Key([mod], "r", lazy.spawncmd()), # Launch Prompt
     Key([mod], "q",lazy.window.kill()), # Close Window 
     Key([mod, "shift"], "r",lazy.reload_config()), # Restart Qtile
@@ -598,7 +636,7 @@ keys = [
     Key([], "Print", lazy.function(screenshot)),
 
     # Lock Screen
-    Key(["control", alt],"l",lazy.spawn('i3lock-fancy -p -f Fira-Code-Medium -t "Password?"')), # Run i3lock 
+    Key(["control", alt],"l",lazy.function(i3lock_colors)), # Run i3lock 
 
     # Dunst Shortuts
     Key(["control"], "space",  lazy.spawn("dunstctl close")), # Clear Last Notification
@@ -621,7 +659,7 @@ group_labels=["","","","","","","","","",""] # Cus
 
 ####
 
-group_layouts=["monadtall", "monadtall", "monadtall", "monadtall","monadtall", "monadtall", "monadtall","monadtall", "monadtall", "floating"]
+group_layouts=["monadtall", "monadtall", "monadtall", "monadtall","monadtall", "monadtall", "monadtall","monadtall", "monadtall", "monadtall"]
 for i in range(len(group_names)):
   groups.append(
     Group(
