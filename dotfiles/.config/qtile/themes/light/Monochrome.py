@@ -133,7 +133,7 @@ def init_widgets_list():
           decorations=[RectDecoration(colour=color[0], radius=[7,0,0,7],filled=True)],
           text=' ' + wifi_icon + ' ',
           foreground=color_in_use,
-          mouse_callbacks={'Button1':lambda: qtile.spawn(home + "/.local/bin/wifi2")}
+          mouse_callbacks={'Button1':lambda: qtile.function(network_widget)}
         ),
       widget.Wlan(
         decorations=[RectDecoration(colour=color[0],radius=0, filled=True)],

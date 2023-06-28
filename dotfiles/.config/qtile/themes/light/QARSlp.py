@@ -232,27 +232,27 @@ def init_widgets_list():
                   decorations=[RectDecoration(colour=color[0], radius=0,filled=True)],
                   text='  ',
                   foreground=color[3],
-                  mouse_callbacks={'Button1':lambda: qtile.spawn(home + "/.local/bin/wifi2")}),
+                  mouse_callbacks={'Button1':lambda: qtile.function(network_widget)}),
                 widget.TextBox(
                   decorations=[RectDecoration(colour=color[3], radius=0, filled=True)],
                   text=private_ip,
                   foreground=color[0],
-                  mouse_callbacks={'Button1':lambda: qtile.spawn(home + "/.local/bin/wifi2")}),
+                  mouse_callbacks={'Button1':lambda: qtile.function(network_widget)}),
                 widget.TextBox(
                   decorations=[RectDecoration(colour=color[0], radius=0, filled=True)],
                   text='  ',
                   foreground=color[3],
-                  mouse_callbacks={'Button1':lambda: qtile.spawn(home + "/.local/bin/wifi2")}),
+                  mouse_callbacks={'Button1':lambda: qtile.function(network_widget)}),
                 widget.TextBox(
                   decorations=[RectDecoration(colour=color[2], radius=0, filled=True)],
                   text=public_ip,
                   foreground=color[0],
-                  mouse_callbacks={'Button1':lambda: qtile.spawn(home + "/.local/bin/wifi2")}),
+                  mouse_callbacks={'Button1':lambda: qtile.function(network_widget)}),
                 widget.TextBox(
                   decorations=[RectDecoration(colour=color[0], radius=0, filled=True)],
                   text=wifi_icon,
                   foreground=color[3],
-                  mouse_callbacks={'Button1':lambda: qtile.spawn(home + "/.local/bin/wifi2")}),
+                  mouse_callbacks={'Button1':lambda: qtile.function(network_widget)}),
               ]
             ),
             widget.Wlan(
@@ -267,7 +267,7 @@ def init_widgets_list():
                   scroll_interval=0.1,
                   scroll_step=1,
                   update_interval=1,
-                  mouse_callbacks={'Button1':lambda: qtile.spawn(home + "/.local/bin/wifi2")}),
+                  mouse_callbacks={'Button1':lambda: qtile.function(network_widget)}),
             widget.Wlan(
                    decorations=[RectDecoration(colour=color[0],radius=0, filled=True)],
                    interface=wifi,
