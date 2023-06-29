@@ -8,10 +8,11 @@
 # By: gibranlp <thisdoesnotwork@gibranlp.dev>
 # MIT licence 
 #
+syncthing &
 caffeine start  &
 transmission-daemon &
 kdeconnect-indicator &
 blueman-applet &
 barrier &
-syncthing &
+
 
