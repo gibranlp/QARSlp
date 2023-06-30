@@ -36,8 +36,8 @@ screencast() { \
 	-framerate 30 \
 	-video_size "$(getdim)" \
 	-i "$DISPLAY" \
-	-f pulse -ac 1 -ar 44100 -i alsa_input.usb-C-Media_Electronics_Inc._GameFactor_MCG601-00.mono-fallback \
-	-f pulse -ac 2 -ar 44100 -i alsa_output.usb-GeneralPlus_USB_Audio_Device-00.analog-stereo.monitor \
+	-f pulse -ac 1 -ar 44100 -i alsa_output.pci-0000_00_1f.3.analog-stereo.monitor \
+	-f pulse -ac 2 -ar 44100 -i alsa_input.pci-0000_00_1f.3.analog-stereo \
 	-filter_complex amix=inputs=2 \
 	-vcodec libx264 -preset veryfast -crf 18 \
 	-acodec libmp3lame -ar 44100 -q:a 1 \
@@ -61,8 +61,8 @@ video() { ffmpeg \
 
 audio() { \
 	ffmpeg \
-	-f pulse -ac 1 -ar 44100 -i alsa_input.usb-C-Media_Electronics_Inc._GameFactor_MCG601-00.mono-fallback \
-	-f pulse -ac 2 -ar 44100 -i alsa_output.usb-GeneralPlus_USB_Audio_Device-00.analog-stereo.monitor \
+	-f pulse -ac 1 -ar 44100 -i alsa_output.pci-0000_00_1f.3.analog-stereo.monitor \
+	-f pulse -ac 2 -ar 44100 -i alsa_input.pci-0000_00_1f.3.analog-stereo \
 	-filter_complex amix=inputs=2 \
 	-acodec libmp3lame -ar 44100 -q:a 1 \
 	"$DIR/audio-$(date '+%y%m%d-%H%M-%S').mp3" &
