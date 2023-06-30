@@ -59,6 +59,7 @@ function base() {
     'xdg-user-dirs'
     'bluez'
     'bluez-tools'
+    'bluez-utils'
     'blueman'
     'htop'
     'os-prober'
@@ -178,6 +179,7 @@ function copy_dotfiles(){
   sudo mkdir -p /root/.config/rofi
   sudo cp -r ~/QARSlp/dotfiles/.config/rofi/* /root/.config/rofi/
   sudo mkdir -p /root/.cache/wal
+  sudo mkdir -p /root/.fonts
   sudo cp -r ~/.cache/wal/colors-rofi-dark.rasi /root/.cache/wal/
   sudo timedatectl set-ntp true
   xdg-settings set default-web-browser firefox.desktop 

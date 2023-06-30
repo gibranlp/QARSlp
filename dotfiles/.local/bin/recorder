@@ -1,0 +1,88 @@
+#! /bin/bash
+DIR="$HOME/Recordings"
+
+check_dir () {
+	if [ ! -d "$DIR" ]; then
+		mkdir $DIR
+	else 
+		echo "$DIR already exists"
+	fi
+}
+
+getdim() { xrandr | sed -n "s/\s*\([0-9]\+x[0-9]\+\).*\*.*/\1/p" ;}
+getaudio() { pactl list short sink-inputs | awk '{print $1}' ;}
+
+updateicon() { \
+	echo "$1" > /tmp/recordingicon
+	pkill -RTMIN+9 "${STATUSBAR:-dwmblocks}"
+}
+
+killrecording() {
+	recpid="$(cat /tmp/recordingpid)"
+	kill -15 "$recpid"
+	rm -f /tmp/recordingpid
+	updateicon ""
+	pkill -RTMIN+9 "${STATUSBAR:-dwmblocks}"
+}
+
+screencast() { \
+	ffmpeg -y \
+	-f x11grab \
+	-framerate 30 \
+	-video_size "$(getdim)" \
+	-i "$DISPLAY" \
+	-f pulse -ac 1 -ar 44100 -i alsa_input.usb-C-Media_Electronics_Inc._GameFactor_MCG601-00.mono-fallback \
+	-f pulse -ac 2 -ar 44100 -i alsa_output.usb-GeneralPlus_USB_Audio_Device-00.analog-stereo.monitor \
+	-filter_complex amix=inputs=2 \
+	-vcodec libx264 -preset veryfast -crf 18 \
+	-acodec libmp3lame -ar 44100 -q:a 1 \
+	-pix_fmt yuv420p \
+	"$DIR/Full-$(date '+%y%m%d-%H%M-%S').mp4" &
+	echo $! > /tmp/recordingpid
+	updateicon ""
+}
+
+video() { ffmpeg \
+	-f x11grab \
+	-framerate 30 \
+	-video_size "$(getdim)" \
+	-i "$DISPLAY" \
+	-vcodec libx264 -preset veryfast -crf 18 \
+	-pix_fmt yuv420p \
+	"$DIR/video-$(date '+%y%m%d-%h%m-%s').mp4" &
+	echo $! > /tmp/recordingpid
+	updateicon ""
+}
+
+audio() { \
+	ffmpeg \
+	-f pulse -ac 1 -ar 44100 -i alsa_input.usb-C-Media_Electronics_Inc._GameFactor_MCG601-00.mono-fallback \
+	-f pulse -ac 2 -ar 44100 -i alsa_output.usb-GeneralPlus_USB_Audio_Device-00.analog-stereo.monitor \
+	-filter_complex amix=inputs=2 \
+	-acodec libmp3lame -ar 44100 -q:a 1 \
+	"$DIR/audio-$(date '+%y%m%d-%H%M-%S').mp3" &
+	echo $! > /tmp/recordingpid
+	updateicon ""
+}
+
+option1="  Full"
+option2="  Desktop"
+option3="  Audio"
+option4="  Stop recording"
+option5="  Exit"
+
+if [ ! -f /tmp/recordingpid ] ; then
+	options="$option1\n$option2\n$option3\n$option5"
+else
+	options="$option4\n$option5"
+fi
+
+choice=$(echo -e "$options" | rofi -theme ~/.config/rofi/recording.rasi -i -dmenu -no-show-icons -no-sidebar-mode -lines 4 -width 30 -p "  ") 
+
+case $choice in
+	$option1) screencast ;;
+	$option2) video ;;
+	$option3) audio ;;
+	$option4) killrecording ;;
+	*) exit ;;
+esac

@@ -501,25 +501,28 @@ def screenshot(qtile):
 # Control Panel Widget
 def control_panel(qtile):
   options = [
-    ' Wallpaper & Color Options',
-    '     Set Random Wallpaper',
-    '     Select Wallpaper',
-    '     Set Color Scheme',
-    ' Theme Options',
-    '     Select Dark or Light Theme',
-    '     Set Bar Top or Bottom',
-    '     Change Bar Theme',
-    ' Tools',
-    '     Calculator',
-    '     Network Manager',
-    '     Screenshot Widget',
-    '     Change Monitor Temperature',
-    '     Manage Multimonitors',
-    ' Miscelaneous',
-    '     Pick Color',
-    '     View Shortcuts',
-    '     Emojis',
-    ' Session Menu',
+    ' Wallpaper & Color Options',#0
+    '     Set Random Wallpaper',#1
+    '     Select Wallpaper',#2
+    '     Set Color Scheme',#3
+    ' Theme Options',#4
+    '     Select Dark or Light Theme',#5
+    '     Set Bar Top or Bottom',#6
+    '     Change Bar Theme',#7
+    ' Tools',#8
+    '     Apps as Sudo',#9
+    '     Calculator',# 10
+    '     Network Manager',#11
+    '     Screenshot Widget',#12
+    '     Change Monitor Temperature',#13
+    '     Manage Multimonitors',#14
+    '     Bluetooth',#15
+    '     Recorder', #16
+    ' Miscelaneous',#17
+    '     Pick Color',#18
+    '     View Shortcuts',#19
+    '     Emojis',#20
+    ' Session Menu',#21
     ]
   index, key = rofi_left.select('  Control Panel', options)
   if key == -1:
@@ -538,26 +541,30 @@ def control_panel(qtile):
     elif index == 7:
       qtile.function(change_theme)
     elif index == 9:
-      subprocess.run(home + '/.local/bin/calculator')
+      qtile.spawn('sudo rofi -show drun -show-icons -theme "~/.config/rofi/launcher.rasi"')
     elif index == 10:
-      qtile.function(network_widget)
+      subprocess.run(home + '/.local/bin/calculator')
     elif index == 11:
-      qtile.function(screenshot)
+      qtile.function(network_widget)
     elif index == 12:
-      qtile.function(nightLight_widget)
+      qtile.function(screenshot)
     elif index == 13:
+      qtile.function(nightLight_widget)
+    elif index == 14:
       subprocess.run(home + '/.local/bin/change_display')
     elif index == 15:
-      qtile.function(fargewidget)
+      subprocess.run(home + '/.local/bin/bluet')
     elif index == 16:
-      qtile.function(shortcuts)
-    elif index == 17:
-      qtile.spawn('rofi -modi emoji -show emoji -theme "~/.config/rofi/network2.rasi"')
+      subprocess.run(home + '/.local/bin/recorder')
     elif index == 18:
+      qtile.function(fargewidget)
+    elif index == 19:
+      qtile.function(shortcuts)
+    elif index == 20:
+      qtile.spawn('rofi -modi emoji -show emoji -theme "~/.config/rofi/network2.rasi"')
+    elif index == 21:
       qtile.function(session_widget)
     
-    
-
 ## 
 keys = [
     #Basics
@@ -565,7 +572,8 @@ keys = [
     Key([mod, "shift"], "e",lazy.function(select_wallpaper)), # Set random wallpaper / colors to entire system
     Key([mod], "Return", lazy.spawn(terminal)), # Open Terminal
     Key([mod, "shift"], "Return", lazy.spawn('rofi -show drun -show-icons -theme "~/.config/rofi/launcher.rasi"')), # Open Rofi launcher
-    Key(["control", "shift"], "Return", lazy.spawn('rofi -modi emoji -show emoji -theme "~/.config/rofi/network2.rasi"')), # Open Rofi launcher
+    Key([alt, "shift"], "Return", lazy.spawn('sudo rofi -show drun -show-icons -theme "~/.config/rofi/launcher.rasi"')), # Open Rofi launcher as Sudo
+    Key(["control", "shift"], "Return", lazy.spawn('rofi -modi emoji -show emoji -theme "~/.config/rofi/network2.rasi"')), # Open Rofi Emojis
     Key([mod], "r", lazy.spawncmd()), # Launch Prompt
     Key([mod], "q",lazy.window.kill()), # Close Window 
     Key([mod, "shift"], "r",lazy.reload_config()), # Restart Qtile

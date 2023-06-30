@@ -14,6 +14,7 @@ pkill dunst &
 picom & 
 cp ~/.cache/wal/dunstrc ~/.config/dunst/dunstrc &
 cp ~/.cache/wal/config ~/.config/cava/config &
+sudo cp ~/.cache/wal/QARSlp.rasi /root/.cache/wal/
 pkill -USR1 cava &
 dunst &
 wal-telegram &
