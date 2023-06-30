@@ -510,6 +510,7 @@ def control_panel(qtile):
     '     Set Bar Top or Bottom',#6
     '     Change Bar Theme',#7
     ' Tools',#8
+    '     Notes',
     '     Apps as Sudo',#9
     '     Calculator',# 10
     '     Network Manager',#11
@@ -517,7 +518,7 @@ def control_panel(qtile):
     '     Change Monitor Temperature',#13
     '     Manage Multimonitors',#14
     '     Bluetooth',#15
-    '     Recorder', #16
+    '     Screen Recorder', #16
     ' Miscelaneous',#17
     '     Pick Color',#18
     '     View Shortcuts',#19
@@ -541,28 +542,30 @@ def control_panel(qtile):
     elif index == 7:
       qtile.function(change_theme)
     elif index == 9:
-      qtile.spawn('sudo rofi -show drun -show-icons -theme "~/.config/rofi/launcher.rasi"')
+      subprocess.Popen(home + '/.local/bin/notesfi', shell=True)
     elif index == 10:
-      subprocess.run(home + '/.local/bin/calculator')
+      qtile.spawn('sudo rofi -show drun -show-icons -theme "~/.config/rofi/launcher.rasi"')
     elif index == 11:
-      qtile.function(network_widget)
+      subprocess.run(home + '/.local/bin/calculator')
     elif index == 12:
-      qtile.function(screenshot)
+      qtile.function(network_widget)
     elif index == 13:
-      qtile.function(nightLight_widget)
+      qtile.function(screenshot)
     elif index == 14:
-      subprocess.run(home + '/.local/bin/change_display')
+      qtile.function(nightLight_widget)
     elif index == 15:
-      subprocess.run(home + '/.local/bin/bluet')
+      subprocess.run(home + '/.local/bin/change_display')
     elif index == 16:
+      subprocess.run(home + '/.local/bin/bluet')
+    elif index == 17:
       subprocess.run(home + '/.local/bin/recorder')
-    elif index == 18:
-      qtile.function(fargewidget)
     elif index == 19:
-      qtile.function(shortcuts)
+      qtile.function(fargewidget)
     elif index == 20:
-      qtile.spawn('rofi -modi emoji -show emoji -theme "~/.config/rofi/network2.rasi"')
+      qtile.function(shortcuts)
     elif index == 21:
+      qtile.spawn('rofi -modi emoji -show emoji -theme "~/.config/rofi/network2.rasi"')
+    elif index == 22:
       qtile.function(session_widget)
     
 ## 

@@ -3,7 +3,7 @@ DIR="$HOME/Recordings"
 
 check_dir () {
 	if [ ! -d "$DIR" ]; then
-		mkdir $DIR
+		mkdir -p $DIR
 	else 
 		echo "$DIR already exists"
 	fi
@@ -12,16 +12,10 @@ check_dir () {
 getdim() { xrandr | sed -n "s/\s*\([0-9]\+x[0-9]\+\).*\*.*/\1/p" ;}
 getaudio() { pactl list short sink-inputs | awk '{print $1}' ;}
 
-updateicon() { \
-	echo "$1" > /tmp/recordingicon
-	pkill -RTMIN+9 "${STATUSBAR:-dwmblocks}"
-}
-
 killrecording() {
 	recpid="$(cat /tmp/recordingpid)"
 	kill -15 "$recpid"
 	rm -f /tmp/recordingpid
-	updateicon ""
 	pkill -RTMIN+9 "${STATUSBAR:-dwmblocks}"
 }
 
@@ -43,8 +37,7 @@ screencast() { \
 	-acodec libmp3lame -ar 44100 -q:a 1 \
 	-pix_fmt yuv420p \
 	"$DIR/Full-$(date '+%y%m%d-%H%M-%S').mp4" &
-	echo $! > /tmp/recordingpid
-	updateicon ""
+	echo $! > /tmp/recordingpid &
 }
 
 video() { ffmpeg \
@@ -55,8 +48,7 @@ video() { ffmpeg \
 	-vcodec libx264 -preset veryfast -crf 18 \
 	-pix_fmt yuv420p \
 	"$DIR/video-$(date '+%y%m%d-%h%m-%s').mp4" &
-	echo $! > /tmp/recordingpid
-	updateicon ""
+	echo $! > /tmp/recordingpid &
 }
 
 audio() { \
@@ -66,13 +58,12 @@ audio() { \
 	-filter_complex amix=inputs=2 \
 	-acodec libmp3lame -ar 44100 -q:a 1 \
 	"$DIR/audio-$(date '+%y%m%d-%H%M-%S').mp3" &
-	echo $! > /tmp/recordingpid
-	updateicon ""
+	echo $! > /tmp/recordingpid &
 }
 
-option1="  Full"
-option2="  Desktop"
-option3="  Audio"
+option1="  Audio & Video"
+option2="  Video"
+option3="  Audio"
 option4="  Stop recording"
 option5="  Exit"
 
@@ -82,7 +73,7 @@ else
 	options="$option4\n$option5"
 fi
 
-choice=$(echo -e "$options" | rofi -theme ~/.config/rofi/recording.rasi -i -dmenu -no-show-icons -no-sidebar-mode -lines 4 -width 30 -p "  ") 
+choice=$(echo -e "$options" | rofi -theme ~/.config/rofi/recording.rasi -i -dmenu -no-show-icons -no-sidebar-mode -lines 4 -width 30 -p "  ") 
 
 case $choice in
 	$option1) screencast ;;

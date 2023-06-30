@@ -1,0 +1,130 @@
+#!/bin/bash
+
+EDITOR=vim
+VIEW=~/.local/bin/zathura
+TERMINAL=alacritty
+
+# <<------ Directories ------>> #
+book_library="$HOME/books/"
+note_library="$HOME/notable/"
+article_library="$HOME/Articles/"
+
+# <<------ Main ------>> #
+create_document() {
+  # Use rofi to prompt the user to select the type of document to create
+  document_type=$(echo -e "Basic\nLaTeX\nBeamer\nRmark" | rofi -dmenu -i -p "What kind of note?" -theme "~/.config/rofi/left.rasi")
+
+  # Check if the user cancelled the prompt
+  if [ -z "$document_type" ]; then
+    return
+  fi
+
+  case "$document_type" in
+    Basic)
+      template="SimpleNote.md"
+      EXTENSION="md"
+      message="Basic Document Created!"
+      ;;
+    LaTeX)
+      template="LaTeX.tex"
+      EXTENSION="tex"
+      message="LaTeX Document Created!"
+      ;;
+    Beamer)
+      template="Presentation.tex"
+      EXTENSION="tex"
+      message="Beamer Presentation Created!"
+      ;;
+    Rmark)
+      template="RMarkdown.rmd"
+      EXTENSION="rmd"
+      message="R Markdown Document Created!"
+      ;;
+    *)
+      echo "Invalid option"
+      return 1
+      ;;
+  esac
+
+  # Use rofi to prompt the user to enter a name for the note
+  cn_name=$(rofi -dmenu -p "Enter a name for the note:" -theme "~/.config/rofi/left.rasi")
+
+  # Check if the user cancelled the prompt
+  if [ -z "$cn_name" ]; then
+    return
+  fi
+
+  # Check if the file already exists
+  if [ -f "$directory/$cn_name.$EXTENSION" ]; then
+    # Prompt the user to confirm if they want to overwrite the file
+    if ! (echo -e "Yes\nNo" | rofi -dmenu -p "Note already exists. Overwrite?" | grep -q "Yes"); then
+      return
+    fi
+  fi
+
+  notify-send "$message"
+  cp "$directory/Templates/$template" "$directory/$cn_name.$EXTENSION"
+  "$TERMINAL" -e "$EDITOR" "$directory/$cn_name.$EXTENSION"
+}
+
+open_document() {
+  # case insensitive search with ripgrep
+  document=$(rg --files --iglob "*.pdf" --iglob "*.epub" --iglob "*.mobi" $directory)
+  selected_document=$(echo "$document" | rofi -dmenu -i -p " Open:" -theme "~/.config/rofi/left.rasi")
+  if [[ -n $selected_document ]]; then
+    $VIEW "$selected_document"
+  fi
+}
+
+edit_notes() {
+  document=$(rg --files --iglob "*.md" --iglob "*.wiki" --iglob "*.tex" $directory)
+  selected_document=$(echo "$document" | rofi -dmenu -i -p " Open:" -theme "~/.config/rofi/left.rasi")
+  if [[ -n $selected_document ]]; then
+    $TERMINAL -e $EDITOR "$selected_document"
+  fi
+}
+
+download_books() {
+  bookname=$(echo "" | rofi -dmenu -p "Enter book name:" -theme "~/.config/rofi/left.rasi")
+  if [ -z "$bookname" ]
+  then
+      echo "No book name entered"
+      exit 1
+  fi
+
+  $TERMINAL -T "dropbooks" -e libby $bookname
+}
+
+main() {
+  # Prompt the user to select "Library" or "Articles" using Rofi
+  selected_dir=$(echo -e " Create Note\n View Notes\n Library\n Articles\n Download Books" | rofi -dmenu -i -p " Choose an action:" -theme "~/.config/rofi/left.rasi")
+  # Set the directory based on the user's selection
+  # if selected_dir is not empty
+  if [[ -n $selected_dir ]]; then
+      case $selected_dir in
+          " Create Note")
+              directory=$note_library
+              create_document
+              ;;
+          " View Notes")
+              directory=$note_library
+              edit_notes
+              ;;
+          " Library")
+              directory=$book_library
+              open_document
+              ;;
+          " Articles")
+              directory=$article_library
+              open_document
+              ;;
+          " Download Books")
+              download_books
+              ;;
+      esac
+  else
+    exit 0
+  fi
+}
+
+main
