@@ -27,7 +27,7 @@ case "$1" in
 esac
 
 if [[ -n $(command -v rofi) ]]; then
-    menu="$(command -v rofi) -dmenu"
+    menu="$(command -v rofi) -dmenu -theme ~/.config/rofi/calculator.rasi"
 elif [[ -n $(command -v dmenu) ]]; then
     menu="$(command -v dmenu)"
 else

@@ -510,6 +510,7 @@ def control_panel(qtile):
     '     Set Bar Top or Bottom',
     '     Change Bar Theme',
     ' Tools',
+    '     Calculator',
     '     Network Manager',
     '     Screenshot Widget',
     '     Change Monitor Temperature',
@@ -537,20 +538,22 @@ def control_panel(qtile):
     elif index == 7:
       qtile.function(change_theme)
     elif index == 9:
-      qtile.function(network_widget)
+      subprocess.run(home + '/.local/bin/calculator')
     elif index == 10:
-      qtile.function(screenshot)
+      qtile.function(network_widget)
     elif index == 11:
-      qtile.function(nightLight_widget)
+      qtile.function(screenshot)
     elif index == 12:
+      qtile.function(nightLight_widget)
+    elif index == 13:
       subprocess.run(home + '/.local/bin/change_display')
-    elif index == 14:
-      qtile.function(fargewidget)
     elif index == 15:
-      qtile.function(shortcuts)
+      qtile.function(fargewidget)
     elif index == 16:
-      qtile.spawn('rofi -modi emoji -show emoji -theme "~/.config/rofi/network2.rasi"')
+      qtile.function(shortcuts)
     elif index == 17:
+      qtile.spawn('rofi -modi emoji -show emoji -theme "~/.config/rofi/network2.rasi"')
+    elif index == 18:
       qtile.function(session_widget)
     
     
