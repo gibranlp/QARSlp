@@ -60,6 +60,7 @@ function base() {
     'bluez'
     'bluez-tools'
     'bluez-utils'
+    'ripgrep'
     'blueman'
     'htop'
     'os-prober'
@@ -98,6 +99,7 @@ function base() {
     'exa'
     'xclip'
     'xdotool'
+    'zathura'
     #'nvidia-dkms'
 )
 
@@ -136,9 +138,14 @@ function aur_packages() {
     'ntfs-3g'
     'i3lock-fancy'
     'wal-telegram-git'
-    'picom-pijulius-git'
+    'picom-tyrone-git'
     'lazy-docker'
     'rofi-emoji'
+    'zathura-pdf-mupdf' 
+    'zathura-pywal-git'
+    'zathura-ps'
+    'libby-git'
+
 )
 for packet in "${packets[@]}"; do
     echo "Instalando --> ${packet}"
