@@ -53,7 +53,7 @@ scrolling:
 
   # Number of lines the viewport will move for every line scrolled when
   # scrollback is enabled (history > 0).
-  multiplier: 3
+  multiplier: 5
 
 # Font configuration (changes require restart)
 font:
@@ -66,10 +66,10 @@ font:
     #   - (Linux) monospace
     #   - (Windows) Consolas
     #family: mononoki Nerd Font Mono
-    family: Fira Code
+    family: Fira Code 
 
     # The `style` can be specified to pick a specific face.
-    style: Regular
+    style: Medium
 
   # Bold font face
   bold:
@@ -96,7 +96,7 @@ font:
     style: Italic
 
   # Point size
-  size: 9
+  size: 10
 
   # Offset is the extra space around each character. `offset.y` can be thought of
   # as modifying the line spacing, and `offset.x` as modifying the letter spacing.
@@ -286,7 +286,7 @@ mouse:
   triple_click: { threshold: 300 }
 
   # If this is `true`, the cursor is temporarily hidden when typing.
-  hide_when_typing: false
+  hide_when_typing: true
 
   #url:
     # URL launcher
@@ -329,7 +329,7 @@ cursor:
 
   # If this is `true`, the cursor will be rendered as a hollow box when the
   # window is not focused.
-  unfocused_hollow: false
+  unfocused_hollow: true
 
 # Live config reload (changes require restart)
 live_config_reload: true

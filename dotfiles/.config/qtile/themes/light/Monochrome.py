@@ -37,7 +37,7 @@ def init_widgets_list():
         active=color[7], #Program opened in that group
         inactive=color[8], # Empty Group
         rounded=False,
-        highlight_method="block",
+        highlight_method="text",
         this_current_screen_border=secondary_color[0],
         center_aligned = True,
         other_curren_screen_border=secondary_color[0],

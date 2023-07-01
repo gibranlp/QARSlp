@@ -42,6 +42,7 @@ function update(){
   # cp ~/QARSlp/dotfiles/.config/dunst/dunstrc ~/.config/wal/templates
   # cp ~/QARSlp/dotfiles/.config/cava/config ~/.config/wal/templates
   # cp ~/QARSlp/dotfiles/.config/ranger/rc.conf ~/.config/ranger/rc.conf
+  cp ~/QARSlp/dotfiles/.config/alacritty/alacritty.yml ~/.config/alacritty/alacritty.yml
 }
 
 #install_new_packages
