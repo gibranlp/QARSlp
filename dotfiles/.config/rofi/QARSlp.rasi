@@ -8,7 +8,7 @@
     color7: {color7};
     color8: {color8};
     active: {color2};
-    urgent;'ffcc00';
+    urgent: #ffcc00;
     active-background: {color2};
     active-foreground: {color6};
     normal-background: @background;
