@@ -259,7 +259,7 @@ Change the temperature of the monitor using [Redshift](https://github.com/jonls/
 ![Night Light](/screenshots/Night_light.png)
 
 ## Conclusion
-With QARSlp you can have an always riced system, ready for productivity and fun, its compatible  and the ricing also covers applications like VScode, Telegram, Chrome, Brave, all GTk and CLI apps. It also come with [Pijulios](https://github.com/pijulius) Picom so you can have some animations when opening, moving and closing windows.
+With QARSlp you can have an always riced system, ready for productivity and fun, its compatible  and the ricing also covers applications like VScode, Telegram, Chrome, Brave, all GTk and CLI apps.
 
 # Installation
 
@@ -268,14 +268,14 @@ To install QARSlp you will need to install a few dependencies:
 ## Pacman
 
 ```bash
-feh base-devel alsa-utils pulseaudio-alsa pavucontrol openssh alacritty xcolor playerctl scrot rofi surfraw python-pip ranger lxappearance bmon acpilight lm_sensors nm-connection-editor arandr python-psutil python-xdg python-iwlib python-dateutil ueberzug xsettingsd zsh dunst tk lightdm-gtk-greeter-settings reflector rsync curl cmus bc neofetch cmus xorg-xkill xdg-user-dirs bluez bluez-tools blueman htop os-prober gnome-disk-utility networkmanager unzip xarchiver tlp gvfs barrier noto-fonts noto-fonts-cjk libayatana-appindicator tlp powertop tumbler redshift libmicrodns protobuf xorg-xdpyinfo
+feh base-devel alsa-utils pulseaudio-alsa pavucontrol openssh alacritty xcolor playerctl scrot rofi surfraw python-pip ranger lxappearance bmon acpilight lm_sensors nm-connection-editor arandr python-psutil python-xdg python-iwlib python-dateutil ueberzug xsettingsd zsh dunst tk lightdm-gtk-greeter-settings reflector rsync curl bc neofetch xorg-xkill xdg-user-dirs bluez bluez-tools blueman htop networkmanager noto-fonts noto-fonts-cjk libayatana-appindicator  tumbler redshift libmicrodns protobuf xorg-xdpyinfo
 ```
 ## AUR
 
 QARSlp works with the Qtile-git and qtile-extras-git versions among other packages
 
 ```bash
-qtile-git farge qtile-extras-git wpgtk-git cava thunar-extended thunar-volman hugo nbfc ntfs-3g i3lock-fancy picom-pijulius-git
+qtile-git farge qtile-extras-git wpgtk-git cava i3lock-color picom-tyrone-git
 ```
 
 ## Pip
@@ -283,7 +283,7 @@ qtile-git farge qtile-extras-git wpgtk-git cava thunar-extended thunar-volman hu
 You also need to install these pip packages
 
 ```bash
-requests fontawesome ipc colorz colorthief haishoku dbus-next git+http://github.com/bcbnz/python-rofi.git
+requests cairocffi xcffib fontawesome ipc colorz colorthief haishoku dbus-next git+http://github.com/bcbnz/python-rofi.git
 ```
 
 If you want to use ZSH run this commands to install Oh-My-Zsh
@@ -314,7 +314,6 @@ This will generate the first palette of colors and set the wallpaper, the path o
 - [ ] I will be working in the light themes which now look bad in general.
 - [ ] Generate an AUR Installation package
 - [ ] Add more themes (if you have suggestions add them in issues)
-- [ ] Create a Taskwarrior interface with Rofi
 
 If you like it please help me support this project, some coffee would help me to improve it and dedicate more time. thanks.
 
