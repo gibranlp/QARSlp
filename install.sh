@@ -164,6 +164,7 @@ function zsh(){
 }
 
 function copy_dotfiles(){
+  wpg-install.sh -gio
   wal -i ~/Pictures/Wallpapers/wall.jpg
   mkdir -p ~/.config/alacritty
   cp ~/QARSlp/dotfiles/.config/alacritty/alacritty.yml ~/.config/alacritty/alacritty.yml
