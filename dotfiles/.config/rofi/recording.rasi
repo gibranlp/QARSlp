@@ -18,8 +18,8 @@ window {
     location:                    center;
     anchor:                      center;
     fullscreen:                  false;
-    width:                       650px;
-    height:                      460px;
+    width:                       450px;
+    height:                      410px;
     x-offset:                    0px;
     y-offset:                    0px;
 

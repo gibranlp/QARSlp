@@ -49,24 +49,28 @@ inputbar {
     background-image:            url("/usr/local/backgrounds/background.png", width);
     text-color:                  @foreground;
     orientation:                 horizontal;
-    children:                    ["entry"];
+    children:                    ["prompt", "entry"];
     border-radius:               5px;
-    horizontal-align:            0.5;
+    horizontal-align:               0.5;
 
 }
 
 entry {
-    enabled:                     true;
-    expand:                      false;
-    width:                       350px;
-    padding:                     12px 16px;
+    padding:                     12px 16px;    
+    border-radius:               5px 0px 0px 5px;
+    background-color:            @background;
+    text-color:                  inherit;
+    horizontal-align:            0;
+}
+
+prompt {
+    padding:                     12px 16px;    
     border-radius:               0px 5px 5px 0px;
     background-color:            @background;
     text-color:                  inherit;
-    cursor:                      text;
-    placeholder:                 "";
-    placeholder-color:           inherit;
+    horizontal-align:             0.5;
 }
+
 
 /*****----- Listview -----*****/
 listview {
@@ -108,19 +112,19 @@ element normal.urgent {
 }
 element normal.active {
     background-color:            @color1;
-    text-color:                  @background;
+    text-color:                  @foreground;
 }
 element selected.normal {
     background-color:            @color3;
     text-color:                  @background;
 }
 element selected.urgent {
-    background-color:            @color4;
-    text-color:                  @background;
+    background-color:            @color5;
+    text-color:                  @foreground;
 }
 element selected.active {
     background-color:            @color5;
-    text-color:                  @background;
+    text-color:                  @foreground;
 }
 element-icon {
     background-color:            transparent;
@@ -130,6 +134,7 @@ element-icon {
 }
 element-text {
     background-color:            transparent;
+    text-color:                  inherit;
     cursor:                      inherit;
     vertical-align:              0.5;
     horizontal-align:            0.5;
