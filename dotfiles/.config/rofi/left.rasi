@@ -15,7 +15,7 @@ window {
     height:                      99%;
     x-offset:                    275px;
     y-offset:                    0px;
-    border-radius:               0px 5px 5px 0px;
+    border-radius:               0px 10px 10px 0px;
 
     /* properties for all widgets */
     enabled:                     true;
@@ -50,7 +50,7 @@ inputbar {
     text-color:                  @foreground;
     orientation:                 horizontal;
     children:                    ["prompt", "entry"];
-    border-radius:               5px;
+    border-radius:               0px 5px 0px 0px;
     horizontal-align:            0.5;
 
 }

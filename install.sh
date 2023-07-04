@@ -16,7 +16,6 @@ function base() {
     'base-devel'
     'alsa-utils'
     'pulseaudio-alsa'
-    'pulseaudio-bluethooth'
     'pavucontrol'
     'openssh'
     'alacritty'
@@ -135,6 +134,7 @@ function aur_packages() {
     'slack-desktop'
     'brave' 
     'teams-for-linux'
+    'pulseaudio-bluethooth'
     'telegram-desktop'
     'google-chrome'
     'wpgtk-git'
@@ -213,12 +213,10 @@ function copy_dotfiles(){
   sudo cp ~/QARSlp/Wallpapers/wall.jpg /usr/local/backgrounds/background.png
   sudo mkdir -p /usr/local/themes
   sudo cp -r ~/.local/share/themes/FlatColor /usr/local/themes
-  sudo chown $USER:$USER /usr/local/themes/FlatColor
-  sudo chown $USER:$USER /usr/local/themes/FlatColor/*
+  sudo chown -R $USER:$USER /usr/local/themes/FlatColor
   sudo ln -s /usr/local/themes/FlatColor /usr/share/themes/FlatColor
   sudo mkdir /usr/local/backgrounds
-  sudo chown $USER:$USER /usr/local/backgrounds
-  sudo chown $USER:$USER /usr/local/backgrounds/*
+  sudo chown -R $USER:$USER /usr/local/backgrounds
   sudo cp ~/QARSlp/dotfiles/lightdm/lightdm-gtk-greeter.conf /etc/lightdm/lightdm-gtk-greeter.conf
   sudo cp ~/QARSlp/dotfiles/pulse/system.pa /etc/pulse/system.pa
   mkdir -p ~/notable
@@ -270,6 +268,14 @@ function post(){
   journalctl --vacuum-time=2weeks
   
 }
+
+function install_docker(){
+  sudo pacman -S docker docker-buildx docker-compose --noconfirm --needed
+  sudo systemctl enable docker.service
+  sudo systemctl start docker.service
+  sudo usermod -aG docker $USER
+}
+
 # sudo pacman -Syyu --noconfirm
 # sudo pacman -Rcns qtile --noconfirm
 # paru_install
@@ -281,3 +287,4 @@ function post(){
 #post
 #web_apps
 #update
+install_docker
