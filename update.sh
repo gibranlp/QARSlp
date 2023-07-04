@@ -33,16 +33,16 @@ done
 
 function update(){
   cp -r ~/QARSlp/dotfiles/.config/rofi/* ~/.config/rofi/
-  cp -r ~/QARSlp/dotfiles/.config/qtile/* ~/.config/qtile/
-  cp ~/QARSlp/dotfiles/.shortcuts ~/
-  cp -r ~/QARSlp/dotfiles/.local/bin/change_display ~/.local/bin/
-  chmod +x ~/.local/bin/*
+  #cp -r ~/QARSlp/dotfiles/.config/qtile/* ~/.config/qtile/
+  #cp ~/QARSlp/dotfiles/.shortcuts ~/
+  #cp -r ~/QARSlp/dotfiles/.local/bin/change_display ~/.local/bin/
+  #chmod +x ~/.local/bin/*
   
-  cp ~/QARSlp/dotfiles/.config/picom/picom.conf ~/.config/picom/picom.conf
+  #cp ~/QARSlp/dotfiles/.config/picom/picom.conf ~/.config/picom/picom.conf
   # cp ~/QARSlp/dotfiles/.config/dunst/dunstrc ~/.config/wal/templates
   # cp ~/QARSlp/dotfiles/.config/cava/config ~/.config/wal/templates
   # cp ~/QARSlp/dotfiles/.config/ranger/rc.conf ~/.config/ranger/rc.conf
-  cp ~/QARSlp/dotfiles/.config/alacritty/alacritty.yml ~/.config/alacritty/alacritty.yml
+  #cp ~/QARSlp/dotfiles/.config/alacritty/alacritty.yml ~/.config/alacritty/alacritty.yml
 }
 
 #install_new_packages

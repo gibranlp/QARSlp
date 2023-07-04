@@ -35,5 +35,4 @@
     background-alt: {background};
     foreground: {foreground};
     border-color: @background;
-    spacing: 2;
 }}
