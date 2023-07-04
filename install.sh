@@ -208,6 +208,10 @@ function copy_dotfiles(){
   sudo chown $USER:$USER /usr/local/backgrounds
   sudo cp ~/QARSlp/dotfiles/lightdm-gtk-greeter.conf /etc/lightdm/lightdm-gtk-greeter.conf
   sudo cp ~/QARSlp/dotfiles/pulse/system.pa /etc/pulse/system.pa
+  mkdir -p ~/notable
+  mkdir -p ~/book
+  mkidr -p ~/Articles
+
 }
 
 function web_apps(){
@@ -254,14 +258,14 @@ function post(){
   journalctl --vacuum-time=2weeks
   
 }
-#sudo pacman -Syyu --noconfirm
-#base
-#paru_install
-#sudo pacman -Rcns qtile thunar --noconfirm
-#aur_packages
-#pip install -r pip.txt
-#zsh
-#copy_dotfiles
+sudo pacman -Syyu --noconfirm
+sudo pacman -Rcns qtile thunar --noconfirm
+paru_install
+base
+pip install -r pip.txt
+aur_packages
+zsh
+copy_dotfiles
+post
 #web_apps
-#post
-update
+#update
