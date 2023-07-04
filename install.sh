@@ -99,7 +99,6 @@ function base() {
     'exa'
     'xclip'
     'xdotool'
-    'zathura'
     #'nvidia-dkms'
 )
 
