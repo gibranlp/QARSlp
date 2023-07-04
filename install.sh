@@ -100,6 +100,10 @@ function base() {
     'xclip'
     'xdotool'
     #'nvidia-dkms'
+    linux-zen-headers
+    linux-zen-docs
+    cups
+    cupps-pdf
 )
 
 for packet in "${packets[@]}"; do
@@ -125,6 +129,7 @@ function aur_packages() {
     'caffeine-ng-git'
     'visual-studio-code-bin'
     'slack-desktop'
+    'brave' 
     'teams-for-linux'
     'telegram-desktop'
     'google-chrome'
@@ -159,6 +164,7 @@ function zsh(){
 }
 
 function copy_dotfiles(){
+  wal -i ~/Pictures/Wallpapers/wall.jpg
   mkdir -p ~/.config/alacritty
   cp ~/QARSlp/dotfiles/.config/alacritty/alacritty.yml ~/.config/alacritty/alacritty.yml
   cp ~/QARSlp/dotfiles/.shortcuts ~/
@@ -176,7 +182,6 @@ function copy_dotfiles(){
   mkdir -p ~/.config/picom
   cp ~/QARSlp/dotfiles/.config/picom/picom.conf ~/.config/picom/picom.conf
   mkdir -p ~/.config/qtile
-  cp ~/QARSlp/dotfiles/.config/qtile/themes/default.py ~/.config/qtile/theme.py
   cp -r ~/QARSlp/dotfiles/.config/qtile/* ~/.config/qtile/
   mkdir -p ~/.config/ranger
   cp ~/QARSlp/dotfiles/.config/ranger/rc.conf ~/.config/ranger/rc.conf
@@ -258,14 +263,14 @@ function post(){
   journalctl --vacuum-time=2weeks
   
 }
-sudo pacman -Syyu --noconfirm
-sudo pacman -Rcns qtile thunar --noconfirm
-paru_install
-base
-pip install -r pip.txt
-aur_packages
-zsh
+# sudo pacman -Syyu --noconfirm
+# sudo pacman -Rcns qtile --noconfirm
+# paru_install
+# base
+# pip install -r pip.txt
+# aur_packages
+# zsh
 copy_dotfiles
-post
+# post
 #web_apps
 #update
