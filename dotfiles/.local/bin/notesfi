@@ -1,6 +1,6 @@
 #!/bin/bash
 
-EDITOR=vim
+EDITOR=nvim
 VIEW=/usr/bin/zathura-pywal
 TERMINAL=alacritty
 

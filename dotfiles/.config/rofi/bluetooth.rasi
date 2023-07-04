@@ -19,15 +19,16 @@ window {
     anchor:                      center;
     fullscreen:                  false;
     width:                       650px;
-    height:                      700px;
+    height:                      680px;
     x-offset:                    0px;
     y-offset:                    0px;
 
     /* properties for all widgets */
     enabled:                     true;
-    border-radius:               5px;
+    border-radius:               10px;
     cursor:                      "default";
     background-color:            @background;
+    padding:                     2px;
 }
 
 /*****----- Main Box -----*****/
@@ -57,7 +58,7 @@ inputbar {
     text-color:                  @foreground;
     orientation:                 horizontal;
     children:                    ["entry"];
-    border-radius:               5px;
+    border-radius:               10px 10px 0px 0px;
 
 }
 
@@ -88,7 +89,7 @@ listview {
     fixed-height:                true;
     fixed-columns:               true;
     
-    spacing:                     10px;
+    spacing:                     20px;
     background-color:            transparent;
     text-color:                  @foreground;
     cursor:                      "default";
@@ -99,7 +100,7 @@ listview {
 element {
     enabled:                     true;
     spacing:                     10px;
-    padding:                     2px;
+    padding:                     10px;
     border-radius:               5px;
     background-color:            transparent;
     text-color:                  @foreground;

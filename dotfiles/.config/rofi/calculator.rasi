@@ -19,15 +19,16 @@ window {
     anchor:                      center;
     fullscreen:                  false;
     width:                       650px;
-    height:                      420px;
+    height:                      360px;
     x-offset:                    0px;
     y-offset:                    0px;
 
     /* properties for all widgets */
     enabled:                     true;
-    border-radius:               5px;
+    border-radius:               10px;
     cursor:                      "default";
     background-color:            @background;
+    padding:                     2px;
 }
 
 /*****----- Main Box -----*****/
@@ -57,7 +58,7 @@ inputbar {
     text-color:                  @foreground;
     orientation:                 horizontal;
     children:                    ["prompt", "entry"];
-    border-radius:               5px;
+    border-radius:               10px 10px 0px 0px;
 
 }
 

@@ -15,13 +15,14 @@ window {
     height:                      560px;
     x-offset:                    -250px;
     y-offset:                    0px;
-    border-radius:               10px 0px 0px 10px;
+    
 
     /* properties for all widgets */
     enabled:                     true;
-    border-radius:               5px;
+    border-radius:               10px 0px 0px 10px;
     cursor:                      "default";
     background-color:            @background;
+    padding:                     2px;
 }
 
 /*****----- Main Box -----*****/
@@ -51,7 +52,7 @@ inputbar {
     text-color:                  @foreground;
     orientation:                 horizontal;
     children:                    ["prompt"];
-    border-radius:               5px 5px 0px 0px;
+    border-radius:               10px 0px 0px 0px;
     horizontal-align:               0.5;
 
 }

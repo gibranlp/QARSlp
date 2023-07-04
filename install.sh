@@ -276,6 +276,10 @@ function install_docker(){
   sudo usermod -aG docker $USER
 }
 
+function neovim(){
+  curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+}
+
 # sudo pacman -Syyu --noconfirm
 # sudo pacman -Rcns qtile --noconfirm
 # paru_install

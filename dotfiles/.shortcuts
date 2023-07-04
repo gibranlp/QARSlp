@@ -1,6 +1,7 @@
 <<----------<< System >>---------->>
- + C :: Shortcuts
- + R :: Prompt
+Alt +  ::  Control Panel
+ + C ::  Shortcuts
+ + R ::  Prompt
  +  ::  Terminal
  +  + R ::  Restart Qtile
  +  + Q ::  Logout

@@ -18,9 +18,10 @@ window {
 
     /* properties for all widgets */
     enabled:                     true;
-    border-radius:               5px;
+    border-radius:               10px;
     cursor:                      "default";
     background-color:            @background;
+    padding:                     2px;
 }
 
 /*****----- Main Box -----*****/
@@ -50,8 +51,8 @@ inputbar {
     text-color:                  @foreground;
     orientation:                 horizontal;
     children:                    ["prompt", "entry"];
-    border-radius:               5px;
-    horizontal-align:               0.5;
+    border-radius:               10px 10px 0px 0px;
+    horizontal-align:            0.5;
 
 }
 

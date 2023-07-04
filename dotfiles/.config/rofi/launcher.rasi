@@ -24,14 +24,15 @@ window {
     anchor:                      center;
     fullscreen:                  false;
     width:                       650px;
-    height:                      567px;
+    height:                      570px;
     x-offset:                    0px;
     y-offset:                    0px;
-    border-radius:               5px;
+    border-radius:               10px;
     /* properties for all widgets */
     enabled:                     true;
     cursor:                      "default";
     background-color:            @background;
+    padding:                     2px;
 }
 
 /*****----- Main Box -----*****/
@@ -61,7 +62,7 @@ inputbar {
     text-color:                  @foreground;
     orientation:                 horizontal;
     children:                    [ "textbox-prompt-colon", "entry", "mode-switcher" ];
-    border-radius:               5px 5px 0px 0px;
+    border-radius:               10px 10px 0px 0px;
 
 }
 textbox-prompt-colon{

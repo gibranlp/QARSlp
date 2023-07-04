@@ -25,9 +25,10 @@ window {
 
     /* properties for all widgets */
     enabled:                     true;
-    border-radius:               5px;
+    border-radius:               10px;
     cursor:                      "default";
     background-color:            @background;
+    padding:                     2px;
 }
 
 /*****----- Main Box -----*****/
@@ -56,8 +57,8 @@ inputbar {
     background-image:            url("/usr/local/backgrounds/background.png", width);
     text-color:                  @foreground;
     orientation:                 horizontal;
-    children:                    ["prompt","entry"];
-    border-radius:               5px;
+    children:                    ["prompt"];
+    border-radius:               0px 10px 0px 0px;
 
 }
 
@@ -72,20 +73,6 @@ prompt {
     cursor:                      text;
     placeholder-color:           inherit;
 }
-
-entry {
-    enabled:                     true;
-    expand:                      false;
-    width:                       350px;
-    padding:                     12px 16px;
-    border-radius:               5px;
-    background-color:            @background;
-    text-color:                  inherit;
-    cursor:                      text;
-    placeholder-color:           inherit;
-}
-
-
 
 /*****----- Listview -----*****/
 listview {

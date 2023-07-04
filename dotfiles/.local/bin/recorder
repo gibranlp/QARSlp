@@ -76,7 +76,7 @@ else
 	options="$option4\n$option5"
 fi
 
-choice=$(echo -e "$options" | rofi -theme ~/.config/rofi/recording.rasi -i -dmenu -no-show-icons -no-sidebar-mode -lines 4 -width 30 -p "  ") 
+choice=$(echo -e "$options" | rofi -theme ~/.config/rofi/recording.rasi -i -dmenu -no-show-icons -no-sidebar-mode -lines 4 -width 30 -p "  Select Recording Method ") 
 
 case $choice in
 	$option1) screencast ;;

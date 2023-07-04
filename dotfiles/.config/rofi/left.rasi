@@ -21,6 +21,7 @@ window {
     enabled:                     true;
     cursor:                      "default";
     background-color:            @background;
+    padding:                     2px;
 }
 
 /*****----- Main Box -----*****/
@@ -50,7 +51,7 @@ inputbar {
     text-color:                  @foreground;
     orientation:                 horizontal;
     children:                    ["prompt", "entry"];
-    border-radius:               0px 5px 0px 0px;
+    border-radius:               0px 10px 0px 0px;
     horizontal-align:            0.5;
 
 }
