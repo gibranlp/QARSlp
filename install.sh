@@ -88,9 +88,13 @@ function base() {
     'linux-docs'
     'linux-lts'
     'linux-lts-headers'
+    'linux-lts-docs'
+    'linux-zen-headers'
+    'linux-zen-docs'
     'xorg-xdpyinfo'
     'taskwarrior-tui'
     'fzf'
+    'cups'
     'thefuck'
     'pamixer'
     'gvfs-mtp' 
@@ -149,6 +153,7 @@ function aur_packages() {
     'zathura-pywal-git'
     'zathura-ps'
     'libby-git'
+    'python-rofi-git' 
 
 )
 for packet in "${packets[@]}"; do
@@ -209,9 +214,11 @@ function copy_dotfiles(){
   sudo mkdir -p /usr/local/themes
   sudo cp -r ~/.local/share/themes/FlatColor /usr/local/themes
   sudo chown $USER:$USER /usr/local/themes/FlatColor
+  sudo chown $USER:$USER /usr/local/themes/FlatColor/*
   sudo ln -s /usr/local/themes/FlatColor /usr/share/themes/FlatColor
   sudo mkdir /usr/local/backgrounds
   sudo chown $USER:$USER /usr/local/backgrounds
+  sudo chown $USER:$USER /usr/local/backgrounds/*
   sudo cp ~/QARSlp/dotfiles/lightdm/lightdm-gtk-greeter.conf /etc/lightdm/lightdm-gtk-greeter.conf
   sudo cp ~/QARSlp/dotfiles/pulse/system.pa /etc/pulse/system.pa
   mkdir -p ~/notable
@@ -248,8 +255,7 @@ function web_apps(){
   sudo ln -s ~/Apps/github/github /usr/bin/github
   sudo ln -s ~/Apps/clockify/clockify /usr/bin/clockify
    sudo ln -s ~/Apps/jira/jira /usr/bin/jira
-  wpg-install.sh -gio
-  ~/.local/bin/genwal
+
 }
 
 function post(){
@@ -268,10 +274,10 @@ function post(){
 # sudo pacman -Rcns qtile --noconfirm
 # paru_install
 # base
-# pip install -r pip.txt
+#pip install -r pip.txt --break-system-packages
 # aur_packages
 # zsh
-copy_dotfiles
-# post
+#copy_dotfiles
+#post
 #web_apps
 #update

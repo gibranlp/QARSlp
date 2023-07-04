@@ -1,6 +1,5 @@
 cairocffi
 xcffib
-django
 requests
 fontawesome
 ipc

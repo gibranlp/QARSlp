@@ -34,8 +34,8 @@ done
 function update(){
   cp -r ~/QARSlp/dotfiles/.config/rofi/* ~/.config/rofi/
   cp -r ~/QARSlp/dotfiles/.config/qtile/* ~/.config/qtile/
-  # cp ~/QARSlp/dotfiles/.shortcuts ~/
-  cp -r ~/QARSlp/dotfiles/.local/bin/notesfi ~/.local/bin/
+  cp ~/QARSlp/dotfiles/.shortcuts ~/
+  cp -r ~/QARSlp/dotfiles/.local/bin/change_display ~/.local/bin/
   chmod +x ~/.local/bin/*
   
   cp ~/QARSlp/dotfiles/.config/picom/picom.conf ~/.config/picom/picom.conf
