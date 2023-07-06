@@ -29,7 +29,7 @@ https://github.com/gibranlp/QARSlp/assets/2806964/3c393d53-eb32-43ae-96aa-b5ac8b
 
 To set a random wallpaper simply type Alt + R and the entire system will change with the wallpaper.
 
-![Random Wallpaper](/screenshots/randwall.gif)
+https://github.com/gibranlp/QARSlp/assets/2806964/cddb940a-9ada-42a5-8cb7-a23e89cedfaf
 
 ## Select Wallpaper 
 
