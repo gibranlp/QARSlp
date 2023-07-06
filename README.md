@@ -23,6 +23,8 @@ It features a dark & light color schemes with contrasting colors for active and 
 
 I just made a rofi widget with the most common options such as **Set Random Wallpaper**, **Select Wallpaper**, **change the default Backend for  Pywal**, **Move the Bar Top or Bottom**, among others, simply press **Alt + Return** and watch the widget popup.
 
+https://github.com/gibranlp/QARSlp/blob/develop/screenshots/control-panel.mp4
+
 ![control-panel](/screenshots/control-panel.gif)
 
 ## Set Random Wallpaper Theme
