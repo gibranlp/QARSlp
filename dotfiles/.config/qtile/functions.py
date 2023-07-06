@@ -230,21 +230,14 @@ def i3lock_colors(qtile):
     '--ringwrong-color={}'.format(secondary_color[0])+"DD",
     '--wrong-color={}'.format(color[1]),
     '--wrong-text=Wrong!',
-            
-              
-       
-              
-                        
     '--keyhl-color={}'.format(color[4]),         
-    '--bshl-color={}'.format(color[2]),
-                 
+    '--bshl-color={}'.format(color[2]),            
     '--clock',
     '--blur', '10',                 
     '--indicator',       
     '--time-str="%H:%M:%S"',   
     '--date-str="%A, %Y-%m-%d"',
     ])
-
 
 # Transparent for bars and widgets
 transparent=color[0] + "00"
@@ -349,9 +342,9 @@ def shortcuts(qtile):
 # NightLight widget
 def nightLight_widget(qtile):
   options = [' Night Time(3500k)', ' Neutral (6500k)', ' Cool (7500k)']
-  index, key = rofi_right.select('  Night Light', options)
+  index, key = rofi_left.select('  Night Light', options)
   if key == -1:
-    rofi_right.close()
+    rofi_left.close()
   else:
     if index == 0:
       os.system('redshift -O 3500k -r -P')
@@ -363,21 +356,35 @@ def nightLight_widget(qtile):
 # Farge Widget
 def fargewidget(qtile):
   options = [' Hex',' RGB']
-  index, key = rofi_right.select('  Color Picker', options)
+  index, key = rofi_left.select('  Color Picker', options)
   if key == -1:
-    rofi_right.close()
+    rofi_left.close()
   else:
     if index ==0:
       subprocess.run("farge --notify --expire-time 10000",shell=True)
     else:
       subprocess.run("farge --notify --rgb --expire-time 10000",shell=True)
 
+# Draw Widget
+def draw_widget(qtile):
+  options = [' Draw',' Clean', ' Exit']
+  index, key = rofi_left.select('  Screen Draw', options)
+  if key == -1:
+    rofi_left.close()
+  else:
+    if index ==0:
+      subprocess.run("gromit-mpx -a &",shell=True)
+    elif index == 1:
+      subprocess.run("gromit-mpx -c",shell=True)
+    else:
+      subprocess.run("gromit-mpx -q",shell=True)
+
 # Logout widget
 def session_widget(qtile):
   options = [' Log Out', ' Reboot',' Poweroff',' Lock']
-  index, key = rofi_right.select('  Session', options)
+  index, key = rofi_left.select('  Session', options)
   if key == -1:
-    rofi_right.close()
+    rofi_left.close()
   else:
     if index == 0:
       qtile.shutdown()
@@ -485,9 +492,9 @@ def random_colors(qtile):
 # Screenshot widget
 def screenshot(qtile):
   options = [' Screen', ' Window', ' Area', ' 5s Screen']
-  index, key = rofi_right.select('  Screenshot', options)
+  index, key = rofi_left.select('  Screenshot', options)
   if key == -1:
-    rofi_right.close()
+    rofi_left.close()
   else:
     if index ==0:
       subprocess.run("flameshot full --path ~/Pictures/Screenshot.png --delay 500",shell=True)
@@ -520,6 +527,7 @@ def control_panel(qtile):
     '     Bluetooth',#15
     '     Screen Recorder', #16
     ' Miscelaneous',#17
+    '     Screen Draw',
     '     Pick Color',#18
     '     View Shortcuts',#19
     '     Emojis',#20
@@ -527,7 +535,7 @@ def control_panel(qtile):
     ]
   index, key = rofi_left.select('  Control Panel', options)
   if key == -1:
-    rofi_right.close()
+    rofi_left.close()
   else:
     if index == 1:
       qtile.function(change_wallpaper)
@@ -560,12 +568,14 @@ def control_panel(qtile):
     elif index == 17:
       subprocess.run(home + '/.local/bin/recorder')
     elif index == 19:
-      qtile.function(fargewidget)
+      qtile.function(draw_widget)
     elif index == 20:
-      qtile.function(shortcuts)
+      qtile.function(fargewidget)
     elif index == 21:
-      qtile.spawn('rofi -modi emoji -show emoji -theme "~/.config/rofi/network2.rasi"')
+      qtile.function(shortcuts)
     elif index == 22:
+      qtile.spawn('rofi -modi emoji -show emoji -theme "~/.config/rofi/network2.rasi"')
+    elif index == 23:
       qtile.function(session_widget)
     
 ## 
@@ -589,6 +599,7 @@ keys = [
     Key([mod, "shift"],"w",lazy.function(bar_pos)), # Set bar position
     Key([mod, "shift"],"o",lazy.function(nightLight_widget)), # Set night light
     Key([mod],"p",lazy.function(fargewidget)), # Color Picker Widget
+    Key([mod, "shift"],"p",lazy.function(draw_widget)), # Desktop draw widget
     Key([alt], "Return", lazy.function(control_panel)), # Search for files and folders
     Key([mod],"t",lazy.spawn('rofi  -theme "~/.config/rofi/tasks.rasi" -show tasks:task')), # Task list
     Key([mod],"x",lazy.function(session_widget)), # Log out

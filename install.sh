@@ -142,6 +142,7 @@ function aur_packages() {
     'thunar-extended'
     'thunar-volman'
     'hugo'
+    'gromit-mpx-git'
     'nbfc'
     'ntfs-3g'
     'i3lock-fancy'
@@ -185,6 +186,7 @@ function copy_dotfiles(){
   mkdir -p  ~/.fonts
   cp ~/QARSlp/dotfiles/.fonts/* ~/.fonts
   fc-cache -f -v
+  cp ~/QARSlp/dotfiles/.config/gromit-mpx.ini ~/.config
   mkdir -p ~/.config/picom
   cp ~/QARSlp/dotfiles/.config/picom/picom.conf ~/.config/picom/picom.conf
   mkdir -p ~/.config/qtile

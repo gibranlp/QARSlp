@@ -33,7 +33,7 @@ done
 
 function update(){
   #cp -r ~/QARSlp/dotfiles/.config/rofi/* ~/.config/rofi/
-  #cp -r ~/QARSlp/dotfiles/.config/qtile/* ~/.config/qtile/
+  cp -r ~/QARSlp/dotfiles/.config/qtile/* ~/.config/qtile/
   #cp ~/QARSlp/dotfiles/.shortcuts ~/
   #cp -r ~/QARSlp/dotfiles/.local/bin/recorder ~/.local/bin/
   #cp -r ~/QARSlp/dotfiles/.local/bin/notesfi ~/.local/bin/
@@ -46,6 +46,7 @@ function update(){
   # cp ~/QARSlp/dotfiles/.config/cava/config ~/.config/wal/templates
   # cp ~/QARSlp/dotfiles/.config/ranger/rc.conf ~/.config/ranger/rc.conf
   #cp ~/QARSlp/dotfiles/.config/alacritty/alacritty.yml ~/.config/alacritty/alacritty.yml
+  cp ~/QARSlp/dotfiles/.config/gromit-mpx.ini ~/.config
 }
 
 #install_new_packages
