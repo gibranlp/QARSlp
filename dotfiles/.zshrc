@@ -107,6 +107,7 @@ eval $(thefuck --alias)
 # alias zshconfig="mate ~/.zshrc"
 alias lzd="lazydocker"
 alias tsm="transmission-remote"
+alias sshelgen="ssh -i ~/.ssh/rsa_deploy itadmin@199.85.208.94"
 #export PATH=~/usr/local/bin:$PATH
 export PATH=~/home/$USER/.local/bin:$PATH
 export PATH=~/.emacs.d/bin:$PATH

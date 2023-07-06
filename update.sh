@@ -32,15 +32,16 @@ done
 }
 
 function update(){
-  cp -r ~/QARSlp/dotfiles/.config/rofi/* ~/.config/rofi/
+  #cp -r ~/QARSlp/dotfiles/.config/rofi/* ~/.config/rofi/
   #cp -r ~/QARSlp/dotfiles/.config/qtile/* ~/.config/qtile/
   #cp ~/QARSlp/dotfiles/.shortcuts ~/
-  cp -r ~/QARSlp/dotfiles/.local/bin/recorder ~/.local/bin/
-  cp -r ~/QARSlp/dotfiles/.local/bin/notesfi ~/.local/bin/
+  #cp -r ~/QARSlp/dotfiles/.local/bin/recorder ~/.local/bin/
+  #cp -r ~/QARSlp/dotfiles/.local/bin/notesfi ~/.local/bin/
   #chmod +x ~/.local/bin/*
-  cp ~/QARSlp/dotfiles/.shortcuts ~/
+  #cp ~/QARSlp/dotfiles/.shortcuts ~/
   
   cp ~/QARSlp/dotfiles/.config/picom/picom.conf ~/.config/picom/picom.conf
+  cp ~/QARSlp/dotfiles/.zshrc ~/
   # cp ~/QARSlp/dotfiles/.config/dunst/dunstrc ~/.config/wal/templates
   # cp ~/QARSlp/dotfiles/.config/cava/config ~/.config/wal/templates
   # cp ~/QARSlp/dotfiles/.config/ranger/rc.conf ~/.config/ranger/rc.conf
