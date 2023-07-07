@@ -26,8 +26,8 @@ env:
   # Blank space added around the window in pixels. This padding is scaled
   # by DPI and the specified value is always added at both opposing sides.
   #padding:
-   # x: 5
-   # y: 5
+   #x: 5
+   #y: 5
 
   # Spread additional padding evenly around the terminal content.
   #dynamic_padding: true
@@ -69,7 +69,7 @@ font:
     family: Fira Code 
 
     # The `style` can be specified to pick a specific face.
-    style: Medium
+    style: Regular
 
   # Bold font face
   bold:
@@ -102,7 +102,7 @@ font:
   # as modifying the line spacing, and `offset.x` as modifying the letter spacing.
   offset:
     x: 0
-    y: 0
+    y: 1 
 
   # Glyph offset determines the locations of the glyphs within their cells with
   # the default being at the bottom. Increasing `x` moves the glyph to the right,

@@ -9,7 +9,7 @@
 # MIT licence 
 #
 export ZSH=$HOME/.oh-my-zsh
-ZSH_THEME="passion"
+ZSH_THEME="avit"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -61,14 +61,7 @@ COMPLETION_WAITING_DOTS="true"
 # see 'man strftime' for details.
 HIST_STAMPS="yyyy/mm/dd"
 
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
 
-# Which plugins would you like to load?
-# Standard plugins can be found in ~/.oh-my-zsh/plugins/*
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
 plugins=(archlinux
 	colored-man-pages
 	zsh-autosuggestions
@@ -85,34 +78,14 @@ source $ZSH/oh-my-zsh.sh
 export LANG=en_US.UTF-8
 
 
-# Function to reload GTk
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
-
 eval $(thefuck --alias)
 
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
+## Aliases
 
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-#nge users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
 alias lzd="lazydocker"
 alias tsm="transmission-remote"
 alias sshelgen="ssh -i ~/.ssh/rsa_deploy itadmin@199.85.208.94"
-#export PATH=~/usr/local/bin:$PATH
-export PATH=~/home/$USER/.local/bin:$PATH
-export PATH=~/.emacs.d/bin:$PATH
 export PATH=~/.local/bin:$PATH
-export PATH=$PATH:/opt/ade
 wal -R -q && clear 
 echo "TF "$(( (`date +%s` - `date +%s -d '2003/08/1'`) / 86400 )) "CP "$(( (`date +%s` - `date +%s -d '2022/02/19'`) / 86400 )) "LT "$(( (`date +%s` - `date +%s -d '2022/08/15'`) / 86400 )) 
 setxkbmap -layout us -variant intl
