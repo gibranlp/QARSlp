@@ -523,7 +523,7 @@ def control_panel(qtile):
     '     Network Manager',#11
     '     Screenshot Widget',#12
     '     Change Monitor Temperature',#13
-    '     Manage Multimonitors',#14
+    '     Monitor Layout',#14
     '     Bluetooth',#15
     '     Screen Recorder', #16
     ' Miscelaneous',#17

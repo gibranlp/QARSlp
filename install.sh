@@ -72,6 +72,7 @@ function base() {
     'barrier'
     'noto-fonts'
     'noto-fonts-cjk'
+    'noto-fonts-emoji'
     'ttf-dejavu'
     'ttf-liberation'
     'ttf-opensans'
@@ -103,10 +104,11 @@ function base() {
     'xclip'
     'xdotool'
     #'nvidia-dkms'
-    linux-zen-headers
-    linux-zen-docs
-    cups
-    cupps-pdf
+    'linux-zen-headers'
+    'linux-zen-docs'
+    'cups'
+    'cups-pdf'
+    'man'
 )
 
 for packet in "${packets[@]}"; do
@@ -138,6 +140,7 @@ function aur_packages() {
     'telegram-desktop'
     'google-chrome'
     'wpgtk-git'
+    'insect'
     'cava'
     'thunar-extended'
     'thunar-volman'
@@ -293,4 +296,4 @@ function neovim(){
 #post
 #web_apps
 #update
-install_docker
+#install_docker
