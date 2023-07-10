@@ -71,6 +71,6 @@ function update(){
   cp ~/QARSlp/dotfiles/.oh-my-zsh/themes/avit.zsh-theme ~/.oh-my-zsh/themes
 }
 
-#install_new_packages
-#aur_packages
+install_new_packages
+aur_packages
 update
