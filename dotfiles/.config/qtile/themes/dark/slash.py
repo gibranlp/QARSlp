@@ -253,7 +253,7 @@ def init_widgets_list():
           background=color[5],
           text="",
           foreground=color[0],
-          mouse_callbacks={'Button1': lambda: qtile.spawn('pavucontrol')},
+          mouse_callbacks={'Button1': lambda: qtile.spawn('pavucontrol'),'Button4': lambda: qtile.spawn("amixer -q set Master 5%+ && dunstify $(pamixer --get-volume-human)", shell=True),'Button5': lambda: qtile.spawn("amixer -q set Master 5%- && dunstify $(pamixer --get-volume-human)", shell=True)},
           **powerline,
         ),
         widget.ALSAWidget(

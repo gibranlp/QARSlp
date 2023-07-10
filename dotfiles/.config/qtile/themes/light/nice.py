@@ -135,17 +135,17 @@ def init_widgets_list():
           background=secondary_color[0],
           text="",
           foreground=color[5],
-          mouse_callbacks={'Button1': lambda: qtile.spawn('pavucontrol')},
+          mouse_callbacks={'Button1': lambda: qtile.spawn('pavucontrol'),'Button4': lambda: qtile.spawn("amixer -q set Master 5%+ && dunstify $(pamixer --get-volume-human)", shell=True),'Button5': lambda: qtile.spawn("amixer -q set Master 5%- && dunstify $(pamixer --get-volume-human)", shell=True)}, 
           fontsize=font_size-2
         ),
         widget.ALSAWidget(
           decorations=[RectDecoration(use_widget_background=True,radius=0, padding_y=1, filled=True)],
           background=secondary_color[0],
           device='Master',
-          bar_colour_high=color[0],
-          bar_colour_loud=color[0],
-          bar_colour_normal=color[0],
-          bar_colour_mute=color[0],
+          bar_colour_high=color[5],
+          bar_colour_loud=color[5],
+          bar_colour_normal=color[5],
+          bar_colour_mute=color[5],
           hide_interval=5,
           update_interval=0.1,
           bar_width=80,
@@ -153,10 +153,11 @@ def init_widgets_list():
           text_format=' ',
         ),
         widget.TextBox(
-          decorations=[RectDecoration(colour=secondary_color[0], radius=[0,10,10,0], filled=True)],
+          decorations=[RectDecoration(colour=secondary_color[0], radius=[0,10,10,0], padding_y=1, filled=True)],
           text=" ",
           foreground=color[5],
-          mouse_callbacks={'Button1': lambda: qtile.spawn('pavucontrol')}
+          mouse_callbacks={'Button1': lambda: qtile.spawn('pavucontrol'),'Button4': lambda: qtile.spawn("amixer -q set Master 5%+ && dunstify $(pamixer --get-volume-human)", shell=True),'Button5': lambda: qtile.spawn("amixer -q set Master 5%- && dunstify $(pamixer --get-volume-human)", shell=True)},
+          fontsize=font_size-2
         ),
         widget.Spacer(
           length=5,
