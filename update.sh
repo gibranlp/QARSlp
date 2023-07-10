@@ -55,22 +55,23 @@ done
 function update(){
   cp -r ~/QARSlp/dotfiles/.config/rofi/* ~/.config/rofi/
   cp -r ~/QARSlp/dotfiles/.config/qtile/* ~/.config/qtile/
-  cp ~/QARSlp/dotfiles/.shortcuts ~/
-  cp -r ~/QARSlp/dotfiles/.local/bin/recorder ~/.local/bin/
-  cp -r ~/QARSlp/dotfiles/.local/bin/notesfi ~/.local/bin/
-  chmod +x ~/.local/bin/*
-  cp ~/QARSlp/dotfiles/.shortcuts ~/
+  # cp ~/QARSlp/dotfiles/.shortcuts ~/
+  # cp -r ~/QARSlp/dotfiles/.local/bin/recorder ~/.local/bin/
+  # cp -r ~/QARSlp/dotfiles/.local/bin/notesfi ~/.local/bin/
+  cp -r ~/QARSlp/dotfiles/.local/bin/wifi2 ~/.local/bin/
+  # chmod +x ~/.local/bin/*
+  # cp ~/QARSlp/dotfiles/.shortcuts ~/
   
-  cp ~/QARSlp/dotfiles/.config/picom/picom.conf ~/.config/picom/picom.conf
-  cp ~/QARSlp/dotfiles/.zshrc ~/
-  cp ~/QARSlp/dotfiles/.config/dunst/dunstrc ~/.config/wal/templates
-  cp ~/QARSlp/dotfiles/.config/cava/config ~/.config/wal/templates
-  cp ~/QARSlp/dotfiles/.config/ranger/rc.conf ~/.config/ranger/rc.conf
-  cp ~/QARSlp/dotfiles/.config/alacritty/alacritty.yml ~/.config/alacritty/alacritty.yml
-  cp ~/QARSlp/dotfiles/.config/gromit-mpx.ini ~/.config
-  cp ~/QARSlp/dotfiles/.oh-my-zsh/themes/avit.zsh-theme ~/.oh-my-zsh/themes
+  # cp ~/QARSlp/dotfiles/.config/picom/picom.conf ~/.config/picom/picom.conf
+  # cp ~/QARSlp/dotfiles/.zshrc ~/
+  # cp ~/QARSlp/dotfiles/.config/dunst/dunstrc ~/.config/wal/templates
+  # cp ~/QARSlp/dotfiles/.config/cava/config ~/.config/wal/templates
+  # cp ~/QARSlp/dotfiles/.config/ranger/rc.conf ~/.config/ranger/rc.conf
+  # cp ~/QARSlp/dotfiles/.config/alacritty/alacritty.yml ~/.config/alacritty/alacritty.yml
+  # cp ~/QARSlp/dotfiles/.config/gromit-mpx.ini ~/.config
+  # cp ~/QARSlp/dotfiles/.oh-my-zsh/themes/avit.zsh-theme ~/.oh-my-zsh/themes
 }
 
-install_new_packages
-aur_packages
+#install_new_packages
+#aur_packages
 update

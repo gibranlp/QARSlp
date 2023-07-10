@@ -397,28 +397,14 @@ def session_widget(qtile):
 
 # Network Widget
 def network_widget(qtile):
-  get_ssid = "iwgetid -r"
-  pos = subprocess.Popen(get_ssid,shell=True,stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
-  ssid = pos.communicate()[0].decode('ascii').strip()
-  get_status = "nmcli radio wifi"
-  ps = subprocess.Popen(get_status,shell=True,stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
-  status = ps.communicate()[0].decode('ascii').strip()
-  if status == 'enabled':
-    connected = ' Turn Wifi Off'
-    active = "off"
-  else:
-    connected = ' Turn Wifi On'
-    active="on"
-  options = [connected,' Wlan Manager','  Bandwith Monitor (CLI)', ' Network Manager (CLI)']
-  index, key = rofi_network.select(" IP " + private_ip + " -" + "  IP " + public_ip, options)
+  options = [' Wlan Manager','  Bandwith Monitor (CLI)', ' Network Manager (CLI)']
+  index, key = rofi_network.select(" " + private_ip + " -" + "  " + public_ip, options)
   if key == -1:
     rofi_network.close()
   else:
     if index == 0:
-      subprocess.run("nmcli radio wifi " + active, shell=True)
-    elif index==1:
       qtile.spawn(home + '/.local/bin/wifi2')
-    elif index==2:
+    elif index==1:
       qtile.spawn(terminal + ' -e bmon')
     else:
       qtile.spawn(terminal + ' -e nmtui')
