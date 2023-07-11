@@ -322,7 +322,7 @@ def set_default_backend(qtile):
     with open(home + '/.config/qtile/variables', 'w') as file:
       file.writelines(variables)
     qtile.reload_config()
-    subprocess.run(["notify-send","-a", " QARSlp", "Backend Changed to: ", "%s" %backend[index]])
+    subprocess.run(["notify-send","-a", " QARSlp", "Color Theme: ", " %s" %backend[index]])
 
 # Display Shortcuts widget
 def shortcuts(qtile):
@@ -462,7 +462,7 @@ def change_theme(qtile):
     with open(home + '/.config/qtile/variables', 'w') as file:
       file.writelines(variables)
     qtile.reload_config()
-    subprocess.run(["notify-send","-a", " QARSlp", "Theme Set to: ", "%s" %theme[index]])
+    subprocess.run(["notify-send","-a", " QARSlp", " Theme: ", "%s" %theme[index]])
     
 # Set random colors to theme
 def random_colors(qtile):
