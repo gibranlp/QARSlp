@@ -306,11 +306,11 @@
     #default_icon = 
 
 [urgency_normal]
-    background = "{color1}"
+    background = "{color4}"
     foreground = "{color0}"
     frame_color = "{color0}"
     timeout = 4
-    format = " <b>%s</b>\n%b\n%p\n%n"
+    format = "<b>%a\n%s</b>\n%b\n%p\n%n"
     # Icon for notifications with normal urgency, uncomment to enable
     #default_icon = /path/to/icon
 
@@ -449,7 +449,7 @@
 # vim: ft=cfg
 [Slack]
 appname = Slack
-format = "Slack\n%s\n%b"
+format = "<b>  Slack</b>\n%s\n%b"
 new_icon = Slack
 
 [Discord]
@@ -470,13 +470,13 @@ timeout = 10
 
 [ncspot]
 appname = ncspot
-format = " Now Playing\n%s\n%b"
+format = "<b> Now Playing</b>\n%s\n%b"
 timeout = 10
 urgency = low
 
 [Spotify]
 appname = Spotify
-format = " Now Playing\n%s\n%b"
+format = "<b> Now Playing</b>\n%s\n%b"
 timeout = 10
 urgency = low
 
@@ -493,8 +493,7 @@ new_icon = Transmission
 timeout = 10
 
 [Pamixer]
-appname = dunstify
-format = " Volume %s"
+appname = Volume
 timeout = 1
 urgency = normal
 set_stack_tag = "volume"

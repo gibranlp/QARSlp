@@ -136,7 +136,7 @@ element selected.active {
 element-icon {
     background-color:            transparent;
     text-color:                  inherit;
-    size:                        400px;
+    size:                        200px;
     cursor:                      inherit;
 }
 element-text {

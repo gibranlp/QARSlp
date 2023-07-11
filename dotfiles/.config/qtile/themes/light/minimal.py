@@ -61,7 +61,7 @@ def init_widgets_list():
           width=widget_width,
           format=' {xesam:artist} -  {xesam:title}',
           stopped_text="Stop",
-          paused_text='Paused',
+          paused_text='  ',
           scroll=True,
           scroll_repeat=True,
           scroll_delay=0.1,

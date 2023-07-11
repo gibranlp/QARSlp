@@ -256,7 +256,7 @@ def change_wallpaper(qtile):
     selected_wallpaper = os.path.join(wallpaper_dir, selection)
   
   qtile.reload_config()
-  subprocess.run(["notify-send", "Random Wallpaper Set to: ", "%s" %selection])
+  subprocess.run(["notify-send","-a", " QARSlp", "Random Wallpaper Set to: ", "%s" %selection])
 
 ## Get network device in use
 def get_net_dev():
@@ -322,7 +322,7 @@ def set_default_backend(qtile):
     with open(home + '/.config/qtile/variables', 'w') as file:
       file.writelines(variables)
     qtile.reload_config()
-    subprocess.run(["notify-send", "Backend Changed to: ", "%s" %backend[index]])
+    subprocess.run(["notify-send","-a", " QARSlp", "Backend Changed to: ", "%s" %backend[index]])
 
 # Display Shortcuts widget
 def shortcuts(qtile):
@@ -337,13 +337,13 @@ def nightLight_widget(qtile):
   else:
     if index == 0:
       os.system('redshift -O 3500k -r -P')
-      subprocess.run(["notify-send", "Temperature Set to Night Time"])
+      subprocess.run(["notify-send","-a", " QARSlp", "Temperature Set to Night Time"])
     elif index == 1:
       os.system('redshift -x')
-      subprocess.run(["notify-send", "Temperature Set to Neutral"])
+      subprocess.run(["notify-send","-a", " QARSlp", "Temperature Set to Neutral"])
     else:
       os.system('redshift -O 7500k -r -P')
-      subprocess.run(["notify-send", "Temperature Set to Cool"])
+      subprocess.run(["notify-send","-a", " QARSlp", "Temperature Set to Cool"])
 
 # Farge Widget
 def fargewidget(qtile):
@@ -353,9 +353,9 @@ def fargewidget(qtile):
     rofi_left.close()
   else:
     if index ==0:
-      subprocess.run("farge --notify --expire-time 10000",shell=True)
+      subprocess.run("farge --notify --expire-time 20000",shell=True)
     else:
-      subprocess.run("farge --notify --rgb --expire-time 10000",shell=True)
+      subprocess.run("farge --notify --rgb --expire-time 20000",shell=True)
 
 # Draw Widget
 def draw_widget(qtile):
@@ -428,7 +428,7 @@ def dark_white(qtile):
     with open(home + '/.config/qtile/variables', 'w') as file:
       file.writelines(variables)
     qtile.reload_config()
-    subprocess.run(["notify-send", "Theme changed to: ", "%s" %options[index]])
+    subprocess.run(["notify-send","-a", " QARSlp", "Theme changed to: ", "%s" %options[index]])
 
 
 ## Select Bar Position Top or Bottom
@@ -462,7 +462,7 @@ def change_theme(qtile):
     with open(home + '/.config/qtile/variables', 'w') as file:
       file.writelines(variables)
     qtile.reload_config()
-    subprocess.run(["notify-send", "Theme Set to: ", "%s" %theme[index]])
+    subprocess.run(["notify-send","-a", " QARSlp", "Theme Set to: ", "%s" %theme[index]])
     
 # Set random colors to theme
 def random_colors(qtile):
@@ -606,8 +606,8 @@ keys = [
 
     # Volume
     Key([], "XF86AudioMute", lazy.spawn("amixer -q set Master toggle")), # Mute
-    Key([], "XF86AudioLowerVolume", lazy.spawn("amixer -q set Master 5%- && dunstify $(pamixer --get-volume-human)", shell=True)),
-    Key([], "XF86AudioRaiseVolume", lazy.spawn("amixer -q set Master 5%+ && dunstify $(pamixer --get-volume-human)", shell=True)), # Raise Volume
+    Key([], "XF86AudioLowerVolume", lazy.spawn("amixer -q set Master 5%- && dunstify -a Volume ' '$(pamixer --get-volume-human) ", shell=True)),
+    Key([], "XF86AudioRaiseVolume", lazy.spawn("amixer -q set Master 5%+ && dunstify -a Volume ' '$(pamixer --get-volume-human)", shell=True)), # Raise Volume
 
     # Media Control
     Key([], "XF86AudioPlay", lazy.spawn("playerctl --player=%any play-pause")), # Play Pause
