@@ -1,16 +1,15 @@
 from functions import *
-# Draw Widget
-def draw_widget(qtile):
-  options = [' Draw',' Clean', ' Exit']
-  index, key = rofi_right.select('  Desktop Draw', options)
-  if key == -1:
-    rofi_right.close()
-  else:
-    if index ==0:
-      subprocess.run("gromit-mpx -a",shell=True)
-    elif index == 1:
-      subprocess.run("gromit-mpx -a",shell=True)
-    else:
-      subprocess.run("gromit-mpx -q",shell=True)
 
-draw_widget(qtile)
+def select_wallpaper(qtile):
+  index = rofi_wallpaper.select(' Select Wallpaper: ')
+  if index == -1:
+    rofi_left.close()
+  else:
+    subprocess.run(["wpg", light, "-s", wallpaper_dir + str(options[index]), "--backend", def_backend.lower()])
+    subprocess.run(["cp", wallpaper_dir + str(options[index]), "/usr/local/backgrounds/background.png"])
+    subprocess.run(["cp", "-r", str(Path.home() / ".local/share/themes/FlatColor"), "/usr/local/themes/"])
+    qtile.reload_config()
+
+
+
+ 

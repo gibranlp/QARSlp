@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+# _______  _______  ______  _______  __        
+#|       ||   _   ||   __ \|     __||  |.-----.
+#|   -  _||       ||      <|__     ||  ||  _  |
+#|_______||___|___||___|__||_______||__||   __|
+#                                       |__|   
+# QARSlp Qtile + Arch Ricing System
+# By: gibranlp <thisdoesnotwork@gibranlp.dev>
+# MIT licence 
+#
+set_wall(){
+  wpg -s $VAR # Wal sets wallpaper and genates new color scheme
+  cp $VAR "/usr/local/backgrounds/background.png"
+  cp -r ~/.local/share/themes/FlatColor  /usr/local/themes/
+  qtile cmd-obj -o cmd -f restart 
+}
+
+get_wall(){
+  rofi -show file-browser-extended -theme ~/.config/rofi/sel_wal.rasi -file-browser-dir ~/Pictures/Wallpapers -file-browser-stdout
+}
+VAR=$(get_wall)
+set_wall

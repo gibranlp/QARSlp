@@ -126,8 +126,7 @@ else: # 1366 x 768 Macbook air 11"
 rofi_right = Rofi(rofi_args=['-theme', '~/.config/rofi/right.rasi'])
 rofi_network= Rofi(rofi_args=['-theme', '~/.config/rofi/network.rasi'])
 rofi_left= Rofi(rofi_args=['-theme', '~/.config/rofi/left.rasi'])
-
-
+rofi_wallpaper=Rofi(rofi_args=['-show', 'file-browser-extended', '-theme', '~/.config/rofi/launcher.rasi', '-file-browser-dir', '~/Pictures/Wallpapers', '-file-browser-stdout'])
 
 ### Weather
 w_appkey = str(variables[2].strip()) # Get a key here https://home.openweathermap.org/users/sign_up 
@@ -307,18 +306,6 @@ def calendar_notification_next(qtile):{
 }
 
 ## Rofi Widgets
-## Select Wallpaper
-def select_wallpaper(qtile):
-  options = subprocess.check_output(["ls", wallpaper_dir]).decode("utf-8").splitlines()
-  index, key = rofi_left.select(' Select Wallpaper: ', options)
-  if key == -1:
-    rofi_left.close()
-  else:
-    subprocess.run(["wpg", light, "-s", wallpaper_dir + str(options[index]), "--backend", def_backend.lower()])
-    subprocess.run(["cp", wallpaper_dir + str(options[index]), "/usr/local/backgrounds/background.png"])
-    subprocess.run(["cp", "-r", str(Path.home() / ".local/share/themes/FlatColor"), "/usr/local/themes/"])
-    qtile.reload_config()
-
 
 ## Set default backend
 def set_default_backend(qtile):
@@ -526,7 +513,7 @@ def control_panel(qtile):
     if index == 1:
       qtile.function(change_wallpaper)
     elif index == 2:
-      qtile.function(select_wallpaper)
+      qtile.spawn(home + '/.local/bin/selectwal')
     elif index == 3:
       qtile.function(set_default_backend)
     elif index == 5:
@@ -568,7 +555,7 @@ def control_panel(qtile):
 keys = [
     #Basics
     Key([alt], "r",lazy.function(change_wallpaper)), # Set random wallpaper / colors to entire system
-    Key([mod, "shift"], "e",lazy.function(select_wallpaper)), # Set random wallpaper / colors to entire system
+    Key([mod, "shift"], "e",lazy.spawn(home + '/.local/bin/selectwal')), # Set random wallpaper / colors to entire system
     Key([mod], "Return", lazy.spawn(terminal)), # Open Terminal
     Key([mod, "shift"], "Return", lazy.spawn('rofi -show drun -show-icons -theme "~/.config/rofi/launcher.rasi"')), # Open Rofi launcher
     Key([alt, "shift"], "Return", lazy.spawn('sudo rofi -show drun -show-icons -theme "~/.config/rofi/launcher.rasi"')), # Open Rofi launcher as Sudo
@@ -713,3 +700,5 @@ widget_defaults = dict(
     fontsize=font_size,
     padding=3,
 )
+
+

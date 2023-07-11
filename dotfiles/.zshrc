@@ -82,6 +82,7 @@ eval $(thefuck --alias)
 
 ## Aliases
 
+alias genwall="genwal -w"
 alias lzd="lazydocker"
 alias tsm="transmission-remote"
 alias sshelgen="ssh -i ~/.ssh/rsa_deploy itadmin@199.85.208.94"
