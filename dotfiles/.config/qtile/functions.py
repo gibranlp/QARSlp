@@ -256,6 +256,7 @@ def change_wallpaper(qtile):
     selected_wallpaper = os.path.join(wallpaper_dir, selection)
   
   qtile.reload_config()
+  subprocess.run(["notify-send", "Random Wallpaper Set to: ", "%s" %selection])
 
 ## Get network device in use
 def get_net_dev():
@@ -321,6 +322,7 @@ def set_default_backend(qtile):
     with open(home + '/.config/qtile/variables', 'w') as file:
       file.writelines(variables)
     qtile.reload_config()
+    subprocess.run(["notify-send", "Backend Changed to: ", "%s" %backend[index]])
 
 # Display Shortcuts widget
 def shortcuts(qtile):
@@ -335,10 +337,13 @@ def nightLight_widget(qtile):
   else:
     if index == 0:
       os.system('redshift -O 3500k -r -P')
+      subprocess.run(["notify-send", "Temperature Set to Night Time"])
     elif index == 1:
       os.system('redshift -x')
+      subprocess.run(["notify-send", "Temperature Set to Neutral"])
     else:
       os.system('redshift -O 7500k -r -P')
+      subprocess.run(["notify-send", "Temperature Set to Cool"])
 
 # Farge Widget
 def fargewidget(qtile):
@@ -361,8 +366,10 @@ def draw_widget(qtile):
   else:
     if index ==0:
       subprocess.run("gromit-mpx -a &",shell=True)
+      subprocess.run(["notify-send", "You can Draw Now"])
     elif index == 1:
       subprocess.run("gromit-mpx -c",shell=True)
+      subprocess.run(["notify-send", "Screen Cleaned"])
     else:
       subprocess.run("gromit-mpx -q",shell=True)
 
@@ -421,6 +428,7 @@ def dark_white(qtile):
     with open(home + '/.config/qtile/variables', 'w') as file:
       file.writelines(variables)
     qtile.reload_config()
+    subprocess.run(["notify-send", "Theme changed to: ", "%s" %options[index]])
 
 
 ## Select Bar Position Top or Bottom
@@ -454,6 +462,7 @@ def change_theme(qtile):
     with open(home + '/.config/qtile/variables', 'w') as file:
       file.writelines(variables)
     qtile.reload_config()
+    subprocess.run(["notify-send", "Theme Set to: ", "%s" %theme[index]])
     
 # Set random colors to theme
 def random_colors(qtile):

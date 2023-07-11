@@ -17,6 +17,7 @@ killrecording() {
 	kill -15 "$recpid"
 	rm -f /tmp/recordingpid
 	pkill -RTMIN+9 "${STATUSBAR:-dwmblocks}"
+	notify-send "Recording Stopped"
 }
 
 #### Laptop Audio Devices
@@ -41,6 +42,7 @@ screencast() { \
 	-pix_fmt yuv420p \
 	"$DIR/Full-$(date '+%y%m%d-%H%M-%S').mp4" &
 	echo $! > /tmp/recordingpid &
+	notify-send "Recording Started" &
 }
 
 video() { ffmpeg \
@@ -52,6 +54,7 @@ video() { ffmpeg \
 	-pix_fmt yuv420p \
 	"$DIR/video-$(date '+%y%m%d-%h%m-%s').mp4" &
 	echo $! > /tmp/recordingpid &
+	notify-send "Recording Started" &
 }
 
 audio() { \
@@ -62,6 +65,7 @@ audio() { \
 	-acodec libmp3lame -ar 44100 -q:a 1 \
 	"$DIR/audio-$(date '+%y%m%d-%H%M-%S').mp3" &
 	echo $! > /tmp/recordingpid &
+	notify-send "Recording Started" &
 }
 
 option1="  Audio & Video"

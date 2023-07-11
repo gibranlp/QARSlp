@@ -35,8 +35,6 @@ if [[ ! -z $CURRSSID ]]; then
 	HIGHLINE=$(echo  "$(echo "$LIST" | awk -F "[  ]{2,}" '{print $1}' | grep -Fxn -m 1 "$CURRSSID" | awk -F ":" '{print $1}') + 1" | bc )
 fi
 
-# HOPEFULLY you won't need this as often as I do
-# If there are more than 8 SSIDs, the menu will still only have 8 lines
 if [ "$LINENUM" -gt 8 ] && [[ "$CONSTATE" =~ "enabled" ]]; then
 	LINENUM=8
 elif [[ "$CONSTATE" =~ "disabled" ]]; then

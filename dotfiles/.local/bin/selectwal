@@ -9,8 +9,8 @@
 # MIT licence 
 #
 set_wall(){
-  wpg -s $VAR # Wal sets wallpaper and genates new color scheme
-  cp $VAR "/usr/local/backgrounds/background.png"
+  wpg -s $WALLPAPER # Wal sets wallpaper and genates new color scheme
+  cp $WALLPAPER "/usr/local/backgrounds/background.png"
   cp -r ~/.local/share/themes/FlatColor  /usr/local/themes/
   qtile cmd-obj -o cmd -f restart 
 }
@@ -18,5 +18,15 @@ set_wall(){
 get_wall(){
   rofi -show file-browser-extended -theme ~/.config/rofi/sel_wal.rasi -file-browser-dir ~/Pictures/Wallpapers -file-browser-stdout
 }
-VAR=$(get_wall)
-set_wall
+
+WALLPAPER=$(get_wall)
+
+if [ -z "$WALLPAPER" ]
+then
+      notify-send " Wallpaper Not Selected" 
+else
+      set_wall
+fi
+
+
+

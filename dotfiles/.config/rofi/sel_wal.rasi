@@ -40,8 +40,8 @@ mainbox {
 }
 
 listbox {
-    spacing:                     20px;
-    padding:                     5px;
+    spacing:                     0px;
+    padding:                     0px;
     background-color:            transparent;
     orientation:                 vertical;
     children:                    [ "message", "listview" ];
@@ -89,7 +89,7 @@ listview {
     scrollbar:                   false;
     layout:                      vertical;
     reverse:                     false;
-    fixed-height:                true;
+    fixed-height:                false;
     fixed-columns:               true;
     spacing:                     0px;
     background-color:            transparent;
