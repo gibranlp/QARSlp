@@ -497,3 +497,9 @@ appname = Volume
 timeout = 1
 urgency = normal
 set_stack_tag = "volume"
+
+[Blueman]
+appname = blueman
+format = "<b> Bluethooth</b>\n%s\n%b"
+timeout = 4
+urgency = normal
