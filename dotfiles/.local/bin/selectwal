@@ -23,7 +23,7 @@ WALLPAPER=$(get_wall)
 
 if [ -z "$WALLPAPER" ]
 then
-      notify-send " Wallpaper Not Selected" 
+      notify-send -a ' QARSlp' " Wallpaper Not Selected" 
 else
       set_wall
 fi

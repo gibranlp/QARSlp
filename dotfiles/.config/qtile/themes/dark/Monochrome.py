@@ -23,7 +23,7 @@ def init_widgets_list():
       widget.TextBox(
         decorations=[RectDecoration(colour=color[0], radius=7, filled=True)],
         foreground=color_in_use,
-        text=" QARSlp",
+        text=" QARSlp",
         padding_x=5,
         mouse_callbacks={'Button1':lambda: qtile.spawn('rofi -show drun -show-icons -theme "~/.config/rofi/launcher.rasi"')},
       ),

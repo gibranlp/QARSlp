@@ -256,7 +256,7 @@ def change_wallpaper(qtile):
     selected_wallpaper = os.path.join(wallpaper_dir, selection)
   
   qtile.reload_config()
-  subprocess.run(["notify-send","-a", " QARSlp", "Random Wallpaper Set to: ", "%s" %selection])
+  subprocess.run(["notify-send","-a", " QARSlp", "Random Wallpaper Set to: ", "%s" %selection])
 
 ## Get network device in use
 def get_net_dev():
@@ -322,11 +322,11 @@ def set_default_backend(qtile):
     with open(home + '/.config/qtile/variables', 'w') as file:
       file.writelines(variables)
     qtile.reload_config()
-    subprocess.run(["notify-send","-a", " QARSlp", "Color Theme: ", " %s" %backend[index]])
+    subprocess.run(["notify-send","-a", " QARSlp", "Color Theme: ", " %s" %backend[index]])
 
 # Display Shortcuts widget
 def shortcuts(qtile):
-  subprocess.run("cat ~/.shortcuts | rofi -theme '~/.config/rofi/left.rasi' -i -dmenu -p ' Shortcuts:'",shell=True)
+  subprocess.run("cat ~/.shortcuts | rofi -theme '~/.config/rofi/shortcuts.rasi' -i -dmenu -p ' Shortcuts:'",shell=True)
 
 # NightLight widget
 def nightLight_widget(qtile):
@@ -337,13 +337,13 @@ def nightLight_widget(qtile):
   else:
     if index == 0:
       os.system('redshift -O 3500k -r -P')
-      subprocess.run(["notify-send","-a", " QARSlp", "Temperature Set to Night Time"])
+      subprocess.run(["notify-send","-a", " QARSlp", "Temperature Set to Night Time"])
     elif index == 1:
       os.system('redshift -x')
-      subprocess.run(["notify-send","-a", " QARSlp", "Temperature Set to Neutral"])
+      subprocess.run(["notify-send","-a", " QARSlp", "Temperature Set to Neutral"])
     else:
       os.system('redshift -O 7500k -r -P')
-      subprocess.run(["notify-send","-a", " QARSlp", "Temperature Set to Cool"])
+      subprocess.run(["notify-send","-a", " QARSlp", "Temperature Set to Cool"])
 
 # Farge Widget
 def fargewidget(qtile):
@@ -428,7 +428,7 @@ def dark_white(qtile):
     with open(home + '/.config/qtile/variables', 'w') as file:
       file.writelines(variables)
     qtile.reload_config()
-    subprocess.run(["notify-send","-a", " QARSlp", "Theme changed to: ", "%s" %options[index]])
+    subprocess.run(["notify-send","-a", " QARSlp", "Theme changed to: ", "%s" %options[index]])
 
 
 ## Select Bar Position Top or Bottom
@@ -462,7 +462,7 @@ def change_theme(qtile):
     with open(home + '/.config/qtile/variables', 'w') as file:
       file.writelines(variables)
     qtile.reload_config()
-    subprocess.run(["notify-send","-a", " QARSlp", " Theme: ", "%s" %theme[index]])
+    subprocess.run(["notify-send","-a", " QARSlp", " Theme: ", "%s" %theme[index]])
     
 # Set random colors to theme
 def random_colors(qtile):
@@ -556,7 +556,7 @@ def control_panel(qtile):
     elif index == 21:
       qtile.function(shortcuts)
     elif index == 22:
-      qtile.spawn('rofi -modi emoji -show emoji -theme "~/.config/rofi/left.rasi"')
+      qtile.spawn('rofi -modi emoji -show emoji -theme "~/.config/rofi/left.rasi" -i -dmenu -p " Emojis"')
     elif index == 23:
       qtile.function(session_widget)
     

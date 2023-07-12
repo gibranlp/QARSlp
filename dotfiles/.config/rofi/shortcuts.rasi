@@ -11,9 +11,9 @@ window {
     location:                    west;
     anchor:                      center;
     fullscreen:                  false;
-    width:                       350px;
+    width:                       600px;
     height:                      100%;
-    x-offset:                    175px;
+    x-offset:                    300px;
     y-offset:                    0px;
     border-radius:               0px 10px 10px 0px;
 
@@ -47,7 +47,7 @@ inputbar {
     spacing:                     10px;
     padding:                     100px 0px;
     background-color:            transparent;
-    background-image:            url("/usr/local/backgrounds/background.png", height);
+    background-image:            url("/usr/local/backgrounds/background.png", width);
     text-color:                  @foreground;
     orientation:                 horizontal;
     children:                    ["prompt", "entry"];
@@ -138,7 +138,7 @@ element-text {
     text-color:                  inherit;
     cursor:                      inherit;
     vertical-align:              0.5;
-    horizontal-align:            0;
+    horizontal-align:            0.5;
 }
 
 /*****----- Message -----*****/
