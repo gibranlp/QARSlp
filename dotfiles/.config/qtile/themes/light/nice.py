@@ -135,7 +135,7 @@ def init_widgets_list():
           background=secondary_color[0],
           text="",
           foreground=color[5],
-          mouse_callbacks={'Button1': lambda: qtile.spawn('pavucontrol'),'Button4': lambda: qtile.spawn("amixer -q set Master 5%+ && dunstify $(pamixer --get-volume-human)", shell=True),'Button5': lambda: qtile.spawn("amixer -q set Master 5%- && dunstify $(pamixer --get-volume-human)", shell=True)}, 
+          mouse_callbacks={'Button1': lambda: qtile.spawn('pavucontrol'),'Button4': lambda: qtile.spawn("amixer -q set Master 5%+ && dunstify -a Volume ' '$(pamixer --get-volume-human) -h int:value:$(pamixer --get-volume)", shell=True),'Button5': lambda: qtile.spawn("amixer -q set Master 5%- && dunstify -a Volume ' '$(pamixer --get-volume-human) -h int:value:$(pamixer --get-volume)", shell=True)}, 
           fontsize=font_size-2
         ),
         widget.ALSAWidget(
@@ -156,7 +156,7 @@ def init_widgets_list():
           decorations=[RectDecoration(colour=secondary_color[0], radius=[0,10,10,0], padding_y=1, filled=True)],
           text=" ",
           foreground=color[5],
-          mouse_callbacks={'Button1': lambda: qtile.spawn('pavucontrol'),'Button4': lambda: qtile.spawn("amixer -q set Master 5%+ && dunstify $(pamixer --get-volume-human)", shell=True),'Button5': lambda: qtile.spawn("amixer -q set Master 5%- && dunstify $(pamixer --get-volume-human)", shell=True)},
+          mouse_callbacks={'Button1': lambda: qtile.spawn('pavucontrol'),'Button4': lambda: qtile.spawn("amixer -q set Master 5%+ && dunstify -a Volume ' '$(pamixer --get-volume-human) -h int:value:$(pamixer --get-volume)", shell=True),'Button5': lambda: qtile.spawn("amixer -q set Master 5%- && dunstify -a Volume ' '$(pamixer --get-volume-human) -h int:value:$(pamixer --get-volume)", shell=True)},
           fontsize=font_size-2
         ),
         widget.Spacer(

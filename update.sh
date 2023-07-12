@@ -38,6 +38,7 @@ function update(){
   cp -r ~/QARSlp/dotfiles/.local/bin/recorder ~/.local/bin/
   cp -r ~/QARSlp/dotfiles/.local/bin/selectwal ~/.local/bin/
   cp -r ~/QARSlp/dotfiles/.local/bin/calculator ~/.local/bin/
+  cp -r ~/QARSlp/dotfiles/.local/bin/calendar ~/.local/bin/
   chmod +x ~/.local/bin/*
   # cp ~/QARSlp/dotfiles/.shortcuts ~/
   
