@@ -306,7 +306,7 @@
     #default_icon = 
 
 [urgency_normal]
-    background = "{color3}88"
+    background = "{color2}88"
     foreground = "{color0}"
     frame_color = "{color0}11"
     timeout = 4
@@ -316,8 +316,8 @@
     #default_icon = /path/to/icon
 
 [urgency_critical]
-    background = "{color5}88"
-    foreground = "{color1}"
+    background = "{color6}88"
+    foreground = "{color0}"
     frame_color = "{color0}11"
     timeout = 10
     format = " <b>%s</b>\n%b\n%p\n%n"
