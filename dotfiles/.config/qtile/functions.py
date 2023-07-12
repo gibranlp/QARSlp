@@ -328,6 +328,10 @@ def set_default_backend(qtile):
 def shortcuts(qtile):
   subprocess.run("cat ~/.shortcuts | rofi -theme '~/.config/rofi/shortcuts.rasi' -i -dmenu -p ' Shortcuts:'",shell=True)
 
+# Display Emojis
+def emojis(qtile):
+  subprocess.run("rofi -modi emoji -show emoji -theme '~/.config/rofi/emojis.rasi'",shell=True)
+
 # NightLight widget
 def nightLight_widget(qtile):
   options = [' Night Time(3500k)', ' Neutral (6500k)', ' Cool (7500k)']
@@ -556,7 +560,7 @@ def control_panel(qtile):
     elif index == 21:
       qtile.function(shortcuts)
     elif index == 22:
-      qtile.spawn('rofi -modi emoji -show emoji -theme "~/.config/rofi/left.rasi" -i -dmenu -p " Emojis"')
+      qtile.function(emojis)
     elif index == 23:
       qtile.function(session_widget)
     
@@ -568,7 +572,7 @@ keys = [
     Key([mod], "Return", lazy.spawn(terminal)), # Open Terminal
     Key([mod, "shift"], "Return", lazy.spawn('rofi -show drun -show-icons -theme "~/.config/rofi/launcher.rasi"')), # Open Rofi launcher
     Key([alt, "shift"], "Return", lazy.spawn('sudo rofi -show drun -show-icons -theme "~/.config/rofi/launcher.rasi"')), # Open Rofi launcher as Sudo
-    Key(["control", "shift"], "Return", lazy.spawn('rofi -modi emoji -show emoji -theme "~/.config/rofi/network2.rasi"')), # Open Rofi Emojis
+    Key(["control", "shift"], "Return", lazy.function(emojis)), # Open Rofi Emojis
     Key([mod], "r", lazy.spawncmd()), # Launch Prompt
     Key([mod], "q",lazy.window.kill()), # Close Window 
     Key([mod, "shift"], "r",lazy.reload_config()), # Restart Qtile
