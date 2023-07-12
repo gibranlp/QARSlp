@@ -495,7 +495,7 @@ def control_panel(qtile):
     '     Select Wallpaper',#2
     '     Set Color Scheme',#3
     ' Theme Options',#4
-    '     Select Dark or Light Theme',#5
+    '     Dark or Light Theme',#5
     '     Set Bar Top or Bottom',#6
     '     Change Bar Theme',#7
     ' Tools',#8
@@ -504,7 +504,7 @@ def control_panel(qtile):
     '     Calculator',# 10
     '     Network Manager',#11
     '     Screenshot Widget',#12
-    '     Change Monitor Temperature',#13
+    '     Monitor Temperature',#13
     '     Monitor Layout',#14
     '     Bluetooth',#15
     '     Screen Recorder', #16
@@ -556,7 +556,7 @@ def control_panel(qtile):
     elif index == 21:
       qtile.function(shortcuts)
     elif index == 22:
-      qtile.spawn('rofi -modi emoji -show emoji -theme "~/.config/rofi/network2.rasi"')
+      qtile.spawn('rofi -modi emoji -show emoji -theme "~/.config/rofi/left.rasi"')
     elif index == 23:
       qtile.function(session_widget)
     
