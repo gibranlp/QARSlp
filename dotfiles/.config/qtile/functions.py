@@ -370,10 +370,10 @@ def draw_widget(qtile):
   else:
     if index ==0:
       subprocess.run("gromit-mpx -a &",shell=True)
-      subprocess.run(["notify-send", "You can Draw Now"])
+      subprocess.run(["notify-send", "-a", " QARSlp", "You can Draw Now"])
     elif index == 1:
       subprocess.run("gromit-mpx -c",shell=True)
-      subprocess.run(["notify-send", "Screen Cleaned"])
+      subprocess.run(["notify-send","-a", " QARSlp", "Screen Cleaned"])
     else:
       subprocess.run("gromit-mpx -q",shell=True)
 
@@ -410,8 +410,8 @@ def network_widget(qtile):
 
 ## Select Dark or Light Theming
 def dark_white(qtile):
-  options = ['Dark', 'Light']
-  index, key = rofi_left.select('  Dark or  Light Theme', options)
+  options = [' Dark', ' Light']
+  index, key = rofi_left.select(' Select Theme', options)
   if key == -1 or index == 2:
     rofi_left.close()
   else:
@@ -494,30 +494,30 @@ def screenshot(qtile):
 # Control Panel Widget
 def control_panel(qtile):
   options = [
-    ' Wallpaper & Color Options',#0
-    '     Set Random Wallpaper',#1
-    '     Select Wallpaper',#2
-    '     Set Color Scheme',#3
-    ' Theme Options',#4
-    '     Dark or Light Theme',#5
-    '     Set Bar Top or Bottom',#6
-    '     Change Bar Theme',#7
+    ' Wallpaper Options',#0
+    '     Set Random Wallpaper',
+    '     Select Wallpaper',
+    ' Theme Options',#3
+    '     Set Color Scheme',
+    '     Dark or Light Theme',
+    '     Set Bar Top or Bottom',
+    '     Change Bar Theme',
     ' Tools',#8
-    '     Notes',
-    '     Apps as Sudo',#9
-    '     Calculator',# 10
-    '     Network Manager',#11
-    '     Screenshot Widget',#12
-    '     Monitor Temperature',#13
-    '     Monitor Layout',#14
-    '     Bluetooth',#15
-    '     Screen Recorder', #16
+    '     Notes',
+    '     Apps as Sudo',
+    '     Calculator',
+    '     Network Manager',
+    '     Screenshot',
+    '     Monitor Temperature',
+    '     Monitor Layout',
+    '     Bluetooth',
+    '     Screen Recorder',
     ' Miscelaneous',#17
     '     Screen Draw',
-    '     Pick Color',#18
-    '     View Shortcuts',#19
-    '     Emojis',#20
-    ' Session Menu',#21
+    '     Pick Color',
+    '     View Shortcuts',
+    '     Emojis',
+    ' Session Menu',
     ]
   index, key = rofi_left.select('  Control Panel', options)
   if key == -1:
@@ -527,7 +527,7 @@ def control_panel(qtile):
       qtile.function(change_wallpaper)
     elif index == 2:
       qtile.spawn(home + '/.local/bin/selectwal')
-    elif index == 3:
+    elif index == 4:
       qtile.function(set_default_backend)
     elif index == 5:
       qtile.function(dark_white)

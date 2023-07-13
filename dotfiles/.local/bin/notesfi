@@ -12,7 +12,7 @@ article_library="$HOME/Articles/"
 # <<------ Main ------>> #
 create_document() {
   # Use rofi to prompt the user to select the type of document to create
-  document_type=$(echo -e "Basic\nLaTeX\nBeamer\nRmark" | rofi -dmenu -i -p "What kind of note?" -theme "~/.config/rofi/left.rasi")
+  document_type=$(echo -e "Basic\nLaTeX\nBeamer\nRmark" | rofi -dmenu -i -p "Type of Note?" -theme "~/.config/rofi/left.rasi")
 
   # Check if the user cancelled the prompt
   if [ -z "$document_type" ]; then
@@ -47,7 +47,7 @@ create_document() {
   esac
 
   # Use rofi to prompt the user to enter a name for the note
-  cn_name=$(rofi -dmenu -p "Enter a name for the note:" -theme "~/.config/rofi/left.rasi")
+  cn_name=$(rofi -dmenu -p "Note Name:" -theme "~/.config/rofi/left.rasi")
 
   # Check if the user cancelled the prompt
   if [ -z "$cn_name" ]; then
@@ -62,7 +62,7 @@ create_document() {
     fi
   fi
 
-  notify-send "$message"
+  notify-send -a " QARSlp" "$message"
   cp "$directory/Templates/$template" "$directory/$cn_name.$EXTENSION"
   "$TERMINAL" -e "$EDITOR" "$directory/$cn_name.$EXTENSION"
 }
@@ -97,7 +97,7 @@ download_books() {
 
 main() {
   # Prompt the user to select "Library" or "Articles" using Rofi
-  selected_dir=$(echo -e " Create Note\n View Notes\n Library\n Articles\n Download Books" | rofi -dmenu -i -p " Choose an action:" -theme "~/.config/rofi/left.rasi")
+  selected_dir=$(echo -e " Create Note\n View Notes\n Library\n Articles\n Download Books" | rofi -dmenu -i -p " Choose:" -theme "~/.config/rofi/left.rasi")
   # Set the directory based on the user's selection
   # if selected_dir is not empty
   if [[ -n $selected_dir ]]; then

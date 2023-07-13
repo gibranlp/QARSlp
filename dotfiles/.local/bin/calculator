@@ -37,7 +37,7 @@ fi
 
 input="$*"
 answer=$(echo "$input" | insect)
-notify-send $answer
+notify-send -a " QARSlp" $answer
 action=$(echo -e "Copy to clipboard\nClear\nClose" | $menu -i -p "$input = $answer") # See $ man dmenu for an explanation these options
 
 case $action in

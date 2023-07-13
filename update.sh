@@ -33,7 +33,7 @@ function update(){
   cp -r ~/QARSlp/dotfiles/.config/qtile/* ~/.config/qtile/
   # cp ~/QARSlp/dotfiles/.shortcuts ~/
   cp -r ~/QARSlp/dotfiles/.local/bin/recorder ~/.local/bin/
-  # cp -r ~/QARSlp/dotfiles/.local/bin/notesfi ~/.local/bin/
+  cp -r ~/QARSlp/dotfiles/.local/bin/notesfi ~/.local/bin/
   cp -r ~/QARSlp/dotfiles/.local/bin/wifi2 ~/.local/bin/
   cp -r ~/QARSlp/dotfiles/.local/bin/recorder ~/.local/bin/
   cp -r ~/QARSlp/dotfiles/.local/bin/selectwal ~/.local/bin/

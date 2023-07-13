@@ -17,7 +17,7 @@ killrecording() {
 	kill -15 "$recpid"
 	rm -f /tmp/recordingpid
 	pkill -RTMIN+9 "${STATUSBAR:-dwmblocks}"
-	notify-send "Recording Stopped"
+	notify-send -a ' QARSlp' "Recording Stopped"
 }
 
 #### Laptop Audio Devices
@@ -42,7 +42,7 @@ screencast() { \
 	-pix_fmt yuv420p \
 	"$DIR/Full-$(date '+%y%m%d-%H%M-%S').mp4" &
 	echo $! > /tmp/recordingpid &
-	notify-send "Recording Started" &
+	notify-send -a ' QARSlp' "Video & Audio Recording Started" &
 }
 
 video() { ffmpeg \
@@ -54,7 +54,7 @@ video() { ffmpeg \
 	-pix_fmt yuv420p \
 	"$DIR/video-$(date '+%y%m%d-%h%m-%s').mp4" &
 	echo $! > /tmp/recordingpid &
-	notify-send "Recording Started" &
+	notify-send -a ' QARSlp' "Video Recording Started" &
 }
 
 audio() { \
@@ -65,7 +65,7 @@ audio() { \
 	-acodec libmp3lame -ar 44100 -q:a 1 \
 	"$DIR/audio-$(date '+%y%m%d-%H%M-%S').mp3" &
 	echo $! > /tmp/recordingpid &
-	notify-send "Recording Started" &
+	notify-send -a ' QARSlp' "Audio Recording Started" &
 }
 
 option1="  Audio & Video"
@@ -80,7 +80,7 @@ else
 	options="$option4\n$option5"
 fi
 
-choice=$(echo -e "$options" | rofi -theme ~/.config/rofi/recording.rasi -i -dmenu -no-show-icons -no-sidebar-mode -lines 4 -width 30 -p "  Select Recording Method ") 
+choice=$(echo -e "$options" | rofi -theme ~/.config/rofi/left.rasi -i -dmenu -no-show-icons -no-sidebar-mode -lines 4 -width 30 -p " Select Recording Method ") 
 
 case $choice in
 	$option1) screencast ;;
