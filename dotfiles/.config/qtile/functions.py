@@ -258,7 +258,7 @@ def change_wallpaper(qtile):
     selected_wallpaper = os.path.join(wallpaper_dir, selection)
   
   qtile.reload_config()
-  subprocess.run(["notify-send","-a", " QARSlp", "Random Wallpaper Set to: ", "%s" %selection])
+  #subprocess.run(["notify-send","-a", " QARSlp", "Random Wallpaper Set to: ", "%s" %selection])
 
 ## Get network device in use
 def get_net_dev():
@@ -365,7 +365,7 @@ def fargewidget(qtile):
 
 # Draw Widget
 def draw_widget(qtile):
-  options = [' Draw',' Clean', ' Exit']
+  options = [' Draw', ' Exit']
   index, key = rofi_left.select('  Screen Draw', options)
   if key == -1:
     rofi_left.close()
@@ -373,9 +373,6 @@ def draw_widget(qtile):
     if index ==0:
       subprocess.run("gromit-mpx -a &",shell=True)
       subprocess.run(["notify-send", "-a", " QARSlp", "You can Draw Now"])
-    elif index == 1:
-      subprocess.run("gromit-mpx -c",shell=True)
-      subprocess.run(["notify-send","-a", " QARSlp", "Screen Cleaned"])
     else:
       subprocess.run("gromit-mpx -q",shell=True)
 
@@ -440,7 +437,7 @@ def dark_white(qtile):
 ## Select Bar Position Top or Bottom
 def bar_pos(qtile):
   options = ['Top', 'Bottom']
-  index, key = rofi_left.select('  Top Bar or  Bottom Bar -> ' + bar_position , options)
+  index, key = rofi_left.select(' Bar Position -> ' + bar_position , options)
   if key == -1 or index == 2:
     rofi_left.close()
   else:

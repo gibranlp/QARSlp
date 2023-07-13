@@ -16,9 +16,7 @@ This is a custom theme for the [Qtile](http://www.qtile.org/) window manager tha
 This config files provide a few minimal and clean look themes, with a focus on simplicity and usability. 
 
 It features a dark & light color schemes with contrasting colors for active and inactive windows, as well as customizable font sizes and styles.
-
 # Features
-
 ## Control Panel
 
 I just made a rofi widget with the most common options such as **Set Random Wallpaper**, **Select Wallpaper**, **change the default Backend for  Pywal**, **Move the Bar Top or Bottom**, among others, simply press **Alt + Return** and watch the widget popup.

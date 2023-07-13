@@ -500,12 +500,22 @@
 
 [Blueman]
     appname = blueman
-    format = "<b> Bluethooth</b>\n%s\n%b"
+    format = "<b> Bluetooth</b>\n%s\n%b"
     timeout = 10
     
 
 [Calendar]
     appname = Calendar
     format = "<b> Calendar</b>\n%s\n%b"
+    timeout = 10
+
+[Farge]
+    appname = Farge
+    format = "<b> Color</b>\n%s\n%b"
+    timeout = 10
+
+[Flameshot]
+    appname = flameshot
+    format = "<b> Screenshot</b>\n%s\n%b"
     timeout = 10
     

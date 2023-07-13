@@ -1,6 +1,6 @@
 #!/bin/bash
 
-EDITOR=nvim
+EDITOR=vim
 VIEW=/usr/bin/zathura-pywal
 TERMINAL=alacritty
 
@@ -12,7 +12,7 @@ article_library="$HOME/Articles/"
 # <<------ Main ------>> #
 create_document() {
   # Use rofi to prompt the user to select the type of document to create
-  document_type=$(echo -e "Basic\nLaTeX\nBeamer\nRmark" | rofi -dmenu -i -p "Type of Note?" -theme "~/.config/rofi/left.rasi")
+  document_type=$(echo -e "Markdown\nLaTeX\nBeamer\nRmark" | rofi -dmenu -i -p "Type of Note?" -theme "~/.config/rofi/left.rasi")
 
   # Check if the user cancelled the prompt
   if [ -z "$document_type" ]; then
@@ -20,25 +20,25 @@ create_document() {
   fi
 
   case "$document_type" in
-    Basic)
+    Markdown)
       template="SimpleNote.md"
       EXTENSION="md"
-      message="Basic Document Created!"
+      message="New Markdwn Note!"
       ;;
     LaTeX)
       template="LaTeX.tex"
       EXTENSION="tex"
-      message="LaTeX Document Created!"
+      message="New LaTeX Note!"
       ;;
     Beamer)
       template="Presentation.tex"
       EXTENSION="tex"
-      message="Beamer Presentation Created!"
+      message="New Beamer Presentation!"
       ;;
     Rmark)
       template="RMarkdown.rmd"
       EXTENSION="rmd"
-      message="R Markdown Document Created!"
+      message="New R Markdown Note!"
       ;;
     *)
       echo "Invalid option"
