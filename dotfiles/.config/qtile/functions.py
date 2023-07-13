@@ -21,6 +21,8 @@ from qtile_extras.popup.toolkit import (PopupImage, PopupText, PopupRelativeLayo
 
 #### Variables ####
 
+version='v2.0.1'
+
 # Modifiers
 mod = "mod4"
 alt = "mod1"
@@ -518,6 +520,7 @@ def control_panel(qtile):
     '     View Shortcuts',
     '     Emojis',
     ' Session Menu',
+    ' Update QARSlp %s' %version,
     ]
   index, key = rofi_left.select('  Control Panel', options)
   if key == -1:
@@ -563,6 +566,8 @@ def control_panel(qtile):
       qtile.function(emojis)
     elif index == 23:
       qtile.function(session_widget)
+    elif index == 23:
+      subprocess.run(home + '/.local/bin/updater')
     
 ## 
 keys = [

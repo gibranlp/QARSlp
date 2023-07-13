@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+# _______  _______  ______  _______  __        
+#|       ||   _   ||   __ \|     __||  |.-----.
+#|   -  _||       ||      <|__     ||  ||  _  |
+#|_______||___|___||___|__||_______||__||   __|
+#                                       |__|   
+# QARSlp Qtile + Arch Ricing System
+# By: gibranlp <thisdoesnotwork@gibranlp.dev>
+# MIT licence 
+#
+# Install Needed Packages
+function install_new_packages() {
+  packets=(
+)
+for packet in "${packets[@]}"; do
+    echo "Installing --> ${packet}"
+    sudo pacman -S "${packet}" --noconfirm --needed
+done
+}
+
+# Install AUR packages
+function aur_packages() {
+  packets=(
+)
+for packet in "${packets[@]}"; do
+    echo "Intalling --> ${packet}"
+    paru -S "${packet}" --noconfirm
+done
+}
+
+#Copy updated dotfiles
+function update(){
+}
+
+install_new_packages
+aur_packages
+update
