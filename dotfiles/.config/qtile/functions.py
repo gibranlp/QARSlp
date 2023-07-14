@@ -436,15 +436,17 @@ def dark_white(qtile):
 
 ## Select Bar Position Top or Bottom
 def bar_pos(qtile):
-  options = ['Top', 'Bottom']
+  options = ['Top', 'Bottom', 'Toggle Show, Hide Bar']
   index, key = rofi_left.select(' Bar Position -> ' + bar_position , options)
   if key == -1 or index == 2:
     rofi_left.close()
   else:
     if index == 0:
       variables[5]="top"
-    else:
+    elif index == 1:
       variables[5]="bottom"
+    else:
+      subprocess.run('qtile cmd-obj -o cmd -f hide_show_bar', shell=True)
 
     subprocess.run(["cp", "-r", home + "/.local/share/themes/FlatColor",  "/usr/local/themes/"])
     with open(home + '/.config/qtile/variables', 'w') as file:
@@ -499,7 +501,7 @@ def control_panel(qtile):
     ' Theme Options',#3
     '     Set Color Scheme',
     '     Dark or Light Theme',
-    '     Set Bar Top or Bottom',
+    '     Bar Position',
     '     Change Bar Theme',
     ' Tools',#8
     '     Notes',
@@ -672,7 +674,7 @@ group_labels=["","","","","","","","","",""] # Cus
 
 ####
 
-group_layouts=["monadtall", "monadtall", "monadtall", "monadtall","monadtall", "monadtall", "monadtall","monadtall", "monadtall", "monadtall"]
+group_layouts=["monadtall", "monadtall", "monadtall", "monadtall","monadtall", "monadtall", "monadtall","monadwide", "monadtall", "monadtall"]
 for i in range(len(group_names)):
   groups.append(
     Group(
@@ -705,7 +707,7 @@ def init_layouts():
   return [
     layout.Spiral(main_pane="left",ratio_increment=0.01,**layout_theme),
     layout.MonadTall(max_ratio=max_ratio,ratio=ratio,**layout_theme),
-    layout.MonadWide(max_ratio=max_ratio,ratio=ratio,**layout_theme),
+    layout.MonadWide(max_ratio=0.85,ratio=0.85,**layout_theme),
     layout.Floating(**layout_theme),
     ]
 layouts = init_layouts()

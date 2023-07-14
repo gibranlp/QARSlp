@@ -32,13 +32,15 @@ function update(){
   cp -r ~/QARSlp/dotfiles/.config/rofi/* ~/.config/rofi/
   cp -r ~/QARSlp/dotfiles/.config/qtile/* ~/.config/qtile/
   # cp ~/QARSlp/dotfiles/.shortcuts ~/
-  cp -r ~/QARSlp/dotfiles/.local/bin/recorder ~/.local/bin/
+  #cp -r ~/QARSlp/dotfiles/.local/bin/recorder ~/.local/bin/
   cp -r ~/QARSlp/dotfiles/.local/bin/notesfi ~/.local/bin/
   cp -r ~/QARSlp/dotfiles/.local/bin/wifi2 ~/.local/bin/
   cp -r ~/QARSlp/dotfiles/.local/bin/recorder ~/.local/bin/
   cp -r ~/QARSlp/dotfiles/.local/bin/selectwal ~/.local/bin/
   cp -r ~/QARSlp/dotfiles/.local/bin/calculator ~/.local/bin/
   cp -r ~/QARSlp/dotfiles/.local/bin/calendar ~/.local/bin/
+  cp -r ~/QARSlp/dotfiles/.local/bin/change_display ~/.local/bin/
+  cp -r ~/QARSlp/dotfiles/.local/bin/autostart ~/.local/bin/
   chmod +x ~/.local/bin/*
   # cp ~/QARSlp/dotfiles/.shortcuts ~/
   
