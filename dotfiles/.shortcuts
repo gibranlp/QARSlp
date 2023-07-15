@@ -1,53 +1,59 @@
+<<----------<< Nomenclature >>---------->>
+ :: Control Key
+❖ :: Super / Windows Key
+⎇ :: Alt Key
+ :: Enter Key
+ :: Shift Key
 <<----------<< System >>---------->>
-Alt +  ::  Control Panel
- + C ::  Shortcuts
- + R ::  Prompt
- +  ::  Terminal
- +  + R ::  Restart Qtile
- +  + Q ::  Logout
-Ctrl + Alt + L ::  Lock Screen
-Ctrl + Alt + O ::  Lower Brightness
-Ctrl + Alt + P ::  Increase Brightness
+⎇ +  ::  Control Panel
+❖ + S ::  Shortcuts
+❖ + R ::  Prompt
+❖ +  ::  Terminal
+❖ +  + R ::  Restart Qtile
+❖ +  + Q ::  Logout
+ + ⎇ + L ::  Lock Screen
+ + ⎇ + O ::  Lower Brightness
+ + ⎇ + P ::  Increase Brightness
 <<----------<< Theming >>---------->>
-Alt + R ::  Randomize Wallpaper 
-Alt + W ::  Theme Select
-Alt +  + W ::  Set Color Scheme
-Alt +  + R ::  Randomize Colors
- +  + W ::   Select Top or Bottom Bar
+⎇ + R ::  Randomize Wallpaper 
+ + ❖ + E ::  Select Wallpaper
+⎇ + W ::  Theme Select
+⎇ +  + W ::  Set Color Scheme
+⎇ +  + R ::  Randomize Colors
+❖ +  + W ::   Select Top or Bottom Bar
 <<----------<< Rofi Widgets >>---------->>
- +  +  ::  App Launcher 
-Alt +  ::  Search (Files and Folders)
- + F ::  Search (WEB)
- + P ::  Color Picker
- + B ::  Network Menu
- +  + O ::  Night Light
- +  + X ::    Monitor Management
+❖ +  +  ::  App Launcher 
+❖ + F ::  Search (WEB)
+❖ + P ::  Color Picker
+❖ + B ::  Network Menu
+❖ +  + O ::  Night Light
+❖ +  + X ::    Monitor Management
 prtnsc ::  Screenshot
- + X ::  Session Menu
+❖ + X ::  Session Menu
 <<----------<< Windows >>---------->>
- + Q :: Kill Window 
- + Escape ::  Kill Window (Mouse Click)
-Alt + G ::  Toggle Fullscreen
-Alt +  :: <- Swap Left
-Alt +  +  :: -> Swap Right
-Alt +  + F ::  Toggle Floating
- +  ::  Cycle Active Window
- +  +  ::  Cycle Active Window (Reverse)
- + Period :: Cycle Active Screen
- +  + Up ::  Grow
- +  + Down ::  Shrink
- +  + Space ::  Flip
+❖ + Q :: Kill Window 
+❖ + Escape ::  Kill Window (Mouse Click)
+⎇ + G ::  Toggle Fullscreen
+⎇ +  :: <- Swap Left
+⎇ +  +  :: -> Swap Right
+⎇ +  + F ::  Toggle Floating
+❖ +  ::  Cycle Active Window
+❖ +  +  ::  Cycle Active Window (Reverse)
+❖ + Period :: Cycle Active Screen
+❖ +  + Up ::  Grow
+❖ +  + Down ::  Shrink
+❖ +  + Space ::  Flip
 <<----------<< Layouts >>---------->>
- + Space ::  Cycle Layout
- + H ::  Layout Left
- + L ::  Layout Right
- + J ::  Layout Up
- + K ::  Layout Down
- +  + H ::  Swap Left
- +  + L ::  Swap Right
- +  + J ::  Shuffle Down
- +  + K ::  Shuffle Up
- + I ::  Grow
- + M ::  Shrink
- + N ::  Normalize
- + O ::  Maximize
+❖ + Space ::  Cycle Layout
+❖ + H ::  Layout Left
+❖ + L ::  Layout Right
+❖ + J ::  Layout Up
+❖ + K ::  Layout Down
+❖ +  + H ::  Swap Left
+❖ +  + L ::  Swap Right
+❖ +  + J ::  Shuffle Down
+❖ +  + K ::  Shuffle Up
+❖ + I ::  Grow
+❖ + M ::  Shrink
+❖ + N ::  Normalize
+❖ + O ::  Maximize

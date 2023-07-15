@@ -8,16 +8,25 @@
 # By: gibranlp <thisdoesnotwork@gibranlp.dev>
 # MIT licence 
 #
-import os, socket, json, subprocess, random, requests
+import json
+import os
+import random
+import socket
+import subprocess
 from os.path import expanduser
-from libqtile import qtile, bar, layout, widget, hook
+from pathlib import Path
+
+import requests
+from libqtile import bar, hook, layout, qtile, widget
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
 from qtile_extras import widget
-from qtile_extras.widget.decorations import (RectDecoration, PowerLineDecoration, BorderDecoration)
+from qtile_extras.popup.toolkit import (PopupImage, PopupRelativeLayout,
+                                        PopupText, PopupWidget)
+from qtile_extras.widget.decorations import (BorderDecoration,
+                                             PowerLineDecoration,
+                                             RectDecoration)
 from rofi import Rofi
-from pathlib import Path
-from qtile_extras.popup.toolkit import (PopupImage, PopupText, PopupRelativeLayout, PopupWidget)
 
 #### Variables ####
 
@@ -436,22 +445,27 @@ def dark_white(qtile):
 
 ## Select Bar Position Top or Bottom
 def bar_pos(qtile):
-  options = ['Top', 'Bottom', 'Toggle Show, Hide Bar']
-  index, key = rofi_left.select(' Bar Position -> ' + bar_position , options)
-  if key == -1 or index == 2:
+  options = ['Top', 'Bottom', 'Toggle Bar']
+  index, key = rofi_left.select(' Bar -> ' + bar_position , options)
+  if key == -1:
     rofi_left.close()
   else:
     if index == 0:
       variables[5]="top"
+      subprocess.run(["cp", "-r", home + "/.local/share/themes/FlatColor",  "/usr/local/themes/"])
+      with open(home + '/.config/qtile/variables', 'w') as file:
+        file.writelines(variables)
+      qtile.reload_config()
     elif index == 1:
       variables[5]="bottom"
+      subprocess.run(["cp", "-r", home + "/.local/share/themes/FlatColor",  "/usr/local/themes/"])
+      with open(home + '/.config/qtile/variables', 'w') as file:
+        file.writelines(variables)
+      qtile.reload_config()
     else:
-      subprocess.run('qtile cmd-obj -o cmd -f hide_show_bar', shell=True)
+      qtile.hide_show_bar()
 
-    subprocess.run(["cp", "-r", home + "/.local/share/themes/FlatColor",  "/usr/local/themes/"])
-    with open(home + '/.config/qtile/variables', 'w') as file:
-      file.writelines(variables)
-    qtile.reload_config()
+    
 
 # Change Theme widget
 def change_theme(qtile):
@@ -496,29 +510,29 @@ def screenshot(qtile):
 def control_panel(qtile):
   options = [
     ' Wallpaper Options',#0
-    '     Set Random Wallpaper',
-    '     Select Wallpaper',
+    '     Set Random Wallpaper (⎇ + R)',
+    '     Select Wallpaper (❖ +  + E)',
     ' Theme Options',#3
-    '     Set Color Scheme',
+    '     Set Color Scheme (⎇ +  + W)',
     '     Dark or Light Theme',
-    '     Bar Position',
-    '     Change Bar Theme',
+    '     Bar Position (❖ +  + W)',
+    '     Change Bar Theme (⎇ + W)',
     ' Tools',#8
-    '     Notes',
-    '     Apps as Sudo',
-    '     Calculator',
-    '     Network Manager',
-    '     Screenshot',
-    '     Monitor Temperature',
-    '     Monitor Layout',
-    '     Bluetooth',
-    '     Screen Recorder',
+    '     Notes (❖ + N)',
+    '     Apps as Sudo (⎇ + )',
+    '     Calculator (❖ + C)',
+    '     Network Manager (❖ + B)',
+    '     Screenshot (prtnsc)',
+    '     Monitor Temperature (❖ +  + O)',
+    '     Monitor Layout (❖ +  + X)',
+    '     Bluetooth (❖ + T)',
+    '     Screen Recorder ( +  + R)',
     ' Miscelaneous',#17
-    '     Screen Draw',
-    '     Pick Color',
-    '     View Shortcuts',
-    '     Emojis',
-    ' Session Menu',
+    '     Screen Draw (❖ +  + P)',
+    '     Pick Color (❖ + P)',
+    '     View Shortcuts (❖ + S)',
+    '     Emojis ( +  + )',
+    ' Session Menu (❖ + X)',
     ' Update QARSlp %s' %version,
     ]
   index, key = rofi_left.select('  Control Panel', options)
@@ -584,14 +598,17 @@ keys = [
     Key([alt], "Escape", lazy.spawn('xkill')), # Click window to close
 
     # Widgets
-    Key([mod],"c",lazy.function(shortcuts)), # Shortcuts widget
+    Key([mod],"s",lazy.function(shortcuts)), # Shortcuts widget
+    Key([mod],"c",lazy.spawn(home + '/.local/bin/calculator')), # Calculator Widget
+    Key([mod], "n", lazy.spawn(home + '/.local/bin/notesfi')), # Notes Widget
     Key([mod],"d",lazy.function(dark_white)), # Select Dark or Light Theme
     Key([mod, "shift"],"w",lazy.function(bar_pos)), # Set bar position
     Key([mod, "shift"],"o",lazy.function(nightLight_widget)), # Set night light
     Key([mod],"p",lazy.function(fargewidget)), # Color Picker Widget
+    Key(["control", "shift"], "r", lazy.spawn(home + '/.local/bin/recorder')), # Recorder Widget
     Key([mod, "shift"],"p",lazy.function(draw_widget)), # Desktop draw widget
     Key([alt], "Return", lazy.function(control_panel)), # Search for files and folders
-    Key([mod],"t",lazy.spawn('rofi  -theme "~/.config/rofi/tasks.rasi" -show tasks:task')), # Task list
+    Key([mod], "t", lazy.spawn(home + '/.local/bin/bluet')), # Bluetooth widget
     Key([mod],"x",lazy.function(session_widget)), # Log out
     Key([mod],"b",lazy.function(network_widget)), # Network Settings
     Key([alt, "shift"],"w",lazy.function(set_default_backend)), # Set Default Color Scheme
@@ -640,7 +657,6 @@ keys = [
     Key([mod, "shift"], "i", lazy.layout.grow_main()),
     Key([mod], "m", lazy.layout.shrink()),
     Key([mod, "shift"], "m", lazy.layout.shrink_main()),
-    Key([mod], "n", lazy.layout.normalize()),
     Key([mod], "o", lazy.layout.maximize()),
     Key([mod, "shift"], "space", lazy.layout.flip()),
 

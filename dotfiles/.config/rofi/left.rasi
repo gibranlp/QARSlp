@@ -11,9 +11,9 @@ window {
     location:                    west;
     anchor:                      center;
     fullscreen:                  false;
-    width:                       400px;
+    width:                       450px;
     height:                      100%;
-    x-offset:                    200px;
+    x-offset:                    225px;
     y-offset:                    0px;
     border-radius:               0px 10px 10px 0px;
 
