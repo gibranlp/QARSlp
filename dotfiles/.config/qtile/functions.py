@@ -514,7 +514,7 @@ def control_panel(qtile):
     '     Select Wallpaper (❖ +  + E)',
     ' Theme Options',#3
     '     Set Color Scheme (⎇ +  + W)',
-    '     Dark or Light Theme',
+    '     Dark/Light Theme (❖ + D)',
     '     Bar Position (❖ +  + W)',
     '     Change Bar Theme (⎇ + W)',
     ' Tools',#8
