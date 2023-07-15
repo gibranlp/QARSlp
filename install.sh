@@ -109,6 +109,7 @@ function base() {
     'cups'
     'cups-pdf'
     'man'
+    'zxel' # Needed for Calculator
 )
 
 for packet in "${packets[@]}"; do
@@ -148,7 +149,8 @@ function aur_packages() {
     'gromit-mpx-git'
     'nbfc'
     'ntfs-3g'
-    'i3lock-fancy'
+    'i3lock-color'
+    'i3lock-fancy-git'
     'wal-telegram-git'
     'picom-tyrone-git'
     'lazy-docker'

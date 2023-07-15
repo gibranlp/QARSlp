@@ -41,12 +41,15 @@ function update(){
   cp -r ~/QARSlp/dotfiles/.local/bin/calendar ~/.local/bin/
   cp -r ~/QARSlp/dotfiles/.local/bin/change_display ~/.local/bin/
   cp -r ~/QARSlp/dotfiles/.local/bin/autostart ~/.local/bin/
+  cp -r ~/QARSlp/dotfiles/.local/bin/alwaystart ~/.local/bin/
+  cp -r ~/QARSlp/dotfiles/.local/bin/bluet ~/.local/bin/
   chmod +x ~/.local/bin/*
   # cp ~/QARSlp/dotfiles/.shortcuts ~/
   
   # cp ~/QARSlp/dotfiles/.config/picom/picom.conf ~/.config/picom/picom.conf
   cp ~/QARSlp/dotfiles/.zshrc ~/
   cp ~/QARSlp/dotfiles/.config/dunst/dunstrc ~/.config/wal/templates
+  cp ~/QARSlp/dotfiles/.config/flameshot/flameshot.ini ~/.config/wal/templates
   # cp ~/QARSlp/dotfiles/.config/cava/config ~/.config/wal/templates
   # cp ~/QARSlp/dotfiles/.config/ranger/rc.conf ~/.config/ranger/rc.conf
   # cp ~/QARSlp/dotfiles/.config/alacritty/alacritty.yml ~/.config/alacritty/alacritty.yml

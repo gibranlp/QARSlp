@@ -217,22 +217,22 @@ secondary_color = secondary_pallete(color, differentiator)
 
 def i3lock_colors(qtile):
   subprocess.run(['i3lock', 
-    '--ring-color={}'.format(secondary_color[0])+"55",
-    '--inside-color={}'.format(secondary_color[0])+"55",
+    '--ring-color={}'.format(secondary_color[0])+"DD",
+    '--inside-color={}'.format(secondary_color[0])+"DD",
     '--line-color={}'.format(color[2]),
     '--separator-color={}'.format(color[4]),
     '--time-color={}'.format(color[2]),           
     '--date-color={}'.format(color[4]),
-    '--insidever-color={}'.format(secondary_color[0])+"99",
-    '--ringver-color={}'.format(secondary_color[0])+"99",
-    '--verif-color={}'.format(color[7]),          
+    '--insidever-color={}'.format(secondary_color[0])+"DD",
+    '--ringver-color={}'.format(secondary_color[0])+"DD",
+    '--verif-color={}'.format(color[5]),          
     '--verif-text=Checking',
     '--insidewrong-color={}'.format(secondary_color[0])+"DD",
     '--ringwrong-color={}'.format(secondary_color[0])+"DD",
     '--wrong-color={}'.format(color[1]),
     '--wrong-text=Wrong!',
-    '--keyhl-color={}'.format(color[4]),         
-    '--bshl-color={}'.format(color[2]),            
+    '--keyhl-color={}'.format(color[1]),         
+    '--bshl-color={}'.format(color[6]),            
     '--clock',
     '--blur', '10',                 
     '--indicator',       
@@ -478,17 +478,17 @@ def random_colors(qtile):
 
 # Screenshot widget
 def screenshot(qtile):
-  options = [' Screen', ' Window', ' Area', ' 5s Screen']
+  options = [' Area', ' Screen', ' Window',  ' 5s Screen']
   index, key = rofi_left.select('  Screenshot', options)
   if key == -1:
     rofi_left.close()
   else:
     if index ==0:
-      subprocess.run("flameshot full --path ~/Pictures/Screenshot.png --delay 500",shell=True)
+      subprocess.run("flameshot gui --path ~/Pictures/area_screenshot.png --delay 400",shell=True)
     elif index==1:
-      subprocess.run("scrot -u 'Screenshot_%S-%m-%y.png' -e 'mv $f ~/Pictures/ #; feh -F ~/Pictures/$f' && dunstify ' Window Picture Taken!'",shell=True)
+      subprocess.run("flameshot full --path ~/Pictures/Screenshot.png --delay 500",shell=True)
     elif index==2:
-      subprocess.run("flameshot gui --path ~/Pictures/Screenshot.png --delay 400",shell=True)
+      subprocess.run("scrot -u 'window_screenshot.png' -e 'mv $f ~/Pictures/ #; feh -F ~/Pictures/$f' && notify-send -a 'flameshot' 'Window Picture Taken!'",shell=True)
     else:
       subprocess.run("flameshot full --path ~/Pictures/Screenshot.png --delay 5000",shell=True)
 

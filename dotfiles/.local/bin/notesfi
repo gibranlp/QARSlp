@@ -78,7 +78,7 @@ open_document() {
 
 edit_notes() {
   document=$(rg --files --iglob "*.md" --iglob "*.wiki" --iglob "*.tex" $directory)
-  selected_document=$(echo "$document" | rofi -dmenu -i -p " Open:" -theme "~/.config/rofi/left.rasi")
+  selected_document=$(echo "$document" | rofi -dmenu -i -p " Open:" -theme "~/.config/rofi/shortcuts.rasi")
   if [[ -n $selected_document ]]; then
     $TERMINAL -e $EDITOR "$selected_document"
   fi

@@ -37,13 +37,12 @@ fi
 
 input="$*"
 answer=$(echo "$input" | insect)
-notify-send -a " QARSlp" $answer
-action=$(echo -e "Copy to clipboard\nClear\nClose" | $menu -i -p "$input = $answer") # See $ man dmenu for an explanation these options
+notify-send -a "Calculator" "$input  $answer"
+action=$(echo -e "Copy\nClear" | $menu -i -p "  $answer")
 
 case $action in
     "Clear") $0 ;;
-    "Copy to clipboard") echo -n "$input = $answer" | awk '{$1=$1};1' | xsel -ib ;; # The awk expression trims whitespace: https://unix.stackexchange.com/a/205854/321263
-    "Close") ;;
+    "Copy") echo -n $answer | awk '{$1=$1};1' | xsel -ib ;;
     "") ;;
     *) $0 "$answer $action" ;;
 esac
