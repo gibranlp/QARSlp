@@ -15,22 +15,18 @@ import socket
 import subprocess
 from os.path import expanduser
 from pathlib import Path
-
 import requests
 from libqtile import bar, hook, layout, qtile, widget
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
 from qtile_extras import widget
-from qtile_extras.popup.toolkit import (PopupImage, PopupRelativeLayout,
-                                        PopupText, PopupWidget)
-from qtile_extras.widget.decorations import (BorderDecoration,
-                                             PowerLineDecoration,
-                                             RectDecoration)
+from qtile_extras.popup.toolkit import (PopupImage, PopupRelativeLayout,PopupText, PopupWidget)
+from qtile_extras.widget.decorations import (BorderDecoration,PowerLineDecoration,RectDecoration)
 from rofi import Rofi
 
 #### Variables ####
 
-version='v2.0.1'
+version='v2.0.2'
 
 # Modifiers
 mod = "mod4"
@@ -47,7 +43,7 @@ terminal = "alacritty" # Terminal in use
 
 #Home Path
 home = os.path.expanduser('~') # Path for use in folders
-prompt = ":".format(os.environ["USER"], socket.gethostname()) # Format of the prompt
+prompt = "".format(os.environ["USER"], socket.gethostname()) # Format of the prompt
 
 ## Import Persistent Variables
 file = open(home + '/.config/qtile/variables', 'r')
@@ -72,7 +68,7 @@ theme=['QARSlp', 'nice', 'slash', 'minimal', 'Monochrome', 'no_bar']
 
 # Pywal backends Options: Wal, Colorz, Colorthief, Haishoku
 def_backend=str(variables[1].strip()) # Default Color Scheme for random wallpaper
-backend=['Wal', 'Colorz', 'Colorthief','Haishoku']
+backend=['wal', 'colorz', 'colorthief','haishoku']
 
 ## Margins
 layout_margin=10 # Layout margins
@@ -137,7 +133,7 @@ else: # 1366 x 768 Macbook air 11"
 rofi_right = Rofi(rofi_args=['-theme', '~/.config/rofi/right.rasi'])
 rofi_network= Rofi(rofi_args=['-theme', '~/.config/rofi/network.rasi'])
 rofi_left= Rofi(rofi_args=['-theme', '~/.config/rofi/left.rasi'])
-rofi_wallpaper=Rofi(rofi_args=['-show', 'file-browser-extended', '-theme', '~/.config/rofi/launcher.rasi', '-file-browser-dir', '~/Pictures/Wallpapers', '-file-browser-stdout'])
+rofi_wallpaper=Rofi(rofi_args=(['rofi', '-show file-browser-extended', '-theme', '~/.config/rofi/sel_wal.rasi', '-file-browser-dir', '~/Pictures/Wallpapers', '-file-browser-stdout']))
 
 ### Weather
 w_appkey = str(variables[2].strip()) # Get a key here https://home.openweathermap.org/users/sign_up 
@@ -257,7 +253,7 @@ def change_wallpaper(qtile):
   selection = random.choice(os.listdir(wallpaper_dir))
   selected_wallpaper = os.path.join(wallpaper_dir, selection)
   i=0
-  while selected_wallpaper != wallpaper and i<10:
+  while selected_wallpaper != wallpaper and i<2:
     subprocess.run(["wpg", light, "-s", str(selected_wallpaper), "--backend", def_backend.lower()])
     subprocess.run(["cp", str(selected_wallpaper), "/usr/local/backgrounds/background.png"])
     subprocess.run(["cp", "-r", str(Path.home() / ".local/share/themes/FlatColor"), "/usr/local/themes/"])
@@ -341,7 +337,7 @@ def shortcuts(qtile):
 
 # Display Emojis
 def emojis(qtile):
-  subprocess.run("rofi -modi emoji -show emoji -theme '~/.config/rofi/emojis.rasi'",shell=True)
+  subprocess.run("rofi -modi emoji -show emoji -theme '~/.config/rofi/emojis.rasi' -emoji-format {emoji}",shell=True)
 
 # NightLight widget
 def nightLight_widget(qtile):
@@ -534,6 +530,12 @@ def control_panel(qtile):
     '     Emojis ( +  + )',
     ' Session Menu (❖ + X)',
     ' Update QARSlp %s' %version,
+    '<<<< Nomenclature >>>>' 
+    ' :: Control Key' 
+    '❖ :: Super / Windows Key' 
+    '⎇ :: Alt Key'
+    ' :: Enter Key'
+    ' :: Shift Key'
     ]
   index, key = rofi_left.select('  Control Panel', options)
   if key == -1:

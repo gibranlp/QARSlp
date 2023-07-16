@@ -62,6 +62,7 @@ function base() {
     'ripgrep'
     'blueman'
     'htop'
+    'locate'
     'os-prober'
     'gnome-disk-utility'
     'networkmanager'

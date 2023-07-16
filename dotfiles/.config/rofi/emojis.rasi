@@ -1,3 +1,7 @@
+/*****----- Configuration -----*****/
+configuration {
+    show-icons:                 false;
+}
 /*****----- Global Properties -----*****/
 @import "~/.cache/wal/QARSlp.rasi" 
 * {
@@ -12,7 +16,7 @@ window {
     anchor:                      center;
     fullscreen:                  false;
     width:                       600px;
-    height:                      100%;
+    height:                      99.5%;
     x-offset:                    300px;
     y-offset:                    0px;
     border-radius:               0px 10px 10px 0px;
@@ -77,8 +81,8 @@ entry {
 /*****----- Listview -----*****/
 listview {
     enabled:                     true;
-    columns:                     1;
-    lines:                       4;
+    columns:                     5;
+    lines:                       0;
     cycle:                       true;
     dynamic:                     true;
     scrollbar:                   false;
@@ -86,8 +90,7 @@ listview {
     reverse:                     false;
     fixed-height:                true;
     fixed-columns:               true;
-    
-    spacing:                     10px;
+    spacing:                     0px;
     background-color:            transparent;
     text-color:                  @foreground;
     cursor:                      "default";
@@ -97,12 +100,13 @@ listview {
 /*****----- Elements -----*****/
 element {
     enabled:                     true;
-    spacing:                     10px;
-    padding:                     12px;
+    spacing:                     0px;
+    padding:                     0px;
     border-radius:               5px;
     background-color:            transparent;
     text-color:                  @foreground;
     cursor:                      pointer;
+    
 }
 element normal.normal {
     background-color:            inherit;
@@ -131,7 +135,7 @@ element selected.active {
 element-icon {
     background-color:            transparent;
     text-color:                  inherit;
-    size:                        40px;
+    size:                        30px;
     cursor:                      inherit;
 }
 element-text {
@@ -139,7 +143,8 @@ element-text {
     text-color:                  inherit;
     cursor:                      inherit;
     vertical-align:              0.5;
-    horizontal-align:            0;
+    horizontal-align:            0.5;
+    font:                        "Noto Color Emoji 25";
 }
 
 /*****----- Message -----*****/
