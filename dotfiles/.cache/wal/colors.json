@@ -1,0 +1,28 @@
+{
+    "wallpaper": "/home/gibranlp/Pictures/Wallpapers/wall.jpg",
+    "alpha": "100",
+
+    "special": {
+        "background": "#171213",
+        "foreground": "#a7c3c6",
+        "cursor": "#a7c3c6"
+    },
+    "colors": {
+        "color0": "#171213",
+        "color1": "#2A5F66",
+        "color2": "#526261",
+        "color3": "#A17647",
+        "color4": "#3C926A",
+        "color5": "#38708E",
+        "color6": "#23BCB7",
+        "color7": "#a7c3c6",
+        "color8": "#74888a",
+        "color9": "#2A5F66",
+        "color10": "#526261",
+        "color11": "#A17647",
+        "color12": "#3C926A",
+        "color13": "#38708E",
+        "color14": "#23BCB7",
+        "color15": "#a7c3c6"
+    }
+}

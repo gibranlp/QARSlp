@@ -1,0 +1,21 @@
+set $wallpaper /home/gibranlp/Pictures/Wallpapers/wall.jpg
+
+set $background #171213
+set $foreground #a7c3c6
+
+set $color0 #171213
+set $color1 #2A5F66
+set $color2 #526261
+set $color3 #A17647
+set $color4 #3C926A
+set $color5 #38708E
+set $color6 #23BCB7
+set $color7 #a7c3c6
+set $color8 #74888a
+set $color9 #2A5F66
+set $color10 #526261
+set $color11 #A17647
+set $color12 #3C926A
+set $color13 #38708E
+set $color14 #23BCB7
+set $color15 #a7c3c6

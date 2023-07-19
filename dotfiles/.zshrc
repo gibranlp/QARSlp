@@ -77,16 +77,13 @@ source $ZSH/oh-my-zsh.sh
 # You may need to manually set your language environment
 export LANG=en_US.UTF-8
 
-
-eval $(thefuck --alias)
-
 ## Aliases
-
-alias genwall="genwal -w"
+eval $(thefuck --alias)
 alias lzd="lazydocker"
 alias tsm="transmission-remote"
 alias sshelgen="ssh -i ~/.ssh/rsa_deploy itadmin@199.85.208.94"
 export PATH=~/.local/bin:$PATH
-wal -R -q && clear 
-echo "TF "$(( (`date +%s` - `date +%s -d '2003/08/1'`) / 86400 )) "CP "$(( (`date +%s` - `date +%s -d '2022/02/19'`) / 86400 )) "LT "$(( (`date +%s` - `date +%s -d '2022/08/15'`) / 86400 )) 
 setxkbmap -layout us -variant intl
+wal -R -q && clear 
+#echo "TF "$(( (`date +%s` - `date +%s -d '2003/08/1'`) / 86400 )) "CP "$(( (`date +%s` - `date +%s -d '2022/02/19'`) / 86400 )) "LT "$(( (`date +%s` - `date +%s -d '2022/08/15'`) / 86400 )) 
+

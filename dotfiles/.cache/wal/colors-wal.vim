@@ -1,0 +1,23 @@
+" Special
+let wallpaper  = "/home/gibranlp/Pictures/Wallpapers/wall.jpg"
+let background = "#171213"
+let foreground = "#a7c3c6"
+let cursor     = "#a7c3c6"
+
+" Colors
+let color0  = "#171213"
+let color1  = "#2A5F66"
+let color2  = "#526261"
+let color3  = "#A17647"
+let color4  = "#3C926A"
+let color5  = "#38708E"
+let color6  = "#23BCB7"
+let color7  = "#a7c3c6"
+let color8  = "#74888a"
+let color9  = "#2A5F66"
+let color10 = "#526261"
+let color11 = "#A17647"
+let color12 = "#3C926A"
+let color13 = "#38708E"
+let color14 = "#23BCB7"
+let color15 = "#a7c3c6"
