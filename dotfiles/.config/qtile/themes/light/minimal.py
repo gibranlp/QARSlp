@@ -73,7 +73,7 @@ def init_widgets_list():
           weather_symbols={
             "Unknown": "",
             "01d": "",
-            "01n": "🌕",
+            "01n": "",
             "02d": "",
             "02n": "",
             "03d": "",
