@@ -148,6 +148,15 @@ def init_widgets_list():
               visual_bell_color=[4],
               visual_bell_time=0.2,
             ),
+            widget.Spacer(
+              length=bar.STRETCH,
+              background=transparent,
+            ),
+            widget.Systray(),
+            widget.Spacer(
+              length=5,
+              background=transparent,
+            ),
             widget.Pomodoro(
               decorations=[RectDecoration(colour=color[1], radius=7, filled=True)],
               foreground=color[0],
@@ -165,11 +174,6 @@ def init_widgets_list():
               prefix_long_break=' ',
               prefix_paused=' ',
             ),
-            widget.Spacer(
-              length=bar.STRETCH,
-              background=transparent,
-            ),
-            widget.Systray(),
             widget.Spacer(
               length=5,
               background=transparent,
