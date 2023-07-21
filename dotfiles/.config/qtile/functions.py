@@ -315,7 +315,7 @@ def calendar_notification_next(qtile):{
 ## Set default backend
 def set_default_backend(qtile):
   options = backend
-  index, key = rofi_left.select('  Backend -  ' + def_backend , options)
+  index, key = rofi_left.select(' Backend -> ' + def_backend , options)
   if key == -1 or index == 4:
     rofi_left.close()
   else:
@@ -412,22 +412,24 @@ def network_widget(qtile):
 ## Select Dark or Light Theming
 def dark_white(qtile):
   options = [' Dark', ' Light']
-  index, key = rofi_left.select(' Select Theme', options)
+  index, key = rofi_left.select(' Theme -> ' + str(variables[6].strip()), options)
   if key == -1 or index == 2:
     rofi_left.close()
   else:
     if index == 0:
       variables[3]="-c" + "\n"
+      variables[6]="Dark" + "\n"
       variables[4]="/.config/qtile/themes/dark" + "\n"
       subprocess.run(['cp', home + '/.config/qtile/themes/dark/' + current_theme + ".py", home + '/.config/qtile/theme.py'])
       subprocess.run(["wal", "-i", "/usr/local/backgrounds/background.png", "--backend", "%s" %def_backend])
       subprocess.run(["wpg", "-s", "/usr/local/backgrounds/background.png", "--backend", "%s" %def_backend])
     else:
       variables[3]="-L" + "\n"
+      variables[6]="Light" + "\n"
       variables[4]="/.config/qtile/themes/light" + "\n"
       subprocess.run(['cp', home + '/.config/qtile/themes/light/' + current_theme + ".py", home + '/.config/qtile/theme.py'])
       subprocess.run(["wal", "-l", "-i", "/usr/local/backgrounds/background.png", "--backend", "%s" %def_backend])
-      subprocess.run(["wpg", "-L", "-s", "/usr/local/backgrounds/background.png", "--backend", "%s" %def_backend])
+      subprocess.run(["wpg", "-L", "-A", "-s", "/usr/local/backgrounds/background.png", "--backend", "%s" %def_backend])
 
     subprocess.run(["cp", "-r", home + "/.local/share/themes/FlatColor",  "/usr/local/themes/"])
     with open(home + '/.config/qtile/variables', 'w') as file:
@@ -460,7 +462,7 @@ def bar_pos(qtile):
 # Change Theme widget
 def change_theme(qtile):
   options = theme
-  index, key = rofi_left.select('  Theme -  ' + current_theme , options)
+  index, key = rofi_left.select('  Theme -> ' + current_theme , options)
   if key == -1:
     rofi_left.close()
   else:
@@ -475,7 +477,7 @@ def change_theme(qtile):
     
 # Set random colors to theme
 def random_colors(qtile):
-  subprocess.run(["wpg", "-z", "%s" % wallpaper])
+  subprocess.run(["wpg", light, "-z", "%s" % wallpaper])
   subprocess.run(["wpg", "-s", "%s" % wallpaper])
   subprocess.run(["rm", "-rf", "%s" %wallpaper + "_wal_sample.png"])
   qtile.reload_config()
@@ -670,11 +672,11 @@ groups = []
 group_names = ["Escape","1","2","3","4","5","6","7","8","9"]
 
 #### Groups Labels
-group_labels=["零","一","二","三","四","五","六","七","八","九"] # Kanji Numbers
+#group_labels=["零","一","二","三","四","五","六","七","八","九"] # Kanji Numbers
 #group_labels=["0","1","2","3","4","5","6","7","8","9"] # Numbers
 #group_labels=["","","","","","","","","",""] # Circles
 #group_labels=["","","","","","","","","",""] # Dot Circles
-#group_labels=["","","","","","","","","",""] # Custom
+group_labels=["","","","","","","","","",""] # Custom
 #group_labels=["","","","","","","","","",""] # Star Wars
 
 group_layouts=["monadtall", "monadtall", "monadtall", "monadtall","monadtall", "monadtall", "monadtall","monadwide", "monadtall", "monadtall"]

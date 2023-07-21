@@ -34,13 +34,13 @@ def init_widgets_list():
         disable_drag=True,
         hide_unused=hide_unused_groups,
         borderwidth=0,
-        active=color[7], #Program opened in that group
+        active=color[2], #Program opened in that group
         inactive=color[8], # Empty Group
         rounded=False,
         highlight_method="text",
-        this_current_screen_border=secondary_color[0],
+        this_current_screen_border=secondary_color[7],
         center_aligned = True,
-        other_curren_screen_border=secondary_color[0],
+        other_curren_screen_border=secondary_color[7],
         block_highlight_text_color=color_in_use,    
         urgent_border="fc0000",
         padding_y=10,
