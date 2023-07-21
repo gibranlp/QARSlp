@@ -64,7 +64,7 @@ current_theme=str(variables[0].strip())
 themes_dir = home + str(variables[4].strip())
 theme_dest = (home + "/.config/qtile/theme.py")
 theme_file = themes_dir + "/" + current_theme
-theme=['QARSlp', 'nice', 'slash', 'minimal', 'Monochrome', 'no_bar']
+theme=['QARSlp', 'Slash', 'Nice',  'Minimal', 'Monochrome', 'no_bar']
 
 # Pywal backends Options: Wal, Colorz, Colorthief, Haishoku
 def_backend=str(variables[1].strip()) # Default Color Scheme for random wallpaper

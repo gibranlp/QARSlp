@@ -158,7 +158,7 @@ def init_widgets_list():
               background=transparent,
             ),
             widget.Pomodoro(
-              decorations=[RectDecoration(colour=color[2], radius=7, filled=True)],
+              decorations=[RectDecoration(colour=color[1], radius=7, filled=True)],
               foreground=color[0],
               color_active=color[0],
               color_break=color[0],
