@@ -166,5 +166,6 @@ function initialize_globals() {
 initialize_globals
 readonly XRANDR_TXT
 main
-qtile cmd-obj -o cmd -f restart
+qtile cmd-obj -o cmd -f restart && notify-send -a ' QARSlp' "Monitor Layout Set! ${output} ${position} ${mode}"
+
 

@@ -44,6 +44,7 @@ function update(){
   cp -r ~/QARSlp/dotfiles/.local/bin/alwaystart ~/.local/bin/
   cp -r ~/QARSlp/dotfiles/.local/bin/bluet ~/.local/bin/
   cp -r ~/QARSlp/dotfiles/.local/bin/genwal ~/.local/bin/
+  cp -r ~/QARSlp/dotfiles/.local/bin/cleansys ~/.local/bin/
   chmod +x ~/.local/bin/*
   # cp ~/QARSlp/dotfiles/.shortcuts ~/
   

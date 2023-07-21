@@ -10,23 +10,11 @@ mouse = [
 dgroups_key_binder = None
 dgroups_app_rules = []  # type: list
 follow_mouse_focus = True
-bring_front_click = False
-cursor_warp = False
-floating_layout = layout.Floating(
-    float_rules=[
-        # Run the utility of `xprop` to see the wm class and name of an X client.
-        *layout.Floating.default_float_rules,
-        Match(wm_class="confirmreset"),  # gitk
-        Match(wm_class="makebranch"),  # gitk
-        Match(wm_class="maketag"),  # gitk
-        Match(wm_class="ssh-askpass"),  # ssh-askpass
-        Match(title="branchdialog"),  # gitk
-        Match(title="pinentry"),  # GPG key password entry
-    ]
-)
+bring_front_click = 'floating_only'
+cursor_warp = True
 
 auto_fullscreen = True
-focus_on_window_activation = "smart"
+focus_on_window_activation = 'smart'
 reconfigure_screens = True
 
 # If things like steam games want to auto-minimize themselves when losing
@@ -42,6 +30,6 @@ wl_input_rules = None
 # this string if your java app doesn't work correctly. We may as well just lie
 # and say that we're a working one by default.
 #
-# We choose LG3D to maximize irony: it is a 3D non-reparenting WM written in
+# We choose LG3D to maximize irony: it is a 3D non-reparenting WM written inhttps://docs.qtile.org/en/stable/manual/ref/layouts.html#floating
 # java that happens to be on java's whitelist.
 wmname = "LG3D"

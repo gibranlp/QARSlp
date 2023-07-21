@@ -26,7 +26,7 @@ from rofi import Rofi
 
 #### Variables ####
 
-version='v2.0.2'
+version='v2.0.3'
 
 # Modifiers
 mod = "mod4"
@@ -35,15 +35,15 @@ alt = "mod1"
 ## Fonts
 main_font = "Fira Code Medium" # Font in use for the entire system
 awesome_font = "Font Awesome 6 Pro" # Font for the icons
-font_size=17 # This value will be overwritten by the size of the display
-bar_size=30 # This value will be overwritten by the size of the display
+font_size=17 
+bar_size=30
 
 # Terminal 
 terminal = "alacritty" # Terminal in use
 
 #Home Path
 home = os.path.expanduser('~') # Path for use in folders
-prompt = "".format(os.environ["USER"], socket.gethostname()) # Format of the prompt
+prompt = " ".format(os.environ["USER"], socket.gethostname()) # Format of the prompt
 
 ## Import Persistent Variables
 file = open(home + '/.config/qtile/variables', 'r')
@@ -239,7 +239,7 @@ def i3lock_colors(qtile):
     '--keyhl-color={}'.format(color[1]),         
     '--bshl-color={}'.format(color[6]),            
     '--clock',
-    '--blur', '10',                 
+    '--blur', '20',                 
     '--indicator',       
     '--time-str="%H:%M:%S"',   
     '--date-str="%A, %Y-%m-%d"',
@@ -253,17 +253,14 @@ def change_wallpaper(qtile):
   selection = random.choice(os.listdir(wallpaper_dir))
   selected_wallpaper = os.path.join(wallpaper_dir, selection)
   i=0
-  while selected_wallpaper != wallpaper and i<2:
+  while selected_wallpaper != wallpaper and i<10:
     subprocess.run(["wpg", light, "-s", str(selected_wallpaper), "--backend", def_backend.lower()])
     subprocess.run(["cp", str(selected_wallpaper), "/usr/local/backgrounds/background.png"])
     subprocess.run(["cp", "-r", str(Path.home() / ".local/share/themes/FlatColor"), "/usr/local/themes/"])
     break
-  else:
-    selection = random.choice(os.listdir(wallpaper_dir))
-    selected_wallpaper = os.path.join(wallpaper_dir, selection)
   
   qtile.reload_config()
-  #subprocess.run(["notify-send","-a", " QARSlp", "Random Wallpaper Set to: ", "%s" %selection])
+  subprocess.run(["notify-send","-a", " QARSlp", "Wallpaper Set to: ", "%s" %selection])
 
 ## Get network device in use
 def get_net_dev():
@@ -460,9 +457,6 @@ def bar_pos(qtile):
       qtile.reload_config()
     else:
       qtile.hide_show_bar()
-
-    
-
 # Change Theme widget
 def change_theme(qtile):
   options = theme
@@ -530,12 +524,6 @@ def control_panel(qtile):
     '     Emojis ( +  + )',
     ' Session Menu (❖ + X)',
     ' Update QARSlp %s' %version,
-    '<<<< Nomenclature >>>>' 
-    ' :: Control Key' 
-    '❖ :: Super / Windows Key' 
-    '⎇ :: Alt Key'
-    ' :: Enter Key'
-    ' :: Shift Key'
     ]
   index, key = rofi_left.select('  Control Panel', options)
   if key == -1:
@@ -619,7 +607,7 @@ keys = [
     Key([alt, "shift"], "r",lazy.function(random_colors)), # Set randwom wallpaper / colors to entire system
 
     # Layouts
-    Key([mod], "Tab",lazy.layout.down()), # Change focus of windows down
+    Key([mod], "Tab",lazy.layout.down() ), # Change focus of windows down
     Key([mod, "shift"], "Tab",lazy.layout.up()), # Change focus of windows up
     Key([alt], "Tab", lazy.layout.swap_left()), # Swap Left Down
     Key([alt, "shift"], "Tab", lazy.layout.swap_right()), # Swap Right Up
@@ -682,15 +670,12 @@ groups = []
 group_names = ["Escape","1","2","3","4","5","6","7","8","9"]
 
 #### Groups Labels
-#group_labels=["零","一","二","三","四","五","六","七","八","九"] # Kanji Numbers
+group_labels=["零","一","二","三","四","五","六","七","八","九"] # Kanji Numbers
 #group_labels=["0","1","2","3","4","5","6","7","8","9"] # Numbers
 #group_labels=["","","","","","","","","",""] # Circles
 #group_labels=["","","","","","","","","",""] # Dot Circles
-group_labels=["","","","","","","","","",""] # Custom
+#group_labels=["","","","","","","","","",""] # Custom
 #group_labels=["","","","","","","","","",""] # Star Wars
-
-
-####
 
 group_layouts=["monadtall", "monadtall", "monadtall", "monadtall","monadtall", "monadtall", "monadtall","monadwide", "monadtall", "monadtall"]
 for i in range(len(group_names)):
@@ -723,9 +708,9 @@ layout_theme = init_layout_theme()
 
 def init_layouts():
   return [
-    layout.Spiral(main_pane="left",ratio_increment=0.01,**layout_theme),
     layout.MonadTall(max_ratio=max_ratio,ratio=ratio,**layout_theme),
     layout.MonadWide(max_ratio=0.85,ratio=0.85,**layout_theme),
+    layout.Matrix(**layout_theme),
     layout.Floating(**layout_theme),
     ]
 layouts = init_layouts()

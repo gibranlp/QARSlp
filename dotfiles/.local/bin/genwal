@@ -32,12 +32,12 @@ set_wall(){
       wpg ${variables[3]} -s ${path} --backend ${variables[1]} # Wal sets wallpaper and genates new color scheme
       cp ${path}  "/usr/local/backgrounds/background.png"
       cp -r ~/.local/share/themes/FlatColor  /usr/local/themes/
-      qtile cmd-obj -o cmd -f restart # Restarts Qtile
     else
       wpg ${variables[3]} -s ${dir}${wall} ${variables[1]} # Wal sets wallpaper and genates new color scheme
       cp ${dir}${wall}  "/usr/local/backgrounds/background.png"
       cp -r ~/.local/share/themes/FlatColor  /usr/local/themes/
-      qtile cmd-obj -o cmd -f restart 
+      
   fi
 }
 set_wall
+qtile cmd-obj -o cmd -f restart 

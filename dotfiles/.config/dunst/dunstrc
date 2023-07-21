@@ -484,3 +484,8 @@
     format = "<b> Google Chrome</b>\n%s %b"
     timeout = 10
     
+[Pomodoro]
+    appname = pomodoro
+    format = "<b> Pomodoro</b>\n%s %b"
+    timeout = 10
+    
