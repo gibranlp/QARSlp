@@ -103,7 +103,7 @@ def init_widgets_list():
               decorations=[RectDecoration(colour=color[6], radius=[0,0,0,0], filled=True)],
               mouse_callbacks={'Button1': lambda: qtile.spawn(terminal  + " -e cava")},
               objname=None,
-              foreground=color[0],
+              foreground=color[7],
               width=widget_width,
               format='{xesam:artist}  {xesam:title}',
               stopped_text="Stop",
