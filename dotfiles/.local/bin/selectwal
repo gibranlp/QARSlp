@@ -4,7 +4,7 @@
 #|   -  _||       ||      <|__     ||  ||  _  |
 #|_______||___|___||___|__||_______||__||   __|
 #                                       |__|   
-# QARSlp Qtile + Arch Ricing System
+# SpectrumOS - Embrace the Chromatic Symphony!
 # By: gibranlp <thisdoesnotwork@gibranlp.dev>
 # MIT licence 
 #

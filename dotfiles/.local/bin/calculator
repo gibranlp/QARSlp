@@ -1,8 +1,13 @@
 #!/usr/bin/env bash
-
-# Rofi integration for insect (https://github.com/sharkdp/insect)
-# Copying to the clipboard requires xsel
-# Modified from: https://github.com/onespaceman/menu-calc
+# _______  _______  ______  _______  __        
+#|       ||   _   ||   __ \|     __||  |.-----.
+#|   -  _||       ||      <|__     ||  ||  _  |
+#|_______||___|___||___|__||_______||__||   __|
+#                                       |__|   
+# SpectrumOS - Embrace the Chromatic Symphony!
+# By: gibranlp <thisdoesnotwork@gibranlp.dev>
+# MIT licence 
+#
 
 function usage() {
     echo "$(tput bold)rofi-insect calculator plugin$(tput sgr0)

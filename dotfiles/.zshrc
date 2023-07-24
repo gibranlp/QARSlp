@@ -1,11 +1,11 @@
-# 
+#!/usr/bin/env bash
 # _______  _______  ______  _______  __        
 #|       ||   _   ||   __ \|     __||  |.-----.
 #|   -  _||       ||      <|__     ||  ||  _  |
 #|_______||___|___||___|__||_______||__||   __|
 #                                       |__|   
-# QARSlp Qtile + Arch Ricing Script
-# by: gibranlp <thisdoesnotwork@gibranlp.dev>
+# SpectrumOS - Embrace the Chromatic Symphony!
+# By: gibranlp <thisdoesnotwork@gibranlp.dev>
 # MIT licence 
 #
 export ZSH=$HOME/.oh-my-zsh

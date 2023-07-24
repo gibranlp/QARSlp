@@ -1,13 +1,11 @@
-#
 # _______  _______  ______  _______  __        
 #|       ||   _   ||   __ \|     __||  |.-----.
 #|   -  _||       ||      <|__     ||  ||  _  |
 #|_______||___|___||___|__||_______||__||   __|
 #                                       |__|   
-# QARSlp Qtile + Arch Ricing System
+# SpectrumOS - Embrace the Chromatic Symphony!
 # By: gibranlp <thisdoesnotwork@gibranlp.dev>
-# MIT licence 
-#
+# MIT licence
 from functions import *
 
 group_labels=["0","1","2","3","4","5","6","7","8","9"] # Kanji Numbers

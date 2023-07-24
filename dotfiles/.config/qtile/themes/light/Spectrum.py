@@ -1,13 +1,11 @@
-#
 # _______  _______  ______  _______  __        
 #|       ||   _   ||   __ \|     __||  |.-----.
 #|   -  _||       ||      <|__     ||  ||  _  |
 #|_______||___|___||___|__||_______||__||   __|
 #                                       |__|   
-# QARSlp Qtile + Arch Ricing System
+# SpectrumOS - Embrace the Chromatic Symphony!
 # By: gibranlp <thisdoesnotwork@gibranlp.dev>
-# MIT licence 
-#
+# MIT licence
 from functions import *
 
 # Define Label Groups based on the Theme
@@ -36,23 +34,23 @@ def init_widgets_list():
             widget.CPU(
               decorations=[RectDecoration(colour=color[5], radius=[0,7,7,0], filled=True)],
               foreground=color[0],
-              format='{load_percent}'
+              format='{load_percent}%'
             ),
             widget.Spacer(
               length=5,
               background=transparent,
             ),
-            widget.TextBox(
-            decorations=[RectDecoration(colour=color[0], radius=[7,0,0,7], filled=True)],
-            foreground=color[1],
-            text="",
-            ),
-            widget.Memory(
-              decorations=[RectDecoration(colour=color[1], radius=[0,7,7,0], filled=True)],
-              foreground=color[0],
-              format='{MemUsed:.0f}{mm}',
-              measure_mem='M',
-            ),
+            # widget.TextBox(
+            # decorations=[RectDecoration(colour=color[0], radius=[7,0,0,7], filled=True)],
+            # foreground=color[1],
+            # text="",
+            # ),
+            # widget.Memory(
+            #   decorations=[RectDecoration(colour=color[1], radius=[0,7,7,0], filled=True)],
+            #   foreground=color[0],
+            #   format='{MemUsed:.0f}{mm}',
+            #   measure_mem='M',
+            # ),
             widget.Spacer(
                 length=5,
                 background=transparent,
@@ -104,19 +102,22 @@ def init_widgets_list():
               length=5,
               background=transparent,
             ),
-            widget.UPowerWidget(
-               border_charge_colour=color[3],
-               border_colour=secondary_color[0],
-               border_critical_colour='#cc0000',
-               fill_critical='#cc0000',
-               fill_low='#FF5511',
-               fill_normal=color[3],
-               foreground=color[3],
-               decorations=[RectDecoration(colour=color[0],radius=7,filled=True)],
-               percentage_critical=0.2,
-               percentage_low=0.4,
-               text_charging=' ({percentage:.0f}%) {ttf} to ',
-               text_discharging=' ({percentage:.0f}%) {tte} Left',
+            widget.Pomodoro(
+              decorations=[RectDecoration(colour=color[1], radius=7, filled=True)],
+              foreground=color[0],
+              color_active=color[0],
+              color_break=color[0],
+              color_inactive=color[0],
+              length_long_break=30,
+              length_pomodori=45,
+              length_short_break=15,
+              notification_on=True,
+              num_pomodori=3,
+              prefix_active=' ',
+              prefix_inactive='',
+              prefix_break=' ',
+              prefix_long_break=' ',
+              prefix_paused=' ',
             ),
             widget.Spacer(
               length=5,
@@ -130,6 +131,11 @@ def init_widgets_list():
               visual_bell_color=[4],
               visual_bell_time=0.2,
             ),
+            widget.Spacer(
+              length=5,
+              background=transparent,
+            ),
+            widget.Systray(),
             widget.Spacer(
               length=bar.STRETCH,
               background=transparent,
@@ -153,32 +159,6 @@ def init_widgets_list():
             ),
             widget.Spacer(
               length=bar.STRETCH,
-              background=transparent,
-            ),
-            widget.Systray(),
-            widget.Spacer(
-              length=5,
-              background=transparent,
-            ),
-            widget.Pomodoro(
-              decorations=[RectDecoration(colour=color[1], radius=7, filled=True)],
-              foreground=color[0],
-              color_active=color[0],
-              color_break=color[0],
-              color_inactive=color[0],
-              length_long_break=30,
-              length_pomodori=45,
-              length_short_break=15,
-              notification_on=True,
-              num_pomodori=3,
-              prefix_active=' ',
-              prefix_inactive='',
-              prefix_break=' ',
-              prefix_long_break=' ',
-              prefix_paused=' ',
-            ),
-            widget.Spacer(
-              length=5,
               background=transparent,
             ),
             widget.OpenWeather(
@@ -308,7 +288,7 @@ def init_widgets_list():
               bar_colour_mute=color[2],
               hide_interval=5,
               update_interval=0.1,
-              bar_width=80,
+              bar_width=50,
               mode='bar',
               text_format=' ',
             ),
@@ -356,6 +336,24 @@ def init_widgets_list():
               decorations=[RectDecoration(colour=color[4], radius=[0,7,7,0], filled=True)],
               configured_keyboards=['us intl', 'latam'],
               foreground=color[0],
+            ),
+            widget.Spacer(
+              length=5,
+              background=transparent,
+            ),
+            widget.UPowerWidget(
+               border_charge_colour=color[3],
+               border_colour=secondary_color[0],
+               border_critical_colour='#cc0000',
+               fill_critical='#cc0000',
+               fill_low='#FF5511',
+               fill_normal=color[3],
+               foreground=color[3],
+               decorations=[RectDecoration(colour=color[0],radius=7,filled=True)],
+               percentage_critical=0.2,
+               percentage_low=0.4,
+               text_charging=' ({percentage:.0f}%) {ttf} to ',
+               text_discharging=' ({percentage:.0f}%) {tte} Left',
             ),
             widget.Spacer(
               length=5,

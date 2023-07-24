@@ -1,10 +1,9 @@
-#
 # _______  _______  ______  _______  __        
 #|       ||   _   ||   __ \|     __||  |.-----.
 #|   -  _||       ||      <|__     ||  ||  _  |
 #|_______||___|___||___|__||_______||__||   __|
 #                                       |__|   
-# QARSlp Qtile + Arch Ricing System
+# SpectrumOS - Embrace the Chromatic Symphony!
 # By: gibranlp <thisdoesnotwork@gibranlp.dev>
 # MIT licence 
 #
@@ -26,7 +25,7 @@ from rofi import Rofi
 
 #### Variables ####
 
-version='v2.0.5'
+version='v2.0.6'
 
 # Modifiers
 mod = "mod4"
@@ -66,7 +65,7 @@ current_theme=str(variables[0].strip())
 themes_dir = home + str(variables[4].strip())
 theme_dest = (home + "/.config/qtile/theme.py")
 theme_file = themes_dir + "/" + current_theme
-theme=['QARSlp','QARSlp_Alt', 'Slash', 'Nice',  'Minimal', 'Monochrome', 'no_bar']
+theme=['Spectrum', 'Slash', 'Nice',  'Minimal', 'Monochrome', 'no_bar']
 
 # Pywal backends Options: Wal, Colorz, Colorthief, Haishoku
 def_backend=str(variables[1].strip()) # Default Color Scheme for random wallpaper
@@ -110,9 +109,9 @@ elif xres == "1920" and yres == "1080": #FullHD
   single_layout_margin=5  
   layout_border_width=4 
   single_border_width=4
-  font_size=16
+  font_size=15
   bar_size=25
-  widget_width=220
+  widget_width=150
   max_ratio=0.85
   ratio=0.70
   if bar_position == "bottom":
