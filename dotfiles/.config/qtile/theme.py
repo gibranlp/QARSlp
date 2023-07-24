@@ -360,7 +360,7 @@ def init_widgets_list():
             widget.TextBox(
               decorations=[RectDecoration(colour=color[6], radius=7, filled=True)],
               foreground=color[0],
-              text="",
+              text="",
               mouse_callbacks={'Button1': lambda: qtile.function(session_widget)},
               padding_x=5,
             )]
