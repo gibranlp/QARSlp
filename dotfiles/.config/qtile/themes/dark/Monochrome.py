@@ -10,6 +10,8 @@
 #
 from functions import *
 
+group_labels=["0","1","2","3","4","5","6","7","8","9"] # Kanji Numbers
+
 # Fix for widget Width
 widget_width=widget_width+100
 
@@ -33,9 +35,10 @@ def init_widgets_list():
       ),
       widget.GroupBox(
         decorations=[RectDecoration(colour=color[0], radius=7, filled=True)],
-        font=awesome_font,
+        font=main_font,
         disable_drag=True,
         hide_unused=hide_unused_groups,
+        fontsize=font_size,
         borderwidth=0,
         active=color[7], #Program opened in that group
         inactive=color[8], # Empty Group

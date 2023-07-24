@@ -8,6 +8,7 @@
 # By: gibranlp <thisdoesnotwork@gibranlp.dev>
 # MIT licence 
 #
+
 function install_new_packages() {
   packets=(
 )
@@ -32,7 +33,7 @@ function update(){
   cp -r ~/QARSlp/dotfiles/.config/rofi/* ~/.config/rofi/
   cp -r ~/QARSlp/dotfiles/.config/qtile/* ~/.config/qtile/
   cp ~/QARSlp/dotfiles/.shortcuts ~/
-  #cp -r ~/QARSlp/dotfiles/.local/bin/recorder ~/.local/bin/
+  # cp -r ~/QARSlp/dotfiles/.local/bin/recorder ~/.local/bin/
   cp -r ~/QARSlp/dotfiles/.local/bin/notesfi ~/.local/bin/
   cp -r ~/QARSlp/dotfiles/.local/bin/wifi2 ~/.local/bin/
   cp -r ~/QARSlp/dotfiles/.local/bin/recorder ~/.local/bin/

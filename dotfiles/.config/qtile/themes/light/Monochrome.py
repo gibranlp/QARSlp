@@ -10,6 +10,11 @@
 #
 from functions import *
 
+group_labels=["0","1","2","3","4","5","6","7","8","9"] # Kanji Numbers
+
+# Fix for widget Width
+widget_width=widget_width+100
+
 # Theme
 ## Screens
 
@@ -30,17 +35,18 @@ def init_widgets_list():
       ),
       widget.GroupBox(
         decorations=[RectDecoration(colour=color[0], radius=7, filled=True)],
-        font=awesome_font,
+        font=main_font,
         disable_drag=True,
         hide_unused=hide_unused_groups,
+        fontsize=font_size,
         borderwidth=0,
-        active=color[2], #Program opened in that group
+        active=color[7], #Program opened in that group
         inactive=color[8], # Empty Group
         rounded=False,
         highlight_method="text",
-        this_current_screen_border=secondary_color[7],
+        this_current_screen_border=secondary_color[0],
         center_aligned = True,
-        other_curren_screen_border=secondary_color[7],
+        other_curren_screen_border=secondary_color[0],
         block_highlight_text_color=color_in_use,    
         urgent_border="fc0000",
         padding_y=10,
@@ -156,7 +162,7 @@ def init_widgets_list():
         decorations=[RectDecoration(colour=color[0], radius=[7,0,0,7], filled=True)],
         text="",
         foreground=color_in_use,
-        mouse_callbacks={'Button1': lambda: qtile.spawn('pavucontrol')}
+        mouse_callbacks={'Button1': lambda: qtile.spawn('pavucontrol'),'Button4': lambda: qtile.spawn("amixer -q set Master 5%+ && dunstify -a Volume ' '$(pamixer --get-volume-human) -h int:value:$(pamixer --get-volume)", shell=True),'Button5': lambda: qtile.spawn("amixer -q set Master 5%- && dunstify -a Volume ' '$(pamixer --get-volume-human) -h int:value:$(pamixer --get-volume)", shell=True)},
       ),
       widget.ALSAWidget(
         decorations=[RectDecoration(colour=color_in_use, radius=0, filled=True)],
@@ -175,7 +181,7 @@ def init_widgets_list():
         decorations=[RectDecoration(colour=color[0], radius=[0,7,7,0], filled=True)],
         text=" ",
         foreground=color[5],
-        mouse_callbacks={'Button1': lambda: qtile.spawn('pavucontrol')}
+        mouse_callbacks={'Button1': lambda: qtile.spawn('pavucontrol'),'Button4': lambda: qtile.spawn("amixer -q set Master 5%+ && dunstify -a Volume ' '$(pamixer --get-volume-human) -h int:value:$(pamixer --get-volume)", shell=True),'Button5': lambda: qtile.spawn("amixer -q set Master 5%- && dunstify -a Volume ' '$(pamixer --get-volume-human) -h int:value:$(pamixer --get-volume)", shell=True)},
       ),
       widget.Spacer(
         length=5,

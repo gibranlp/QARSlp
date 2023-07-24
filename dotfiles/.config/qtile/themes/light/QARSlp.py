@@ -10,32 +10,14 @@
 #
 from functions import *
 
+# Define Label Groups based on the Theme
+group_labels=["","","","","","","","","",""] # QARSlp
+
 # Theme
 ## Screens
 
 def init_widgets_list():
     widgets_list = [
-        widget.GroupBox(
-              decorations=[RectDecoration(colour=color[0], radius=7, filled=True)],
-              font=awesome_font,
-              disable_drag=True,
-              hide_unused=hide_unused_groups,
-              borderwidth=0,
-              active=color[3], #Program opened in that group
-              inactive=color[6], # Empty Group
-              rounded=False,
-              highlight_method="text",
-              this_current_screen_border=color[2],
-              center_aligned = True,
-              other_curren_screen_border=color[2],
-              block_highlight_text_color=color[2],    
-              urgent_border="fc0000",
-              #visible_groups=['Escape','1','2','3','4'],
-            ),
-            widget.Spacer(
-              length=5,
-              background=transparent,
-            ),
             widget.CurrentLayoutIcon(
               use_mask=True,
               decorations=[RectDecoration(colour=color[3], radius=7, filled=True)],
@@ -103,7 +85,7 @@ def init_widgets_list():
               decorations=[RectDecoration(colour=color[6], radius=[0,0,0,0], filled=True)],
               mouse_callbacks={'Button1': lambda: qtile.spawn(terminal  + " -e cava")},
               objname=None,
-              foreground=color[7],
+              foreground=color[0],
               width=widget_width,
               format='{xesam:artist}  {xesam:title}',
               stopped_text="Stop",
@@ -147,6 +129,27 @@ def init_widgets_list():
               cursor_color=color[4],
               visual_bell_color=[4],
               visual_bell_time=0.2,
+            ),
+            widget.Spacer(
+              length=bar.STRETCH,
+              background=transparent,
+            ),
+            widget.GroupBox(
+              decorations=[RectDecoration(colour=color[0], radius=7, filled=True)],
+              font=awesome_font,
+              disable_drag=True,
+              hide_unused=hide_unused_groups,
+              borderwidth=0,
+              active=color[3], #Program opened in that group
+              inactive=color[6], # Empty Group
+              rounded=False,
+              highlight_method="text",
+              this_current_screen_border=color[2],
+              center_aligned = True,
+              other_curren_screen_border=color[2],
+              block_highlight_text_color=color[2],    
+              urgent_border="fc0000",
+              #visible_groups=['Escape','1','2','3','4'],
             ),
             widget.Spacer(
               length=bar.STRETCH,

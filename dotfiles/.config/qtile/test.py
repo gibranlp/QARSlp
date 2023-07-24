@@ -1,7 +1,15 @@
 from functions import *
 
-# Set Random Wallpaper
-def change_wallpaper(qtile):
-   lazy.restart()
+## Show / Hide all Groups
+def show_groups2(qtile):
+   if hide_unused_groups == True:
+      variables[7]=" " + "\n"
+   else:
+      variables[7]="True" + "\n"
+      
+   with open(home + '/.config/qtile/variables', 'w') as file:
+      file.writelines(variables)
+   
+   
 
-change_wallpaper(qtile)  
+show_groups2(qtile)

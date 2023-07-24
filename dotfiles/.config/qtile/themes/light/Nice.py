@@ -10,6 +10,9 @@
 #
 from functions import *
 
+# Define Label Groups based on the Theme
+group_labels=["","","","","","","","","",""] # QARSlp
+
 # Theme
 
 ## Screens
@@ -37,10 +40,10 @@ def init_widgets_list():
           inactive=color[5], # Empty Group
           rounded=False,
           highlight_method="text",
-          this_current_screen_border=color[7],
+          this_current_screen_border=color[0],
           center_aligned = True,
-          other_curren_screen_border=color[7],
-          block_highlight_text_color=color[4],    
+          other_curren_screen_border=color[0],
+          block_highlight_text_color=color[0],    
           urgent_border="fc0000",
           decorations=[RectDecoration(use_widget_background=True, radius=10, padding_y=1, filled=True)],
         ),

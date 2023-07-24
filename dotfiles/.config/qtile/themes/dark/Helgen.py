@@ -11,7 +11,7 @@
 from functions import *
 
 # Define Label Groups based on the Theme
-group_labels=["","","","","","","","","",""] # QARSlp
+group_labels=["","","","","","","","","",""] # Helgen
 
 # Theme
 ## Screens

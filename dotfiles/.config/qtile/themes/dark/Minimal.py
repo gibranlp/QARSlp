@@ -10,6 +10,9 @@
 #
 from functions import *
 
+# Define Label Groups based on the Theme
+group_labels=["","","","","","","","","",""] # QARSlp
+
 # Theme 
 ## Screens
 
@@ -18,8 +21,9 @@ def init_widgets_list():
         widget.GroupBox(
           background=color[0],
           font=awesome_font,
+          fontsize=font_size - 6,
           disable_drag=True,
-          hide_unused=True,
+          hide_unused=hide_unused_groups,
           padding_x=3,
           borderwidth=0,
           active=color[3], #Program opened in that group

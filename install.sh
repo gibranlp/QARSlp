@@ -52,7 +52,7 @@ function base() {
     'cmus'
     'bc'
     'neofetch'
-    #'firefox'
+    'firefox'
     'cmus'
     'xorg-xkill'
     'xdg-user-dirs'

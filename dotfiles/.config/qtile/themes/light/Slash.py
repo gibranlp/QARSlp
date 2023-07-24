@@ -10,6 +10,8 @@
 #
 from functions import *
 
+group_labels=["零","一","二","三","四","五","六","七","八","九"] # Kanji Numbers
+
 # Theme 
 ## Decorations
 
@@ -25,7 +27,7 @@ def init_widgets_list():
           background=color[0],
           font=awesome_font,
           disable_drag=True,
-          hide_unused=True,
+          hide_unused=hide_unused_groups,
           padding_x=3,
           borderwidth=0,
           active=color[3], #Program opened in that group
