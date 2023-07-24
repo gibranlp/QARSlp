@@ -1,15 +1,10 @@
 from functions import *
 
-## Show / Hide all Groups
-def show_groups2(qtile):
-   if hide_unused_groups == True:
-      variables[7]=" " + "\n"
-   else:
-      variables[7]="True" + "\n"
-      
-   with open(home + '/.config/qtile/variables', 'w') as file:
-      file.writelines(variables)
+if int(variables[9]) == 5 or int(variables[9]) == 7 or int(variables[9]) == 8 or int(variables[9]) == 9:
+   groups_font = awesome_font - 6
+   print('yes')
+else:
+   groups_font = awesome_font
    
    
 
-show_groups2(qtile)

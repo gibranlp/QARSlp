@@ -7,10 +7,6 @@
 # By: gibranlp <thisdoesnotwork@gibranlp.dev>
 # MIT licence
 from functions import *
-
-# Define Label Groups based on the Theme
-group_labels=["","","","","","","","","",""] # QARSlp
-
 # Theme
 ## Screens
 
@@ -142,6 +138,7 @@ def init_widgets_list():
             ),
             widget.GroupBox(
               decorations=[RectDecoration(colour=color[0], radius=7, filled=True)],
+              fontsize=groups_font,
               font=awesome_font,
               disable_drag=True,
               hide_unused=hide_unused_groups,

@@ -105,9 +105,26 @@ keys = [
 
 
 #### Groups Labels
-#group_labels=["零","一","二","三","四","五","六","七","八","九"] # Kanji Numbers
-#group_labels=["","","","","","","","","",""] # Custom
-#group_labels=["","","","","","","","","",""] # Star Wars
+if int(variables[9]) == 0:
+   group_labels=["","","","","","","","","",""] # SpectrumOS
+elif int(variables[9]) == 1:
+   group_labels=["零","一","二","三","四","五","六","七","八","九"] # Kanji Numbers
+elif int(variables[9]) == 2:
+   group_labels=["","","","","","","","","",""] # Custom
+elif int(variables[9]) == 3:
+   group_labels=["","","","","","","","","",""] # Star Wars
+elif int(variables[9]) == 4:
+   group_labels=["","","","","","","","","",""] # Helgen
+elif int(variables[9]) == 5:
+   group_labels=["","","","","","","","","",""]
+elif int(variables[9]) == 6:
+   group_labels=["0","1","2","3","4","5","6","7","8","9"]
+elif int(variables[9]) == 7:
+   group_labels=["","","","","","","","","",""]
+elif int(variables[9]) == 8:
+   group_labels=["","","","","","","","","",""]
+elif int(variables[9]) == 9:
+   group_labels=["","","","","","","","","",""]
 
 group_layouts=["monadtall", "monadtall", "monadtall", "monadtall","monadtall", "monadtall", "monadtall","monadwide", "monadtall", "monadtall"]
 for i in range(len(group_names)):

@@ -25,11 +25,18 @@ from rofi import Rofi
 
 #### Variables ####
 
-version='v2.0.6'
+version='v2.0.7'
 
 # Modifiers
 mod = "mod4"
 alt = "mod1"
+
+#Home Path
+home = os.path.expanduser('~') # Path for use in folders
+
+## Import config
+file = open(home + '/.config/qtile/variables', 'r')
+variables=file.readlines()
 
 ## Fonts
 main_font = "Fira Code Medium" # Font in use for the entire system
@@ -40,13 +47,9 @@ bar_size=30
 # Terminal 
 terminal = "alacritty" # Terminal in use
 
-#Home Path
-home = os.path.expanduser('~') # Path for use in folders
-prompt = " ".format(os.environ["USER"], socket.gethostname()) # Format of the prompt
 
-## Import config
-file = open(home + '/.config/qtile/variables', 'r')
-variables=file.readlines()
+# Format of the prompt
+prompt = " ".format(os.environ["USER"], socket.gethostname()) 
 
 # Wallpapers / Theming
 wallpaper_dir= home + '/Pictures/Wallpapers/' # Wallpapers folders
@@ -129,6 +132,12 @@ else: # 1366 x 768 Macbook air 11"
   max_ratio=0.60
   ratio=0.50
   bar_margin=[0,0,0,0]
+
+# Make font smaller for cetain groups icons
+if int(variables[9]) in [5, 7, 8, 9]:
+   groups_font = font_size - 6
+else:
+   groups_font = font_size 
 
 # Rofi Configuration files
 rofi_right = Rofi(rofi_args=['-theme', '~/.config/rofi/right.rasi'])
@@ -422,6 +431,29 @@ def show_groups(qtile):
     file.writelines(variables)
   qtile.reload_config()
    
+## groups_icon_select
+def group_icon(qtile):
+  options = [
+    '->          ', 
+    '-> 零 一 二 三 四 五 六 七 八 九', 
+    '->          ',
+    '->          ',
+    '->          ',
+    '->          ',
+    '-> 0 1 2 3 4 5 6 7 8 9',
+    '->          ',
+    '->          ',
+    '->          ',
+    ]
+  index, key = rofi_left.select(' Group Icons ', options)
+  if key == -1:
+    rofi_left.close()
+  else:
+    variables[9]=str(index) + "\n"
+    with open(home + '/.config/qtile/variables', 'w') as file:
+      file.writelines(variables)
+    qtile.reload_config()
+    subprocess.run(["notify-send","-a", " QARSlp", "Color Theme: ", " %s" %backend[index]])
 
 ## Select Dark or Light Theming
 def dark_white(qtile):
@@ -524,7 +556,8 @@ def control_panel(qtile):
     '     Bar Position (❖ +  + W)',
     '     Change Bar Theme (⎇ + W)',
     '    %s Toggle Groups' %str(variables[8].strip()),
-    ' Tools',#9
+    '     Change Groups Icons',
+    ' Tools',#10
     '     Notes (❖ + N)',
     '     Apps as Sudo (⎇ + )',
     '     Calculator (❖ + C)',
@@ -534,7 +567,7 @@ def control_panel(qtile):
     '     Monitor Layout (❖ +  + X)',
     '     Bluetooth (❖ + T)',
     '     Screen Recorder ( +  + R)',
-    ' Miscelaneous',#18
+    ' Miscelaneous',#19
     '     Screen Draw (❖ +  + P)',
     '     Pick Color (❖ + P)',
     '     View Shortcuts (❖ + S)',
@@ -542,6 +575,7 @@ def control_panel(qtile):
     ' Session Menu (❖ + X)',
     ' Update QARSlp %s' %version,
     ]
+    
   index, key = rofi_left.select('  Control Panel', options)
   if key == -1:
     rofi_left.close()
@@ -560,36 +594,39 @@ def control_panel(qtile):
       qtile.function(change_theme) 
     elif index == 8:
       qtile.function(show_groups)
-    elif index == 10:
-      subprocess.Popen(home + '/.local/bin/notesfi', shell=True)
+    elif index == 9:
+      qtile.function(group_icon)
     elif index == 11:
-      qtile.spawn('sudo rofi -show drun -show-icons -theme "~/.config/rofi/launcher.rasi"')
+      subprocess.Popen(home + '/.local/bin/notesfi', shell=True)
     elif index == 12:
-      subprocess.run(home + '/.local/bin/calculator')
+      qtile.spawn('sudo rofi -show drun -show-icons -theme "~/.config/rofi/launcher.rasi"')
     elif index == 13:
-      qtile.function(network_widget)
+      subprocess.run(home + '/.local/bin/calculator')
     elif index == 14:
-      qtile.function(screenshot)
+      qtile.function(network_widget)
     elif index == 15:
-      qtile.function(nightLight_widget)
+      qtile.function(screenshot)
     elif index == 16:
-      subprocess.run(home + '/.local/bin/change_display')
+      qtile.function(nightLight_widget)
     elif index == 17:
-      subprocess.run(home + '/.local/bin/bluet')
+      subprocess.run(home + '/.local/bin/change_display')
     elif index == 18:
+      subprocess.run(home + '/.local/bin/bluet')
+    elif index == 19:
       subprocess.run(home + '/.local/bin/recorder')
-    elif index == 20:
-      qtile.function(draw_widget)
     elif index == 21:
-      qtile.function(fargewidget)
+      qtile.function(draw_widget)
     elif index == 22:
-      qtile.function(shortcuts)
+      qtile.function(fargewidget)
     elif index == 23:
-      qtile.function(emojis)
+      qtile.function(shortcuts)
     elif index == 24:
-      qtile.function(session_widget)
+      qtile.function(emojis)
     elif index == 25:
+      qtile.function(session_widget)
+    elif index == 26:
       subprocess.run(home + '/.local/bin/updater')
+    
 
 widget_defaults = dict(
     font=main_font,

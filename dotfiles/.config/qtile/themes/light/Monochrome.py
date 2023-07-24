@@ -8,8 +8,6 @@
 # MIT licence
 from functions import *
 
-group_labels=["0","1","2","3","4","5","6","7","8","9"] # Kanji Numbers
-
 # Fix for widget Width
 widget_width=widget_width+100
 

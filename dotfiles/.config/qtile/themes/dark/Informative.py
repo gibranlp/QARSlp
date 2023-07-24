@@ -7,10 +7,6 @@
 # By: gibranlp <thisdoesnotwork@gibranlp.dev>
 # MIT licence
 from functions import *
-
-# Define Label Groups based on the Theme
-group_labels=["","","","","","","","","",""] # QARSlp
-
 # Theme
 ## Screens
 
