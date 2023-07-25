@@ -225,8 +225,8 @@ function copy_dotfiles(){
   sudo ln -s /usr/local/themes/FlatColor /usr/share/themes/FlatColor
   sudo mkdir /usr/local/backgrounds
   sudo chown -R $USER:$USER /usr/local/backgrounds
-  sudo cp ~/QARSlp/dotfiles/lightdm/lightdm-gtk-greeter.conf /etc/lightdm/lightdm-gtk-greeter.conf
-  sudo cp ~/QARSlp/dotfiles/pulse/system.pa /etc/pulse/system.pa
+  sudo cp ~/QARSlp/lightdm/lightdm-gtk-greeter.conf /etc/lightdm/lightdm-gtk-greeter.conf
+  sudo cp ~/QARSlp/pulse/system.pa /etc/pulse/system.pa
   mkdir -p ~/notable
   mkdir -p ~/book
   mkdir -p ~/Articles
