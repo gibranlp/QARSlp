@@ -565,7 +565,7 @@ def control_panel(qtile):
     '     Screenshot (prtnsc)',
     '     Monitor Temperature (❖ +  + O)',
     '     Monitor Layout (❖ +  + X)',
-    '     Bluetooth (❖ + T)',
+    '     Bluetooth Manager (❖ + T)',
     '     Screen Recorder ( +  + R)',
     ' Miscelaneous',#19
     '     Screen Draw (❖ +  + P)',
