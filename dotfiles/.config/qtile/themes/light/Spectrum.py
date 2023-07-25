@@ -139,6 +139,7 @@ def init_widgets_list():
             ),
             widget.GroupBox(
               decorations=[RectDecoration(colour=color[0], radius=7, filled=True)],
+              fontsize=groups_font,
               font=awesome_font,
               disable_drag=True,
               hide_unused=hide_unused_groups,

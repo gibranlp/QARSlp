@@ -25,7 +25,8 @@ def init_widgets_list():
           background=transparent,
         ),
         widget.GroupBox(
-          font=awesome_font,
+          fontsize=groups_font,
+              font=awesome_font,
           background=secondary_color[0],
           fontsize=font_size ,
           disable_drag=True,

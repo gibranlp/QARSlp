@@ -20,7 +20,8 @@ def init_widgets_list():
     widgets_list = [
         widget.GroupBox(
           background=color[0],
-          font=awesome_font,
+          fontsize=groups_font,
+              font=awesome_font,
           disable_drag=True,
           hide_unused=hide_unused_groups,
           padding_x=3,

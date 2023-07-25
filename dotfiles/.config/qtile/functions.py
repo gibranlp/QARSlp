@@ -25,7 +25,7 @@ from rofi import Rofi
 
 #### Variables ####
 
-version='v2.0.7'
+version='v2.0.8'
 
 # Modifiers
 mod = "mod4"
@@ -134,7 +134,7 @@ else: # 1366 x 768 Macbook air 11"
   bar_margin=[0,0,0,0]
 
 # Make font smaller for cetain groups icons
-if int(variables[9]) in [5, 7, 8, 9]:
+if int(variables[9]) in [6, 7, 8, 9]:
    groups_font = font_size - 6
 else:
    groups_font = font_size 
@@ -207,18 +207,14 @@ def secondary_pallete(colors, differentiator):
     for color in colors:
         # Remove the '#' symbol
         color = color.lstrip('#')
-
         # Convert hexadecimal colors to integers
         color_int = int(color, 16)
         differentiator_int = int(differentiator, 16)
-
         # Perform addition
         result_int = color_int + differentiator_int
-
         # Ensure the result is within the valid range of 0-FFFFFF
         result_int = min(result_int, 0xFFFFFF)
         result_int = max(result_int, 0)
-
         # Convert the result back to hexadecimal
         result_hex = '#' + hex(result_int)[2:].zfill(6).upper()
 
@@ -253,7 +249,7 @@ def i3lock_colors(qtile):
     '--indicator',       
     '--time-str="%H:%M:%S"',   
     '--date-str="%A, %Y-%m-%d"',
-    ])
+  ])
 
 # Transparent for bars and widgets
 transparent=color[0] + "00"
@@ -263,14 +259,18 @@ def change_wallpaper(qtile):
   selection = random.choice(os.listdir(wallpaper_dir))
   selected_wallpaper = os.path.join(wallpaper_dir, selection)
   i=0
-  while selected_wallpaper != wallpaper and i<10:
-    subprocess.run(["wpg", light, "-s", str(selected_wallpaper), "--backend", def_backend.lower()])
-    subprocess.run(["cp", str(selected_wallpaper), "/usr/local/backgrounds/background.png"])
-    subprocess.run(["cp", "-r", str(Path.home() / ".local/share/themes/FlatColor"), "/usr/local/themes/"])
-    break
+  while i<5:
+    if selected_wallpaper != wallpaper:
+      subprocess.run(["wpg", light, "-s", str(selected_wallpaper), "--backend", def_backend.lower()])
+      subprocess.run(["cp", str(selected_wallpaper), "/usr/local/backgrounds/background.png"])
+      subprocess.run(["cp", "-r", str(Path.home() / ".local/share/themes/FlatColor"), "/usr/local/themes/"])
+      break
+    else:
+      selection = random.choice(os.listdir(wallpaper_dir))
+      selected_wallpaper = os.path.join(wallpaper_dir, selection)
   
   qtile.reload_config()
-  subprocess.run(["notify-send","-a", " SpectrumOS", "Wallpaper Set to: ", "%s" %selection])
+  #subprocess.run(["notify-send","-a", " SpectrumOS", "Wallpaper Set to: ", "%s" %selection])
 
 ## Get network device in use
 def get_net_dev():
@@ -439,8 +439,8 @@ def group_icon(qtile):
     '->          ',
     '->          ',
     '->          ',
-    '->          ',
     '-> 0 1 2 3 4 5 6 7 8 9',
+    '->          ',
     '->          ',
     '->          ',
     '->          ',
@@ -492,19 +492,20 @@ def bar_pos(qtile):
     rofi_left.close()
   else:
     if index == 0:
-      variables[5]="top"
+      variables[5]="top" + "\n"
       subprocess.run(["cp", "-r", home + "/.local/share/themes/FlatColor",  "/usr/local/themes/"])
       with open(home + '/.config/qtile/variables', 'w') as file:
         file.writelines(variables)
       qtile.reload_config()
     elif index == 1:
-      variables[5]="bottom"
+      variables[5]="bottom" + "\n"
       subprocess.run(["cp", "-r", home + "/.local/share/themes/FlatColor",  "/usr/local/themes/"])
       with open(home + '/.config/qtile/variables', 'w') as file:
         file.writelines(variables)
       qtile.reload_config()
     else:
       qtile.hide_show_bar()
+
 # Change Theme widget
 def change_theme(qtile):
   options = theme
