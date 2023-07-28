@@ -556,9 +556,9 @@ def control_panel(qtile):
     '     Select Wallpaper (❖ +  + E)',
     ' Theme Options',#3
     '     Set Color Scheme (⎇ +  + W)',
-    '     Dark/Light Theme (❖ + D)',
-    '     Bar Position (❖ +  + W)',
-    '     Change Bar Theme (⎇ + W)',
+    '     Dark/Light Theme (❖ + D)',
+    '     Bar Position (❖ +  + W)',
+    '     Change Bar Theme (⎇ + W)',
     '    %s Toggle Groups' %str(variables[8].strip()),
     '     Change Groups Icons',
     ' Tools',#10
