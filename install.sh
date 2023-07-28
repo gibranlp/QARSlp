@@ -105,8 +105,6 @@ function base() {
     'xclip'
     'xdotool'
     #'nvidia-dkms'
-    'linux-zen-headers'
-    'linux-zen-docs'
     'cups'
     'cups-pdf'
     'man'

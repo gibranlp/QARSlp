@@ -33,9 +33,9 @@ keys = [
     Key(["control", "shift"], "r", lazy.spawn(home + '/.local/bin/recorder')), # Recorder Widget
     Key([mod, "shift"],"p",lazy.function(draw_widget)), # Desktop draw widget
     Key([alt], "Return", lazy.function(control_panel)), # Search for files and folders
-    Key([mod], "t", lazy.spawn(home + '/.local/bin/bluet')), # Bluetooth widget
+    Key([mod], "b", lazy.spawn(home + '/.local/bin/bluet')), # Bluetooth widget
     Key([mod],"x",lazy.function(session_widget)), # Log out
-    Key([mod],"b",lazy.function(network_widget)), # Network Settings
+    Key([mod],"f",lazy.function(network_widget)), # Network Settings
     Key([alt, "shift"],"w",lazy.function(set_default_backend)), # Set Default Color Scheme
     Key([alt],"w",lazy.function(change_theme)), # Change Theme
     Key([mod, "shift"],"x",lazy.spawn(home + '/.local/bin/change_display')),# Monitor modes Widget

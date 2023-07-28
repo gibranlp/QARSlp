@@ -68,7 +68,7 @@ current_theme=str(variables[0].strip())
 themes_dir = home + str(variables[4].strip())
 theme_dest = (home + "/.config/qtile/theme.py")
 theme_file = themes_dir + "/" + current_theme
-theme=['Spectrum', 'Slash', 'Nice',  'Minimal', 'Monochrome', 'no_bar']
+theme=['Spectrum', 'Slash', 'Miasma', 'Nice',  'Minimal', 'Monochrome', 'no_bar']
 
 # Pywal backends Options: Wal, Colorz, Colorthief, Haishoku
 def_backend=str(variables[1].strip()) # Default Color Scheme for random wallpaper
@@ -134,7 +134,7 @@ else: # 1366 x 768 Macbook air 11"
   bar_margin=[0,0,0,0]
 
 # Make font smaller for cetain groups icons
-if int(variables[9]) in [6, 7, 8, 9]:
+if int(variables[9]) in [7, 8, 9,10,11,12]:
    groups_font = font_size - 6
 else:
    groups_font = font_size 
@@ -422,10 +422,10 @@ def network_widget(qtile):
 def show_groups(qtile):
   if hide_unused_groups == True:
     variables[7]=" " + "\n"
-    variables[8]="" + "\n"
+    variables[8]="" + "\n"
   else:
     variables[7]="True" + "\n"
-    variables[8]="" + "\n"
+    variables[8]="" + "\n"
       
   with open(home + '/.config/qtile/variables', 'w') as file:
     file.writelines(variables)
@@ -434,16 +434,19 @@ def show_groups(qtile):
 ## groups_icon_select
 def group_icon(qtile):
   options = [
-    '->          ', 
+    '->          ', 
     '-> 零 一 二 三 四 五 六 七 八 九', 
     '->          ',
     '->          ',
     '->          ',
     '-> 0 1 2 3 4 5 6 7 8 9',
-    '->          ',
+    '-> : ( ) { : | : & } ;',
+    '->          ',
     '->          ',
     '->          ',
     '->          ',
+    '->          ',
+    '->          ',
     ]
   index, key = rofi_left.select(' Group Icons ', options)
   if key == -1:
@@ -557,12 +560,12 @@ def control_panel(qtile):
     '     Bar Position (❖ +  + W)',
     '     Change Bar Theme (⎇ + W)',
     '    %s Toggle Groups' %str(variables[8].strip()),
-    '     Change Groups Icons',
+    '     Change Groups Icons',
     ' Tools',#10
     '     Notes (❖ + N)',
-    '     Apps as Sudo (⎇ + )',
+    '     Apps as Sudo (⎇ + )',
     '     Calculator (❖ + C)',
-    '     Network Manager (❖ + B)',
+    '     Network Manager (❖ + B)',
     '     Screenshot (prtnsc)',
     '     Monitor Temperature (❖ +  + O)',
     '     Monitor Layout (❖ +  + X)',

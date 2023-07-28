@@ -103,10 +103,10 @@ keys = [
    
 ## Groups
 
-
+#group_labels=["","","","","","","","","",""] # SpectrumOS
 #### Groups Labels
 if int(variables[9]) == 0:
-   group_labels=["","","","","","","","","",""] # SpectrumOS
+   group_labels=["","","","","","","","","",""] # SpectrumOS
 elif int(variables[9]) == 1:
    group_labels=["零","一","二","三","四","五","六","七","八","九"] # Kanji Numbers
 elif int(variables[9]) == 2:
@@ -114,17 +114,23 @@ elif int(variables[9]) == 2:
 elif int(variables[9]) == 3:
    group_labels=["","","","","","","","","",""] # Star Wars
 elif int(variables[9]) == 4:
-   group_labels=["","","","","","","","","",""] # Helgen
+   group_labels=["","","","","","","","","",""] # Chess
 elif int(variables[9]) == 5:
-   group_labels=["0","1","2","3","4","5","6","7","8","9"]
+   group_labels=["0","1","2","3","4","5","6","7","8","9"] # Numbers:
 elif int(variables[9]) == 6:
-   group_labels=["","","","","","","","","",""]
+   group_labels=[":","(",")","{",":","|",":","&","}",";"] # Fork Bomb
 elif int(variables[9]) == 7:
-   group_labels=["","","","","","","","","",""]
+   group_labels=["","","","","","","","","","",] # Circles
 elif int(variables[9]) == 8:
-   group_labels=["","","","","","","","","",""]
+   group_labels=["","","","","","","","","",""] # Squares
 elif int(variables[9]) == 9:
-   group_labels=["","","","","","","","","",""]
+   group_labels=["","","","","","","","","",""] # Triangles
+elif int(variables[9]) == 10:
+   group_labels=["","","","","","","","","",""] # Hexagons
+elif int(variables[9]) == 11:
+   group_labels=["","","","","","","","","",""] # Rectangles 
+elif int(variables[9]) == 12:
+   group_labels=["","","","","","","","","","",] # Square Ring 
 
 group_layouts=["monadtall", "monadtall", "monadtall", "monadtall","monadtall", "monadtall", "monadtall","monadwide", "monadtall", "monadtall"]
 for i in range(len(group_names)):
