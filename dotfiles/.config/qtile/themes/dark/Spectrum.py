@@ -148,10 +148,10 @@ def init_widgets_list():
               inactive=color[6], # Empty Group
               rounded=False,
               highlight_method="text",
-              this_current_screen_border=color[2],
+              this_current_screen_border=secondary_color[1],
               center_aligned = True,
-              other_curren_screen_border=color[2],
-              block_highlight_text_color=color[2],    
+              other_curren_screen_border=secondary_color[1],
+              block_highlight_text_color=secondary_color[1],    
               urgent_border="fc0000",
               #visible_groups=['Escape','1','2','3','4'],
             ),

@@ -560,7 +560,7 @@ def control_panel(qtile):
     '     Bar Position (❖ +  + W)',
     '     Change Bar Theme (⎇ + W)',
     '    %s Toggle Groups' %str(variables[8].strip()),
-    '     Change Groups Icons',
+    '     Change Groups Icons',
     ' Tools',#10
     '     Notes (❖ + N)',
     '     Apps as Sudo (⎇ + )',
@@ -570,7 +570,7 @@ def control_panel(qtile):
     '     Monitor Temperature (❖ +  + O)',
     '     Monitor Layout (❖ +  + X)',
     '     Bluetooth Manager (❖ + T)',
-    '     Screen Recorder ( +  + R)',
+    '     Screen Recorder ( +  + R)',
     ' Miscelaneous',#19
     '     Screen Draw (❖ +  + P)',
     '     Pick Color (❖ + P)',

@@ -455,7 +455,7 @@
 
 [Pamixer]
     appname = Volume
-    format = "<b> Volume</b>\n%s\n%b"
+    format = "<b> Volume</b>\n%s\n%b"
     timeout = 5
     set_stack_tag = "volume"
 
