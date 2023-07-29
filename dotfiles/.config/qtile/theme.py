@@ -14,7 +14,7 @@ def init_widgets_list():
     widgets_list = [
            widget.TextBox(
               foreground=color[1],
-              background=color[0],
+              background=transparent,
               padding=-1,
               fontsize=font_size+7,
               text="░▒▓",
@@ -75,14 +75,14 @@ def init_widgets_list():
               scroll_delay=0.1,
             ),
             widget.TextBox(
-              foreground=color[8],
+              foreground=color[3],
               background=color[6],
               padding=-1,
               fontsize=font_size+7,
               text="░▒▓",
             ),
             widget.Pomodoro(
-              background=color[8],
+              background=color[3],
               foreground=color[0],
               color_active=color[0],
               color_break=color[0],
@@ -99,14 +99,14 @@ def init_widgets_list():
               prefix_paused=' ',
             ),
             widget.TextBox(
-              foreground=color[0],
-              background=color[8],
+              foreground=color[3],
+              background=transparent,
               padding=-1,
               fontsize=font_size+7,
-              text="░▒▓",
+              text="▓▒░",
             ),
             widget.Prompt(
-              background=color[0],
+              background=color[0]+"33",
               prompt=prompt,
               foreground=color[4],
               cursor_color=color[4],
@@ -119,7 +119,7 @@ def init_widgets_list():
             ),
             widget.TextBox(
               foreground=secondary_color[2],
-              background=color[0],
+              background=transparent,
               padding=-1,
               fontsize=font_size+7,
               text="░▒▓",
@@ -143,33 +143,19 @@ def init_widgets_list():
               #visible_groups=['Escape','1','2','3','4'],
             ),
             widget.TextBox(
-              foreground=color[0],
-              background=secondary_color[2],
+              foreground=secondary_color[2],
+              background=transparent,
               padding=-1,
               fontsize=font_size+7,
-              text="░▒▓",
+              text="▓▒░",
             ),
             widget.Spacer(
               length=bar.STRETCH,
               background=transparent,
             ),
-            widget.UPowerWidget(
-               border_charge_colour=color[3],
-               border_colour=secondary_color[0],
-               border_critical_colour='#cc0000',
-               fill_critical='#cc0000',
-               fill_low='#FF5511',
-               fill_normal=color[3],
-               foreground=color[3],
-               decorations=[RectDecoration(colour=color[0],radius=7,filled=True)],
-               percentage_critical=0.2,
-               percentage_low=0.4,
-               text_charging=' ({percentage:.0f}%) {ttf} to ',
-               text_discharging=' ({percentage:.0f}%) {tte} Left',
-            ),
             widget.TextBox(
               foreground=secondary_color[5],
-              background=color[0],
+              background=transparent,
               padding=-1,
               fontsize=font_size+7,
               text="░▒▓",
@@ -222,7 +208,7 @@ def init_widgets_list():
             widget.Wlan(
               background=secondary_color[3],
               interface=wifi,
-              format='{essid}',
+              format='{essid} {percent:2.0%}',
               disconnected_message='',
               foreground=color[0],
               width=widget_width -50,
@@ -232,14 +218,6 @@ def init_widgets_list():
               scroll_step=1,
               update_interval=1,
               mouse_callbacks={'Button1':lambda: qtile.function(network_widget)}),
-            widget.Wlan(
-              background=secondary_color[3],
-              interface=wifi,
-              format='{percent:2.0%}',
-              disconnected_message='',
-              foreground=color[0],
-              mouse_callbacks={'Button1':lambda: qtile.function(network_widget)}
-            ),
             widget.TextBox(
               foreground=secondary_color[4],
               background=secondary_color[3],
@@ -266,12 +244,24 @@ def init_widgets_list():
               background=color[2],
               mouse_callbacks={'Button1': lambda: qtile.function(calendar_notification),'Button4': lambda: qtile.function(calendar_notification_prev),'Button5': lambda: qtile.function(calendar_notification_next)},
             ),
-            widget.TextBox(
-              foreground=color[0],
+            widget.Battery(
               background=color[2],
+              foreground=color[0],
+              full_char='',
+              charge_char='',
+              discharge_char='',
+              empty_char='',
+              format='{char} {percent:2.0%}',
+              low_percentage=0.3,
+              notify_below=0.4,
+              unknown_char='',
+              ),
+            widget.TextBox(
+              foreground=color[2],
+              background=transparent,
               padding=-1,
               fontsize=font_size+7,
-              text="░▒▓",
+              text="▓▒░",
             ),
             ]
     return widgets_list
@@ -282,10 +272,10 @@ def screen1_widgets():
 
 
 def init_screens_bottom():
-    return[Screen(bottom=bar.Bar(widgets=screen1_widgets(),size=bar_size,background=color[0],margin=bar_margin))]
+    return[Screen(bottom=bar.Bar(widgets=screen1_widgets(),size=bar_size,background=transparent,margin=bar_margin))]
 
 def init_screens_top():
-    return[Screen(top=bar.Bar(widgets=screen1_widgets(),size=bar_size,background=color[0],margin=bar_margin))]
+    return[Screen(top=bar.Bar(widgets=screen1_widgets(),size=bar_size,background=transparent,margin=bar_margin))]
 
 if bar_position == "top":
     screens=init_screens_top()
