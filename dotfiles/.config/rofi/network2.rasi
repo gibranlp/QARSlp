@@ -59,8 +59,8 @@ inputbar {
 entry {
     padding:                     12px 16px;    
     border-radius:               5px 0px 0px 5px;
-    background-color:            @background;
-    text-color:                  inherit;
+    background-color:            @color1;
+    text-color:                  @background;
     horizontal-align:            0;
 }
 
@@ -68,7 +68,7 @@ prompt {
     padding:                     12px 16px;    
     border-radius:               0px 5px 5px 0px;
     background-color:            @background;
-    text-color:                  inherit;
+    text-color:                  @color1;
     horizontal-align:             0.5;
 }
 

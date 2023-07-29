@@ -59,7 +59,7 @@ inputbar {
     spacing:                     10px;
     padding:                     100px 60px;
     background-color:            transparent;
-    text-color:                  @foreground;
+    text-color:                  @color1;
     orientation:                 horizontal;
     children:                    [ "textbox-prompt-colon", "entry", "mode-switcher" ];
     border-radius:               10px 10px 0px 0px;
@@ -72,7 +72,7 @@ textbox-prompt-colon{
     padding:                     13px 15px;
     border-radius:               5px;
     background-color:            @background;
-    text-color:                  inherit;
+    text-color:                  @color3;
 }
 entry {
     enabled:                     true;
@@ -150,7 +150,7 @@ element normal.active {
     text-color:                  @foreground;
 }
 element selected.normal {
-    background-color:            @color3;
+    background-color:            @color1;
     text-color:                  @background;
 }
 element selected.urgent {

@@ -64,7 +64,7 @@ prompt {
     padding:                     12px 16px;    
     border-radius:               0px 5px 5px 0px;
     background-color:            @background;
-    text-color:                  inherit;
+    text-color:                  @color1;
     horizontal-align:            0.5;
     text:                         " Emojis: ";
 }

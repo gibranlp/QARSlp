@@ -17,9 +17,9 @@ window {
     location:                    west;
     anchor:                      center;
     fullscreen:                  false;
-    width:                       450px;
+    width:                       700px;
     height:                      99.5%;
-    x-offset:                    225px;
+    x-offset:                    350px;
     y-offset:                    0px;
     border-radius:               0px 10px 10px 0px;
 
@@ -66,7 +66,7 @@ prompt {
     padding:                     12px 16px;    
     border-radius:               0px 5px 5px 0px;
     background-color:            @background;
-    text-color:                  inherit;
+    text-color:                  @color1;
     horizontal-align:            0.5;
 }
 
@@ -82,16 +82,16 @@ entry {
 /*****----- Listview -----*****/
 listview {
     enabled:                     true;
-    columns:                     1;
+    columns:                     2;
     lines:                       0;
     cycle:                       true;
     dynamic:                     true;
     scrollbar:                   false;
     layout:                      vertical;
     reverse:                     false;
-    fixed-height:                false;
+    fixed-height:                true;
     fixed-columns:               true;
-    spacing:                     0px;
+    spacing:                     -15px;
     background-color:            transparent;
     text-color:                  @foreground;
     cursor:                      "default";
@@ -122,7 +122,7 @@ element normal.active {
     text-color:                  @foreground;
 }
 element selected.normal {
-    background-color:            @color3;
+    background-color:            @color1;
     text-color:                  @background;
 }
 element selected.urgent {
@@ -136,7 +136,7 @@ element selected.active {
 element-icon {
     background-color:            transparent;
     text-color:                  inherit;
-    size:                        200px;
+    size:                        250px;
     cursor:                      inherit;
 }
 element-text {

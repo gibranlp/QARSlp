@@ -17,7 +17,6 @@ def init_widgets_list():
           background=color[0],
           fontsize=groups_font,
           font=awesome_font,
-          fontsize=font_size - 6,
           disable_drag=True,
           hide_unused=hide_unused_groups,
           padding_x=3,

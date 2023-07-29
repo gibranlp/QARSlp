@@ -55,7 +55,7 @@ inputbar {
     padding:                     70px 10px;
     background-color:            transparent;
     background-image:            url("/usr/local/backgrounds/background.png", width);
-    text-color:                  @foreground;
+    text-color:                  @color1;
     orientation:                 horizontal;
     children:                    ["entry", "prompt"];
     border-radius:               10px 10px 0px 0px;
@@ -69,7 +69,7 @@ prompt {
     padding:                     12px 5px;
     border-radius:               5px;
     background-color:            @background;
-    text-color:                  inherit;
+    text-color:                  @color2;
     cursor:                      text;
     placeholder-color:           inherit;
 }

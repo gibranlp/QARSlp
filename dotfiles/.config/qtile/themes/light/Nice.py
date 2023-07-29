@@ -9,6 +9,7 @@
 from functions import *
 
 # Theme
+
 ## Screens
 
 def init_widgets_list():
@@ -25,9 +26,8 @@ def init_widgets_list():
         ),
         widget.GroupBox(
           fontsize=groups_font,
-              font=awesome_font,
+          font=awesome_font,
           background=secondary_color[0],
-          fontsize=font_size ,
           disable_drag=True,
           hide_unused=hide_unused_groups,
           borderwidth=0,

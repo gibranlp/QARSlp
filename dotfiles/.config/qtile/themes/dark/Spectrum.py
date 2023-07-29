@@ -37,17 +37,17 @@ def init_widgets_list():
               length=5,
               background=transparent,
             ),
-            # widget.TextBox(
-            # decorations=[RectDecoration(colour=color[0], radius=[7,0,0,7], filled=True)],
-            # foreground=color[1],
-            # text="",
-            # ),
-            # widget.Memory(
-            #   decorations=[RectDecoration(colour=color[1], radius=[0,7,7,0], filled=True)],
-            #   foreground=color[0],
-            #   format='{MemUsed:.0f}{mm}',
-            #   measure_mem='M',
-            # ),
+            widget.TextBox(
+            decorations=[RectDecoration(colour=color[0], radius=[7,0,0,7], filled=True)],
+            foreground=color[1],
+            text="",
+            ),
+            widget.Memory(
+              decorations=[RectDecoration(colour=color[1], radius=[0,7,7,0], filled=True)],
+              foreground=color[0],
+              format='{MemUsed:.0f}{mm}',
+              measure_mem='M',
+            ),
             widget.Spacer(
                 length=5,
                 background=transparent,
@@ -120,6 +120,14 @@ def init_widgets_list():
               length=5,
               background=transparent,
             ),
+            widget.WidgetBox(
+              decorations=[RectDecoration(colour=secondary_color[5], radius=4, filled=True)],
+              text_closed='',
+              text_open='',
+              foreground=color[0],
+              widgets=[
+                  widget.Systray(),]),
+            
             widget.Prompt(
               decorations=[RectDecoration(colour=color[0], radius=7, filled=True)],
               prompt=prompt,
@@ -132,7 +140,6 @@ def init_widgets_list():
               length=5,
               background=transparent,
             ),
-            widget.Systray(),
             widget.Spacer(
               length=bar.STRETCH,
               background=transparent,
@@ -187,15 +194,16 @@ def init_widgets_list():
                 format='{icon}',
                 foreground=color[5],
                 metric=True,
-                update_interval=600,
-                
+                update_interval=600, 
             ),
             widget.OpenWeather(
               decorations=[RectDecoration(colour=color[5], radius=[0,7,7,0], filled=True)],
               app_key=w_appkey,
+              scroll=True,
+              width=widget_width -60,
               cityid=w_cityid,
               foreground=color[0],
-              format='{temp}°{units_temperature}',
+              format='{temp}°{units_temperature} {weather_details}',
               metric=True,
               update_interval=600,
             ),
@@ -238,30 +246,22 @@ def init_widgets_list():
               ]
             ),
             widget.Wlan(
-                  decorations=[RectDecoration(colour=color[0], radius=0, filled=True)],
+                  decorations=[RectDecoration(colour=color[3], radius=0, filled=True)],
                   interface=wifi,
-                  format='{essid}',
+                  format='{essid} {percent:2.0%}',
                   disconnected_message='',
-                  foreground=color[3],
-                  width=widget_width,
+                  foreground=color[0],
+                  width=widget_width -20,
                   scroll=True,
                   scroll_repeat=True,
                   scroll_interval=0.1,
                   scroll_step=1,
                   update_interval=1,
                   mouse_callbacks={'Button1':lambda: qtile.function(network_widget)}),
-            widget.Wlan(
-                   decorations=[RectDecoration(colour=color[0],radius=0, filled=True)],
-                   interface=wifi,
-                   format='{percent:2.0%}',
-                   disconnected_message='',
-                   foreground=color[3],
-                   mouse_callbacks={'Button1':lambda: qtile.function(network_widget)}
-                 ),
             widget.Net(
               prefix='M',
               interface=wifi,
-              format='{down:4.1f}↓↑{up:3.1f}',
+              format='{down:1.1f}M',
               foreground=color[0],
               use_bits=True,
               mouse_callbacks={'Button1':lambda: qtile.function(network_widget)},
@@ -274,16 +274,15 @@ def init_widgets_list():
             widget.TextBox(
               decorations=[RectDecoration(colour=color[0], radius=[7,0,0,7], filled=True)],
               text="",
-              foreground=color[2],
+              foreground=secondary_color[4],
               mouse_callbacks={'Button1': lambda: qtile.spawn('pavucontrol'),'Button4': lambda: qtile.spawn("amixer -q set Master 5%+ && dunstify -a Volume ' '$(pamixer --get-volume-human) -h int:value:$(pamixer --get-volume)", shell=True),'Button5': lambda: qtile.spawn("amixer -q set Master 5%- && dunstify -a Volume ' '$(pamixer --get-volume-human) -h int:value:$(pamixer --get-volume)", shell=True)},
             ),
             widget.ALSAWidget(
               decorations=[RectDecoration(colour=color[0], radius=0, filled=True)],
               device='Master',
-              bar_colour_high=color[2],
-              bar_colour_loud=color[2],
-              bar_colour_normal=color[2],
-              bar_colour_mute=color[2],
+              bar_colour_high=secondary_color[4],
+              bar_colour_normal=secondary_color[4],
+              bar_colour_mute=secondary_color[1],
               hide_interval=5,
               update_interval=0.1,
               bar_width=50,

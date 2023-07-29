@@ -166,9 +166,14 @@ def init_layouts():
     layout.MonadTall(max_ratio=max_ratio,ratio=ratio,**layout_theme),
     layout.MonadWide(max_ratio=0.85,ratio=0.85,**layout_theme),
     layout.Matrix(**layout_theme),
-    layout.Floating(**layout_theme),
     ]
 layouts = init_layouts()
+
+floating_layout = layout.Floating(
+   border_width=layout_border_width,
+    border_normal=color[0],
+    border_focus=color[2],
+)
 
 # Drag floating layouts.
 mouse = [
