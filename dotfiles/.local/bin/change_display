@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env zsh
 # _______  _______  ______  _______  __        
 #|       ||   _   ||   __ \|     __||  |.-----.
 #|   -  _||       ||      <|__     ||  ||  _  |
@@ -166,6 +166,5 @@ function initialize_globals() {
 initialize_globals
 readonly XRANDR_TXT
 main
-qtile cmd-obj -o cmd -f restart && notify-send -a ' QARSlp' "Monitor Layout Set! ${output} ${position} ${mode}"
-
+qtile cmd-obj -o cmd -f restart
 

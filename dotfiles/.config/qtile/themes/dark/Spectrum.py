@@ -126,15 +126,24 @@ def init_widgets_list():
               text_open='',
               foreground=color[0],
               widgets=[
-                  widget.Systray(),]),
-            
+                  widget.Spacer(
+                  length=5,
+                  background=transparent,
+            ),
+                  widget.Systray(),]
+            ),
+            widget.Spacer(
+              length=5,
+              background=transparent,
+            ),
             widget.Prompt(
-              decorations=[RectDecoration(colour=color[0], radius=7, filled=True)],
+              decorations=[RectDecoration(colour=secondary_color[0], radius=7, filled=True)],
               prompt=prompt,
               foreground=color[4],
               cursor_color=color[4],
               visual_bell_color=[4],
               visual_bell_time=0.2,
+              padding=5,
             ),
             widget.Spacer(
               length=5,
