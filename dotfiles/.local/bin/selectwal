@@ -15,7 +15,7 @@ while IFS= read -r line; do
 done < ~/.config/qtile/variables
 
 set_wall(){
-  wpg ${variables[3]} -s $WALLPAPER --backend ${variables[1]} # Wal sets wallpaper and genates new color scheme
+  wpg ${variables[4]} -s $WALLPAPER --backend ${variables[2]} # Wal sets wallpaper and genates new color scheme
   cp $WALLPAPER "/usr/local/backgrounds/background.png"
   cp -r ~/.local/share/themes/FlatColor  /usr/local/themes/
   qtile cmd-obj -o cmd -f restart 

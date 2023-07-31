@@ -29,11 +29,11 @@ done
 set_wall(){
   if [ -z "$wall" ]
     then
-      wpg ${variables[3]} -s ${path} --backend ${variables[1]} # Wal sets wallpaper and genates new color scheme
+      wpg ${variables[4]} -s ${path} --backend ${variables[2]} # Wal sets wallpaper and genates new color scheme
       cp ${path}  "/usr/local/backgrounds/background.png"
       cp -r ~/.local/share/themes/FlatColor  /usr/local/themes/
     else
-      wpg ${variables[3]} -s ${dir}${wall} ${variables[1]} # Wal sets wallpaper and genates new color scheme
+      wpg ${variables[4]} -s ${dir}${wall} ${variables[2]} # Wal sets wallpaper and genates new color scheme
       cp ${dir}${wall}  "/usr/local/backgrounds/background.png"
       cp -r ~/.local/share/themes/FlatColor  /usr/local/themes/
       

@@ -25,7 +25,7 @@ from rofi import Rofi
 
 #### Variables ####
 
-version='v2.0.8'
+
 
 # Modifiers
 mod = "mod4"
@@ -37,6 +37,20 @@ home = os.path.expanduser('~') # Path for use in folders
 ## Import config
 file = open(home + '/.config/qtile/variables', 'r')
 variables=file.readlines()
+
+## Get update if available
+file = open(home + '/QARSlp/dotfiles/.config/qtile/update', 'r')
+update_available=file.readlines()
+
+# SpectrumOS version
+remote_version=float(update_available[0].strip())
+version=float(variables[0].strip())
+
+if version == remote_version:
+  update_spectrumos= ' SpectrumOS is up to date!'
+else:
+  update_spectrumos= f' Update Available {version} -> {remote_version}',
+
 
 ## Fonts
 main_font = "Fira Code Medium" # Font in use for the entire system
@@ -53,7 +67,7 @@ prompt = " ".format(os.environ["USER"], socket.gethostname())
 
 # Wallpapers / Theming
 wallpaper_dir= home + '/Pictures/Wallpapers/' # Wallpapers folders
-light=str(variables[3].strip()) # Option for light themes
+light=str(variables[4].strip()) # Option for light themes
 
 # Diferenciator, this will get added to generate a slightly different pallete
 differentiator = '222222'
@@ -61,17 +75,17 @@ differentiator = '222222'
 #Initialize Groups
 groups = []
 group_names = ["Escape","1","2","3","4","5","6","7","8","9"]
-hide_unused_groups=bool(str(variables[7].strip()))
+hide_unused_groups=bool(str(variables[8].strip()))
 
 # Theme
-current_theme=str(variables[0].strip())
-themes_dir = home + str(variables[4].strip())
+current_theme=str(variables[1].strip())
+themes_dir = home + str(variables[5].strip())
 theme_dest = (home + "/.config/qtile/theme.py")
 theme_file = themes_dir + "/" + current_theme
 theme=['Spectrum', 'Slash', 'Miasma', 'Nice',  'Minimal', 'Monochrome', 'no_bar']
 
 # Pywal backends Options: Wal, Colorz, Colorthief, Haishoku
-def_backend=str(variables[1].strip()) # Default Color Scheme for random wallpaper
+def_backend=str(variables[2].strip()) # Default Color Scheme for random wallpaper
 backend=['wal', 'colorz', 'colorthief','haishoku']
 
 ## Margins
@@ -82,7 +96,7 @@ layout_border_width=5 # Layout border width
 single_border_width=5 # Single border width
 
 # Bar Position
-bar_position=str(variables[5].strip())
+bar_position=str(variables[6].strip())
 
 #Widgets
 widget_width=200 #Width of widgets varies depending the resolution
@@ -134,7 +148,7 @@ else: # 1366 x 768 Macbook air 11"
   bar_margin=[0,0,0,0]
 
 # Make font smaller for cetain groups icons
-if int(variables[9]) in [7, 8, 9,10,11,12]:
+if int(variables[10]) in [7, 8, 9,10,11,12]:
    groups_font = font_size - 6
 else:
    groups_font = font_size 
@@ -146,7 +160,7 @@ rofi_left= Rofi(rofi_args=['-theme', '~/.config/rofi/left.rasi'])
 rofi_wallpaper=Rofi(rofi_args=(['rofi', '-show file-browser-extended', '-theme', '~/.config/rofi/sel_wal.rasi', '-file-browser-dir', '~/Pictures/Wallpapers', '-file-browser-stdout']))
 
 ### Weather
-w_appkey = str(variables[2].strip()) # Get a key here https://home.openweathermap.org/users/sign_up 
+w_appkey = str(variables[3].strip()) # Get a key here https://home.openweathermap.org/users/sign_up 
 w_cityid ="3995402" # "3995402" Morelia, "3521342" Playa del Carmen https://openweathermap.org/city/
 
 ## Hooks
@@ -332,7 +346,7 @@ def set_default_backend(qtile):
     subprocess.run(["wal", light.lower(), "-i", "/usr/local/backgrounds/background.png", "--backend", "%s" %backend[index].lower()])
     subprocess.run(["wpg", light, "-s", "/usr/local/backgrounds/background.png", "--backend", "%s" %backend[index].lower()])
     subprocess.run(["cp", "-r", home + "/.local/share/themes/FlatColor",  "/usr/local/themes/"])
-    variables[1]=backend[index] + "\n"
+    variables[2]=backend[index] + "\n"
     with open(home + '/.config/qtile/variables', 'w') as file:
       file.writelines(variables)
     qtile.reload_config()
@@ -421,11 +435,11 @@ def network_widget(qtile):
 ## Show / Hide all Groups
 def show_groups(qtile):
   if hide_unused_groups == True:
-    variables[7]=" " + "\n"
-    variables[8]="" + "\n"
+    variables[8]=" " + "\n"
+    variables[9]="" + "\n"
   else:
-    variables[7]="True" + "\n"
-    variables[8]="" + "\n"
+    variables[8]="True" + "\n"
+    variables[9]="" + "\n"
       
   with open(home + '/.config/qtile/variables', 'w') as file:
     file.writelines(variables)
@@ -452,7 +466,7 @@ def group_icon(qtile):
   if key == -1:
     rofi_left.close()
   else:
-    variables[9]=str(index) + "\n"
+    variables[10]=str(index) + "\n"
     with open(home + '/.config/qtile/variables', 'w') as file:
       file.writelines(variables)
     qtile.reload_config()
@@ -461,21 +475,21 @@ def group_icon(qtile):
 ## Select Dark or Light Theming
 def dark_white(qtile):
   options = [' Dark', ' Light']
-  index, key = rofi_left.select(' Theme -> ' + str(variables[6].strip()), options)
+  index, key = rofi_left.select(' Theme -> ' + str(variables[7].strip()), options)
   if key == -1 or index == 2:
     rofi_left.close()
   else:
     if index == 0:
-      variables[3]="-c" + "\n"
-      variables[6]="Dark" + "\n"
-      variables[4]="/.config/qtile/themes/dark" + "\n"
+      variables[4]="-c" + "\n"
+      variables[7]="Dark" + "\n"
+      variables[5]="/.config/qtile/themes/dark" + "\n"
       subprocess.run(['cp', home + '/.config/qtile/themes/dark/' + current_theme + ".py", home + '/.config/qtile/theme.py'])
       subprocess.run(["wal", "-i", "/usr/local/backgrounds/background.png", "--backend", "%s" %def_backend])
       subprocess.run(["wpg", "-s", "/usr/local/backgrounds/background.png", "--backend", "%s" %def_backend])
     else:
-      variables[3]="-L" + "\n"
-      variables[6]="Light" + "\n"
-      variables[4]="/.config/qtile/themes/light" + "\n"
+      variables[4]="-L" + "\n"
+      variables[7]="Light" + "\n"
+      variables[5]="/.config/qtile/themes/light" + "\n"
       subprocess.run(['cp', home + '/.config/qtile/themes/light/' + current_theme + ".py", home + '/.config/qtile/theme.py'])
       subprocess.run(["wal", "-l", "-i", "/usr/local/backgrounds/background.png", "--backend", "%s" %def_backend])
       subprocess.run(["wpg", "-L", "-A", "-s", "/usr/local/backgrounds/background.png", "--backend", "%s" %def_backend])
@@ -495,13 +509,13 @@ def bar_pos(qtile):
     rofi_left.close()
   else:
     if index == 0:
-      variables[5]="top" + "\n"
+      variables[6]="top" + "\n"
       subprocess.run(["cp", "-r", home + "/.local/share/themes/FlatColor",  "/usr/local/themes/"])
       with open(home + '/.config/qtile/variables', 'w') as file:
         file.writelines(variables)
       qtile.reload_config()
     elif index == 1:
-      variables[5]="bottom" + "\n"
+      variables[6]="bottom" + "\n"
       subprocess.run(["cp", "-r", home + "/.local/share/themes/FlatColor",  "/usr/local/themes/"])
       with open(home + '/.config/qtile/variables', 'w') as file:
         file.writelines(variables)
@@ -517,7 +531,7 @@ def change_theme(qtile):
     rofi_left.close()
   else:
     subprocess.run('rm -rf ~/.config/qtile/theme.py', shell=True)
-    variables[0]=theme[index] + "\n"
+    variables[1]=theme[index] + "\n"
     new_theme=theme[index] + ".py"
     subprocess.run(['cp', themes_dir + "/" + new_theme, home + '/.config/qtile/theme.py'])
     with open(home + '/.config/qtile/variables', 'w') as file:
@@ -559,7 +573,7 @@ def control_panel(qtile):
     '     Dark/Light Theme (❖ + D)',
     '     Bar Position (❖ +  + W)',
     '     Change Bar Theme (⎇ + W)',
-    '    %s Toggle Groups' %str(variables[8].strip()),
+    '    %s Toggle Groups' %str(variables[9].strip()),
     '     Change Groups Icons',
     ' Tools',#10
     '     Notes (❖ + N)',
@@ -577,7 +591,7 @@ def control_panel(qtile):
     '     View Shortcuts (❖ + S)',
     '     Emojis ( +  + )',
     ' Session Menu (❖ + X)',
-    ' Update SpectrumOS %s' %version,
+    '%s' %update_spectrumos,
     ]
     
   index, key = rofi_left.select('  Control Panel', options)
