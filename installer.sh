@@ -63,22 +63,25 @@ installMenu(){
   "Copy all Dotfiles" " " \
   "Post Installation" " " 3>&1 1>&2 2>&3)
 
-  for CHOICE in $CHOICES; do
-    case "$CHOICE" in
+  for ITEM in $CHOICE; do
+    case "$ITEM" in
     "1")
       baseInstall >&2
       ;;
     "2")
-      echo "Option 2 was selected"
+      pipInstall >&2
       ;;
     "3")
-      echo "Option 3 was selected"
+      AURInstall >&2
       ;;
     "4")
-      echo "Option 4 was selected"
+      dotfiles >&2
+      ;;
+    "5")
+      postInstall >&2
       ;;
     *)
-      echo "Unsupported item $CHOICE!" >&2
+      echo "Unsupported item $ITEM!" >&2
       exit 1
       ;;
     esac
@@ -103,7 +106,7 @@ welcomeDialogs() {
 ## Base Packages
 installBasePackages() {
   while read -r package; do
-    sudo pacman -S --noconfirm "$package"
+    sudo pacman -S --noconfirm "$package" > /dev/null
 
     echo "::: "
     echo "Installing $package..."
@@ -129,7 +132,7 @@ installPipPackages() {
   while read -r PACKAGE; do
     ((count++))
 
-    pip install -r pip.txt --break-system-packages
+    pip install -r pip.txt --break-system-packages > /dev/null
 
     PERCENTAGE=$((count * 100 / TOTAL_PACKAGE))
 
@@ -153,7 +156,7 @@ pipInstall() {
 ## AUR Packages
 installAURPackages() {
   while read -r package; do
-    $AUR_MANAGER -S --noconfirm "$package"
+    $AUR_MANAGER -S --noconfirm "$package" > /dev/null
 
     echo "::: "
     echo "Installing $package..."
@@ -171,6 +174,60 @@ AURInstall() {
     whiptail --title "Package Installation" --gauge "Installing ..." 6 50 0 < <(installAURPackages) 2>&1
 }
 
+## Dotfiles
+installDotfiles() {
+  mkdir -p ~/.config/alacritty
+  cp ~/QARSlp/dotfiles/.config/alacritty/alacritty.yml ~/.config/alacritty/alacritty.yml
+  cp ~/QARSlp/dotfiles/.shortcuts ~/
+  mkdir -p ~/.config/wal/templates
+  mkdir -p ~/.config/dunst
+  cp ~/QARSlp/dotfiles/.config/dunst/dunstrc ~/.config/wal/templates
+  cp ~/QARSlp/dotfiles/.config/rofi/QARSlp.rasi ~/.config/wal/templates
+  mkdir -p ~/.config/cava
+  cp ~/QARSlp/dotfiles/.config/cava/config ~/.config/wal/templates
+  mkdir -p  ~/.fonts
+  cp ~/QARSlp/dotfiles/.fonts/* ~/.fonts
+  fc-cache -f -v
+  mkdir -p ~/.config/picom
+  cp ~/QARSlp/dotfiles/.config/picom/picom.conf ~/.config/picom/picom.conf
+  mkdir -p ~/.config/qtile
+  cp ~/QARSlp/dotfiles/.config/qtile/themes/default.py ~/.config/qtile/theme.py
+  cp -r ~/QARSlp/dotfiles/.config/qtile/* ~/.config/qtile/
+  mkdir -p ~/.config/ranger
+  cp ~/QARSlp/dotfiles/.config/ranger/rc.conf ~/.config/ranger/rc.conf
+  mkdir -p ~/.config/rofi
+  cp -r ~/QARSlp/dotfiles/.config/rofi/* ~/.config/rofi/
+  sudo mkdir -p /root/.config/rofi
+  sudo cp -r ~/QARSlp/dotfiles/.config/rofi/* /root/.config/rofi/
+  sudo mkdir -p /root/.cache/wal
+  sudo cp -r ~/.cache/wal/colors-rofi-dark.rasi /root/.cache/wal/
+  xdg-settings set default-web-browser firefox.desktop
+  mkdir -p ~/.local/bin
+  cp -r ~/QARSlp/dotfiles/.local/bin/* ~/.local/bin
+  chmod +x ~/.local/bin/*
+  cp ~/QARSlp/dotfiles/.zshrc ~/
+  mkdir -p ~/.oh-my-zsh
+  cp ~/QARSlp/dotfiles/.oh-my-zsh/themes/* ~/.oh-my-zsh/themes/
+  mkdir ~/Pictures
+  sudo mkdir -p /usr/share/backgrounds
+  mkdir -p ~/Pictures/Wallpapers
+  cp -r ~/QARSlp/Wallpapers/* ~/Pictures/Wallpapers
+  sudo cp ~/QARSlp/Wallpapers/wall.jpg /usr/local/backgrounds/background.png
+  sudo mkdir -p /usr/local/themes
+  sudo cp -r ~/.local/share/themes/FlatColor /usr/local/themes
+  sudo chown $USER:$USER /usr/local/themes/FlatColor
+  sudo ln -s /usr/local/themes/FlatColor /usr/share/themes/FlatColor
+  sudo mkdir /usr/local/backgrounds
+  sudo chown $USER:$USER /usr/local/backgrounds
+  sudo cp ~/QARSlp/lightdm-gtk-greeter.conf /etc/lightdm/lightdm-gtk-greeter.conf
+}
+
+dotfiles() {
+    whiptail --msgbox --backtitle "QARSlp Installer $VER" --title "Copy Dotfiles" "The Dotfiles needed for QARSlp to work will be copied now \n \n Click OK to Continue" ${r} ${c}
+
+    whiptail --title "Package Installation" --gauge "Installing ..." 6 50 0 < <(installDotfiles) 2>&1
+}
+
 ## Post Install
 postInstall(){
   whiptail --title "File Selection" --checklist "Select files to copy:" 15 60 5 "${file_list[@]}" 3>&1 1>&2 2>&3
@@ -181,4 +238,5 @@ installMenu
 #pipInstall
 #baseInstall
 #AURInstall
+#dotfiles
 #postInstall
